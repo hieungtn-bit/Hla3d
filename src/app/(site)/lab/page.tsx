@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 const SPECS = [
-  { icon: Boxes, label: "Build volume", value: printerSpec.buildVolume },
-  { icon: Ruler, label: "Nozzle", value: printerSpec.nozzle },
-  { icon: Thermometer, label: "Materials", value: printerSpec.material },
-  { icon: Wrench, label: "Layer heights", value: printerSpec.layerHeights },
+  { icon: Boxes, label: "Khổ in tối đa", value: printerSpec.buildVolume },
+  { icon: Ruler, label: "Đầu phun", value: printerSpec.nozzle },
+  { icon: Thermometer, label: "Vật liệu", value: printerSpec.material },
+  { icon: Wrench, label: "Độ dày lớp", value: printerSpec.layerHeights },
 ];
 
 export default function LabPage() {
@@ -50,9 +50,9 @@ export default function LabPage() {
             <div>
               <SectionHeader
                 index="01"
-                eyebrow="The machine"
+                eyebrow="Cái máy"
                 title="ANYCUBIC KOBRA X"
-                description="Bought second-hand, levelled by hand, and running almost every day since March 2025. It has printed roughly 14 kilograms of PLA and jammed exactly four times."
+                description="Mua lại máy cũ, cân bàn bằng tay, chạy gần như mỗi ngày từ tháng 3/2025. Máy đã in hết khoảng 14 kilogam nhựa PLA và bị kẹt đúng bốn lần."
               />
               <dl className="mt-8 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
                 {SPECS.map((spec) => (
@@ -74,7 +74,7 @@ export default function LabPage() {
       <Section className="border-t border-line bg-paper-2">
         <div className="container-hla grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHeader index="02" eyebrow="Print queue" title="WHAT IS NEXT ON THE PLATE." />
+            <SectionHeader index="02" eyebrow="Hàng chờ in" title="SẮP TỚI IN GÌ." />
             <ul className="mt-8 space-y-2">
               {printQueue.map((item, i) => (
                 <Reveal
@@ -96,13 +96,13 @@ export default function LabPage() {
               ))}
             </ul>
             <p className="mt-5 text-xs leading-relaxed text-ink-3">
-              One printer means one job at a time. This queue is why we promise 3–5 days instead of
-              &ldquo;tomorrow&rdquo;.
+              Một cái máy thì mỗi lần chỉ in được một món. Chính hàng chờ này là lý do tụi em hứa 3–5 ngày chứ
+              không hứa &ldquo;mai có&rdquo;.
             </p>
           </div>
 
           <div>
-            <SectionHeader index="03" eyebrow="Filament shelf" title="WHAT IS ON THE SHELF." />
+            <SectionHeader index="03" eyebrow="Kệ nhựa" title="TRÊN KỆ CÒN GÌ." />
             <ul className="mt-8 space-y-4">
               {filamentStock.map((f, i) => (
                 <Reveal as="li" key={f.color} delay={i * 0.04}>
@@ -126,8 +126,8 @@ export default function LabPage() {
               ))}
             </ul>
             <p className="mt-6 text-xs leading-relaxed text-ink-3">
-              Every spool gets weighed before a job starts. That one habit dropped our failed prints from 9
-              a month to 6.
+              Mỗi cuộn nhựa đều được cân trước khi bắt đầu in. Chỉ một thói quen đó thôi đã giảm số lần in hỏng
+              từ 9 xuống 6 mỗi tháng.
             </p>
           </div>
         </div>
@@ -138,15 +138,15 @@ export default function LabPage() {
         <div className="container-hla">
           <SectionHeader
             index="04"
-            eyebrow="Maker safety"
+            eyebrow="An toàn khi làm"
             tone="dark"
-            title="THE RULES ON THE WALL."
-            description="The children do not operate hot equipment unsupervised. This is not a disclaimer — it is the actual list taped above the printer bench."
+            title="LUẬT DÁN TRÊN TƯỜNG."
+            description="Ba anh em không tự ý đụng vào thiết bị nóng khi không có người lớn. Đây không phải câu miễn trừ trách nhiệm — đây đúng là tờ giấy dán trên tường ngay phía trên bàn máy in."
           />
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             <Reveal className="rounded-[var(--radius-card)] border border-carbon-line bg-carbon-2 p-6">
-              <span className="eyebrow text-flame">Dad only</span>
+              <span className="eyebrow text-flame">Chỉ Ba được làm</span>
               <ul className="mt-5 space-y-3">
                 {safetyRules.dadOnly.map((rule) => (
                   <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
@@ -158,7 +158,7 @@ export default function LabPage() {
             </Reveal>
 
             <Reveal delay={0.08} className="rounded-[var(--radius-card)] border border-carbon-line bg-carbon-2 p-6">
-              <span className="eyebrow text-lime">The makers can</span>
+              <span className="eyebrow text-lime">Ba anh em được làm</span>
               <ul className="mt-5 space-y-3">
                 {safetyRules.makers.map((rule) => (
                   <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
@@ -170,7 +170,7 @@ export default function LabPage() {
             </Reveal>
 
             <Reveal delay={0.16} className="rounded-[var(--radius-card)] border border-carbon-line bg-carbon-2 p-6">
-              <span className="eyebrow text-sky">House rules</span>
+              <span className="eyebrow text-sky">Luật trong nhà</span>
               <ul className="mt-5 space-y-3">
                 {safetyRules.house.map((rule) => (
                   <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
@@ -187,7 +187,7 @@ export default function LabPage() {
               href="/about"
               className="tactile inline-flex h-12 items-center gap-2 rounded-full bg-white px-6 font-display text-sm font-bold tracking-tight text-ink hover:bg-paper"
             >
-              READ OUR STORY
+              ĐỌC CHUYỆN CỦA TỤI EM
               <ArrowRight className="size-4" />
             </Link>
           </Reveal>

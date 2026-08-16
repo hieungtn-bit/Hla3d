@@ -6,7 +6,7 @@ export type JournalPost = {
   displayDate: string;
   readingTime: string;
   author: string;
-  tag: "First" | "Failure" | "Production" | "Money" | "Selling";
+  tag: "Bắt đầu" | "Thất bại" | "Sản xuất" | "Tiền bạc" | "Bán hàng";
   excerpt: string;
   /** Simple paragraph/heading blocks — enough for an MVP without a CMS. */
   body: Array<{ type: "h2" | "p" | "quote" | "list"; text?: string; items?: string[] }>;
@@ -15,15 +15,15 @@ export type JournalPost = {
 export const journal: JournalPost[] = [
   {
     slug: "our-first-3d-print",
-    title: "Our First 3D Print",
-    kicker: "Day one",
+    title: "Lần in 3D đầu tiên",
+    kicker: "Ngày đầu tiên",
     date: "2025-03-14",
     displayDate: "14 tháng 3, 2025",
     readingTime: "3 phút",
-    author: "Maker #01",
-    tag: "First",
+    author: "Hưng",
+    tag: "Bắt đầu",
     excerpt:
-      "It was a small orange cube. It took 22 minutes. It was slightly crooked and we thought it was the greatest object ever made.",
+      "Một khối vuông cam nhỏ xíu. In hết 22 phút. Nó hơi méo, và tụi em nghĩ đó là món đồ tuyệt nhất trên đời.",
     body: [
       {
         type: "p",
@@ -50,15 +50,15 @@ export const journal: JournalPost[] = [
   },
   {
     slug: "why-our-octopus-failed",
-    title: "Why Our Octopus Failed",
-    kicker: "Six times in a row",
+    title: "Vì sao con bạch tuộc cứ hỏng",
+    kicker: "Hỏng sáu lần liên tiếp",
     date: "2025-04-22",
     displayDate: "22 tháng 4, 2025",
     readingTime: "4 phút",
-    author: "Maker #03",
-    tag: "Failure",
+    author: "Anh",
+    tag: "Thất bại",
     excerpt:
-      "Six flexi octopuses came off the plate as a solid lump. Here is every reason, in order, and what we changed each time.",
+      "Sáu con bạch tuộc lấy ra khỏi máy đều là một cục nhựa dính chặt. Đây là từng nguyên nhân, theo đúng thứ tự, và mỗi lần tụi em đã đổi gì.",
     body: [
       {
         type: "p",
@@ -93,15 +93,15 @@ export const journal: JournalPost[] = [
   },
   {
     slug: "we-printed-20-nameplates",
-    title: "We Printed 20 Nameplates",
-    kicker: "Our first real batch",
+    title: "Tụi em in 20 tấm bảng tên",
+    kicker: "Đơn hàng lớn đầu tiên",
     date: "2025-06-08",
     displayDate: "8 tháng 6, 2025",
     readingTime: "5 phút",
-    author: "Maker #02",
-    tag: "Production",
+    author: "Long",
+    tag: "Sản xuất",
     excerpt:
-      "One name plate is a craft project. Twenty name plates in a week is a small factory — and it changed how we work.",
+      "In một tấm bảng tên là làm thủ công. In hai mươi tấm trong một tuần là một cái xưởng nhỏ — và nó đổi hẳn cách tụi em làm việc.",
     body: [
       {
         type: "p",
@@ -129,15 +129,15 @@ export const journal: JournalPost[] = [
   },
   {
     slug: "how-much-does-one-3d-print-cost",
-    title: "How Much Does One 3D Print Cost?",
-    kicker: "We did the maths",
+    title: "In một món tốn bao nhiêu tiền?",
+    kicker: "Tụi em ngồi tính lại",
     date: "2025-07-19",
     displayDate: "19 tháng 7, 2025",
     readingTime: "6 phút",
-    author: "Maker #02 & Dad",
-    tag: "Money",
+    author: "Long và Ba",
+    tag: "Tiền bạc",
     excerpt:
-      "Filament is the obvious cost. Electricity, failed prints, packaging and the machine itself are the ones that quietly eat the profit.",
+      "Ai cũng thấy tiền nhựa. Còn tiền điện, những lần in hỏng, hộp giấy và hao mòn máy mới là thứ âm thầm ăn hết lợi nhuận.",
     body: [
       {
         type: "p",
@@ -167,15 +167,15 @@ export const journal: JournalPost[] = [
   },
   {
     slug: "what-we-learned-selling-our-first-product",
-    title: "What We Learned Selling Our First Product",
-    kicker: "Customer #01",
+    title: "Bài học từ món hàng đầu tiên bán được",
+    kicker: "Khách hàng số 1",
     date: "2025-08-02",
     displayDate: "2 tháng 8, 2025",
     readingTime: "4 phút",
-    author: "All three makers",
-    tag: "Selling",
+    author: "Cả ba anh em",
+    tag: "Bán hàng",
     excerpt:
-      "Our first customer was not a relative. She asked one question we could not answer, and that question became our packing checklist.",
+      "Khách đầu tiên của tụi em không phải họ hàng. Cô ấy hỏi một câu tụi em không trả lời được, và câu đó trở thành mục đầu tiên trong bảng kiểm tra khi đóng gói.",
     body: [
       {
         type: "p",

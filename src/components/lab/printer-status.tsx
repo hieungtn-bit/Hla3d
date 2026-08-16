@@ -6,10 +6,10 @@ import type { PrinterState } from "@/data/lab";
 import { cn } from "@/lib/utils";
 
 const STATUS_STYLE = {
-  printing: { dot: "bg-lime", label: "PRINTING", text: "text-lime" },
-  idle: { dot: "bg-white/40", label: "IDLE", text: "text-white/50" },
-  cooling: { dot: "bg-sky", label: "COOLING", text: "text-sky" },
-  maintenance: { dot: "bg-sun", label: "MAINTENANCE", text: "text-sun" },
+  printing: { dot: "bg-lime", label: "ĐANG IN", text: "text-lime" },
+  idle: { dot: "bg-white/40", label: "ĐANG RẢNH", text: "text-white/50" },
+  cooling: { dot: "bg-sky", label: "ĐANG NGUỘI", text: "text-sky" },
+  maintenance: { dot: "bg-sun", label: "ĐANG BẢO TRÌ", text: "text-sun" },
 } as const;
 
 export function PrinterStatus({ printer, className }: { printer: PrinterState; className?: string }) {
@@ -43,7 +43,7 @@ export function PrinterStatus({ printer, className }: { printer: PrinterState; c
 
         {/* current job */}
         <div className="mt-8">
-          <p className="eyebrow text-white/40">Current job</p>
+          <p className="eyebrow text-white/40">Đang in món</p>
           <p className="display mt-2 text-2xl text-white sm:text-3xl">{printer.job}</p>
         </div>
 
@@ -51,7 +51,7 @@ export function PrinterStatus({ printer, className }: { printer: PrinterState; c
         <div className="mt-7">
           <div className="flex items-baseline justify-between">
             <span className="font-mono text-sm text-white/50">
-              Layer {printer.layer.current} / {printer.layer.total}
+              Lớp {printer.layer.current} / {printer.layer.total}
             </span>
             <span className="display text-3xl" style={{ color: printer.filamentHex }}>
               {printer.progress}%
@@ -71,19 +71,19 @@ export function PrinterStatus({ printer, className }: { printer: PrinterState; c
 
         {/* readouts */}
         <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-carbon-line bg-carbon-line sm:grid-cols-4">
-          <Readout icon={Clock} label="Remaining" value={printer.timeRemaining} />
+          <Readout icon={Clock} label="Còn lại" value={printer.timeRemaining} />
           <Readout
             icon={Layers}
-            label="Filament"
+            label="Cuộn nhựa"
             value={printer.filament}
             swatch={printer.filamentHex}
           />
-          <Readout icon={Thermometer} label="Nozzle / Bed" value={`${printer.nozzleTemp}° / ${printer.bedTemp}°`} />
-          <Readout icon={User} label="Started by" value={printer.startedBy} />
+          <Readout icon={Thermometer} label="Đầu phun / Bàn" value={`${printer.nozzleTemp}° / ${printer.bedTemp}°`} />
+          <Readout icon={User} label="Người bấm in" value={printer.startedBy} />
         </dl>
 
         <p className="mt-5 font-mono text-[0.6875rem] text-white/30">
-          MVP note — demo dashboard. Live printer telemetry lands in phase 2.
+          Bản demo — số liệu máy in thật sẽ nối vào ở giai đoạn sau.
         </p>
       </div>
     </div>

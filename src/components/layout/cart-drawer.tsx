@@ -13,20 +13,11 @@ import { formatVnd } from "@/lib/utils";
 export function CartDrawer() {
   const cart = useCart();
   const router = useRouter();
-  const [placing, setPlacing] = React.useState(false);
-
   const nextCustomer = goal.current + 1;
 
-  function placeOrder() {
-    setPlacing(true);
-    // MVP: no payment gateway yet. The order confirmation is the real
-    // experience we want to get right first.
-    window.setTimeout(() => {
-      cart.clear();
-      cart.close();
-      setPlacing(false);
-      router.push("/order/confirmed");
-    }, 550);
+  function goToOrderForm() {
+    cart.close();
+    router.push("/dat-hang");
   }
 
   return (
@@ -110,7 +101,7 @@ export function CartDrawer() {
                           <div className="flex items-center gap-1 rounded-full border border-line p-0.5">
                             <button
                               type="button"
-                              aria-label="Decrease quantity"
+                              aria-label="Giảm số lượng"
                               onClick={() => cart.setQty(line.key, line.qty - 1)}
                               className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
                             >
@@ -119,7 +110,7 @@ export function CartDrawer() {
                             <span className="w-6 text-center font-mono text-sm font-bold">{line.qty}</span>
                             <button
                               type="button"
-                              aria-label="Increase quantity"
+                              aria-label="Tăng số lượng"
                               onClick={() => cart.setQty(line.key, line.qty + 1)}
                               className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
                             >
@@ -141,13 +132,13 @@ export function CartDrawer() {
                     <span className="display text-2xl">{formatVnd(cart.subtotal)}</span>
                   </div>
                   <p className="text-xs leading-relaxed text-ink-3">
-                    Làm theo đơn, 3–5 ngày. Phí ship tính lúc thanh toán — Ba lo phần tiền bạc và gửi hàng.
+                    Làm theo đơn, 3–5 ngày. Chưa thanh toán trên web — mẹ Hiếu sẽ gọi xác nhận và báo phí ship.
                   </p>
-                  <Button size="lg" className="w-full" onClick={placeOrder} disabled={placing}>
-                    {placing ? "ĐANG ĐẶT…" : `LÀM KHÁCH SỐ ${nextCustomer}`}
+                  <Button size="lg" className="w-full" onClick={goToOrderForm}>
+                    ĐẶT HÀNG · LÀM KHÁCH SỐ {nextCustomer}
                   </Button>
                   <p className="text-center text-[0.6875rem] text-ink-3">
-                    Bản demo — chưa thu tiền thật ở phiên bản này.
+                    Bước tiếp theo chỉ là điền tên, số điện thoại và địa chỉ.
                   </p>
                 </footer>
               </>

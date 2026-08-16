@@ -30,6 +30,15 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
               Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Một chiếc máy in 3D đặt ở góc nhà.
             </p>
+            <p className="mt-5 text-sm text-white/50">
+              Cần hỏi gì về đơn hàng?{" "}
+              <a
+                href="mailto:Hieungtn@gmail.com"
+                className="font-bold text-sun underline underline-offset-4 hover:text-flame"
+              >
+                Nhắn cho mẹ Hiếu
+              </a>
+            </p>
           </div>
 
           <nav aria-label="Shop">

@@ -5,7 +5,7 @@
 
 export const site = {
   name: "HLA3D",
-  tagline: "Small Ideas. Real Things.",
+  tagline: "Ý tưởng nhỏ. Tạo nên điều thật.",
   taglineVi: "Ý tưởng nhỏ. Tạo nên điều thật.",
   motto: ["DREAM IT.", "DESIGN IT.", "PRINT IT."],
   locale: "vi-VN",
@@ -20,7 +20,7 @@ export const site = {
 
 /** The public goal that the whole homepage narrative hangs on. */
 export const goal = {
-  label: "First 100 Customers",
+  label: "100 khách hàng đầu tiên",
   labelVi: "100 khách hàng đầu tiên",
   current: 27,
   target: 100,

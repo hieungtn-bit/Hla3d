@@ -10,7 +10,7 @@ const STEPS = [
   {
     n: "01",
     title: "NGHĨ RA",
-    en: "We think of something cool.",
+    en: "Nghĩ ra một món hay ho.",
     vi: "Tụi em nghĩ ra một món hay ho — thường là lúc đang ăn cơm tối.",
     icon: Lightbulb,
     color: "bg-sun",
@@ -18,7 +18,7 @@ const STEPS = [
   {
     n: "02",
     title: "VẼ RA",
-    en: "We draw it or customize a 3D model.",
+    en: "Vẽ ra hoặc chỉnh một mẫu 3D.",
     vi: "Vẽ ra giấy trước, rồi mới dựng mô hình 3D trên máy tính.",
     icon: PenTool,
     color: "bg-sky",
@@ -26,7 +26,7 @@ const STEPS = [
   {
     n: "03",
     title: "IN RA",
-    en: "Our 3D printer builds it layer by layer.",
+    en: "Máy in xây nó lên từng lớp.",
     vi: "Máy in xếp từng lớp nhựa chồng lên nhau. Mỗi lớp dày 0,2mm thôi.",
     icon: Layers,
     color: "bg-flame",
@@ -34,7 +34,7 @@ const STEPS = [
   {
     n: "04",
     title: "GỬI ĐI",
-    en: "We test it, improve it and send it to you.",
+    en: "Thử, sửa lại, rồi gửi cho bạn.",
     vi: "Thử làm rơi, sửa lại, thử tiếp — rồi bỏ hộp gửi cho bạn.",
     icon: Send,
     color: "bg-lime",

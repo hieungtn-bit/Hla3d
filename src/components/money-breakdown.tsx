@@ -21,7 +21,7 @@ export function MoneyBreakdown({ tone = "light" }: { tone?: "light" | "dark" }) 
       {/* ---- the sale, taken apart ------------------------------------ */}
       <div>
         <div className="flex items-baseline justify-between gap-4">
-          <span className={cn("eyebrow", dark ? "text-white/40" : "text-ink-3")}>One sale</span>
+          <span className={cn("eyebrow", dark ? "text-white/40" : "text-ink-3")}>Một món bán ra</span>
           <span className={cn("display text-3xl sm:text-4xl", dark ? "text-white" : "text-ink")}>
             {formatVnd(salePrice)}
           </span>
@@ -123,9 +123,9 @@ export function MoneyBreakdown({ tone = "light" }: { tone?: "light" | "dark" }) 
           dark ? "border-carbon-line bg-carbon-2" : "border-line-soft bg-surface shadow-[var(--shadow-soft)]",
         )}
       >
-        <span className={cn("eyebrow", dark ? "text-white/40" : "text-ink-3")}>Then the profit splits</span>
+        <span className={cn("eyebrow", dark ? "text-white/40" : "text-ink-3")}>Rồi tiền lời chia ba</span>
         <p className={cn("display mt-3 text-2xl", dark ? "text-white" : "text-ink")}>
-          {formatVnd(90000)} — <span className="text-flame">three ways</span>
+          {formatVnd(90000)} — <span className="text-flame">chia ba phần</span>
         </p>
 
         <div className="mt-7 space-y-5">
@@ -165,8 +165,8 @@ export function MoneyBreakdown({ tone = "light" }: { tone?: "light" | "dark" }) 
             dark ? "bg-white/5 text-white/55" : "bg-paper-2 text-ink-2",
           )}
         >
-          The 20% they get to spend is the only part they are allowed to touch. The other 80% has a job.
-          That rule was set on day one and has not moved.
+          20% được tiêu là phần duy nhất ba anh em được đụng vào. 80% còn lại đều đã có việc của nó. Luật này
+          đặt từ ngày đầu tiên và chưa đổi lần nào.
         </p>
       </div>
     </div>

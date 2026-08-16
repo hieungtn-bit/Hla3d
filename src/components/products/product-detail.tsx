@@ -84,8 +84,8 @@ export function ProductDetail({ product }: { product: Product }) {
           <MakerRating value={product.makerRating} />
         </div>
 
-        <h1 className="display mt-5 text-[clamp(2rem,5vw,3rem)]">{product.name}</h1>
-        <p className="mt-2 text-base text-ink-3">{product.nameVi}</p>
+        <h1 className="display mt-5 text-[clamp(2rem,5vw,3rem)]">{product.nameVi}</h1>
+        <p className="mt-2 text-base text-ink-3">{product.name}</p>
         <p className="mt-6 text-lg leading-relaxed text-ink-2">{product.tagline}</p>
 
         <div className="mt-8 flex items-baseline gap-3">
@@ -107,7 +107,7 @@ export function ProductDetail({ product }: { product: Product }) {
           <div className="flex h-14 items-center gap-1 rounded-full border border-line bg-surface px-2">
             <button
               type="button"
-              aria-label="Decrease quantity"
+              aria-label="Giảm số lượng"
               onClick={() => setQty((q) => Math.max(1, q - 1))}
               className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
             >
@@ -116,7 +116,7 @@ export function ProductDetail({ product }: { product: Product }) {
             <span className="w-8 text-center font-display font-bold">{qty}</span>
             <button
               type="button"
-              aria-label="Increase quantity"
+              aria-label="Tăng số lượng"
               onClick={() => setQty((q) => Math.min(20, q + 1))}
               className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
             >

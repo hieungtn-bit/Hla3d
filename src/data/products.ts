@@ -22,18 +22,18 @@ export type FilamentColor = {
 };
 
 export const filaments: Record<string, FilamentColor> = {
-  lava: { name: "Lava Orange", hex: "#ff4a17" },
-  carbon: { name: "Carbon Black", hex: "#1c1c22" },
-  cloud: { name: "Cloud White", hex: "#f4f2ee" },
-  sky: { name: "Sky Blue", hex: "#3fa9f5" },
-  lime: { name: "Lime Green", hex: "#c6f24e" },
-  sun: { name: "Sunshine Yellow", hex: "#ffc93c" },
-  grape: { name: "Grape Purple", hex: "#7b5cf0" },
-  mint: { name: "Mint", hex: "#4fd1b3" },
-  rose: { name: "Rose", hex: "#f2789f" },
-  goldSilk: { name: "Silk Gold", hex: "#d9a441", silk: true },
-  silverSilk: { name: "Silk Silver", hex: "#b9bec7", silk: true },
-  woodPla: { name: "Wood PLA", hex: "#a97b4f" },
+  lava: { name: "Cam núi lửa", hex: "#ff4a17" },
+  carbon: { name: "Đen", hex: "#1c1c22" },
+  cloud: { name: "Trắng mây", hex: "#f4f2ee" },
+  sky: { name: "Xanh da trời", hex: "#3fa9f5" },
+  lime: { name: "Xanh lá", hex: "#c6f24e" },
+  sun: { name: "Vàng nắng", hex: "#ffc93c" },
+  grape: { name: "Tím nho", hex: "#7b5cf0" },
+  mint: { name: "Xanh bạc hà", hex: "#4fd1b3" },
+  rose: { name: "Hồng", hex: "#f2789f" },
+  goldSilk: { name: "Vàng ánh kim", hex: "#d9a441", silk: true },
+  silverSilk: { name: "Bạc ánh kim", hex: "#b9bec7", silk: true },
+  woodPla: { name: "Vân gỗ", hex: "#a97b4f" },
 };
 
 export type ProductShape =
@@ -104,7 +104,7 @@ export const products: Product[] = [
     size: "Dài theo tên · cao 45mm · dày 12mm",
     weight: "~38g",
     customizable: true,
-    badge: "BEST SELLER",
+    badge: "BÁN CHẠY NHẤT",
     tagline: "Tên của bạn, dày 12 milimét.",
     description:
       "Bảng tên hai màu, chữ nổi hẳn lên khỏi đế. Tụi em in đế trước, dừng máy, đổi cuộn nhựa, rồi để phần chữ in tiếp bằng màu thứ hai. Bảng tự đứng được và không trượt trên bàn.",
@@ -191,7 +191,7 @@ export const products: Product[] = [
     material: "PLA",
     size: "240 mm khi duỗi thẳng",
     weight: "~55g",
-    badge: "MAKER FAVOURITE",
+    badge: "TỤI EM THÍCH NHẤT",
     tagline: "In liền một khối. Vẫn cử động như đồ lắp ráp.",
     description:
       "28 đốt nối nhau, in một lần duy nhất, không keo không ốc. Quấn được quanh cổ tay, cây bút hay chân màn hình. In-liền-khối là kỹ thuật mà ai mới in 3D cũng muốn học đầu tiên.",
@@ -457,7 +457,7 @@ export const products: Product[] = [
     material: "PLA+",
     size: "70 × 70 × 70 mm",
     weight: "~85g",
-    badge: "HARDEST TO PRINT",
+    badge: "KHÓ IN NHẤT",
     tagline: "Sáu mảnh. Một lời giải. Rất nhiều lần đo lại.",
     description:
       "Một bộ đố gỗ kiểu khoá nhau, các mảnh chỉ ráp vừa theo đúng một thứ tự duy nhất. Làm cho các mảnh in ra trượt được — không kẹt, không lỏng lẻo — là thứ khó nhất trong cả cửa hàng này.",
@@ -487,7 +487,7 @@ export const products: Product[] = [
     size: "Hộp 180 × 120 × 60 mm",
     weight: "~210g",
     customizable: true,
-    badge: "GIFT READY",
+    badge: "SẴN SÀNG LÀM QUÀ",
     tagline: "Bảng tên, móc khoá và bạn nhỏ trong một hộp.",
     description:
       "Ba món cá nhân nhất của tụi em, phối cùng một tông màu, đóng trong hộp có nắp in sẵn kèm tấm thiệp viết tay. Làm theo đơn — bạn cho tụi em cái tên, phần còn lại tụi em lo.",

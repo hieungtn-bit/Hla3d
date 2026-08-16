@@ -49,14 +49,14 @@ export function ProductCard({ product, className }: { product: Product; classNam
         </motion.div>
 
         {product.badge && (
-          <Badge variant={product.badge === "BEST SELLER" ? "flame" : "ink"} className="absolute left-3 top-3 -rotate-3">
+          <Badge variant={product.badge === "BÁN CHẠY NHẤT" ? "flame" : "ink"} className="absolute left-3 top-3 -rotate-3">
             {product.badge}
           </Badge>
         )}
         {product.customizable && (
           <Badge variant="lime" className="absolute right-3 top-3 rotate-3">
             <Sparkles className="size-3" />
-            CUSTOM
+            IN TÊN
           </Badge>
         )}
       </div>
@@ -70,10 +70,10 @@ export function ProductCard({ product, className }: { product: Product; classNam
                 href={`/shop/${product.slug}`}
                 className="rounded-sm after:absolute after:inset-0 after:z-0 after:content-['']"
               >
-                {product.name}
+                {product.nameVi}
               </Link>
             </h3>
-            <p className="mt-1 text-[0.8125rem] leading-snug text-ink-3">{product.nameVi}</p>
+            <p className="mt-1 text-[0.8125rem] leading-snug text-ink-3">{product.name}</p>
           </div>
           <div className="shrink-0 text-right">
             {product.from && <span className="eyebrow block text-ink-3">Từ</span>}
@@ -124,7 +124,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
                     shape: product.shape,
                   })
                 }
-                aria-label={`Add ${product.name} to cart`}
+                aria-label={`Thêm ${product.nameVi} vào giỏ`}
                 className="sticker press inline-flex h-11 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >
                 <Plus className="size-3.5" />

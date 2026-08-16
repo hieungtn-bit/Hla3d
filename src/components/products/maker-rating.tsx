@@ -18,7 +18,7 @@ export function MakerRating({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-2", className)} title={`Maker difficulty ${value}/5`}>
+    <div className={cn("flex items-center gap-2", className)} title={`Độ khó khi in: ${value}/5`}>
       <div className="flex items-center gap-[3px]" aria-hidden>
         {[1, 2, 3, 4, 5].map((i) => (
           <span
@@ -35,7 +35,7 @@ export function MakerRating({
           {LABELS[Math.max(0, Math.min(4, value - 1))]}
         </span>
       )}
-      <span className="sr-only">Maker difficulty {value} out of 5</span>
+      <span className="sr-only">Độ khó khi in: {value} trên 5</span>
     </div>
   );
 }

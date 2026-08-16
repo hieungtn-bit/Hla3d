@@ -22,7 +22,7 @@ export function JournalCard({
       )}
     >
       <div className="flex items-center gap-3">
-        <Badge variant={post.tag === "Failure" ? "flame" : "outline"}>{post.tag}</Badge>
+        <Badge variant={post.tag === "Thất bại" ? "flame" : "outline"}>{post.tag}</Badge>
         <span className="font-mono text-xs text-ink-3">{post.displayDate}</span>
       </div>
 

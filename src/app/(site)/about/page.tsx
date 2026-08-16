@@ -20,33 +20,33 @@ export const metadata: Metadata = {
 const TIMELINE = [
   {
     date: "Tháng 3, 2025",
-    title: "The printer arrives",
-    text: "An Anycubic Kobra X on the dining table. The first print is a slightly wrong calibration cube.",
+    title: "Máy in về nhà",
+    text: "Một chiếc Anycubic Kobra X đặt trên bàn ăn. Món in đầu tiên là một khối vuông hiệu chỉnh — và nó hơi méo.",
   },
   {
     date: "Tháng 4, 2025",
-    title: "Six failed octopuses",
-    text: "The first serious attempt at a print-in-place toy. Version seven finally moves.",
+    title: "Sáu con bạch tuộc hỏng",
+    text: "Lần đầu tiên thử in một món khớp nối liền khối. Đến bản thứ bảy mới bẻ được.",
   },
   {
     date: "Tháng 5, 2025",
-    title: "Customer #01",
-    text: "A Desk Buddy, 79.000đ, sold to someone who is not a relative. She asked a question we could not answer.",
+    title: "Khách hàng số 1",
+    text: "Một bạn nhỏ để bàn, 79.000đ, bán cho một người không phải họ hàng. Cô ấy hỏi một câu tụi em không trả lời được.",
   },
   {
     date: "Tháng 6, 2025",
-    title: "Twenty name plates",
-    text: "A whole class of them. We learn what a checklist is for, and what our real capacity is.",
+    title: "Hai mươi tấm bảng tên",
+    text: "Đủ cho cả một lớp. Tụi em học được checklist dùng để làm gì, và mỗi ngày mình thật sự làm được bao nhiêu.",
   },
   {
     date: "Tháng 7, 2025",
-    title: "The costing spreadsheet",
-    text: "Dad makes us count electricity, packaging, failures and machine wear. Our margin drops. Our honesty goes up.",
+    title: "Bảng tính giá vốn",
+    text: "Ba bắt tụi em tính cả tiền điện, hộp giấy, những lần in hỏng và hao mòn máy. Lợi nhuận tụt xuống. Nhưng con số thì thật hơn.",
   },
   {
     date: "Tháng 8, 2025",
-    title: "Customer #27",
-    text: "Seventy-three to go. The goal has not moved: one hundred real customers before we buy a second printer.",
+    title: "Khách hàng số 27",
+    text: "Còn 73 khách nữa. Mục tiêu không đổi: đủ một trăm khách thật rồi mới mua máy in thứ hai.",
   },
 ];
 
@@ -74,13 +74,13 @@ export default function AboutPage() {
       <Section className="bg-paper">
         <div className="container-hla grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <Reveal>
-            <span className="eyebrow text-ink-3">Brand story</span>
+            <span className="eyebrow text-ink-3">Câu chuyện thương hiệu</span>
             <h2 className="display mt-5 text-[clamp(1.75rem,4vw,2.75rem)]">
-              FROM AN IDEA
+              TỪ MỘT Ý TƯỞNG
               <br />
-              TO A THING
+              THÀNH MỘT MÓN
               <br />
-              YOU CAN HOLD.
+              CẦM ĐƯỢC TRÊN TAY.
             </h2>
           </Reveal>
 
@@ -90,18 +90,17 @@ export default function AboutPage() {
               chơi, các bạn nhỏ bắt đầu học cách tạo ra chúng.
             </p>
             <p>
-              From an idea, to a drawing, to a spool of PLA, to a real object that can be held, dropped,
-              tested and sold. Nothing in this shop was bought and re-labelled. Every product started as a
-              sentence at a dinner table in this house.
+              Từ một ý tưởng, thành bản vẽ, thành một cuộn nhựa PLA, rồi thành một món đồ thật cầm được, làm
+              rơi được, thử được và bán được. Không món nào trong shop này là mua về dán nhãn lại. Món nào cũng
+              bắt đầu bằng một câu nói trong bữa cơm ở nhà này.
             </p>
             <p>
-              HLA3D là nơi ba anh em học sáng tạo, công nghệ, kinh doanh và giá trị của lao động. The
-              printing is the fun part. The interesting part is what happens around it — working out what a
-              thing costs, why a customer left, and how to say &ldquo;I don&rsquo;t know, I&rsquo;ll find
-              out&rdquo;.
+              HLA3D là nơi ba anh em học sáng tạo, công nghệ, kinh doanh và giá trị của lao động. Phần in ấn là
+              phần vui. Phần thú vị nằm ở xung quanh nó — tính xem một món tốn bao nhiêu, vì sao một khách bỏ đi,
+              và học cách nói &ldquo;con chưa biết, để con tìm hiểu rồi trả lời&rdquo;.
             </p>
             <p className="border-l-4 border-flame pl-5 font-display text-lg font-bold tracking-tight text-ink">
-              HLA = three brothers. 3D = Design. Dream. Do.
+              HLA = Hưng, Long, Anh. 3D = Nghĩ ra. Vẽ ra. Làm ra.
             </p>
           </Reveal>
         </div>
@@ -112,9 +111,9 @@ export default function AboutPage() {
         <div className="container-hla">
           <SectionHeader
             index="01"
-            eyebrow="The team"
-            title="THREE MAKERS, THREE JOBS."
-            description="Names are kept private on purpose. What matters here is the work, not the faces."
+            eyebrow="Đội ngũ"
+            title="BA NGƯỜI LÀM, BA VIỆC."
+            description="Tụi em chỉ dùng tên gọi, không dùng ảnh thật. Thứ đáng xem ở đây là món đồ làm ra, không phải khuôn mặt."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {makers.map((maker, i) => (
@@ -129,7 +128,7 @@ export default function AboutPage() {
       {/* ---- timeline --------------------------------------------------- */}
       <Section className="border-t border-line">
         <div className="container-hla">
-          <SectionHeader index="02" eyebrow="Timeline" title="SIX MONTHS, HONESTLY REPORTED." />
+          <SectionHeader index="02" eyebrow="Dòng thời gian" title="SÁU THÁNG, KỂ THẬT." />
           <ol className="mt-14 space-y-0">
             {TIMELINE.map((item, i) => (
               <Reveal
@@ -159,14 +158,14 @@ export default function AboutPage() {
             index="03"
             eyebrow="Maker safety"
             tone="dark"
-            title="WHO IS ALLOWED TO DO WHAT."
-            description="The children do not operate hot equipment unsupervised. Anyone buying from HLA3D should know exactly where the line is drawn."
+            title="AI ĐƯỢC LÀM VIỆC GÌ."
+            description="Ba anh em không tự ý đụng vào thiết bị nóng khi không có người lớn. Ai mua đồ của HLA3D cũng nên biết rõ ranh giới đó nằm ở đâu."
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {[
-              { title: "Dad only", items: safetyRules.dadOnly, dot: "bg-flame", text: "text-flame" },
-              { title: "The makers can", items: safetyRules.makers, dot: "bg-lime", text: "text-lime" },
-              { title: "House rules", items: safetyRules.house, dot: "bg-sky", text: "text-sky" },
+              { title: "Chỉ Ba được làm", items: safetyRules.dadOnly, dot: "bg-flame", text: "text-flame" },
+              { title: "Ba anh em được làm", items: safetyRules.makers, dot: "bg-lime", text: "text-lime" },
+              { title: "Luật trong nhà", items: safetyRules.house, dot: "bg-sky", text: "text-sky" },
             ].map((col, i) => (
               <Reveal
                 key={col.title}
@@ -193,9 +192,9 @@ export default function AboutPage() {
         <div className="container-hla">
           <SectionHeader
             index="04"
-            eyebrow="Money lesson"
-            title="WHERE DOES THE MONEY GO?"
-            description="We show the whole breakdown because working it out is the point. Nothing here is rounded up to look better."
+            eyebrow="Bài học tiền bạc"
+            title="TIỀN CHẠY ĐI ĐÂU HẾT?"
+            description="Tụi em bày ra hết vì tự tính được mới là mục đích. Không con số nào được làm tròn cho đẹp."
           />
           <div className="mt-14">
             <MoneyBreakdown />
@@ -206,7 +205,7 @@ export default function AboutPage() {
               href="/shop"
               className="tactile inline-flex h-14 items-center gap-2 rounded-full bg-flame px-8 font-display text-base font-bold tracking-tight text-white shadow-[var(--shadow-flame)] hover:bg-flame-2"
             >
-              SHOP OUR CREATIONS
+              XEM ĐỒ TỤI EM LÀM
               <ArrowRight className="size-5" />
             </Link>
           </Reveal>

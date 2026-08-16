@@ -11,29 +11,29 @@ import { useCart } from "@/lib/cart";
 import { cn, formatVnd } from "@/lib/utils";
 
 const PRODUCTS = {
-  "custom-name-plate": { label: "Name Plate", base: 129000, maxChars: 14, freeChars: 8 },
-  "bag-tag": { label: "Bag Tag", base: 59000, maxChars: 12, freeChars: 8 },
-  keychain: { label: "Keychain", base: 45000, maxChars: 10, freeChars: 6 },
+  "custom-name-plate": { label: "Bảng tên", base: 129000, maxChars: 14, freeChars: 8 },
+  "bag-tag": { label: "Thẻ tên cặp", base: 59000, maxChars: 12, freeChars: 8 },
+  keychain: { label: "Móc khoá", base: 45000, maxChars: 10, freeChars: 6 },
 } as const;
 
 type ProductKey = keyof typeof PRODUCTS;
 
 const STYLES: Array<{ id: PlateStyle; label: string; note: string }> = [
-  { id: "geometric", label: "GEOMETRIC", note: "Bold, technical, our default." },
-  { id: "rounded", label: "ROUNDED", note: "Softer corners, friendlier." },
-  { id: "mono", label: "MONO", note: "Even spacing, engineer energy." },
+  { id: "geometric", label: "GEOMETRIC", note: "Đậm, kỹ thuật, kiểu mặc định của tụi em." },
+  { id: "rounded", label: "ROUNDED", note: "Góc mềm hơn, nhìn thân thiện hơn." },
+  { id: "mono", label: "MONO", note: "Chữ đều tăm tắp, kiểu dân kỹ thuật." },
 ];
 
 const SIZES: Array<{ id: PlateSize; label: string; dims: string; multiplier: number }> = [
-  { id: "s", label: "SMALL", dims: "35mm cao", multiplier: 0.85 },
-  { id: "m", label: "MEDIUM", dims: "45mm cao", multiplier: 1 },
-  { id: "l", label: "LARGE", dims: "60mm cao", multiplier: 1.35 },
+  { id: "s", label: "NHỎ", dims: "35mm cao", multiplier: 0.85 },
+  { id: "m", label: "VỪA", dims: "45mm cao", multiplier: 1 },
+  { id: "l", label: "LỚN", dims: "60mm cao", multiplier: 1.35 },
 ];
 
 const BASE_COLORS = ["carbon", "cloud", "woodPla", "sky", "lava"];
 const TEXT_COLORS = ["lava", "lime", "sun", "cloud", "goldSilk", "sky", "carbon", "rose"];
 
-const STEPS = ["NAME", "COLOR", "STYLE", "PREVIEW"] as const;
+const STEPS = ["TÊN", "MÀU", "KIỂU", "XEM THỬ"] as const;
 
 export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
   const productKey: ProductKey =
@@ -101,7 +101,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
         {/* 01 — name */}
         <section className="mt-8">
           <div className="flex items-baseline justify-between">
-            <Label htmlFor="plate-name">01 · Enter your name</Label>
+            <Label htmlFor="plate-name">01 · Nhập tên của bạn</Label>
             <span className="font-mono text-xs text-ink-3">
               {chars}/{config.maxChars}
             </span>
@@ -122,11 +122,11 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
 
         {/* 02 — colours */}
         <section className="mt-9">
-          <Label>02 · Choose your colours</Label>
+          <Label>02 · Chọn hai màu</Label>
           <div className="mt-4 grid gap-5 sm:grid-cols-2">
             <div>
               <p className="mb-2.5 text-xs font-medium text-ink-2">
-                Base · <span className="text-ink-3">{filaments[base].name}</span>
+                Màu đế · <span className="text-ink-3">{filaments[base].name}</span>
               </p>
               <div className="flex flex-wrap gap-2">
                 {BASE_COLORS.map((key) => (
@@ -143,7 +143,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
             </div>
             <div>
               <p className="mb-2.5 text-xs font-medium text-ink-2">
-                Letters · <span className="text-ink-3">{filaments[textColor].name}</span>
+                Màu chữ · <span className="text-ink-3">{filaments[textColor].name}</span>
               </p>
               <div className="flex flex-wrap gap-2">
                 {TEXT_COLORS.map((key) => (
@@ -160,14 +160,14 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
             </div>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-ink-3">
-            Two colours means we pause the printer mid-job and swap the filament by hand. Dad does the
-            swapping — the nozzle is at 205°C.
+            Hai màu nghĩa là tụi em phải dừng máy giữa chừng và đổi cuộn nhựa bằng tay. Ba là người đổi — vì
+            lúc đó đầu phun đang 205°C.
           </p>
         </section>
 
         {/* 03 — style + size */}
         <section className="mt-9">
-          <Label>03 · Choose a style</Label>
+          <Label>03 · Chọn kiểu chữ</Label>
           <div className="mt-4 grid gap-2 sm:grid-cols-3">
             {STYLES.map((s) => (
               <button
@@ -223,7 +223,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
         <section className="mt-9 rounded-[var(--radius-card)] border border-line-soft bg-surface p-6 shadow-[var(--shadow-soft)]">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <span className="eyebrow text-ink-3">04 · Your price</span>
+              <span className="eyebrow text-ink-3">04 · Giá của bạn</span>
               <p className="display mt-2 text-3xl">{formatVnd(price)}</p>
             </div>
             <button
@@ -232,7 +232,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
               className="tactile inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-2 text-xs font-medium text-ink-2 hover:border-ink/30"
             >
               <RotateCcw className="size-3.5" />
-              Reset
+              Làm lại
             </button>
           </div>
 
@@ -261,18 +261,18 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
           <Button size="lg" className="mt-5 w-full" onClick={order} disabled={chars === 0}>
             {added ? (
               <>
-                <Check className="size-5" /> ADDED TO CART
+                <Check className="size-5" /> ĐÃ THÊM VÀO GIỎ
               </>
             ) : chars === 0 ? (
-              "ENTER A NAME FIRST"
+              "NHẬP TÊN TRƯỚC ĐÃ"
             ) : (
               <>
-                <Sparkles className="size-4" /> ORDER THIS ONE
+                <Sparkles className="size-4" /> ĐẶT MÓN NÀY
               </>
             )}
           </Button>
           <p className="mt-3 text-center text-[0.6875rem] text-ink-3">
-            Made to order · 3–5 ngày · We send a photo before it ships.
+            Làm theo đơn · 3–5 ngày · Tụi em gửi ảnh trước khi đóng gói.
           </p>
         </section>
       </div>
@@ -291,16 +291,16 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
         </motion.div>
 
         <div className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-line bg-line">
-          <Spec label="Text" value={name.trim().toUpperCase() || "—"} />
-          <Spec label="Style" value={style.toUpperCase()} />
-          <Spec label="Size" value={size.toUpperCase()} />
+          <Spec label="Chữ" value={name.trim().toUpperCase() || "—"} />
+          <Spec label="Kiểu" value={style.toUpperCase()} />
+          <Spec label="Cỡ" value={size.toUpperCase()} />
         </div>
 
         <p className="mt-4 rounded-2xl bg-paper-2 p-4 text-xs leading-relaxed text-ink-2">
-          <span className="eyebrow mb-1.5 block text-ink-3">Honest note</span>
-          This preview is an accurate mock-up of shape, colour and proportion — not a render of the final
-          sliced file. We check every design by hand before it goes on the printer, and we will message you
-          if a name needs a tweak to print cleanly.
+          <span className="eyebrow mb-1.5 block text-ink-3">Nói thật</span>
+          Bản xem trước này đúng về hình dáng, màu sắc và tỉ lệ — nhưng không phải file in cuối cùng. Tụi em
+          kiểm tra từng thiết kế bằng tay trước khi cho lên máy, và sẽ nhắn cho bạn nếu cái tên cần chỉnh một
+          chút để in cho sạch.
         </p>
       </div>
     </div>

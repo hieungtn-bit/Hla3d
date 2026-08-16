@@ -76,7 +76,7 @@ export default async function JournalPostPage({ params }: { params: Promise<{ sl
 
         <header className="mt-8">
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant={post.tag === "Failure" ? "flame" : "tint"}>{post.tag}</Badge>
+            <Badge variant={post.tag === "Thất bại" ? "flame" : "tint"}>{post.tag}</Badge>
             <span className="font-mono text-xs text-ink-3">{post.displayDate}</span>
             <span className="text-xs text-ink-3">· {post.readingTime}</span>
           </div>
