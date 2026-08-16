@@ -2,14 +2,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export function Label({ className, ...props }: React.ComponentProps<"label">) {
-  return <label className={cn("eyebrow block text-ink-3", className)} {...props} />;
+  return <label className={cn("eyebrow block text-ink-2", className)} {...props} />;
 }
 
 export function Input({ className, ...props }: React.ComponentProps<"input">) {
   return (
     <input
       className={cn(
-        "h-12 w-full rounded-2xl border border-line bg-surface px-4 font-display text-base font-bold tracking-tight text-ink",
+        "h-14 w-full rounded-2xl border-2 border-ink bg-surface px-4 font-display text-lg font-bold text-ink",
         "placeholder:font-sans placeholder:font-normal placeholder:tracking-normal placeholder:text-ink-3",
         "transition-colors focus:border-flame focus:outline-none",
         className,

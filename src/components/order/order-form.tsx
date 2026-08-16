@@ -145,10 +145,11 @@ export function OrderForm() {
     <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
       <form onSubmit={submit} noValidate className="order-2 lg:order-1">
         <div className="sticker rounded-[var(--radius-xl2)] bg-surface p-6 sm:p-8">
-          <h2 className="display text-2xl">THÔNG TIN NHẬN HÀNG</h2>
-          <p className="mt-2 text-sm text-ink-2">
-            Tụi em chưa nhận thanh toán trên web. Bạn để lại thông tin, mẹ Hiếu sẽ gọi lại xác nhận rồi mới
-            bắt đầu in.
+          <h2 className="display text-2xl">CHỈ CẦN 2 Ô LÀ XONG</h2>
+          <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">
+            Bạn để lại <strong className="text-ink">tên</strong> và{" "}
+            <strong className="text-ink">số điện thoại</strong>. Mẹ Hiếu sẽ gọi lại hỏi địa chỉ và báo phí
+            ship. Chưa trả tiền gì lúc này cả.
           </p>
 
           {error && (
@@ -165,11 +166,11 @@ export function OrderForm() {
 
           <div className="mt-6 space-y-5">
             <div>
-              <Label htmlFor="name">Tên người nhận *</Label>
-              <Input id="name" name="name" required autoComplete="name" placeholder="Nguyễn Văn A" className="mt-2" />
+              <Label htmlFor="name">Tên của bạn</Label>
+              <Input id="name" name="name" required autoComplete="name" placeholder="Ví dụ: Chị Lan" className="mt-2" />
             </div>
             <div>
-              <Label htmlFor="phone">Số điện thoại *</Label>
+              <Label htmlFor="phone">Số điện thoại</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -182,23 +183,22 @@ export function OrderForm() {
               />
             </div>
             <div>
-              <Label htmlFor="address">Địa chỉ giao hàng *</Label>
+              <Label htmlFor="address">Địa chỉ — để trống cũng được</Label>
               <Input
                 id="address"
                 name="address"
-                required
                 autoComplete="street-address"
-                placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"
+                placeholder="Không nhớ rõ thì bỏ qua, mẹ Hiếu sẽ hỏi khi gọi"
                 className="mt-2"
               />
             </div>
             <div>
-              <Label htmlFor="email">Email (không bắt buộc)</Label>
+              <Label htmlFor="email">Email — không bắt buộc</Label>
               <Input id="email" name="email" type="email" autoComplete="email" placeholder="email@cua-ban.com" className="mt-2" />
               <p className="mt-1.5 text-xs text-ink-3">Có email thì tụi em gửi ảnh sản phẩm trước khi đóng gói.</p>
             </div>
             <div>
-              <Label htmlFor="note">Ghi chú (không bắt buộc)</Label>
+              <Label htmlFor="note">Muốn dặn gì thêm không?</Label>
               <textarea
                 id="note"
                 name="note"
@@ -216,10 +216,13 @@ export function OrderForm() {
                 ĐANG GỬI…
               </>
             ) : (
-              "GỬI ĐƠN CHO NHÀ EM"
+              "XONG, GỬI ĐƠN"
             )}
           </Button>
-          <p className="mt-3 text-center text-xs text-ink-3">
+          <p className="mt-3 text-center text-sm font-semibold text-ink-2">
+            Bấm xong là có người gọi lại cho bạn.
+          </p>
+          <p className="mt-2 text-center text-xs text-ink-3">
             Thông tin của bạn chỉ dùng để liên hệ và giao đơn hàng này.
           </p>
         </div>

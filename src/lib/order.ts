@@ -6,6 +6,7 @@ export const ORDER_INBOX = "Hieungtn@gmail.com";
 export type OrderCustomer = {
   name: string;
   phone: string;
+  /** Optional: taken on the confirmation call when the buyer leaves it blank. */
   address: string;
   email?: string;
   note?: string;
@@ -41,10 +42,17 @@ export function validateOrder(input: unknown): { ok: true; value: OrderPayload }
   const email = String(c.email ?? "").trim();
   const note = String(c.note ?? "").trim();
 
-  if (name.length < 2) return { ok: false, error: "Vui lòng cho tụi em biết tên người nhận." };
-  if (!VN_PHONE.test(phone.replace(/\s+/g, ""))) return { ok: false, error: "Số điện thoại chưa đúng định dạng." };
-  if (address.length < 8) return { ok: false, error: "Địa chỉ cần đầy đủ hơn để gửi hàng được." };
-  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { ok: false, error: "Email chưa đúng định dạng." };
+  // Only a name and a reachable phone number are required.
+  //
+  // Address is the field low-confidence buyers abandon on: it is long free
+  // text, it is easy to get wrong, and it is the one thing that is trivially
+  // collected during the confirmation call that already happens. Requiring it
+  // cost orders and bought nothing.
+  if (name.length < 2) return { ok: false, error: "Bạn cho tụi em xin tên với ạ." };
+  if (!VN_PHONE.test(phone.replace(/\s+/g, "")))
+    return { ok: false, error: "Số điện thoại chưa đúng. Bạn kiểm tra lại giúp em nhé." };
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
+    return { ok: false, error: "Email chưa đúng. Bạn bỏ trống cũng được ạ." };
 
   const rawLines = Array.isArray(o.lines) ? o.lines : [];
   if (rawLines.length === 0) return { ok: false, error: "Chưa có món nào trong đơn." };
@@ -70,7 +78,11 @@ export function validateOrder(input: unknown): { ok: true; value: OrderPayload }
 
   return {
     ok: true,
-    value: { customer: { name, phone, address, email: email || undefined, note: note || undefined }, lines, subtotal },
+    value: {
+      customer: { name, phone, address, email: email || undefined, note: note || undefined },
+      lines,
+      subtotal,
+    },
   };
 }
 
@@ -107,7 +119,7 @@ export function renderOrderEmail(order: OrderPayload, code: string) {
     `  Tên:      ${customer.name}`,
     `  Điện thoại: ${customer.phone}`,
     customer.email ? `  Email:    ${customer.email}` : null,
-    `  Địa chỉ:  ${customer.address}`,
+    customer.address ? `  Địa chỉ:  ${customer.address}` : "  Địa chỉ:  (chưa điền — hỏi khi gọi xác nhận)",
     customer.note ? `  Ghi chú:  ${customer.note}` : null,
     "",
     "MÓN ĐẶT",
