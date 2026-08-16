@@ -12,19 +12,19 @@ export default function ShopPage() {
   return (
     <>
       <PageIntro
-        eyebrow="The shop"
+        eyebrow="Cửa hàng"
         title={
           <>
-            SHOP OUR
+            ĐỒ TỤI EM
             <br />
-            CREATIONS.
+            TỰ LÀM.
           </>
         }
-        description="Fifteen things three brothers designed, printed and checked by hand. Made to order in 3–5 days — because there is exactly one printer."
+        description="Mười lăm món do Hưng, Long và Anh tự thiết kế, tự in và tự cầm lên kiểm tra. Làm theo đơn trong 3–5 ngày, vì nhà chỉ có đúng một cái máy in."
         meta={[
-          { label: "Products", value: "15" },
-          { label: "Categories", value: "5" },
-          { label: "Lead time", value: "3–5 ngày" },
+          { label: "Số món", value: "15" },
+          { label: "Nhóm đồ", value: "5" },
+          { label: "Thời gian làm", value: "3–5 ngày" },
         ]}
       />
       <div className="container-hla pb-24">

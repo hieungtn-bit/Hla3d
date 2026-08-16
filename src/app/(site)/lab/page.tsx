@@ -25,15 +25,15 @@ export default function LabPage() {
   return (
     <>
       <PageIntro
-        eyebrow="The lab"
+        eyebrow="Xưởng in"
         title={
           <>
-            WELCOME TO OUR
+            CHÀO MỪNG ĐẾN
             <br />
-            MINI FACTORY.
+            NHÀ MÁY TÍ HON.
           </>
         }
-        description="One printer on a bench in the corner of the house. No warehouse, no staff, no second machine yet. Everything HLA3D sells comes off this one plate."
+        description="Một cái máy in đặt trên bàn ở góc nhà. Không kho bãi, không nhân viên, chưa có máy thứ hai. Mọi món HLA3D bán ra đều bò lên từ đúng một tấm đế này."
         meta={labStats.map((s) => ({ label: s.label, value: s.value }))}
         tone="dark"
       />

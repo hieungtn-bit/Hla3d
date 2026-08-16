@@ -9,31 +9,35 @@ import { cn } from "@/lib/utils";
 const STEPS = [
   {
     n: "01",
-    title: "DREAM",
+    title: "NGHĨ RA",
     en: "We think of something cool.",
-    vi: "Tụi em nghĩ ra một thứ hay ho — thường là trong bữa tối.",
+    vi: "Tụi em nghĩ ra một món hay ho — thường là lúc đang ăn cơm tối.",
     icon: Lightbulb,
+    color: "bg-sun",
   },
   {
     n: "02",
-    title: "DESIGN",
+    title: "VẼ RA",
     en: "We draw it or customize a 3D model.",
-    vi: "Vẽ tay trước, rồi dựng hoặc chỉnh mô hình 3D trên máy tính.",
+    vi: "Vẽ ra giấy trước, rồi mới dựng mô hình 3D trên máy tính.",
     icon: PenTool,
+    color: "bg-sky",
   },
   {
     n: "03",
-    title: "PRINT",
+    title: "IN RA",
     en: "Our 3D printer builds it layer by layer.",
-    vi: "Máy in xây từng lớp một. Một lớp dày 0,2mm.",
+    vi: "Máy in xếp từng lớp nhựa chồng lên nhau. Mỗi lớp dày 0,2mm thôi.",
     icon: Layers,
+    color: "bg-flame",
   },
   {
     n: "04",
-    title: "SHARE",
+    title: "GỬI ĐI",
     en: "We test it, improve it and send it to you.",
-    vi: "Thử, sửa, thử lại — rồi đóng gói gửi đến bạn.",
+    vi: "Thử làm rơi, sửa lại, thử tiếp — rồi bỏ hộp gửi cho bạn.",
     icon: Send,
+    color: "bg-lime",
   },
 ];
 
@@ -53,19 +57,19 @@ export function HowItWorks() {
   const activeStep = Math.min(3, Math.floor((built / TOTAL_LAYERS) * 4));
 
   return (
-    <section ref={ref} className="border-t border-line bg-paper-2 py-20 sm:py-28">
+    <section ref={ref} className="border-t-2 border-ink bg-paper-2 py-20 sm:py-28">
       <div className="container-hla">
         <SectionHeader
           index="02"
-          eyebrow="How HLA3D works"
+          eyebrow="HLA3D làm việc thế nào"
           title={
             <>
-              FOUR STEPS,
+              BỐN BƯỚC,
               <br />
-              ONE LAYER AT A TIME.
+              TỪNG LỚP MỘT.
             </>
           }
-          description="Nothing here is bought and re-sold. Every object starts as an idea in this house and ends as plastic we printed ourselves."
+          description="Không có món nào mua sẵn về bán lại. Mỗi món bắt đầu từ một ý tưởng trong nhà này, và kết thúc là một cục nhựa do tụi em tự in ra."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-16">
@@ -78,16 +82,16 @@ export function HowItWorks() {
                 <li
                   key={step.n}
                   className={cn(
-                    "flex gap-5 rounded-[var(--radius-card)] border p-5 transition-all duration-500 sm:p-6",
+                    "flex gap-5 rounded-[var(--radius-card)] border-2 p-5 transition-all duration-500 sm:p-6",
                     isActive
-                      ? "border-line-soft bg-surface shadow-[var(--shadow-soft)]"
+                      ? "border-ink bg-surface shadow-[var(--shadow-sticker)]"
                       : "border-transparent bg-transparent",
                   )}
                 >
                   <div
                     className={cn(
-                      "grid size-12 shrink-0 place-items-center rounded-2xl transition-colors duration-500",
-                      isActive ? "bg-flame text-white" : "bg-ink/6 text-ink-3",
+                      "grid size-12 shrink-0 place-items-center rounded-2xl border-2 transition-colors duration-500",
+                      isActive ? `${step.color} border-ink text-ink` : "border-ink/15 bg-ink/5 text-ink-3",
                     )}
                   >
                     <Icon className="size-5" />
@@ -97,10 +101,10 @@ export function HowItWorks() {
                       <span className={cn("font-mono text-xs transition-colors", isActive ? "text-flame" : "text-ink-3")}>
                         {step.n}
                       </span>
-                      <h3 className="font-display text-xl font-bold tracking-tight">{step.title}</h3>
+                      <h3 className="font-display text-2xl font-extrabold">{step.title}</h3>
                     </div>
-                    <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{step.en}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-3">{step.vi}</p>
+                    <p className="mt-2 text-[0.9375rem] leading-relaxed font-bold text-ink">{step.vi}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-3">{step.en}</p>
                   </div>
                 </li>
               );
@@ -109,11 +113,11 @@ export function HowItWorks() {
 
           {/* ---- layer build visual ----------------------------------- */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="relative overflow-hidden rounded-[var(--radius-xl2)] border border-line bg-carbon p-6 sm:p-8">
+            <div className="sticker relative overflow-hidden rounded-[var(--radius-xl2)] bg-carbon p-6 sm:p-8">
               <div className="grid-carbon pointer-events-none absolute inset-0 opacity-60" />
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <span className="eyebrow text-white/40">Live slice preview</span>
+                  <span className="eyebrow text-white/50">Máy đang in thử</span>
                   <span className="font-mono text-xs text-flame">
                     {String(built).padStart(2, "0")}/{TOTAL_LAYERS}
                   </span>
@@ -148,12 +152,12 @@ export function HowItWorks() {
                   <p className="font-display text-lg font-bold tracking-tight text-white">
                     {STEPS[activeStep].title}
                   </p>
-                  <p className="mt-1 text-sm text-white/50">{STEPS[activeStep].en}</p>
+                  <p className="mt-1 text-sm text-white/60">{STEPS[activeStep].vi}</p>
                 </div>
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-ink-3">
-              Scroll to watch a print build. This is how every HLA3D product is made.
+              Kéo xuống để xem máy in xây từng lớp. Món nào của HLA3D cũng ra đời như vậy.
             </p>
           </div>
         </div>

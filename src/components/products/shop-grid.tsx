@@ -21,7 +21,7 @@ export function ShopGrid() {
       <div className="sticky top-16 z-40 -mx-5 border-b border-line/60 bg-paper/85 px-5 py-4 backdrop-blur-xl sm:top-18 sm:-mx-8 sm:px-8">
         <div className="hide-scrollbar flex items-center gap-2 overflow-x-auto">
           <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
-            ALL
+            TẤT CẢ
             <span className="ml-1.5 font-mono text-[0.625rem] opacity-60">{products.length}</span>
           </FilterChip>
           {categories.map((c) => {
@@ -37,7 +37,7 @@ export function ShopGrid() {
       </div>
 
       <p className="mt-6 min-h-6 text-sm text-ink-3">
-        {activeCategory ? activeCategory.blurb : "Fifteen products. One printer. Everything made to order."}
+        {activeCategory ? activeCategory.blurb : "Mười lăm món. Một cái máy in. Món nào cũng làm theo đơn."}
       </p>
 
       {/* ---- grid ------------------------------------------------------ */}

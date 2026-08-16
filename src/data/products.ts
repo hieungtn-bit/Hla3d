@@ -7,11 +7,11 @@ export type Category = {
 };
 
 export const categories: Category[] = [
-  { id: "desk", label: "DESK", blurb: "Things that make a table work better." },
-  { id: "toys", label: "TOYS", blurb: "Prints that move, bend and rattle." },
-  { id: "custom", label: "CUSTOM", blurb: "Made with your name on it." },
-  { id: "gifts", label: "GIFTS", blurb: "Small, personal, printed to order." },
-  { id: "stem", label: "STEM", blurb: "Prints that teach something." },
+  { id: "desk", label: "ĐỂ BÀN", blurb: "Đồ giúp cái bàn học gọn gàng hơn." },
+  { id: "toys", label: "ĐỒ CHƠI", blurb: "Đồ in ra là cử động, bẻ được, lắc được." },
+  { id: "custom", label: "IN TÊN", blurb: "Có tên bạn ở trên đó." },
+  { id: "gifts", label: "QUÀ TẶNG", blurb: "Nhỏ, riêng cho một người, in theo đơn." },
+  { id: "stem", label: "HỌC", blurb: "Đồ chơi mà chơi xong biết thêm thứ gì đó." },
 ];
 
 export type FilamentColor = {

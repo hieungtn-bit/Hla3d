@@ -27,7 +27,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-90 transition-colors duration-300",
-        scrolled ? "border-b border-line/80 bg-paper/85 backdrop-blur-xl" : "border-b border-transparent",
+        scrolled ? "border-b-2 border-ink bg-paper/90 backdrop-blur-xl" : "border-b-2 border-transparent",
       )}
     >
       <div className="container-hla flex h-16 items-center justify-between gap-6 sm:h-18">
@@ -43,8 +43,8 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                  active ? "bg-ink text-paper" : "text-ink-2 hover:bg-ink/6 hover:text-ink",
+                  "rounded-full px-3.5 py-1.5 font-display text-sm font-bold transition-colors",
+                  active ? "border-2 border-ink bg-sun text-ink" : "border-2 border-transparent text-ink-2 hover:bg-ink/6 hover:text-ink",
                 )}
               >
                 {item.label}
@@ -58,11 +58,11 @@ export function SiteHeader() {
             type="button"
             onClick={cart.open}
             aria-label={`Open basket, ${cart.count} items`}
-            className="tactile relative grid size-10 place-items-center rounded-full border border-line bg-surface hover:border-ink/25"
+            className="sticker press relative grid size-10 place-items-center rounded-full bg-surface"
           >
             <ShoppingBag className="size-4" />
             {cart.count > 0 && (
-              <span className="absolute -right-1 -top-1 grid size-5 place-items-center rounded-full bg-flame font-mono text-[0.625rem] font-bold text-white">
+              <span className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full border-2 border-ink bg-flame font-mono text-[0.625rem] font-bold text-white">
                 {cart.count}
               </span>
             )}
@@ -70,7 +70,7 @@ export function SiteHeader() {
 
           <Link
             href="/shop"
-            className="tactile hidden h-10 items-center rounded-full bg-flame px-5 font-display text-sm font-bold tracking-tight text-white shadow-[var(--shadow-flame)] hover:bg-flame-2 sm:inline-flex"
+            className="sticker press hidden h-10 items-center rounded-full bg-flame px-5 font-display text-sm font-extrabold text-white sm:inline-flex"
           >
             SHOP
           </Link>
@@ -80,7 +80,7 @@ export function SiteHeader() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className="tactile grid size-10 place-items-center rounded-full border border-line bg-surface md:hidden"
+            className="sticker press grid size-10 place-items-center rounded-full bg-surface md:hidden"
           >
             {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
@@ -90,7 +90,7 @@ export function SiteHeader() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="overflow-hidden border-t border-line bg-paper md:hidden"
+            className="overflow-hidden border-t-2 border-ink bg-paper md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -102,7 +102,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-2xl px-4 py-3 font-display text-lg font-bold tracking-tight hover:bg-surface"
+                  className="rounded-2xl px-4 py-3 font-display text-xl font-extrabold hover:bg-surface"
                 >
                   {item.label}
                 </Link>
@@ -110,9 +110,9 @@ export function SiteHeader() {
               <Link
                 href="/shop"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 rounded-2xl bg-flame px-4 py-3 text-center font-display text-lg font-bold tracking-tight text-white"
+                className="sticker mt-2 rounded-2xl bg-flame px-4 py-3 text-center font-display text-xl font-extrabold text-white"
               >
-                SHOP OUR CREATIONS
+                XEM ĐỒ TỤI EM LÀM
               </Link>
             </nav>
           </motion.div>

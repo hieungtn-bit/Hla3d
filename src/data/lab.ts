@@ -54,10 +54,10 @@ export const printQueue: QueueItem[] = [
 ];
 
 export const labStats = [
-  { label: "Print hours this month", value: "78h" },
-  { label: "PLA used this month", value: "2.4 kg" },
-  { label: "Jobs completed", value: "63" },
-  { label: "Success rate", value: "91%" },
+  { label: "Giờ in tháng này", value: "78h" },
+  { label: "Nhựa PLA đã dùng", value: "2.4 kg" },
+  { label: "Lượt in xong", value: "63" },
+  { label: "Tỉ lệ thành công", value: "91%" },
 ] as const;
 
 export type FilamentStock = {

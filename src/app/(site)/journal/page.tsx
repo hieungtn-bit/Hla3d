@@ -15,19 +15,19 @@ export default function JournalPage() {
   return (
     <>
       <PageIntro
-        eyebrow="The maker journal"
+        eyebrow="Nhật ký"
         title={
           <>
-            WHAT WE
+            TỤI EM
             <br />
-            LEARNED.
+            HỌC ĐƯỢC GÌ.
           </>
         }
-        description="Every entry is written by one of the makers after something worked or, more often, after something did not. Dad checks the spelling and nothing else."
+        description="Mỗi bài là do một trong ba anh em tự viết, sau khi làm được một việc — hoặc thường hơn, sau khi làm hỏng. Ba chỉ sửa lỗi chính tả, không sửa nội dung."
         meta={[
-          { label: "Entries", value: String(journal.length) },
-          { label: "Failures documented", value: "17" },
-          { label: "Since", value: "03/2025" },
+          { label: "Số bài", value: String(journal.length) },
+          { label: "Lần hỏng đã ghi lại", value: "17" },
+          { label: "Bắt đầu từ", value: "03/2025" },
         ]}
       />
 

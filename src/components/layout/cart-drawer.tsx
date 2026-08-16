@@ -51,18 +51,18 @@ export function CartDrawer() {
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 320, damping: 34 }}
           >
-            <header className="flex items-center justify-between border-b border-line px-6 py-5">
+            <header className="flex items-center justify-between border-b-2 border-ink px-6 py-5">
               <div>
-                <p className="eyebrow text-ink-3">Your basket</p>
+                <p className="eyebrow text-ink-3">Giỏ hàng</p>
                 <h2 className="display mt-1 text-xl">
-                  {cart.count} {cart.count === 1 ? "ITEM" : "ITEMS"}
+                  {cart.count} MÓN
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={cart.close}
                 aria-label="Close"
-                className="tactile grid size-10 place-items-center rounded-full border border-line bg-surface"
+                className="sticker press grid size-10 place-items-center rounded-full bg-surface"
               >
                 <X className="size-4" />
               </button>
@@ -73,12 +73,12 @@ export function CartDrawer() {
                 <div className="grid size-16 place-items-center rounded-2xl bg-surface shadow-[var(--shadow-soft)]">
                   <ShoppingBag className="size-6 text-ink-3" />
                 </div>
-                <p className="font-display text-lg font-bold tracking-tight">Nothing in here yet</p>
+                <p className="font-display text-xl font-extrabold">Giỏ còn trống</p>
                 <p className="text-sm text-ink-2">
-                  Everything in the shop was designed, printed and checked by three brothers.
+                  Mọi món trong shop đều do Hưng, Long và Anh tự thiết kế, tự in và tự kiểm tra.
                 </p>
                 <Button variant="ink" onClick={cart.close}>
-                  KEEP LOOKING
+                  XEM TIẾP
                 </Button>
               </div>
             ) : (
@@ -87,7 +87,7 @@ export function CartDrawer() {
                   {cart.lines.map((line) => (
                     <div
                       key={line.key}
-                      className="flex gap-4 rounded-2xl border border-line-soft bg-surface p-3"
+                      className="sticker flex gap-4 rounded-2xl bg-surface p-3"
                     >
                       <div
                         className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-xl p-1"
@@ -135,20 +135,19 @@ export function CartDrawer() {
                   ))}
                 </div>
 
-                <footer className="space-y-4 border-t border-line bg-surface px-6 py-5">
+                <footer className="space-y-4 border-t-2 border-ink bg-surface px-6 py-5">
                   <div className="flex items-baseline justify-between">
-                    <span className="eyebrow text-ink-3">Subtotal</span>
+                    <span className="eyebrow text-ink-3">Tạm tính</span>
                     <span className="display text-2xl">{formatVnd(cart.subtotal)}</span>
                   </div>
                   <p className="text-xs leading-relaxed text-ink-3">
-                    Made to order in 3–5 days. Shipping is worked out at checkout — Dad handles payments
-                    and postage.
+                    Làm theo đơn, 3–5 ngày. Phí ship tính lúc thanh toán — Ba lo phần tiền bạc và gửi hàng.
                   </p>
                   <Button size="lg" className="w-full" onClick={placeOrder} disabled={placing}>
-                    {placing ? "PLACING ORDER…" : `BECOME CUSTOMER #${nextCustomer}`}
+                    {placing ? "ĐANG ĐẶT…" : `LÀM KHÁCH SỐ ${nextCustomer}`}
                   </Button>
                   <p className="text-center text-[0.6875rem] text-ink-3">
-                    Demo checkout — no payment is taken in this version.
+                    Bản demo — chưa thu tiền thật ở phiên bản này.
                   </p>
                 </footer>
               </>

@@ -31,7 +31,7 @@ export function ColorDots({
             aria-pressed={isActive}
             title={f.name}
             className={cn(
-              "tactile relative rounded-full border border-ink/10 ring-offset-2 ring-offset-surface transition-[box-shadow,transform]",
+              "tactile relative rounded-full border-2 border-ink ring-offset-2 ring-offset-surface transition-[box-shadow,transform]",
               size === "sm" ? "size-5" : "size-6",
               isActive && "ring-2 ring-ink",
             )}

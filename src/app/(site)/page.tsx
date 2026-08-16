@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { Marquee } from "@/components/home/marquee";
 import { MakerCard } from "@/components/home/maker-card";
 import { HowItWorks } from "@/components/home/how-it-works";
+import { StartupSchool } from "@/components/home/startup-school";
 import { DadSection } from "@/components/home/dad-section";
 import { JournalPreview } from "@/components/home/journal-preview";
 import { GoalProgress } from "@/components/goal-progress";
@@ -17,10 +18,10 @@ import { featuredSlugs, products } from "@/data/products";
 import { printers, labStats } from "@/data/lab";
 
 const STATS = [
-  { icon: Boxes, value: "15", label: "Products designed" },
-  { icon: Clock3, value: "78h", label: "Print hours this month" },
-  { icon: Flame, value: "2.4kg", label: "PLA turned into things" },
-  { icon: PackageCheck, value: "31", label: "Products shipped" },
+  { icon: Boxes, value: "15", label: "Món tụi em tự thiết kế", color: "bg-sun" },
+  { icon: Clock3, value: "78h", label: "Giờ máy in chạy tháng này", color: "bg-sky" },
+  { icon: Flame, value: "2.4kg", label: "Nhựa PLA đã thành đồ thật", color: "bg-flame" },
+  { icon: PackageCheck, value: "31", label: "Món đã gửi cho khách", color: "bg-lime" },
 ];
 
 export default function HomePage() {
@@ -34,14 +35,20 @@ export default function HomePage() {
       <Marquee />
 
       {/* ---- numbers -------------------------------------------------- */}
-      <section className="border-b border-line bg-paper py-12">
-        <div className="container-hla grid grid-cols-2 gap-6 lg:grid-cols-4">
+      <section className="border-b-2 border-ink bg-paper-2 py-12">
+        <div className="container-hla grid grid-cols-2 gap-4 lg:grid-cols-4">
           {STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.06} className="flex items-start gap-3">
-              <stat.icon className="mt-1 size-5 shrink-0 text-flame" />
-              <div>
-                <p className="display text-3xl sm:text-4xl">{stat.value}</p>
-                <p className="mt-1.5 text-xs leading-snug text-ink-3">{stat.label}</p>
+            <Reveal key={stat.label} delay={i * 0.06}>
+              <div className="sticker press flex h-full items-start gap-3 rounded-[var(--radius-card)] bg-surface p-4 sm:p-5">
+                <span
+                  className={`grid size-10 shrink-0 place-items-center rounded-xl border-2 border-ink ${stat.color}`}
+                >
+                  <stat.icon className="size-4.5 text-ink" />
+                </span>
+                <div>
+                  <p className="display text-3xl sm:text-4xl">{stat.value}</p>
+                  <p className="mt-1 text-xs leading-snug font-semibold text-ink-2">{stat.label}</p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -53,15 +60,15 @@ export default function HomePage() {
         <div className="container-hla">
           <SectionHeader
             index="01"
-            eyebrow="Meet the makers"
+            eyebrow="Gặp 3 anh em"
             title={
               <>
-                THREE PEOPLE.
+                BA NGƯỜI.
                 <br />
-                THREE JOBS.
+                BA VIỆC KHÁC NHAU.
               </>
             }
-            description="HLA3D has a org chart, and it fits on one line. Nobody does everything, which is exactly the point — each brother owns a part of the product and has to defend it."
+            description="Công ty HLA3D có đúng ba nhân viên. Không ai làm hết mọi thứ — mỗi bạn giữ một phần và phải tự bảo vệ phần của mình khi Ba hỏi khó."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {makers.map((maker, i) => (
@@ -76,26 +83,29 @@ export default function HomePage() {
       {/* ---- how it works --------------------------------------------- */}
       <HowItWorks />
 
+      {/* ---- startup school -------------------------------------------- */}
+      <StartupSchool />
+
       {/* ---- shop preview ---------------------------------------------- */}
       <Section className="border-t border-line">
         <div className="container-hla">
           <SectionHeader
             index="03"
-            eyebrow="The shop"
+            eyebrow="Cửa hàng"
             title={
               <>
-                THINGS WE
+                ĐỒ TỤI EM
                 <br />
-                ACTUALLY MADE.
+                TỰ LÀM THẬT.
               </>
             }
-            description="Every product on this page exists. It was drawn here, sliced here, printed on one machine in one room, and checked by hand before it went in a box."
+            description="Không món nào mua về bán lại. Tất cả đều được vẽ ở đây, in trên đúng một cái máy trong một căn phòng, và cầm lên kiểm tra trước khi bỏ vào hộp."
             action={
               <Link
                 href="/shop"
                 className="tactile inline-flex h-12 items-center gap-2 rounded-full border-2 border-ink px-6 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
               >
-                SEE ALL 15
+                XEM CẢ 15 MÓN
                 <ArrowRight className="size-4" />
               </Link>
             }
@@ -120,15 +130,15 @@ export default function HomePage() {
             <div>
               <SectionHeader
                 index="04"
-                eyebrow="The lab"
+                eyebrow="Xưởng in"
                 title={
                   <>
-                    ONE MACHINE.
+                    MỘT CÁI MÁY.
                     <br />
-                    RUNNING MOST DAYS.
+                    CHẠY GẦN NHƯ MỖI NGÀY.
                   </>
                 }
-                description="An Anycubic Kobra X on a bench in the corner of the house. It is the whole factory, and it is why we can only promise what we can actually print."
+                description="Một chiếc Anycubic Kobra X đặt ở góc nhà. Đó là toàn bộ nhà máy của tụi em — nên tụi em chỉ dám hứa đúng số món mà máy in kịp."
               />
               <dl className="mt-10 grid grid-cols-2 gap-6">
                 {labStats.map((stat) => (
@@ -142,7 +152,7 @@ export default function HomePage() {
                 href="/lab"
                 className="tactile mt-10 inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 font-display text-sm font-bold tracking-tight text-paper hover:bg-flame"
               >
-                VISIT THE MINI FACTORY
+                THAM QUAN XƯỞNG
                 <ArrowRight className="size-4" />
               </Link>
             </div>
@@ -158,9 +168,9 @@ export default function HomePage() {
         <div className="container-hla">
           <SectionHeader
             index="05"
-            eyebrow="Money lesson"
-            title="WHERE DOES THE MONEY GO?"
-            description="This is the part most shops hide. We show it because working it out is half of what the makers are here to learn."
+            eyebrow="Bài học tiền bạc"
+            title="TIỀN CHẠY ĐI ĐÂU HẾT?"
+            description="Hầu hết cửa hàng giấu chuyện này. Tụi em bày ra hết, vì tự tính được số tiền còn lại mới là điều Ba muốn ba anh em học."
           />
           <div className="mt-14">
             <MoneyBreakdown />
@@ -176,15 +186,15 @@ export default function HomePage() {
         <div className="container-hla">
           <SectionHeader
             index="06"
-            eyebrow="The maker journal"
-            title="WHAT WE LEARNED THIS WEEK."
-            description="Wins, failures and the real cost of a print — written by the makers, lightly spell-checked by Dad."
+            eyebrow="Nhật ký"
+            title="TUẦN NÀY TỤI EM HỌC ĐƯỢC GÌ."
+            description="Chuyện làm được, chuyện làm hỏng, và giá thật của một lần in — do ba anh em tự viết, Ba chỉ sửa lỗi chính tả."
             action={
               <Link
                 href="/journal"
                 className="tactile inline-flex h-12 items-center gap-2 rounded-full border-2 border-ink px-6 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
               >
-                READ THE JOURNAL
+                ĐỌC NHẬT KÝ
                 <ArrowRight className="size-4" />
               </Link>
             }
@@ -197,26 +207,26 @@ export default function HomePage() {
       <section className="border-t border-line bg-flame py-20 text-white sm:py-28">
         <div className="container-hla text-center">
           <Reveal>
-            <p className="eyebrow text-white/70">Dream it. Design it. Print it.</p>
+            <p className="eyebrow text-white/80">Nghĩ ra · Vẽ ra · In ra</p>
             <h2 className="display mx-auto mt-6 max-w-3xl text-[clamp(2rem,5.5vw,3.75rem)] text-white">
-              PUT YOUR NAME ON SOMETHING WE PRINTED.
+              ĐẶT TÊN BẠN LÊN MỘT MÓN TỤI EM IN.
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Ý tưởng nhỏ. Tạo nên điều thật. Start with a name plate — it is where nearly everyone starts.
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed font-semibold text-white/90 sm:text-lg">
+              Ý tưởng nhỏ, tạo nên điều thật. Bắt đầu bằng một tấm bảng tên — gần như ai cũng bắt đầu từ đó.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/custom"
                 className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white px-8 font-display text-base font-bold tracking-tight text-ink hover:bg-paper"
               >
-                MAKE IT YOURS
+                TỰ THIẾT KẾ MỘT MÓN
                 <ArrowRight className="size-5" />
               </Link>
               <Link
                 href="/about"
                 className="tactile inline-flex h-14 items-center justify-center rounded-full border-2 border-white/70 px-8 font-display text-base font-bold tracking-tight text-white hover:bg-white/10"
               >
-                OUR STORY
+                CHUYỆN CỦA TỤI EM
               </Link>
             </div>
           </Reveal>

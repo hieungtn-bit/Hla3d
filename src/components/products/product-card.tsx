@@ -23,15 +23,14 @@ export function ProductCard({ product, className }: { product: Product; classNam
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-line-soft bg-surface",
-        "shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]",
+        "sticker press group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-surface",
         className,
       )}
     >
       {/* ---- visual ---------------------------------------------------- */}
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-4/3 overflow-hidden bg-paper-2 focus-visible:outline-offset-[-4px]"
+        className="relative block aspect-4/3 overflow-hidden border-b-2 border-ink bg-paper-2 focus-visible:outline-offset-[-4px]"
       >
         <div className="grid-paper absolute inset-0 opacity-70" />
         <div
@@ -53,12 +52,12 @@ export function ProductCard({ product, className }: { product: Product; classNam
         </motion.div>
 
         {product.badge && (
-          <Badge variant={product.badge === "BEST SELLER" ? "flame" : "ink"} className="absolute left-4 top-4">
+          <Badge variant={product.badge === "BEST SELLER" ? "flame" : "ink"} className="absolute left-3 top-3 -rotate-3">
             {product.badge}
           </Badge>
         )}
         {product.customizable && (
-          <Badge variant="lime" className="absolute right-4 top-4">
+          <Badge variant="lime" className="absolute right-3 top-3 rotate-3">
             <Sparkles className="size-3" />
             CUSTOM
           </Badge>
@@ -69,7 +68,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="font-display text-base leading-tight font-bold tracking-tight text-ink">
+            <h3 className="font-display text-lg leading-tight font-extrabold text-ink">
               <Link href={`/shop/${product.slug}`} className="after:absolute after:inset-0 after:content-['']">
                 {product.name}
               </Link>
@@ -78,13 +77,13 @@ export function ProductCard({ product, className }: { product: Product; classNam
           </div>
           <div className="shrink-0 text-right">
             {product.from && <span className="eyebrow block text-ink-3">Từ</span>}
-            <span className="font-display text-base font-bold tracking-tight text-ink">
+            <span className="font-display text-lg font-extrabold text-ink">
               {product.price.toLocaleString("vi-VN")}đ
             </span>
           </div>
         </div>
 
-        <p className="text-sm leading-relaxed text-ink-2">{product.tagline}</p>
+        <p className="text-sm leading-relaxed font-semibold text-ink-2">{product.tagline}</p>
 
         <div className="mt-auto flex flex-col gap-3 pt-2">
           <MakerRating value={product.makerRating} />
@@ -108,9 +107,9 @@ export function ProductCard({ product, className }: { product: Product; classNam
             {product.customizable ? (
               <Link
                 href={`/custom?product=${product.slug}`}
-                className="tactile inline-flex h-9 items-center gap-1.5 rounded-full bg-ink px-4 font-display text-[0.75rem] font-bold tracking-tight text-paper hover:bg-flame"
+                className="sticker press inline-flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >
-                CUSTOMIZE
+                TỰ THIẾT KẾ
               </Link>
             ) : (
               <button
@@ -126,10 +125,10 @@ export function ProductCard({ product, className }: { product: Product; classNam
                   })
                 }
                 aria-label={`Add ${product.name} to cart`}
-                className="tactile inline-flex h-9 items-center gap-1.5 rounded-full bg-ink px-4 font-display text-[0.75rem] font-bold tracking-tight text-paper hover:bg-flame"
+                className="sticker press inline-flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >
                 <Plus className="size-3.5" />
-                ADD
+                THÊM
               </button>
             )}
           </div>

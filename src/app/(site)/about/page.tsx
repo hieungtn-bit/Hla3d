@@ -53,19 +53,19 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Our story"
+        eyebrow="Chuyện của tụi em"
         title={
           <>
-            SMALL IDEAS.
+            Ý TƯỞNG NHỎ.
             <br />
-            REAL THINGS.
+            ĐIỀU THẬT.
           </>
         }
-        description="HLA3D began with one 3D printer in the house and the moment three brothers stopped asking for toys and started asking how they were made."
+        description="HLA3D bắt đầu từ một chiếc máy in 3D trong nhà, và cái ngày ba anh em thôi đòi mua đồ chơi mà quay sang hỏi đồ chơi được làm ra thế nào."
         meta={[
-          { label: "Founded", value: "2025" },
-          { label: "Makers", value: "3" },
-          { label: "Printers", value: "1" },
+          { label: "Bắt đầu", value: "2025" },
+          { label: "Số anh em", value: "3" },
+          { label: "Máy in", value: "1" },
         ]}
       />
 

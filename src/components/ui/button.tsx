@@ -3,17 +3,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "tactile inline-flex items-center justify-center gap-2 rounded-full font-display font-bold tracking-tight whitespace-nowrap disabled:pointer-events-none disabled:opacity-45 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 rounded-full font-display font-extrabold whitespace-nowrap disabled:pointer-events-none disabled:opacity-45 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-flame text-white shadow-[var(--shadow-flame)] hover:bg-flame-2",
-        ink: "bg-ink text-paper hover:bg-ink/90",
-        outline: "border-2 border-ink bg-transparent text-ink hover:bg-ink hover:text-paper",
-        ghost: "bg-transparent text-ink hover:bg-ink/6",
-        surface: "bg-surface text-ink shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-lift)]",
-        lime: "bg-lime text-ink hover:brightness-105",
-        carbon: "border border-carbon-line bg-carbon-2 text-white hover:border-flame/60",
+        primary: "sticker press bg-flame text-white",
+        ink: "sticker press bg-ink text-paper",
+        outline: "sticker press bg-surface text-ink",
+        ghost: "tactile bg-transparent text-ink hover:bg-ink/8",
+        surface: "sticker press bg-surface text-ink",
+        lime: "sticker press bg-lime text-ink",
+        sky: "sticker press bg-sky text-white",
+        sun: "sticker press bg-sun text-ink",
+        carbon: "border-2 border-carbon-line bg-carbon-2 text-white hover:border-flame/60",
       },
       size: {
         sm: "h-9 px-4 text-[0.8125rem] [&_svg]:size-4",

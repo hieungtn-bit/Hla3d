@@ -4,6 +4,9 @@ export type Maker = {
   id: MakerRole;
   index: string;
   title: string;
+  /** First name only — no surnames and no photographs anywhere on the site. */
+  name: string;
+  age: number;
   nickname: string;
   quote: string;
   superpower: string;
@@ -19,39 +22,45 @@ export const makers: Maker[] = [
   {
     id: "inventor",
     index: "01",
-    title: "THE INVENTOR",
-    nickname: "Maker #01",
-    quote: "Có quá nhiều ý tưởng để máy in kịp.",
-    superpower: "Turning crazy ideas into objects.",
+    title: "NHÀ PHÁT MINH",
+    name: "Hưng",
+    age: 8,
+    nickname: "The Inventor",
+    quote: "Có quá nhiều ý tưởng để máy in kịp!",
+    superpower: "Biến ý tưởng điên rồ thành đồ thật.",
     favoriteColor: { name: "Lava Orange", hex: "#ff4a17" },
-    favoritePrint: "Articulated dragons with too many spikes",
-    learning: "Sketching an idea before touching the computer.",
+    favoritePrint: "Rồng khớp nối, càng nhiều gai càng tốt",
+    learning: "Vẽ ra giấy trước khi ngồi vào máy tính.",
     glyph: "bolt",
     accent: "flame",
   },
   {
     id: "designer",
     index: "02",
-    title: "THE DESIGNER",
-    nickname: "Maker #02",
-    quote: "Cái này lệch 1 milimét. Làm lại nha.",
-    superpower: "Making things fit, line up and look right.",
+    title: "NHÀ THIẾT KẾ",
+    name: "Long",
+    age: 6,
+    nickname: "The Designer",
+    quote: "Cái này lệch 1 milimét. Làm lại nha!",
+    superpower: "Làm mọi thứ vừa khít và thẳng hàng.",
     favoriteColor: { name: "Sky Blue", hex: "#3fa9f5" },
-    favoritePrint: "Name plates — especially long, tricky names",
-    learning: "Tolerances, fillets and why walls need thickness.",
+    favoritePrint: "Bảng tên — tên càng dài càng thích",
+    learning: "Vì sao tường phải dày thì đồ mới không gãy.",
     glyph: "compass",
     accent: "sky",
   },
   {
     id: "tester",
     index: "03",
-    title: "THE TESTER",
-    nickname: "Maker #03",
-    quote: "Nếu em làm rơi mà nó không gãy, mình bán được.",
-    superpower: "Breaking things before a customer can.",
+    title: "NGƯỜI THỬ ĐỒ",
+    name: "Anh",
+    age: 5,
+    nickname: "The Tester",
+    quote: "Em làm rơi mà nó không gãy là bán được!",
+    superpower: "Làm hỏng đồ trước khi khách làm hỏng.",
     favoriteColor: { name: "Lime Green", hex: "#c6f24e" },
-    favoritePrint: "Flexi octopus, version 7",
-    learning: "Writing down what failed, not just that it failed.",
+    favoritePrint: "Bạch tuộc khớp nối, bản thứ 7",
+    learning: "Ghi lại hỏng ở chỗ nào, chứ không chỉ nói là hỏng.",
     glyph: "shield",
     accent: "lime",
   },
@@ -59,12 +68,12 @@ export const makers: Maker[] = [
 
 /** Skill bars shown in the private dashboard. Values are out of 6. */
 export const makerSkills = [
-  { skill: "Design", level: 4 },
-  { skill: "Printing", level: 3 },
-  { skill: "Photography", level: 4 },
-  { skill: "Selling", level: 3 },
-  { skill: "Money", level: 2 },
-  { skill: "Customer Service", level: 3 },
+  { skill: "Thiết kế", level: 4 },
+  { skill: "In 3D", level: 3 },
+  { skill: "Chụp ảnh", level: 4 },
+  { skill: "Bán hàng", level: 3 },
+  { skill: "Tiền bạc", level: 2 },
+  { skill: "Chăm sóc khách", level: 3 },
 ] as const;
 
 export type MakerXp = {
@@ -78,37 +87,37 @@ export type MakerXp = {
 
 export const makerXp: MakerXp[] = [
   {
-    maker: "Maker #01",
-    role: "The Inventor",
+    maker: "Hưng",
+    role: "Nhà phát minh · 8 tuổi",
     level: 4,
     xp: 650,
     nextLevelXp: 750,
-    recent: "Sketched 6 new desk ideas",
+    recent: "Vẽ 6 ý tưởng đồ để bàn mới",
   },
   {
-    maker: "Maker #02",
-    role: "The Designer",
+    maker: "Long",
+    role: "Nhà thiết kế · 6 tuổi",
     level: 4,
     xp: 705,
     nextLevelXp: 750,
-    recent: "Fixed the name plate font spacing",
+    recent: "Sửa khoảng cách chữ trên bảng tên",
   },
   {
-    maker: "Maker #03",
-    role: "The Tester",
+    maker: "Anh",
+    role: "Người thử đồ · 5 tuổi",
     level: 3,
     xp: 430,
     nextLevelXp: 500,
-    recent: "Logged 9 drop tests on the flexi dragon",
+    recent: "Thử làm rơi con rồng 9 lần",
   },
 ];
 
 /** How XP is earned — printed and stuck on the wall next to the printer. */
 export const xpRules = [
-  { action: "Finish a design that prints cleanly", xp: 50 },
-  { action: "Photograph a product properly", xp: 20 },
-  { action: "Pack an order with no mistakes", xp: 25 },
-  { action: "Write a journal entry about a failure", xp: 40 },
-  { action: "Answer a customer message politely", xp: 15 },
-  { action: "Work out the real cost of a print", xp: 30 },
+  { action: "Thiết kế xong một món in ra đẹp", xp: 50 },
+  { action: "Chụp ảnh sản phẩm cho tử tế", xp: 20 },
+  { action: "Đóng gói một đơn không sai gì", xp: 25 },
+  { action: "Viết nhật ký về một lần làm hỏng", xp: 40 },
+  { action: "Trả lời tin nhắn khách thật lễ phép", xp: 15 },
+  { action: "Tự tính ra giá vốn của một món", xp: 30 },
 ] as const;

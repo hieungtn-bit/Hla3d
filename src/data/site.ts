@@ -12,7 +12,7 @@ export const site = {
   description:
     "Three young makers turning ideas into real 3D printed creations. Designed, printed and packed at home in Vietnam.",
   descriptionVi:
-    "Ba anh em học cách biến ý tưởng thành sản phẩm thật bằng máy in 3D. Thiết kế, in và đóng gói tại Việt Nam.",
+    "Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi học cách biến ý tưởng thành sản phẩm thật bằng máy in 3D. Thiết kế, in và đóng gói tại Việt Nam.",
   founded: 2025,
   city: "Việt Nam",
   email: "hello@hla3d.vn",
@@ -28,11 +28,11 @@ export const goal = {
 } as const;
 
 export const nav = [
-  { href: "/shop", label: "Shop" },
-  { href: "/custom", label: "Custom" },
-  { href: "/about", label: "Our Story" },
-  { href: "/lab", label: "The Lab" },
-  { href: "/journal", label: "Journal" },
+  { href: "/shop", label: "Cửa hàng" },
+  { href: "/custom", label: "Tự thiết kế" },
+  { href: "/about", label: "Chuyện của tụi em" },
+  { href: "/lab", label: "Xưởng in" },
+  { href: "/journal", label: "Nhật ký" },
 ] as const;
 
 export const printer = {

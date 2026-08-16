@@ -19,18 +19,18 @@ export default async function CustomPage({
   return (
     <>
       <PageIntro
-        eyebrow="Custom 3D studio"
+        eyebrow="Xưởng thiết kế riêng"
         title={
           <>
-            MAKE
+            TỰ LÀM
             <br />
-            IT YOURS.
+            MỘT MÓN.
           </>
         }
-        description="Type a name. Pick two colours. Rotate it, change your mind, rotate it again. When it looks right, we print exactly that."
+        description="Gõ tên vào. Chọn hai màu. Xoay qua xoay lại, đổi ý cũng được. Khi nào bạn thấy ưng, tụi em in đúng y như vậy."
         meta={[
-          { label: "From", value: "45.000đ" },
-          { label: "Lead time", value: "3–5 ngày" },
+          { label: "Giá từ", value: "45.000đ" },
+          { label: "Thời gian làm", value: "3–5 ngày" },
           { label: "Tiếng Việt", value: "Có dấu ✓" },
         ]}
       />

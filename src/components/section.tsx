@@ -39,11 +39,14 @@ export function SectionHeader({
               tone === "dark" ? "text-white/45" : "text-ink-3",
             )}
           >
-            {index && <span className="text-flame">{index}</span>}
-            {index && eyebrow && (
-              <span className={cn("h-px w-8", tone === "dark" ? "bg-white/20" : "bg-line")} />
+            {index && (
+              <span className="grid size-7 place-items-center rounded-lg border-2 border-ink bg-sun text-ink">
+                {index}
+              </span>
             )}
-            {eyebrow && <span>{eyebrow}</span>}
+            {eyebrow && (
+              <span className={tone === "dark" ? "text-white/60" : "text-ink-2"}>{eyebrow}</span>
+            )}
           </div>
         )}
         <h2
@@ -57,7 +60,7 @@ export function SectionHeader({
         {description && (
           <p
             className={cn(
-              "mt-5 text-base leading-relaxed text-pretty sm:text-lg",
+              "mt-5 text-base leading-relaxed font-semibold text-pretty sm:text-lg",
               tone === "dark" ? "text-white/60" : "text-ink-2",
             )}
           >

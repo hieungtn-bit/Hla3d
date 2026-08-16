@@ -4,10 +4,10 @@ import { goal, nav, site } from "@/data/site";
 import { toPercent } from "@/lib/utils";
 
 const secondary = [
-  { href: "/about", label: "Our Story" },
-  { href: "/about#safety", label: "Maker Safety" },
-  { href: "/lab", label: "The Lab" },
-  { href: "/dashboard", label: "Startup Dashboard" },
+  { href: "/about", label: "Chuyện của tụi em" },
+  { href: "/about#safety", label: "An toàn khi làm" },
+  { href: "/lab", label: "Xưởng in" },
+  { href: "/dashboard", label: "Bảng theo dõi" },
 ];
 
 export function SiteFooter() {
@@ -22,18 +22,18 @@ export function SiteFooter() {
                 HLA<span className="text-flame">3D</span>
               </span>
             </div>
-            <p className="display mt-6 text-2xl text-white">
-              Small Ideas.
+            <p className="display mt-6 text-3xl text-white">
+              Ý tưởng nhỏ.
               <br />
-              Real Things.
+              Tạo nên điều thật.
             </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-              Ba anh em. Một xưởng sáng tạo. Một chiếc máy in 3D trong nhà.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
+              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Một chiếc máy in 3D đặt ở góc nhà.
             </p>
           </div>
 
           <nav aria-label="Shop">
-            <p className="eyebrow text-white/40">Explore</p>
+            <p className="eyebrow text-sun">Ghé xem</p>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -46,7 +46,7 @@ export function SiteFooter() {
           </nav>
 
           <nav aria-label="About">
-            <p className="eyebrow text-white/40">Behind it</p>
+            <p className="eyebrow text-sky">Phía sau</p>
             <ul className="mt-5 space-y-3">
               {secondary.map((item) => (
                 <li key={item.href}>
@@ -59,7 +59,7 @@ export function SiteFooter() {
           </nav>
 
           <div>
-            <p className="eyebrow text-white/40">The goal</p>
+            <p className="eyebrow text-lime">Mục tiêu</p>
             <p className="mt-5 font-display text-3xl font-bold tracking-tight">
               {goal.current}
               <span className="text-white/30"> / {goal.target}</span>
@@ -73,18 +73,17 @@ export function SiteFooter() {
             </div>
             <Link
               href="/shop"
-              className="tactile mt-5 inline-flex h-11 items-center rounded-full bg-flame px-5 font-display text-sm font-bold tracking-tight text-white hover:bg-flame-2"
+              className="sticker press mt-5 inline-flex h-11 items-center rounded-full bg-flame px-5 font-display text-sm font-extrabold text-white"
             >
-              BECOME CUSTOMER #{goal.current + 1}
+              LÀM KHÁCH SỐ {goal.current + 1}
             </Link>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-carbon-line pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>Designed, printed &amp; packed in Vietnam.</p>
+          <p>Thiết kế, in và đóng gói tại Việt Nam.</p>
           <p className="font-mono">
-            © {site.founded}–{new Date().getFullYear()} HLA3D · A family project. Dad supervises every
-            machine.
+            © {site.founded}–{new Date().getFullYear()} HLA3D · Dự án của gia đình. Ba trông chừng mọi lúc máy chạy.
           </p>
         </div>
       </div>

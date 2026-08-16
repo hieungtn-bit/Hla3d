@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-const LABELS = ["Easy print", "Simple", "Takes care", "Tricky", "Hardest"] as const;
+const LABELS = ["Dễ in", "Đơn giản", "Phải cẩn thận", "Khó", "Khó nhất"] as const;
 
 /**
  * Not a review score — this is how hard the print is for the makers.
@@ -24,8 +24,8 @@ export function MakerRating({
           <span
             key={i}
             className={cn(
-              "h-2.5 w-1.5 rounded-[2px]",
-              i <= value ? "bg-flame" : tone === "dark" ? "bg-white/15" : "bg-ink/12",
+              "h-3 w-2 rounded-[3px] border border-ink/70",
+              i <= value ? "bg-flame" : tone === "dark" ? "border-white/20 bg-white/10" : "bg-surface",
             )}
           />
         ))}

@@ -1,20 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Nunito, Baloo_2, JetBrains_Mono } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { site } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const display = Space_Grotesk({
-  variable: "--font-space-grotesk",
+// Baloo 2 is chunky and rounded — it reads as a kid's brand without tipping
+// into a nursery font. Nunito keeps body copy friendly but still readable at
+// paragraph length. Both carry the full Vietnamese diacritic set.
+const display = Baloo_2({
+  variable: "--font-baloo",
   subsets: ["latin", "vietnamese"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
-const sans = Inter({
-  variable: "--font-inter",
+const sans = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin", "vietnamese"],
   display: "swap",
 });
@@ -29,10 +32,10 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: "HLA3D — Young Maker 3D Printing Lab",
+    default: "HLA3D — Xưởng in 3D của ba anh em nhỏ",
     template: "%s — HLA3D",
   },
-  description: site.description,
+  description: site.descriptionVi,
   keywords: [
     "in 3D",
     "3D printing Vietnam",
@@ -48,19 +51,19 @@ export const metadata: Metadata = {
     locale: "vi_VN",
     url: siteUrl(),
     siteName: site.name,
-    title: "HLA3D — Young Maker 3D Printing Lab",
-    description: site.description,
+    title: "HLA3D — Xưởng in 3D của ba anh em nhỏ",
+    description: site.descriptionVi,
   },
   twitter: {
     card: "summary_large_image",
-    title: "HLA3D — Young Maker 3D Printing Lab",
-    description: site.description,
+    title: "HLA3D — Xưởng in 3D của ba anh em nhỏ",
+    description: site.descriptionVi,
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f2ed",
+  themeColor: "#fff8ec",
   colorScheme: "light",
 };
 
