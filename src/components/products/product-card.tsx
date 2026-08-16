@@ -28,10 +28,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
       )}
     >
       {/* ---- visual ---------------------------------------------------- */}
-      <Link
-        href={`/shop/${product.slug}`}
-        className="relative block aspect-4/3 overflow-hidden border-b-2 border-ink bg-paper-2 focus-visible:outline-offset-[-4px]"
-      >
+      <div className="relative aspect-4/3 overflow-hidden border-b-2 border-ink bg-paper-2">
         <div className="grid-paper absolute inset-0 opacity-70" />
         <div
           className="absolute inset-0 opacity-[0.14] transition-opacity duration-500 group-hover:opacity-25"
@@ -62,14 +59,17 @@ export function ProductCard({ product, className }: { product: Product; classNam
             CUSTOM
           </Badge>
         )}
-      </Link>
+      </div>
 
       {/* ---- body ------------------------------------------------------ */}
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h3 className="font-display text-lg leading-tight font-extrabold text-ink">
-              <Link href={`/shop/${product.slug}`} className="after:absolute after:inset-0 after:content-['']">
+              <Link
+                href={`/shop/${product.slug}`}
+                className="rounded-sm after:absolute after:inset-0 after:z-0 after:content-['']"
+              >
                 {product.name}
               </Link>
             </h3>
@@ -107,7 +107,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
             {product.customizable ? (
               <Link
                 href={`/custom?product=${product.slug}`}
-                className="sticker press inline-flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
+                className="sticker press inline-flex h-11 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >
                 TỰ THIẾT KẾ
               </Link>
@@ -125,7 +125,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
                   })
                 }
                 aria-label={`Add ${product.name} to cart`}
-                className="sticker press inline-flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
+                className="sticker press inline-flex h-11 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >
                 <Plus className="size-3.5" />
                 THÊM

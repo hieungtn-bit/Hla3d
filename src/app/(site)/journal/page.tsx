@@ -4,6 +4,7 @@ import { JournalCard } from "@/components/home/journal-preview";
 import { journal } from "@/data/journal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/journal" },
   title: "The Maker Journal",
   description:
     "Wins, failures and real numbers from three young makers learning 3D printing, design and business — written by them.",

@@ -11,6 +11,7 @@ import { makers } from "@/data/makers";
 import { safetyRules } from "@/data/lab";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "Our Story",
   description:
     "HLA3D started with one 3D printer in the house and three curious brothers. This is how a family project became a small business.",

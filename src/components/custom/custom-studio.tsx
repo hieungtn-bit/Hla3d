@@ -82,7 +82,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
       {/* ================= CONTROLS ================= */}
       <div className="order-2 lg:order-1">
         {/* step rail */}
-        <ol className="flex items-center gap-2">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-2">
           {STEPS.map((label, i) => (
             <li key={label} className="flex items-center gap-2">
               <span
@@ -327,12 +327,16 @@ function Swatch({
       title={name}
       aria-label={name}
       aria-pressed={active}
-      className={cn(
-        "tactile size-9 rounded-xl border border-ink/10 ring-offset-2 ring-offset-paper transition-shadow",
-        active && "ring-2 ring-ink",
-      )}
-      style={{ background: silk ? `linear-gradient(135deg, ${hex}, #ffffff 45%, ${hex})` : hex }}
-    />
+      className="tactile -m-1 grid place-items-center p-1"
+    >
+      <span
+        className={cn(
+          "block size-9 rounded-xl border-2 border-ink ring-offset-2 ring-offset-paper transition-shadow",
+          active && "ring-2 ring-ink",
+        )}
+        style={{ background: silk ? `linear-gradient(135deg, ${hex}, #ffffff 45%, ${hex})` : hex }}
+      />
+    </button>
   );
 }
 

@@ -18,7 +18,7 @@ const buttonVariants = cva(
         carbon: "border-2 border-carbon-line bg-carbon-2 text-white hover:border-flame/60",
       },
       size: {
-        sm: "h-9 px-4 text-[0.8125rem] [&_svg]:size-4",
+        sm: "h-10 px-4 text-[0.8125rem] [&_svg]:size-4",
         md: "h-11 px-6 text-[0.9375rem] [&_svg]:size-4",
         lg: "h-14 px-8 text-base [&_svg]:size-5",
         icon: "size-11 [&_svg]:size-5",

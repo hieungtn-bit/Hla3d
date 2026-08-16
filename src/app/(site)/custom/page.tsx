@@ -4,6 +4,7 @@ import { CustomStudio } from "@/components/custom/custom-studio";
 import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/custom" },
   title: "Make It Yours — Custom 3D Studio",
   description:
     "Design your own 3D printed name plate, bag tag or keychain. Pick the name, the colours, the style — see it in 3D before you order.",

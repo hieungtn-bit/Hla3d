@@ -78,6 +78,13 @@ export type Product = {
   makerNote: string;
   madeBy: string;
   features: string[];
+  /**
+   * Factual cautions only. We do not hold any toy-safety certification, so
+   * nothing here may read as one — no "child-safe", no certified age rating,
+   * no food-safe claim. State what the object physically is and let the
+   * parent decide.
+   */
+  safety: string[];
 };
 
 export const products: Product[] = [
@@ -98,17 +105,22 @@ export const products: Product[] = [
     weight: "~38g",
     customizable: true,
     badge: "BEST SELLER",
-    tagline: "Your name, 12 millimetres thick.",
+    tagline: "Tên của bạn, dày 12 milimét.",
     description:
-      "A solid two-tone desk plate with your name raised off the base. We print the base first, pause the machine, swap the filament, and let the letters finish in a second colour. It stands up on its own and does not slide.",
+      "Bảng tên hai màu, chữ nổi hẳn lên khỏi đế. Tụi em in đế trước, dừng máy, đổi cuộn nhựa, rồi để phần chữ in tiếp bằng màu thứ hai. Bảng tự đứng được và không trượt trên bàn.",
     makerNote:
       "Bài học đầu tiên của tụi em: chữ 'Ư' và 'Ơ' rất dễ bị dính. Bây giờ tụi em đã in được tiếng Việt có dấu đầy đủ.",
-    madeBy: "Designed by Maker #02 · Printed by Maker #01",
+    madeBy: "Long thiết kế · Hưng in",
     features: [
-      "Vietnamese diacritics supported",
-      "Two-colour filament swap mid-print",
-      "Felt pads on the base",
-      "Up to 14 characters at this price",
+      "In được tiếng Việt có dấu đầy đủ",
+      "Đổi màu nhựa giữa chừng để chữ khác màu đế",
+      "Dán nỉ dưới đế",
+      "Tối đa 14 ký tự với giá này",
+    ],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Cạnh được chà nhám, nhưng vẫn là nhựa cứng — không phải đồ chơi cho bé nhỏ.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
     ],
   },
   {
@@ -125,13 +137,18 @@ export const products: Product[] = [
     material: "PLA+",
     size: "78 × 70 × 92 mm",
     weight: "~42g",
-    tagline: "Holds your phone at exactly the right angle.",
+    tagline: "Giữ điện thoại đúng góc nhìn.",
     description:
-      "A single-piece stand with a 62° viewing angle and a channel underneath so the charging cable runs through the back. Tested with cases on — it does not tip when you tap the screen.",
+      "Giá liền khối, nghiêng 62 độ, có rãnh luồn dây sạc ra phía sau. Tụi em đã thử với điện thoại có ốp — bấm mạnh vào màn hình cũng không đổ.",
     makerNote:
       "Tụi em thử 4 góc nghiêng khác nhau. Góc 62° là góc duy nhất mà điện thoại không bị đổ khi bấm mạnh.",
-    madeBy: "Designed by Maker #02 · Tested by Maker #03",
-    features: ["Cable pass-through", "Works with thick cases", "Non-slip base ridges", "62° viewing angle"],
+    madeBy: "Long thiết kế · Anh thử",
+    features: ["Có rãnh luồn dây sạc", "Dùng được với ốp dày", "Gờ chống trượt dưới đế", "Góc nghiêng 62 độ"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Đồ để bàn, không phải đồ chơi.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p03",
@@ -147,13 +164,18 @@ export const products: Product[] = [
     material: "PLA+",
     size: "120 × 110 × 250 mm",
     weight: "~165g",
-    tagline: "An arch that keeps your headband happy.",
+    tagline: "Vòm đỡ để tai nghe không bị móp.",
     description:
-      "A wide, rounded arch that spreads the weight of the headband instead of denting it. The base is weighted with a hidden chamber you can fill with coins or sand so it never topples.",
+      "Vòm rộng và tròn nên trải đều sức nặng của tai nghe thay vì tạo vết lõm. Đế có khoang rỗng giấu bên trong, đổ xu hoặc cát vào là không bao giờ đổ.",
     makerNote:
       "Đây là sản phẩm khó nhất của tụi em. Ba lần đầu bị gãy ở cổ. Tụi em phải tăng độ dày tường lên 3 lớp.",
-    madeBy: "Designed by Maker #01 · Reinforced by Dad",
-    features: ["Weighted hidden chamber", "Wide 40mm headband rest", "3-wall reinforced neck", "Cable hook on the side"],
+    madeBy: "Hưng thiết kế · Ba gia cố",
+    features: ["Khoang giấu để tăng trọng lượng", "Chỗ đỡ rộng 40mm", "Cổ gia cố 3 lớp tường", "Móc treo dây bên hông"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Khoang đáy có thể bỏ vật nặng vào — người lớn nên là người làm việc đó.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p04",
@@ -170,13 +192,18 @@ export const products: Product[] = [
     size: "240 mm khi duỗi thẳng",
     weight: "~55g",
     badge: "MAKER FAVOURITE",
-    tagline: "Printed in one piece. Moves like it was assembled.",
+    tagline: "In liền một khối. Vẫn cử động như đồ lắp ráp.",
     description:
-      "28 linked segments, printed together in a single job with no glue and no screws. It coils around a wrist, a pen or a monitor stand. Print-in-place is the trick every maker wants to learn first.",
+      "28 đốt nối nhau, in một lần duy nhất, không keo không ốc. Quấn được quanh cổ tay, cây bút hay chân màn hình. In-liền-khối là kỹ thuật mà ai mới in 3D cũng muốn học đầu tiên.",
     makerNote:
       "Con rồng đầu tiên bị dính hết các khớp. Tụi em phải chỉnh khe hở từ 0.2mm lên 0.3mm mới bẻ được.",
-    madeBy: "Printed by Maker #01 · Bent 40 times by Maker #03",
-    features: ["Print-in-place, zero assembly", "28 articulated segments", "0.3mm joint clearance", "Fidget-safe, no small loose parts"],
+    madeBy: "Hưng in · Anh bẻ thử 40 lần",
+    features: ["In liền khối, không phải lắp gì", "28 đốt cử động được", "Khe hở khớp 0,3mm", "Không có mảnh nào tháo rời ra được"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "In liền khối, không có mảnh rời. Bẻ quá mạnh thì khớp có thể gãy và tạo mảnh nhỏ.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p05",
@@ -192,13 +219,18 @@ export const products: Product[] = [
     material: "PLA",
     size: "110 × 110 × 60 mm",
     weight: "~40g",
-    tagline: "Eight arms. Zero glue. Six failed attempts.",
+    tagline: "Tám cái tay. Không giọt keo. Sáu lần in hỏng.",
     description:
-      "Eight independently articulated arms that curl over a desk edge or a bag strap. Small enough to travel, heavy enough to feel like a real object rather than a party favour.",
+      "Tám cái tay cử động độc lập, vắt được qua mép bàn hay quai cặp. Đủ nhỏ để mang đi, nhưng cầm lên vẫn thấy chắc tay chứ không hẫng như đồ chơi rẻ tiền.",
     makerNote:
       "Bạch tuộc là sản phẩm thất bại nhiều nhất của tụi em — 6 lần hỏng. Tụi em đã viết một bài trong Journal về chuyện này.",
-    madeBy: "Rescued by Maker #03 after six failures",
-    features: ["8 articulated arms", "Curls over a desk edge", "Sanded contact points", "Ages 4+"],
+    madeBy: "Anh cứu được sau 6 lần in hỏng",
+    features: ["8 tay cử động được", "Vắt được qua mép bàn", "Các điểm tiếp xúc được chà nhám", "Tám tay in liền một khối"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Tám tay in liền, không tháo rời được. Người lớn nên ngồi cùng khi bé dưới 3 tuổi chơi.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p06",
@@ -214,12 +246,17 @@ export const products: Product[] = [
     material: "PLA",
     size: "55 × 45 × 70 mm",
     weight: "~22g",
-    tagline: "A small character that holds one very important note.",
+    tagline: "Bạn nhỏ giữ giùm một tờ giấy quan trọng.",
     description:
-      "A rounded little figure with a slot in its arms for a note, a photo, or a business card. It is the first thing all three makers agreed on without arguing.",
+      "Một bạn nhỏ tròn trịa, hai tay có khe kẹp để nhét tờ ghi chú, tấm ảnh hay danh thiếp. Đây là món duy nhất cả ba anh em đồng ý ngay mà không cãi nhau.",
     makerNote: "Đây là món đầu tiên tụi em bán được cho một người không phải họ hàng.",
-    madeBy: "Designed together by all three makers",
-    features: ["Note / card slot", "Prints without supports", "Five personalities in the works", "Fits in a pocket"],
+    madeBy: "Cả ba anh em cùng thiết kế",
+    features: ["Có khe kẹp giấy", "In không cần chân đỡ", "Đang vẽ thêm 5 tính cách nữa", "Bỏ vừa túi áo"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Cao khoảng 70mm, không có chi tiết rời.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p07",
@@ -235,12 +272,17 @@ export const products: Product[] = [
     material: "PLA+",
     size: "90 × 30 × 18 mm",
     weight: "~14g",
-    tagline: "Five slots. No more spaghetti behind the desk.",
+    tagline: "Năm rãnh. Hết cảnh dây rối như mì.",
     description:
-      "A weighted comb with five tapered slots that grip cables of different thickness — USB-C, lightning, HDMI and the fat laptop charger. Adhesive pad included.",
+      "Một cái lược có năm rãnh thóp dần, kẹp được dây to nhỏ khác nhau — USB-C, lightning, HDMI và cả cục sạc laptop mập. Có sẵn miếng dán.",
     makerNote: "Món dễ in nhất trong shop. Maker #03 in được một mình (Ba vẫn đứng cạnh).",
-    madeBy: "Printed solo by Maker #03",
-    features: ["5 tapered slots", "3M adhesive pad included", "Sold in packs of 2", "Prints in 45 minutes"],
+    madeBy: "Anh in một mình (Ba vẫn đứng cạnh)",
+    features: ["5 rãnh thóp dần", "Kèm miếng dán 3M", "Bán theo cặp 2 cái", "In xong trong 45 phút"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Có keo dán 3M đi kèm — phần dán nên để người lớn làm.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p08",
@@ -256,12 +298,17 @@ export const products: Product[] = [
     material: "PLA+",
     size: "Ø85 × 100 mm",
     weight: "~90g",
-    tagline: "A spiral vase-mode cup that took three tries to get smooth.",
+    tagline: "Ống xoắn ốc, in ba lần mới mịn.",
     description:
-      "Printed in vase mode — one continuous spiral wall from base to rim, with no seam. The ribbed surface catches the light and hides fingerprints. Heavier than it looks.",
+      "In kiểu vase mode — một đường xoắn ốc duy nhất từ đáy lên miệng, không có mối nối nào. Mặt ngoài có gân nên bắt sáng đẹp và không lộ vân tay. Cầm nặng hơn nhìn.",
     makerNote: "Vase mode nghĩa là máy in chỉ đi một đường xoắn ốc duy nhất. Không có mối nối nào cả.",
-    madeBy: "Sliced by Maker #02 with Dad",
-    features: ["Seamless vase-mode spiral", "Ribbed anti-fingerprint wall", "Cork pad under the base", "Also works for brushes"],
+    madeBy: "Long cắt lớp cùng Ba",
+    features: ["Xoắn ốc liền mạch, không mối nối", "Thành có gân, không lộ vân tay", "Lót bần dưới đáy", "Cắm cọ vẽ cũng được"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Thành ống mỏng, rơi mạnh có thể nứt.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p09",
@@ -277,12 +324,17 @@ export const products: Product[] = [
     material: "PLA+",
     size: "150 × 62 × 48 mm",
     weight: "~70g",
-    tagline: "Angular, stubborn and it actually rolls.",
+    tagline: "Góc cạnh, lì lợm, và chạy được thật.",
     description:
-      "Four free-spinning wheels on printed axles, a flat angular body and a tailgate that opens. Printed in two parts so the panel lines stay sharp instead of blobby.",
+      "Bốn bánh quay tự do trên trục in sẵn, thân xe phẳng góc cạnh, thùng sau mở được. In làm hai phần để các đường viền sắc nét chứ không bị nhoè.",
     makerNote: "Bánh xe quay được là phần khó nhất. Khe hở phải đúng 0.25mm.",
-    madeBy: "Designed by Maker #01 · Wheels tuned by Maker #02",
-    features: ["4 rolling printed wheels", "Opening tailgate", "Two-part print, sharp edges", "No batteries, ever"],
+    madeBy: "Hưng thiết kế · Long chỉnh bánh xe",
+    features: ["4 bánh in sẵn, lăn được", "Thùng sau mở ra được", "In hai phần nên cạnh sắc", "Không pin, không sạc"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Bánh xe quay được nhưng không tháo rời. In hai phần, ghép chặt.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p10",
@@ -299,12 +351,17 @@ export const products: Product[] = [
     material: "PLA",
     size: "45 – 60 mm cao",
     weight: "~18g mỗi con",
-    tagline: "A small herd, printed one at a time.",
+    tagline: "Một đàn thú nhỏ, in từng con một.",
     description:
-      "Chunky low-poly animals sized for small hands and shelf edges. Buy them singly or as a set of four. Each one prints flat on its base with no supports and no stringy bits to trim.",
+      "Mấy con thú low-poly mập mạp, vừa tay cầm và vừa mép kệ. Mua lẻ từng con hoặc trọn bộ bốn con. Con nào cũng in đứng thẳng trên đáy, không cần chân đỡ và không có sợi nhựa thừa phải cắt.",
     makerNote: "Tụi em chọn kiểu low-poly vì in ra sắc nét hơn và không bị 'lông' như hình tròn.",
-    madeBy: "Curated by Maker #03",
-    features: ["Low-poly, support-free", "Sold singly or as a set of 4", "Smooth sanded bases", "Ages 3+"],
+    madeBy: "Anh chọn mẫu",
+    features: ["Kiểu low-poly, in không cần chân đỡ", "Bán lẻ hoặc trọn bộ 4 con", "Đáy được chà nhám phẳng"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Cao 45–60mm và không có chi tiết rời, nhưng cả con vẫn đủ nhỏ để bé dưới 3 tuổi cho vào miệng — người lớn cân nhắc trước khi mua cho bé nhỏ.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p11",
@@ -321,12 +378,17 @@ export const products: Product[] = [
     size: "78 × 42 × 5 mm",
     weight: "~9g",
     customizable: true,
-    tagline: "So the school bag comes home again.",
+    tagline: "Để cái cặp còn biết đường về nhà.",
     description:
-      "A tough two-colour tag with a raised name on the front and space for a phone number on the back. The loop is reinforced — it is the part that always breaks on shop-bought tags.",
+      "Thẻ hai màu chắc chắn, mặt trước chữ nổi, mặt sau chừa chỗ ghi số điện thoại. Cái móc được gia cố — vì đó chính là chỗ hay gãy nhất ở thẻ mua ngoài tiệm.",
     makerNote: "Cái móc là chỗ dễ gãy nhất. Tụi em in thử 3 kiểu móc trước khi chọn kiểu này.",
-    madeBy: "Designed by Maker #02",
-    features: ["Reinforced loop", "Name front, number back", "Steel split ring included", "Survives a washing machine"],
+    madeBy: "Long thiết kế",
+    features: ["Móc được gia cố", "Tên mặt trước, số mặt sau", "Kèm khoen sắt", "Đã thử giặt máy một lần, thẻ không sao"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Đi kèm khoen sắt rời — người lớn nên lắp giúp.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p12",
@@ -343,12 +405,17 @@ export const products: Product[] = [
     size: "50 × 22 × 4 mm",
     weight: "~6g",
     customizable: true,
-    tagline: "The cheapest way to hold something we made.",
+    tagline: "Cách rẻ nhất để cầm một món tụi em làm.",
     description:
-      "A small personalised tag on a metal ring. Choose a name, a word, an initial or a tiny icon. This is the product most people buy first, and the one that brings them back.",
+      "Một cái thẻ nhỏ in riêng, gắn khoen sắt. Chọn một cái tên, một chữ, một chữ cái đầu hoặc một hình nhỏ. Đây là món nhiều người mua đầu tiên nhất, và cũng là món kéo họ quay lại.",
     makerNote: "Món này rẻ nhất nhưng dạy tụi em nhiều nhất về giá bán và lợi nhuận.",
-    madeBy: "Printed in batches of 12 by Maker #03",
-    features: ["Name, word or initial", "Metal split ring", "Batch printed, ships fast", "Great party favour"],
+    madeBy: "Anh in theo lô 12 cái",
+    features: ["In tên, một chữ hoặc chữ cái đầu", "Kèm khoen sắt", "In theo lô nên gửi nhanh", "Làm quà sinh nhật rất hợp"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Đi kèm khoen sắt rời, là chi tiết nhỏ. Không phải đồ chơi.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p13",
@@ -364,12 +431,17 @@ export const products: Product[] = [
     material: "PLA+",
     size: "95 × 55 × 40 mm",
     weight: "~48g",
-    tagline: "A quiet wedge for business cards or SD cards.",
+    tagline: "Cái nêm nhỏ, đựng danh thiếp hoặc thẻ nhớ.",
     description:
-      "A minimal angled wedge with two slots — one wide for cards, one narrow for memory cards or SIM trays. Matte finish, flat bottom, no logo shouting at you.",
+      "Một khối nêm nghiêng tối giản với hai khe — khe rộng đựng danh thiếp, khe hẹp đựng thẻ nhớ hoặc khay SIM. Bề mặt nhám, đáy phẳng, không có logo nào chình ình.",
     makerNote: "Ba nói kệ này phải 'lịch sự' vì để trên bàn làm việc của người lớn. Tụi em bỏ hết chi tiết vui nhộn.",
-    madeBy: "Restrained by Maker #02",
-    features: ["Two-slot design", "Matte top surface", "Fits ~40 cards", "Adult-desk approved"],
+    madeBy: "Long thiết kế, cố tình làm cho đơn giản",
+    features: ["Thiết kế hai khe", "Mặt trên nhám", "Đựng khoảng 40 tấm", "Đủ lịch sự cho bàn làm việc"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Đồ để bàn cho người lớn, không phải đồ chơi.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p14",
@@ -386,13 +458,18 @@ export const products: Product[] = [
     size: "70 × 70 × 70 mm",
     weight: "~85g",
     badge: "HARDEST TO PRINT",
-    tagline: "Six pieces. One solution. A lot of tolerance testing.",
+    tagline: "Sáu mảnh. Một lời giải. Rất nhiều lần đo lại.",
     description:
-      "An interlocking burr puzzle where the pieces slide together in exactly one order. Getting printed parts to slide — not jam, not rattle — is the single hardest thing on this shop page.",
+      "Một bộ đố gỗ kiểu khoá nhau, các mảnh chỉ ráp vừa theo đúng một thứ tự duy nhất. Làm cho các mảnh in ra trượt được — không kẹt, không lỏng lẻo — là thứ khó nhất trong cả cửa hàng này.",
     makerNote:
       "Tụi em phải in 11 bộ mới ra bộ đầu tiên lắp vừa. Đây là bài học lớn nhất về dung sai (tolerance).",
-    madeBy: "11 failed sets before this one · all three makers",
-    features: ["6 interlocking pieces", "0.15mm tolerance, tested", "Solution card included", "Ages 8+ (adults struggle too)"],
+    madeBy: "11 bộ hỏng mới ra bộ này · cả ba anh em",
+    features: ["6 mảnh khoá vào nhau", "Dung sai 0,15mm, đã thử kỹ", "Kèm tờ hướng dẫn giải", "Người lớn giải cũng toát mồ hôi"],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Gồm 6 mảnh rời, mỗi mảnh nhỏ — không hợp cho bé dưới 3 tuổi.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
+    ],
   },
   {
     id: "p15",
@@ -411,16 +488,21 @@ export const products: Product[] = [
     weight: "~210g",
     customizable: true,
     badge: "GIFT READY",
-    tagline: "A name plate, a keychain and a desk buddy in one box.",
+    tagline: "Bảng tên, móc khoá và bạn nhỏ trong một hộp.",
     description:
-      "Our three most personal prints, matched in one colour family, packed in a printed-lid box with a handwritten card from the makers. Made to order — tell us the name and we will do the rest.",
+      "Ba món cá nhân nhất của tụi em, phối cùng một tông màu, đóng trong hộp có nắp in sẵn kèm tấm thiệp viết tay. Làm theo đơn — bạn cho tụi em cái tên, phần còn lại tụi em lo.",
     makerNote: "Tấm thiệp trong hộp là do tụi em tự viết tay. Mỗi hộp một tấm khác nhau.",
-    madeBy: "Packed by all three makers",
+    madeBy: "Ba anh em cùng đóng gói",
     features: [
-      "Name plate + keychain + desk buddy",
-      "Matched colour family",
-      "Handwritten card from the makers",
-      "Made to order, 3–5 days",
+      "Bảng tên + móc khoá + bạn nhỏ để bàn",
+      "Phối cùng một tông màu",
+      "Kèm thiệp do ba anh em viết tay",
+      "Làm theo đơn, 3–5 ngày",
+    ],
+    safety: [
+      "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
+      "Trong hộp có móc khoá kèm khoen sắt rời — chi tiết nhỏ.",
+      "Tụi em tự in tại nhà, chưa có chứng nhận an toàn đồ chơi nào.",
     ],
   },
 ];

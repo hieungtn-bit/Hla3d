@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, Minus, Plus, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { AlertTriangle, Check, Minus, Package, Plus, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { filaments, type Product } from "@/data/products";
 import { ProductVisual } from "@/components/products/product-visual";
 import { ColorDots } from "@/components/products/color-dots";
@@ -73,7 +73,7 @@ export function ProductDetail({ product }: { product: Product }) {
         </div>
 
         <p className="mt-4 text-center text-xs text-ink-3">
-          Renders show the real shape and the real filament colour. We photograph every order before it ships.
+          Hình minh hoạ đúng hình dáng và đúng màu nhựa. Tụi em chụp ảnh thật từng đơn trước khi gửi.
         </p>
       </div>
 
@@ -96,7 +96,7 @@ export function ProductDetail({ product }: { product: Product }) {
         {/* colours */}
         <div className="mt-8">
           <div className="flex items-center justify-between">
-            <span className="eyebrow text-ink-3">Filament colour</span>
+            <span className="eyebrow text-ink-3">Màu nhựa</span>
             <span className="text-sm font-medium text-ink">{filament.name}</span>
           </div>
           <ColorDots colors={product.colors} active={color} onSelect={setColor} className="mt-3" />
@@ -128,10 +128,10 @@ export function ProductDetail({ product }: { product: Product }) {
             {added ? (
               <>
                 <Check className="size-5" />
-                ADDED
+                ĐÃ THÊM
               </>
             ) : (
-              <>ADD TO CART · {formatVnd(product.price * qty)}</>
+              <>THÊM VÀO GIỎ · {formatVnd(product.price * qty)}</>
             )}
           </Button>
 
@@ -139,31 +139,47 @@ export function ProductDetail({ product }: { product: Product }) {
             <Link href={`/custom?product=${product.slug}`} className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full">
                 <Sparkles className="size-4" />
-                CUSTOMIZE
+                TỰ THIẾT KẾ
               </Button>
             </Link>
           )}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-ink-3">
-          <span className="inline-flex items-center gap-1.5">
-            <Truck className="size-3.5" /> Made to order · 3–5 ngày
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck className="size-3.5" /> Broken on arrival? We reprint it.
-          </span>
-        </div>
+        {/* Order & delivery — the block an adult scans before paying. */}
+        <dl className="mt-6 grid gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink sm:grid-cols-3">
+          <div className="bg-surface p-4">
+            <dt className="flex items-center gap-1.5 text-ink-3">
+              <Package className="size-3.5" />
+              <span className="eyebrow">Làm theo đơn</span>
+            </dt>
+            <dd className="mt-2 text-sm font-bold text-ink">3–5 ngày</dd>
+          </div>
+          <div className="bg-surface p-4">
+            <dt className="flex items-center gap-1.5 text-ink-3">
+              <Truck className="size-3.5" />
+              <span className="eyebrow">Giao hàng</span>
+            </dt>
+            <dd className="mt-2 text-sm font-bold text-ink">Toàn quốc, phí tính khi đặt</dd>
+          </div>
+          <div className="bg-surface p-4">
+            <dt className="flex items-center gap-1.5 text-ink-3">
+              <ShieldCheck className="size-3.5" />
+              <span className="eyebrow">Hỏng khi nhận</span>
+            </dt>
+            <dd className="mt-2 text-sm font-bold text-ink">Tụi em in lại</dd>
+          </div>
+        </dl>
 
         {/* maker note */}
         <blockquote className="mt-9 rounded-[var(--radius-card)] border border-flame/20 bg-flame-tint p-6">
-          <span className="eyebrow text-flame-2">Note from the makers</span>
+          <span className="eyebrow text-flame-2">Lời nhắn của ba anh em</span>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">{product.makerNote}</p>
           <footer className="mt-4 text-xs text-ink-2">{product.madeBy}</footer>
         </blockquote>
 
         {/* description */}
         <div className="mt-9">
-          <h2 className="font-display text-lg font-bold tracking-tight">About this print</h2>
+          <h2 className="font-display text-xl font-extrabold">Về món này</h2>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{product.description}</p>
           <ul className="mt-5 space-y-2.5">
             {product.features.map((f) => (
@@ -175,13 +191,29 @@ export function ProductDetail({ product }: { product: Product }) {
           </ul>
         </div>
 
+        {/* safety — factual cautions, never a certification claim */}
+        <section className="mt-9 rounded-[var(--radius-card)] border-2 border-ink bg-sun-tint p-6">
+          <h2 className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
+            <AlertTriangle className="size-5" aria-hidden />
+            Trước khi mua, ba mẹ đọc giúp
+          </h2>
+          <ul className="mt-4 space-y-2.5">
+            {product.safety.map((note) => (
+              <li key={note} className="flex gap-2.5 text-sm leading-relaxed text-ink-2">
+                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-ink/40" />
+                {note}
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* specs */}
-        <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line">
+        <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border-2 border-ink bg-ink">
           {[
-            { label: "Material", value: product.material },
-            { label: "Print time", value: product.printTime },
-            { label: "Size", value: product.size },
-            { label: "Weight", value: product.weight },
+            { label: "Chất liệu", value: product.material },
+            { label: "Thời gian in", value: product.printTime },
+            { label: "Kích thước", value: product.size },
+            { label: "Cân nặng", value: product.weight },
           ].map((spec) => (
             <div key={spec.label} className="bg-surface p-4">
               <dt className="eyebrow text-ink-3">{spec.label}</dt>

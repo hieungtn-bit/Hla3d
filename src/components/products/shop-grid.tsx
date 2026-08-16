@@ -18,7 +18,7 @@ export function ShopGrid() {
   return (
     <div>
       {/* ---- filters --------------------------------------------------- */}
-      <div className="sticky top-16 z-40 -mx-5 border-b border-line/60 bg-paper/85 px-5 py-4 backdrop-blur-xl sm:top-18 sm:-mx-8 sm:px-8">
+      <div className="sticky top-16 z-40 -mx-5 border-b-2 border-ink bg-paper/95 px-5 py-4 backdrop-blur-xl sm:top-18 sm:-mx-8 sm:px-8">
         <div className="hide-scrollbar flex items-center gap-2 overflow-x-auto">
           <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
             TẤT CẢ
@@ -41,12 +41,11 @@ export function ShopGrid() {
       </p>
 
       {/* ---- grid ------------------------------------------------------ */}
-      <motion.div layout className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <AnimatePresence mode="popLayout">
           {visible.map((product) => (
             <motion.div
               key={product.id}
-              layout={!reduce}
               initial={reduce ? false : { opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
@@ -56,7 +55,7 @@ export function ShopGrid() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </div>
   );
 }

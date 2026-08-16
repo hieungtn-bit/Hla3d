@@ -112,16 +112,16 @@ export function CartDrawer() {
                               type="button"
                               aria-label="Decrease quantity"
                               onClick={() => cart.setQty(line.key, line.qty - 1)}
-                              className="tactile grid size-6 place-items-center rounded-full hover:bg-paper-2"
+                              className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
                             >
                               <Minus className="size-3" />
                             </button>
-                            <span className="w-5 text-center font-mono text-xs">{line.qty}</span>
+                            <span className="w-6 text-center font-mono text-sm font-bold">{line.qty}</span>
                             <button
                               type="button"
                               aria-label="Increase quantity"
                               onClick={() => cart.setQty(line.key, line.qty + 1)}
-                              className="tactile grid size-6 place-items-center rounded-full hover:bg-paper-2"
+                              className="tactile grid size-10 place-items-center rounded-full hover:bg-paper-2"
                             >
                               <Plus className="size-3" />
                             </button>

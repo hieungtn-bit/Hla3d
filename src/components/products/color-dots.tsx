@@ -17,7 +17,7 @@ export function ColorDots({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-wrap items-center gap-2", className)}>
+    <div className={cn("flex flex-wrap items-center gap-4", className)}>
       {colors.map((key) => {
         const f = filaments[key];
         if (!f) return null;
@@ -30,17 +30,23 @@ export function ColorDots({
             aria-label={f.name}
             aria-pressed={isActive}
             title={f.name}
-            className={cn(
-              "tactile relative rounded-full border-2 border-ink ring-offset-2 ring-offset-surface transition-[box-shadow,transform]",
-              size === "sm" ? "size-5" : "size-6",
-              isActive && "ring-2 ring-ink",
-            )}
-            style={{
-              background: f.silk
-                ? `linear-gradient(135deg, ${f.hex}, #ffffff 42%, ${f.hex})`
-                : f.hex,
-            }}
-          />
+            // The visible dot stays small; padding grows the touch target to
+            // ~44px without changing the layout (negative margin absorbs it).
+            className="tactile -m-2 grid place-items-center p-2"
+          >
+            <span
+              className={cn(
+                "block rounded-full border-2 border-ink ring-offset-2 ring-offset-surface transition-[box-shadow]",
+                size === "sm" ? "size-5" : "size-6",
+                isActive && "ring-2 ring-ink",
+              )}
+              style={{
+                background: f.silk
+                  ? `linear-gradient(135deg, ${f.hex}, #ffffff 42%, ${f.hex})`
+                  : f.hex,
+              }}
+            />
+          </button>
         );
       })}
     </div>

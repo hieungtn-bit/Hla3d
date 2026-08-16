@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getProduct, getRelated, products } from "@/data/products";
 import { site } from "@/data/site";
-import { siteUrl } from "@/lib/site-url";
+import { absoluteUrl } from "@/lib/site-url";
 import { ProductDetail } from "@/components/products/product-detail";
 import { ProductCard } from "@/components/products/product-card";
 import { Reveal } from "@/components/motion/reveal";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/structured-data";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -25,11 +26,13 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: `${product.tagline} ${product.description.slice(0, 120)}…`,
+    alternates: { canonical: `/shop/${product.slug}` },
     openGraph: {
       title: `${product.name} — HLA3D`,
       description: product.tagline,
       type: "website",
-      url: `${siteUrl()}/shop/${product.slug}`,
+      url: absoluteUrl(`/shop/${product.slug}`),
+      images: ["/og.png"],
     },
   };
 }
@@ -55,16 +58,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       price: product.price,
       priceCurrency: "VND",
       availability: "https://schema.org/MadeToOrder",
-      url: `${siteUrl()}/shop/${product.slug}`,
+      url: absoluteUrl(`/shop/${product.slug}`),
       seller: { "@type": "Organization", name: site.name },
     },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Trang chủ", path: "/" },
+          { name: "Cửa hàng", path: "/shop" },
+          { name: product.name, path: `/shop/${product.slug}` },
+        ])}
       />
 
       <div className="container-hla py-10 sm:py-14">
@@ -73,7 +80,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           className="inline-flex items-center gap-2 text-sm font-medium text-ink-2 transition-colors hover:text-flame"
         >
           <ArrowLeft className="size-4" />
-          Back to shop
+          Về cửa hàng
         </Link>
 
         <div className="mt-8">
@@ -83,7 +90,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="border-t border-line bg-paper-2 py-20">
         <div className="container-hla">
-          <h2 className="display text-[clamp(1.75rem,4vw,2.5rem)]">MORE FROM THE LAB</h2>
+          <h2 className="display text-[clamp(1.75rem,4vw,2.5rem)]">MÓN KHÁC TỪ XƯỞNG</h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p, i) => (
               <Reveal key={p.id} delay={i * 0.06}>

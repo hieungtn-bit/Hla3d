@@ -9,6 +9,7 @@ import { filamentStock, labStats, printQueue, printers, safetyRules } from "@/da
 import { printer as printerSpec } from "@/data/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/lab" },
   title: "The Lab",
   description:
     "Inside the HLA3D mini factory: one Anycubic Kobra X, a print queue, a filament shelf and a set of safety rules on the wall.",

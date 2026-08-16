@@ -3,6 +3,7 @@ import { ShopGrid } from "@/components/products/shop-grid";
 import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/shop" },
   title: "Shop",
   description:
     "Desk objects, flexi toys, custom name plates and gifts — all designed and 3D printed by three young makers in Vietnam.",

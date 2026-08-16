@@ -46,7 +46,7 @@ export function DadSection() {
                 href="/about#safety"
                 className="mt-4 inline-flex items-center gap-1.5 font-display text-sm font-bold tracking-tight text-flame hover:underline"
               >
-                Read the safety rules →
+                Đọc luật an toàn →
               </Link>
             </div>
           </Reveal>
