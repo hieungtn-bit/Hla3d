@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/logo";
-import { goal, nav, site } from "@/data/site";
+import { contact, goal, nav, site } from "@/data/site";
 import { toPercent } from "@/lib/utils";
 
 const secondary = [
@@ -30,15 +30,28 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
               Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Một chiếc máy in 3D đặt ở góc nhà.
             </p>
-            <p className="mt-5 text-sm text-white/50">
-              Cần hỏi gì về đơn hàng?{" "}
-              <a
-                href="mailto:Hieungtn@gmail.com"
-                className="font-bold text-sun underline underline-offset-4 hover:text-flame"
-              >
-                Nhắn cho mẹ Hiếu
-              </a>
-            </p>
+            <div className="mt-5 space-y-1.5 text-sm text-white/60">
+              <p className="font-bold text-white">Đặt hàng hoặc hỏi gì cứ gọi</p>
+              <p>
+                <a href={contact.tel} className="font-display text-xl font-extrabold text-sun hover:text-flame">
+                  {contact.phoneDisplay}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={contact.zalo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 hover:text-sun"
+                >
+                  Nhắn Zalo
+                </a>
+                {" · "}
+                <a href="mailto:Hieungtn@gmail.com" className="underline underline-offset-4 hover:text-sun">
+                  Email
+                </a>
+              </p>
+            </div>
           </div>
 
           <nav aria-label="Shop">

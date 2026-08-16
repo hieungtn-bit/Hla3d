@@ -3,15 +3,20 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { AlertTriangle, Check, Minus, Package, Plus, ShieldCheck, Sparkles, Truck } from "lucide-react";
-import { filaments, type Product } from "@/data/products";
+import { AlertTriangle, Check, MessageCircle, Minus, Package, Phone, Plus, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { categories, filaments, type Product } from "@/data/products";
 import { ProductVisual } from "@/components/products/product-visual";
 import { ColorDots } from "@/components/products/color-dots";
 import { MakerRating } from "@/components/products/maker-rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
+import { contact } from "@/data/site";
 import { formatVnd } from "@/lib/utils";
+
+function categoryLabel(id: Product["category"]) {
+  return categories.find((c) => c.id === id)?.label ?? id.toUpperCase();
+}
 
 export function ProductDetail({ product }: { product: Product }) {
   const [color, setColor] = React.useState(product.colors[0]);
@@ -80,7 +85,7 @@ export function ProductDetail({ product }: { product: Product }) {
       {/* ---- info ------------------------------------------------------ */}
       <div>
         <div className="flex items-center gap-3">
-          <Badge variant="tint">{product.category.toUpperCase()}</Badge>
+          <Badge variant="tint">{categoryLabel(product.category)}</Badge>
           <MakerRating value={product.makerRating} />
         </div>
 
@@ -143,6 +148,32 @@ export function ProductDetail({ product }: { product: Product }) {
               </Button>
             </Link>
           )}
+        </div>
+
+        {/* Zero-typing path: for the buyer who will not fill in a form. */}
+        <div className="mt-5 rounded-[var(--radius-card)] border-2 border-dashed border-ink/30 bg-paper-2 p-4">
+          <p className="text-sm font-bold text-ink">Ngại điền form? Gọi hoặc nhắn là xong.</p>
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+            <a
+              href={contact.tel}
+              className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-flame font-display text-sm font-extrabold text-white"
+            >
+              <Phone className="size-4" aria-hidden />
+              GỌI {contact.phoneDisplay}
+            </a>
+            <a
+              href={contact.zalo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-sky font-display text-sm font-extrabold text-white"
+            >
+              <MessageCircle className="size-4" aria-hidden />
+              NHẮN ZALO
+            </a>
+          </div>
+          <p className="mt-2.5 text-xs text-ink-2">
+            Bạn chỉ cần đọc tên món — {contact.owner} ghi giúp phần còn lại.
+          </p>
         </div>
 
         {/* Order & delivery — the block an adult scans before paying. */}

@@ -18,6 +18,23 @@ export const site = {
   email: "hello@hla3d.vn",
 } as const;
 
+/**
+ * The zero-typing order path.
+ *
+ * Children browse; adults pay. For the adults who are least confident with a
+ * web form — and in Vietnam that is most first-time small-shop buyers — the
+ * shortest route to an order is a phone call or a Zalo message, not a field
+ * to fill in. This number is published deliberately for that reason.
+ */
+export const contact = {
+  phone: "0909475179",
+  phoneDisplay: "0909 475 179",
+  /** tel: works with the plain domestic number on every Vietnamese handset. */
+  tel: "tel:0909475179",
+  zalo: "https://zalo.me/0909475179",
+  owner: "mẹ Hiếu",
+} as const;
+
 /** The public goal that the whole homepage narrative hangs on. */
 export const goal = {
   label: "100 khách hàng đầu tiên",

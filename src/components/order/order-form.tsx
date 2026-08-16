@@ -2,13 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { AlertTriangle, Check, Loader2, Mail, ShoppingBag } from "lucide-react";
+import { AlertTriangle, Check, Loader2, Mail, MessageCircle, Phone, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { ORDER_INBOX } from "@/lib/order";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/field";
 import { ProductVisual } from "@/components/products/product-visual";
 import { formatVnd } from "@/lib/utils";
+import { contact } from "@/data/site";
 
 type Sent = { code: string; emailed: boolean; mailto: string };
 
@@ -225,6 +226,28 @@ export function OrderForm() {
           <p className="mt-2 text-center text-xs text-ink-3">
             Thông tin của bạn chỉ dùng để liên hệ và giao đơn hàng này.
           </p>
+
+          <div className="mt-7 border-t-2 border-dashed border-ink/25 pt-6">
+            <p className="text-center text-sm font-bold text-ink">Hoặc không cần điền gì cả</p>
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+              <a
+                href={contact.tel}
+                className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-flame font-display text-sm font-extrabold text-white"
+              >
+                <Phone className="size-4" aria-hidden />
+                GỌI {contact.phoneDisplay}
+              </a>
+              <a
+                href={contact.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-sky font-display text-sm font-extrabold text-white"
+              >
+                <MessageCircle className="size-4" aria-hidden />
+                NHẮN ZALO
+              </a>
+            </div>
+          </div>
         </div>
       </form>
 
