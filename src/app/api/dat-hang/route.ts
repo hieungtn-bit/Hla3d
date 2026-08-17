@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: process.env.ORDER_FROM_EMAIL ?? "HLA3D <onboarding@resend.dev>",
-        to: [ORDER_INBOX],
+        to: [ORDER_INBOX.toLowerCase()],
         reply_to: order.customer.email ? [order.customer.email] : undefined,
         subject: `Đơn hàng mới ${code} — ${order.customer.name}`,
         text,
@@ -65,6 +65,8 @@ export async function POST(request: Request) {
     });
 
     if (!res.ok) {
+      // Log the provider's reason verbatim. A rejected send is invisible to
+      // the customer, so this is the only trace of why an order never arrived.
       console.error(`[order] ${code} email failed: ${res.status} ${await res.text()}`);
       return NextResponse.json({ ok: true, code, emailed: false });
     }

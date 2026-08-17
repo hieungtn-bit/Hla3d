@@ -1,7 +1,14 @@
 import type { CartLine } from "@/lib/cart";
 
-/** Where every order lands. Kept server-side; never rendered into the page. */
-export const ORDER_INBOX = "Hieungtn@gmail.com";
+/**
+ * Where every order lands. Kept server-side; never rendered into the page.
+ *
+ * Lower-case on purpose. Resend compares the recipient against the account
+ * address literally, so "Hieungtn@gmail.com" is rejected with a 403 while
+ * "hieungtn@gmail.com" is accepted — a silent, total failure of order
+ * delivery that only shows up in the provider's response.
+ */
+export const ORDER_INBOX = "hieungtn@gmail.com";
 
 export type OrderCustomer = {
   name: string;

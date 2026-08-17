@@ -47,7 +47,7 @@ export function SiteFooter() {
                   Nhắn Zalo
                 </a>
                 {" · "}
-                <a href="mailto:Hieungtn@gmail.com" className="underline underline-offset-4 hover:text-sun">
+                <a href="mailto:hieungtn@gmail.com" className="underline underline-offset-4 hover:text-sun">
                   Email
                 </a>
               </p>
