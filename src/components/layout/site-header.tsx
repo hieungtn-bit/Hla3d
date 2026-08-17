@@ -8,6 +8,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import { nav } from "@/data/site";
 import { Logo } from "@/components/brand/logo";
 import { useCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -56,8 +57,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={cart.open}
-            aria-label={`Open basket, ${cart.count} items`}
+            onClick={() => {
+              track.openCart(cart.count, cart.subtotal);
+              cart.open();
+            }}
+            aria-label={`Mở giỏ hàng, ${cart.count} món`}
             className="sticker press relative grid size-10 place-items-center rounded-full bg-surface"
           >
             <ShoppingBag className="size-4" />
