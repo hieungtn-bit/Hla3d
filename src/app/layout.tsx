@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Baloo_2, JetBrains_Mono } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
+import { AnalyticsProvider } from "@/lib/analytics";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { site } from "@/data/site";
 import { JsonLd, organizationSchema, websiteSchema } from "@/components/seo/structured-data";
@@ -89,10 +90,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-full flex-col">
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
-        <CartProvider>
-          {children}
-          <CartDrawer />
-        </CartProvider>
+        <AnalyticsProvider>
+          <CartProvider>
+            {children}
+            <CartDrawer />
+          </CartProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );

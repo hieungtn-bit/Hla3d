@@ -2,6 +2,7 @@
 
 import { Phone, MessageCircle } from "lucide-react";
 import { contact } from "@/data/site";
+import { track } from "@/lib/analytics";
 
 /**
  * The zero-typing order path, pinned to the bottom on phones.
@@ -23,6 +24,7 @@ export function QuickOrderBar() {
       <div className="flex items-stretch gap-2 px-3 py-2.5">
         <a
           href={contact.tel}
+          onClick={() => track.contactTapped("phone", "bar")}
           className="sticker press flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-flame font-display text-base font-extrabold text-white"
         >
           <Phone className="size-5" aria-hidden />
@@ -30,6 +32,7 @@ export function QuickOrderBar() {
         </a>
         <a
           href={contact.zalo}
+          onClick={() => track.contactTapped("zalo", "bar")}
           target="_blank"
           rel="noopener noreferrer"
           className="sticker press flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-sky font-display text-base font-extrabold text-white"

@@ -8,6 +8,7 @@ import { filaments } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/field";
 import { useCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 import { cn, formatVnd } from "@/lib/utils";
 
 const PRODUCTS = {
@@ -64,6 +65,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
   }
 
   function order() {
+    track.customizeUsed(config.label, chars);
     cart.add({
       slug: productKey,
       name: `${config.label} — “${name.trim().toUpperCase()}”`,

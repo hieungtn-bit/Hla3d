@@ -11,6 +11,7 @@ import { MakerRating } from "@/components/products/maker-rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 import { contact } from "@/data/site";
 import { formatVnd } from "@/lib/utils";
 
@@ -26,7 +27,18 @@ export function ProductDetail({ product }: { product: Product }) {
   const reduce = useReducedMotion();
   const filament = filaments[color] ?? filaments.lava;
 
+  React.useEffect(() => {
+    track.viewProduct({ slug: product.slug, name: product.name, price: product.price });
+  }, [product.slug, product.name, product.price]);
+
   function addToCart() {
+    track.addToCart({
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      color: filament.name,
+      qty,
+    });
     cart.add(
       {
         slug: product.slug,
@@ -156,6 +168,7 @@ export function ProductDetail({ product }: { product: Product }) {
           <div className="mt-3 flex flex-col gap-2 sm:flex-row">
             <a
               href={contact.tel}
+              onClick={() => track.contactTapped("phone", "product")}
               className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-flame font-display text-sm font-extrabold text-white"
             >
               <Phone className="size-4" aria-hidden />
@@ -163,6 +176,7 @@ export function ProductDetail({ product }: { product: Product }) {
             </a>
             <a
               href={contact.zalo}
+              onClick={() => track.contactTapped("zalo", "product")}
               target="_blank"
               rel="noopener noreferrer"
               className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-sky font-display text-sm font-extrabold text-white"

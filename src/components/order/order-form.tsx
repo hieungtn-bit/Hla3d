@@ -10,6 +10,7 @@ import { Input, Label } from "@/components/ui/field";
 import { ProductVisual } from "@/components/products/product-visual";
 import { formatVnd } from "@/lib/utils";
 import { contact } from "@/data/site";
+import { track } from "@/lib/analytics";
 
 type Sent = { code: string; emailed: boolean; mailto: string };
 
@@ -49,6 +50,7 @@ export function OrderForm() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
+        track.orderFailed(String(data.error ?? "unknown"));
         setError(data.error ?? "Gửi đơn không thành công. Bạn thử lại giúp tụi em nhé.");
         setPending(false);
         window.setTimeout(() => errorRef.current?.focus(), 50);
@@ -72,9 +74,17 @@ export function OrderForm() {
         `Đơn hàng ${data.code} — ${customer.name}`,
       )}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
 
+      track.orderPlaced({
+        code: data.code,
+        items: cart.count,
+        subtotal: cart.subtotal,
+        emailed: Boolean(data.emailed),
+        hasAddress: customer.address.trim().length > 0,
+      });
       setSent({ code: data.code, emailed: Boolean(data.emailed), mailto });
       cart.clear();
     } catch {
+      track.orderFailed("network");
       setError("Mất kết nối. Bạn kiểm tra mạng rồi gửi lại giúp tụi em nhé.");
       window.setTimeout(() => errorRef.current?.focus(), 50);
     } finally {
@@ -232,6 +242,7 @@ export function OrderForm() {
             <div className="mt-3 flex flex-col gap-2 sm:flex-row">
               <a
                 href={contact.tel}
+                onClick={() => track.contactTapped("phone", "order-form")}
                 className="sticker press inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-flame font-display text-sm font-extrabold text-white"
               >
                 <Phone className="size-4" aria-hidden />

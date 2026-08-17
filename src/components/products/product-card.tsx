@@ -10,6 +10,7 @@ import { MakerRating } from "@/components/products/maker-rating";
 import { ColorDots } from "@/components/products/color-dots";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const MAX_SWATCHES = 4;
@@ -114,7 +115,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
             ) : (
               <button
                 type="button"
-                onClick={() =>
+                onClick={() => {
                   cart.add({
                     slug: product.slug,
                     name: product.name,
@@ -122,8 +123,15 @@ export function ProductCard({ product, className }: { product: Product; classNam
                     colorName: filament.name,
                     colorHex: filament.hex,
                     shape: product.shape,
-                  })
-                }
+                  });
+                  track.addToCart({
+                    slug: product.slug,
+                    name: product.name,
+                    price: product.price,
+                    color: filament.name,
+                    qty: 1,
+                  });
+                }}
                 aria-label={`Thêm ${product.nameVi} vào giỏ`}
                 className="sticker press inline-flex h-11 items-center gap-1.5 rounded-full bg-sun px-4 font-display text-[0.8125rem] font-extrabold text-ink"
               >

@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { categories, products, type CategoryId } from "@/data/products";
 import { ProductCard } from "@/components/products/product-card";
 import { cn } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 
 type Filter = "all" | CategoryId;
 
@@ -20,14 +21,27 @@ export function ShopGrid() {
       {/* ---- filters --------------------------------------------------- */}
       <div className="sticky top-16 z-40 -mx-5 border-b-2 border-ink bg-paper/95 px-5 py-4 backdrop-blur-xl sm:top-18 sm:-mx-8 sm:px-8">
         <div className="hide-scrollbar flex items-center gap-2 overflow-x-auto">
-          <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
+          <FilterChip
+            active={filter === "all"}
+            onClick={() => {
+              setFilter("all");
+              track.filterShop("all");
+            }}
+          >
             TẤT CẢ
             <span className="ml-1.5 font-mono text-[0.625rem] opacity-60">{products.length}</span>
           </FilterChip>
           {categories.map((c) => {
             const count = products.filter((p) => p.category === c.id).length;
             return (
-              <FilterChip key={c.id} active={filter === c.id} onClick={() => setFilter(c.id)}>
+              <FilterChip
+                key={c.id}
+                active={filter === c.id}
+                onClick={() => {
+                  setFilter(c.id);
+                  track.filterShop(c.id);
+                }}
+              >
                 {c.label}
                 <span className="ml-1.5 font-mono text-[0.625rem] opacity-60">{count}</span>
               </FilterChip>

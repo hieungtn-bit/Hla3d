@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/lib/cart";
+import { track } from "@/lib/analytics";
 import { ProductVisual } from "@/components/products/product-visual";
 import { goal } from "@/data/site";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ export function CartDrawer() {
   const nextCustomer = goal.current + 1;
 
   function goToOrderForm() {
+    track.startCheckout(cart.count, cart.subtotal);
     cart.close();
     router.push("/dat-hang");
   }

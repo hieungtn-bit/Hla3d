@@ -5,6 +5,7 @@ import {
   renderOrderEmail,
   validateOrder,
 } from "@/lib/order";
+import { renderOrderEmailHtml } from "@/lib/order-email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -38,6 +39,8 @@ export async function POST(request: Request) {
   const order = parsed.value;
   const code = makeOrderCode();
   const text = renderOrderEmail(order, code);
+  // HTML for the inbox, plain text for clients that refuse it.
+  const html = renderOrderEmailHtml(order, code);
 
   // Always logged, so an order is recoverable from Vercel logs even if the
   // mail provider is down or unconfigured.
@@ -59,7 +62,8 @@ export async function POST(request: Request) {
         from: process.env.ORDER_FROM_EMAIL ?? "HLA3D <onboarding@resend.dev>",
         to: [ORDER_INBOX.toLowerCase()],
         reply_to: order.customer.email ? [order.customer.email] : undefined,
-        subject: `Đơn hàng mới ${code} — ${order.customer.name}`,
+        subject: `🧡 Đơn mới ${code} — ${order.customer.name} · ${order.customer.phone}`,
+        html,
         text,
       }),
     });
