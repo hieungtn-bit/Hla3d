@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { Marquee } from "@/components/home/marquee";
 import { MakerCard } from "@/components/home/maker-card";
 import { HowItWorks } from "@/components/home/how-it-works";
+import { GiftCta } from "@/components/home/gift-cta";
 import { StartupSchool } from "@/components/home/startup-school";
 import { DadSection } from "@/components/home/dad-section";
 import { JournalPreview } from "@/components/home/journal-preview";
@@ -85,6 +86,9 @@ export default function HomePage() {
 
       {/* ---- startup school -------------------------------------------- */}
       <StartupSchool />
+
+      {/* ---- gift finder ------------------------------------------------ */}
+      <GiftCta />
 
       {/* ---- shop preview ---------------------------------------------- */}
       <Section className="border-t border-line">

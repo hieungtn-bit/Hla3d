@@ -117,6 +117,10 @@ export const track = {
   customizeUsed: (product: string, chars: number) => safe("custom_studio_used", { product, chars }),
 
   filterShop: (category: string) => safe("shop_filtered", { category }),
+
+  /** Zero-party data: what the buyer told us, not what we inferred from tracking. */
+  giftFinderDone: (a: { recipient: string; budget: string; intent: string }, slugs: string[]) =>
+    safe("gift_finder_completed", { ...a, results: slugs.join(",") }),
 };
 
 function safe(event: string, properties: Record<string, unknown>) {

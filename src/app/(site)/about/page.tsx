@@ -12,9 +12,9 @@ import { safetyRules } from "@/data/lab";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "Our Story",
+  title: "Chuyện của tụi em",
   description:
-    "HLA3D started with one 3D printer in the house and three curious brothers. This is how a family project became a small business.",
+    "HLA3D bắt đầu từ một chiếc máy in 3D đặt ở góc nhà và ba anh em tò mò. Đây là chuyện một dự án của gia đình dần thành một cửa hàng nhỏ.",
 };
 
 const TIMELINE = [

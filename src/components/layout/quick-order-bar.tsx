@@ -18,7 +18,7 @@ import { track } from "@/lib/analytics";
 export function QuickOrderBar() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-80 border-t-2 border-ink bg-paper/95 backdrop-blur-xl md:hidden"
+      className="fixed inset-x-0 bottom-0 z-80 border-t-2 border-ink bg-paper/95 backdrop-blur-xl lg:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <div className="flex items-stretch gap-2 px-3 py-2.5">

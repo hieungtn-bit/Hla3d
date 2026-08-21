@@ -17,7 +17,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </main>
       <SiteFooter />
       {/* Bottom padding so the fixed bar never covers the last row of content. */}
-      <div className="h-20 md:hidden" aria-hidden />
+      <div className="h-20 lg:hidden" aria-hidden />
       <QuickOrderBar />
     </>
   );

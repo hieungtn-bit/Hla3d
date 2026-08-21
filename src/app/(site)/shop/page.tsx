@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ShopGrid } from "@/components/products/shop-grid";
 import { PageIntro } from "@/components/page-intro";
+import { GiftFinderLink } from "@/components/finder/gift-finder-link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/shop" },
-  title: "Shop",
+  title: "Cửa hàng",
   description:
-    "Desk objects, flexi toys, custom name plates and gifts — all designed and 3D printed by three young makers in Vietnam.",
+    "Đồ để bàn, thú khớp mềm, bảng tên khắc riêng và quà tặng — tất cả do ba anh em tự thiết kế và in 3D tại nhà ở Việt Nam.",
 };
 
 export default function ShopPage() {
@@ -29,6 +30,7 @@ export default function ShopPage() {
         ]}
       />
       <div className="container-hla pb-24">
+        <GiftFinderLink />
         <ShopGrid />
       </div>
     </>

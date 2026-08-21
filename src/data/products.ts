@@ -79,6 +79,14 @@ export type Product = {
   madeBy: string;
   features: string[];
   /**
+   * A caution, not a certification: true where the object or something in the
+   * box is small enough to be a choking risk. Derived from `safety`, kept as a
+   * field so the gift finder never has to parse prose to protect a toddler.
+   */
+  notForUnder3: boolean;
+  /** Something a child plays with, as opposed to a desk object for an adult. */
+  isToy: boolean;
+  /**
    * Factual cautions only. We do not hold any toy-safety certification, so
    * nothing here may read as one — no "child-safe", no certified age rating,
    * no food-safe claim. State what the object physically is and let the
@@ -117,6 +125,8 @@ export const products: Product[] = [
       "Dán nỉ dưới đế",
       "Tối đa 14 ký tự với giá này",
     ],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Cạnh được chà nhám, nhưng vẫn là nhựa cứng — không phải đồ chơi cho bé nhỏ.",
@@ -144,6 +154,8 @@ export const products: Product[] = [
       "Tụi em thử 4 góc nghiêng khác nhau. Góc 62° là góc duy nhất mà điện thoại không bị đổ khi bấm mạnh.",
     madeBy: "Long thiết kế · Anh thử",
     features: ["Có rãnh luồn dây sạc", "Dùng được với ốp dày", "Gờ chống trượt dưới đế", "Góc nghiêng 62 độ"],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Đồ để bàn, không phải đồ chơi.",
@@ -171,6 +183,8 @@ export const products: Product[] = [
       "Đây là sản phẩm khó nhất của tụi em. Ba lần đầu bị gãy ở cổ. Tụi em phải tăng độ dày tường lên 3 lớp.",
     madeBy: "Hưng thiết kế · Ba gia cố",
     features: ["Khoang giấu để tăng trọng lượng", "Chỗ đỡ rộng 40mm", "Cổ gia cố 3 lớp tường", "Móc treo dây bên hông"],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Khoang đáy có thể bỏ vật nặng vào — người lớn nên là người làm việc đó.",
@@ -199,6 +213,8 @@ export const products: Product[] = [
       "Con rồng đầu tiên bị dính hết các khớp. Tụi em phải chỉnh khe hở từ 0.2mm lên 0.3mm mới bẻ được.",
     madeBy: "Hưng in · Anh bẻ thử 40 lần",
     features: ["In liền khối, không phải lắp gì", "28 đốt cử động được", "Khe hở khớp 0,3mm", "Không có mảnh nào tháo rời ra được"],
+    notForUnder3: true,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "In liền khối, không có mảnh rời. Bẻ quá mạnh thì khớp có thể gãy và tạo mảnh nhỏ.",
@@ -226,6 +242,8 @@ export const products: Product[] = [
       "Bạch tuộc là sản phẩm thất bại nhiều nhất của tụi em — 6 lần hỏng. Tụi em đã viết một bài trong Journal về chuyện này.",
     madeBy: "Anh cứu được sau 6 lần in hỏng",
     features: ["8 tay cử động được", "Vắt được qua mép bàn", "Các điểm tiếp xúc được chà nhám", "Tám tay in liền một khối"],
+    notForUnder3: false,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Tám tay in liền, không tháo rời được. Người lớn nên ngồi cùng khi bé dưới 3 tuổi chơi.",
@@ -252,6 +270,8 @@ export const products: Product[] = [
     makerNote: "Đây là món đầu tiên tụi em bán được cho một người không phải họ hàng.",
     madeBy: "Cả ba anh em cùng thiết kế",
     features: ["Có khe kẹp giấy", "In không cần chân đỡ", "Đang vẽ thêm 5 tính cách nữa", "Bỏ vừa túi áo"],
+    notForUnder3: false,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Cao khoảng 70mm, không có chi tiết rời.",
@@ -278,6 +298,8 @@ export const products: Product[] = [
     makerNote: "Món dễ in nhất trong shop. Maker #03 in được một mình (Ba vẫn đứng cạnh).",
     madeBy: "Anh in một mình (Ba vẫn đứng cạnh)",
     features: ["5 rãnh thóp dần", "Kèm miếng dán 3M", "Bán theo cặp 2 cái", "In xong trong 45 phút"],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Có keo dán 3M đi kèm — phần dán nên để người lớn làm.",
@@ -304,6 +326,8 @@ export const products: Product[] = [
     makerNote: "Vase mode nghĩa là máy in chỉ đi một đường xoắn ốc duy nhất. Không có mối nối nào cả.",
     madeBy: "Long cắt lớp cùng Ba",
     features: ["Xoắn ốc liền mạch, không mối nối", "Thành có gân, không lộ vân tay", "Lót bần dưới đáy", "Cắm cọ vẽ cũng được"],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Thành ống mỏng, rơi mạnh có thể nứt.",
@@ -330,6 +354,8 @@ export const products: Product[] = [
     makerNote: "Bánh xe quay được là phần khó nhất. Khe hở phải đúng 0.25mm.",
     madeBy: "Hưng thiết kế · Long chỉnh bánh xe",
     features: ["4 bánh in sẵn, lăn được", "Thùng sau mở ra được", "In hai phần nên cạnh sắc", "Không pin, không sạc"],
+    notForUnder3: false,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Bánh xe quay được nhưng không tháo rời. In hai phần, ghép chặt.",
@@ -357,6 +383,8 @@ export const products: Product[] = [
     makerNote: "Tụi em chọn kiểu low-poly vì in ra sắc nét hơn và không bị 'lông' như hình tròn.",
     madeBy: "Anh chọn mẫu",
     features: ["Kiểu low-poly, in không cần chân đỡ", "Bán lẻ hoặc trọn bộ 4 con", "Đáy được chà nhám phẳng"],
+    notForUnder3: true,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Cao 45–60mm và không có chi tiết rời, nhưng cả con vẫn đủ nhỏ để bé dưới 3 tuổi cho vào miệng — người lớn cân nhắc trước khi mua cho bé nhỏ.",
@@ -384,6 +412,8 @@ export const products: Product[] = [
     makerNote: "Cái móc là chỗ dễ gãy nhất. Tụi em in thử 3 kiểu móc trước khi chọn kiểu này.",
     madeBy: "Long thiết kế",
     features: ["Móc được gia cố", "Tên mặt trước, số mặt sau", "Kèm khoen sắt", "Đã thử giặt máy một lần, thẻ không sao"],
+    notForUnder3: true,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Đi kèm khoen sắt rời — người lớn nên lắp giúp.",
@@ -411,6 +441,8 @@ export const products: Product[] = [
     makerNote: "Món này rẻ nhất nhưng dạy tụi em nhiều nhất về giá bán và lợi nhuận.",
     madeBy: "Anh in theo lô 12 cái",
     features: ["In tên, một chữ hoặc chữ cái đầu", "Kèm khoen sắt", "In theo lô nên gửi nhanh", "Làm quà sinh nhật rất hợp"],
+    notForUnder3: true,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Đi kèm khoen sắt rời, là chi tiết nhỏ. Không phải đồ chơi.",
@@ -437,6 +469,8 @@ export const products: Product[] = [
     makerNote: "Ba nói kệ này phải 'lịch sự' vì để trên bàn làm việc của người lớn. Tụi em bỏ hết chi tiết vui nhộn.",
     madeBy: "Long thiết kế, cố tình làm cho đơn giản",
     features: ["Thiết kế hai khe", "Mặt trên nhám", "Đựng khoảng 40 tấm", "Đủ lịch sự cho bàn làm việc"],
+    notForUnder3: false,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Đồ để bàn cho người lớn, không phải đồ chơi.",
@@ -465,6 +499,8 @@ export const products: Product[] = [
       "Tụi em phải in 11 bộ mới ra bộ đầu tiên lắp vừa. Đây là bài học lớn nhất về dung sai (tolerance).",
     madeBy: "11 bộ hỏng mới ra bộ này · cả ba anh em",
     features: ["6 mảnh khoá vào nhau", "Dung sai 0,15mm, đã thử kỹ", "Kèm tờ hướng dẫn giải", "Người lớn giải cũng toát mồ hôi"],
+    notForUnder3: true,
+    isToy: true,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Gồm 6 mảnh rời, mỗi mảnh nhỏ — không hợp cho bé dưới 3 tuổi.",
@@ -499,6 +535,8 @@ export const products: Product[] = [
       "Kèm thiệp do ba anh em viết tay",
       "Làm theo đơn, 3–5 ngày",
     ],
+    notForUnder3: true,
+    isToy: false,
     safety: [
       "Nhựa PLA mềm đi ở khoảng 60°C — đừng để trong xe đóng kín hoặc ngoài nắng gắt.",
       "Trong hộp có móc khoá kèm khoen sắt rời — chi tiết nhỏ.",

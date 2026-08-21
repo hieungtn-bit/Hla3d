@@ -5,9 +5,9 @@ import { journal } from "@/data/journal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/journal" },
-  title: "The Maker Journal",
+  title: "Nhật ký",
   description:
-    "Wins, failures and real numbers from three young makers learning 3D printing, design and business — written by them.",
+    "Chuyện in được, chuyện in hỏng và số tiền thật của mỗi lần in — do Hưng, Long và Anh tự viết.",
 };
 
 export default function JournalPage() {

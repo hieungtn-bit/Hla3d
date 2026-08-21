@@ -5,9 +5,9 @@ import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/custom" },
-  title: "Make It Yours — Custom 3D Studio",
+  title: "Tự thiết kế",
   description:
-    "Design your own 3D printed name plate, bag tag or keychain. Pick the name, the colours, the style — see it in 3D before you order.",
+    "Tự thiết kế bảng tên, thẻ đeo cặp hay móc khoá của riêng bạn. Chọn tên, chọn màu, chọn kiểu — xem thử bằng 3D trước khi đặt.",
 };
 
 export default async function CustomPage({

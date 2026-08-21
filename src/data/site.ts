@@ -46,6 +46,7 @@ export const goal = {
 
 export const nav = [
   { href: "/shop", label: "Cửa hàng" },
+  { href: "/chon-qua", label: "Chọn quà" },
   { href: "/custom", label: "Tự thiết kế" },
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/lab", label: "Xưởng in" },
