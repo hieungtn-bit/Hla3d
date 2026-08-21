@@ -71,6 +71,11 @@ const BUDGET_RANGE: Record<Budget, [number, number]> = {
   over200: [150_000, Number.MAX_SAFE_INTEGER],
 };
 
+/** The reason is rendered after "Vì ", so it should not start mid-sentence. */
+function lowerFirst(text: string): string {
+  return text ? text[0].toLocaleLowerCase("vi-VN") + text.slice(1) : text;
+}
+
 export type Match = { product: Product; score: number; reason: string };
 
 /** Deterministic: the same answers always give the same three products. */
@@ -128,10 +133,21 @@ export function findGifts(a: Answers, limit = 3): Match[] {
 
     if (p.badge === "BÁN CHẠY NHẤT") score += 6;
 
+    /*
+     * Always end on something true of this product alone.
+     *
+     * The answer-derived reasons above explain why the group matched, so on
+     * their own all three cards can read "cầm chơi được" — which tells a
+     * buyer nothing about which of the three to pick. features[0] is a short
+     * factual line per product, so the second half of every reason differs.
+     */
+    const detail = lowerFirst(p.features[0] ?? "");
+    const reason = [reasons[0], detail].filter(Boolean).join(" · ");
+
     return {
       product: p,
       score,
-      reason: reasons.slice(0, 2).join(" · ") || "hợp với ngân sách bạn chọn",
+      reason: reason || "hợp với ngân sách bạn chọn",
     };
   });
 
