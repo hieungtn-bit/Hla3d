@@ -5,6 +5,7 @@ import { Marquee } from "@/components/home/marquee";
 import { MakerCard } from "@/components/home/maker-card";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { GiftCta } from "@/components/home/gift-cta";
+import { LearnCta } from "@/components/home/learn-cta";
 import { StartupSchool } from "@/components/home/startup-school";
 import { DadSection } from "@/components/home/dad-section";
 import { JournalPreview } from "@/components/home/journal-preview";
@@ -123,6 +124,9 @@ export default function HomePage() {
           </div>
         </div>
       </Section>
+
+      {/* ---- the English class ------------------------------------------ */}
+      <LearnCta />
 
       {/* ---- first 100 customers --------------------------------------- */}
       <GoalProgress />

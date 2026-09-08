@@ -118,6 +118,17 @@ export const track = {
 
   filterShop: (category: string) => safe("shop_filtered", { category }),
 
+  /**
+   * The learning section. Carries a set id and counts — never a word a
+   * particular child got wrong, which would be a record of one kid's
+   * weaknesses sitting in a third-party dashboard.
+   */
+  lessonStarted: (set: string, mode: string, pair: boolean) =>
+    safe("lesson_started", { set, mode, pair }),
+
+  lessonFinished: (set: string, right: number, wrong: number) =>
+    safe("lesson_finished", { set, right, wrong, total: right + wrong }),
+
   /** Zero-party data: what the buyer told us, not what we inferred from tracking. */
   giftFinderDone: (a: { recipient: string; budget: string; intent: string }, slugs: string[]) =>
     safe("gift_finder_completed", { ...a, results: slugs.join(",") }),

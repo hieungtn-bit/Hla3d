@@ -44,14 +44,30 @@ export const goal = {
   startedAt: "Tháng 3, 2025",
 } as const;
 
+/**
+ * Everything a visitor might go looking for. The footer lists all of it.
+ */
 export const nav = [
   { href: "/shop", label: "Cửa hàng" },
   { href: "/chon-qua", label: "Chọn quà" },
+  { href: "/hoc-tieng-anh", label: "Học tiếng Anh" },
   { href: "/custom", label: "Tự thiết kế" },
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/lab", label: "Xưởng in" },
   { href: "/journal", label: "Nhật ký" },
 ] as const;
+
+/**
+ * What fits across the top of a laptop without wrapping.
+ *
+ * Seven links do not fit, and a header that wraps to two lines reads as
+ * broken. The lab and the journal come out: both are things a visitor reads
+ * once out of curiosity, not things they navigate to — and both are still one
+ * tap away in the footer and from the homepage sections that introduce them.
+ */
+export const navPrimary = nav.filter(
+  (item) => !["/lab", "/journal"].includes(item.href),
+);
 
 export const printer = {
   name: "Anycubic Kobra X",

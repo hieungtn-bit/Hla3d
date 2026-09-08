@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, ShoppingBag, X } from "lucide-react";
-import { nav } from "@/data/site";
+import { nav, navPrimary } from "@/data/site";
 import { Logo } from "@/components/brand/logo";
 import { useCart } from "@/lib/cart";
 import { track } from "@/lib/analytics";
@@ -37,7 +37,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {nav.map((item) => {
+          {navPrimary.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link

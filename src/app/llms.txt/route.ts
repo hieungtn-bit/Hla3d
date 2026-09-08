@@ -2,6 +2,7 @@ import { products } from "@/data/products";
 import { contact, site } from "@/data/site";
 import { absoluteUrl } from "@/lib/site-url";
 import { formatVndPlain } from "@/lib/order";
+import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 
 export const dynamic = "force-static";
 
@@ -45,6 +46,15 @@ export function GET() {
     `- Điện thoại: ${contact.phone}`,
     `- Zalo: ${contact.zalo}`,
     `- Công cụ chọn quà 3 câu hỏi: ${absoluteUrl("/chon-qua")}`,
+    "",
+    "## Lớp học tiếng Anh miễn phí",
+    "",
+    `- ${absoluteUrl("/hoc-tieng-anh")} — ${TOTAL_WORDS} từ tiếng Anh đầu tiên, chia ${vocabSets.length} chủ đề.`,
+    "- Hoàn toàn miễn phí, không tài khoản, không thu thập dữ liệu. Tiến độ học lưu trong trình duyệt của người dùng, không gửi đi đâu.",
+    "- Cách học: lặp lại ngắt quãng (hộp Leitner 5 mức: 0, 2, 4, 8, 32 ngày) cộng với bốn thói quen học của người Do Thái — chavruta (học đôi), chazara (ôn lại), kushia (hỏi ngược), và dạy lại.",
+    "- Bé chưa biết đọc học được: nghe từ rồi chọn hình, không cần chữ. Phát âm dùng giọng đọc có sẵn của trình duyệt.",
+    "- KHÔNG hứa \"học một lần nhớ mãi mãi\". Trang nói rõ trí nhớ nào cũng phai và việc phải làm là ôn đúng lúc.",
+    "- Đây không phải trường học, không có giáo viên, không có chứng chỉ, không chấm điểm phần nói.",
     "",
     "## Sản phẩm",
     "",
