@@ -23,15 +23,16 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="display mt-6 text-3xl text-white">
-              Ý tưởng nhỏ.
+              Học mỗi ngày.
               <br />
-              Tạo nên điều thật.
+              Làm thật.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
-              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Một chiếc máy in 3D đặt ở góc nhà.
+              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Hai lớp học miễn phí, và một chiếc máy in 3D
+              ở góc nhà cho những ngày cuối tuần.
             </p>
             <div className="mt-5 space-y-1.5 text-sm text-white/60">
-              <p className="font-bold text-white">Đặt hàng hoặc hỏi gì cứ gọi</p>
+              <p className="font-bold text-white">Hỏi gì hoặc đặt hàng cứ gọi</p>
               <p>
                 <a href={contact.tel} className="font-display text-xl font-extrabold text-sun hover:text-flame">
                   {contact.phoneDisplay}
@@ -55,7 +56,7 @@ export function SiteFooter() {
           </div>
 
           <nav aria-label="Shop">
-            <p className="eyebrow text-sun">Ghé xem</p>
+            <p className="eyebrow text-sun">Học và ghé xem</p>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>

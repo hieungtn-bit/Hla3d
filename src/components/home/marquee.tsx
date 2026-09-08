@@ -1,4 +1,4 @@
-const ITEMS = ["NGHĨ RA.", "VẼ RA.", "IN RA.", "THỬ ĐỘ BỀN.", "GÓI GỬI ĐI."];
+const ITEMS = ["HỌC MỖI NGÀY.", "HỎI NGƯỢC LẠI.", "DẠY CHO EM.", "RỒI VẼ RA.", "RỒI IN RA THẬT."];
 
 export function Marquee() {
   const strip = [...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS];

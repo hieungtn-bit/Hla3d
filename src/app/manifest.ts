@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "HLA3D — Xưởng in 3D của ba anh em nhỏ",
     short_name: "HLA3D",
     description:
-      "Hưng, Long và Anh tự nghĩ, tự làm, tự bán những món đồ in 3D — và học cách làm kinh doanh thật.",
+      "Lớp tiếng Anh và lớp toán miễn phí của ba anh em Hưng, Long và Anh. Cuối tuần thì in 3D và bán đồ tự làm.",
     lang: "vi",
     start_url: "/",
     // Deliberately a browser app, not a standalone PWA: there is no service

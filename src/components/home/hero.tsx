@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Users } from "lucide-react";
-import { MakerDesk } from "@/components/brand/maker-desk";
+import { ArrowRight } from "lucide-react";
 import { Doodle, DoodleField } from "@/components/brand/doodle";
+import { LessonPeek } from "@/components/home/lesson-peek";
 import { MakerAvatar } from "@/components/brand/maker-avatar";
 import { makers } from "@/data/makers";
-import { goal } from "@/data/site";
-import { toPercent } from "@/lib/utils";
 
 const DOODLES = [
   { kind: "star" as const, className: "left-[3%] top-[12%] size-10 text-sun", tilt: "-12deg", animate: "twinkle" as const },
@@ -19,7 +17,19 @@ const DOODLES = [
   { kind: "heart" as const, className: "right-[38%] bottom-[6%] size-9 text-rose", tilt: "14deg", animate: "bob" as const },
 ];
 
-export function Hero() {
+type PeekWord = { en: string; vi: string; icon: string; others: string[] };
+
+export function Hero({
+  words,
+  sets,
+  lessons,
+  word,
+}: {
+  words: number;
+  sets: number;
+  lessons: number;
+  word: PeekWord;
+}) {
   const reduce = useReducedMotion();
 
   return (
@@ -43,15 +53,15 @@ export function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-flame opacity-70" />
               <span className="relative inline-flex size-2.5 rounded-full border-2 border-ink bg-flame" />
             </span>
-            Startup của 3 anh em · 2025
+            Lớp học miễn phí · Xưởng in thật · 2025
           </span>
 
           <h1 className="display mt-6 text-[clamp(2.75rem,8.5vw,5.5rem)]">
-            BA ANH EM.
+            HỌC MỖI NGÀY.
             <br />
-            MỘT XƯỞNG{" "}
+            LÀM{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">IN 3D.</span>
+              <span className="relative z-10">THẬT.</span>
               <span
                 className="absolute -inset-x-2 bottom-1 z-0 h-4 -rotate-1 rounded-full bg-lime"
                 aria-hidden
@@ -60,11 +70,11 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-md text-xl leading-relaxed font-bold text-ink">
-            Tụi em biến ý tưởng nhỏ thành đồ thật.
+            Lớp tiếng Anh và lớp toán của ba anh em. Mở cho tất cả, miễn phí.
           </p>
           <p className="mt-3 max-w-md text-base leading-relaxed text-ink-2">
-            Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi. Tụi em vẽ, in, thử, rồi gói gửi cho bạn — và học
-            luôn cách làm một công ty thật.
+            Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi học ở đây mỗi ngày. Cuối tuần rảnh thì ba anh em
+            vẽ và in đồ bán — chỗ đó là để những gì học được có việc mà dùng.
           </p>
 
           {/* the three of them, small and up front */}
@@ -92,61 +102,46 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
-              href="/shop"
+              href="/hoc-tieng-anh"
               className="sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full bg-flame px-8 font-display text-lg font-extrabold text-white"
             >
-              XEM ĐỒ TỤI EM LÀM
+              HỌC TIẾNG ANH
               <ArrowRight className="size-5" />
             </Link>
             <Link
-              href="#makers"
-              className="sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full bg-surface px-7 font-display text-lg font-extrabold text-ink"
+              href="/hoc-toan"
+              className="sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full bg-sky px-7 font-display text-lg font-extrabold text-ink"
             >
-              <Users className="size-5" />
-              GẶP 3 ANH EM
+              HỌC TOÁN
+              <ArrowRight className="size-5" />
             </Link>
           </div>
 
-          {/* live goal strip */}
-          <div className="sticker mt-9 flex items-center gap-4 rounded-2xl bg-surface p-4 sm:max-w-md">
-            <div className="shrink-0 text-center">
-              <p className="display text-3xl leading-none">
-                {goal.current}
-                <span className="text-ink-3">/{goal.target}</span>
-              </p>
-              <p className="eyebrow mt-1.5 text-ink-3">Khách</p>
-            </div>
-            <div className="flex-1">
-              <div className="h-3 w-full overflow-hidden rounded-full border-2 border-ink bg-paper-2">
-                <motion.div
-                  className="h-full bg-flame"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${toPercent(goal.current, goal.target)}%` }}
-                  transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-              <p className="mt-2 text-xs leading-snug font-semibold text-ink-2">
-                Giúp 3 anh em chạm mốc 100 khách đầu tiên!
-              </p>
-            </div>
-          </div>
+          <ul className="sticker mt-9 grid grid-cols-3 gap-1 rounded-2xl bg-surface p-4 sm:max-w-md">
+            {[
+              { n: words.toLocaleString("vi-VN"), l: "từ tiếng Anh" },
+              { n: lessons, l: "bài toán" },
+              { n: "0đ", l: "học phí" },
+            ].map((x) => (
+              <li key={x.l} className="text-center">
+                <p className="display text-2xl leading-none sm:text-3xl">{x.n}</p>
+                <p className="mt-1.5 text-xs leading-snug font-semibold text-ink-2">{x.l}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 max-w-md text-xs font-semibold text-ink-3">
+            {sets} chủ đề từ vựng · mẫu giáo đến lớp 3 · không cần tài khoản
+          </p>
         </motion.div>
 
-        {/* ---- scene -------------------------------------------------- */}
+        {/* ---- what is actually inside -------------------------------- */}
         <motion.div
           initial={reduce ? false : { opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <div className="sticker-lg relative overflow-hidden rounded-[var(--radius-xl2)] bg-surface p-4 sm:p-6">
-            <MakerDesk />
-            <div className="sticker absolute left-6 top-6 flex items-center gap-2 rounded-full bg-lime px-3 py-1.5 sm:left-8 sm:top-8">
-              <span className="size-2.5 animate-[pulse-dot_1.8s_ease-in-out_infinite] rounded-full border-2 border-ink bg-flame" />
-              <span className="eyebrow text-ink">Máy in #01 · Đang in</span>
-            </div>
-          </div>
-
+          <LessonPeek word={word} />
           <Doodle
             kind="arrow"
             color="#ff4a17"

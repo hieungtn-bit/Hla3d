@@ -5,14 +5,13 @@
 
 export const site = {
   name: "HLA3D",
-  tagline: "Ý tưởng nhỏ. Tạo nên điều thật.",
-  taglineVi: "Ý tưởng nhỏ. Tạo nên điều thật.",
-  motto: ["DREAM IT.", "DESIGN IT.", "PRINT IT."],
+  tagline: "Học mỗi ngày. Làm thật.",
+  taglineVi: "Học mỗi ngày. Làm thật.",
+  motto: ["LEARN IT.", "ASK BACK.", "MAKE IT REAL."],
   locale: "vi-VN",
-  description:
-    "Three young makers turning ideas into real 3D printed creations. Designed, printed and packed at home in Vietnam.",
+  /** What the site is, in one line, for humans and for machines. */
   descriptionVi:
-    "Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi học cách biến ý tưởng thành sản phẩm thật bằng máy in 3D. Thiết kế, in và đóng gói tại Việt Nam.",
+    "Lớp tiếng Anh và lớp toán miễn phí của ba anh em Hưng (8), Long (6) và Anh (5) — học theo lối nhà học Do Thái. Cuối tuần ba anh em in 3D và bán đồ tự làm.",
   founded: 2025,
   city: "Việt Nam",
   email: "hello@hla3d.vn",
@@ -48,10 +47,10 @@ export const goal = {
  * Everything a visitor might go looking for. The footer lists all of it.
  */
 export const nav = [
-  { href: "/shop", label: "Cửa hàng" },
-  { href: "/chon-qua", label: "Chọn quà" },
   { href: "/hoc-tieng-anh", label: "Học tiếng Anh" },
   { href: "/hoc-toan", label: "Học toán" },
+  { href: "/shop", label: "Cửa hàng" },
+  { href: "/chon-qua", label: "Chọn quà" },
   { href: "/custom", label: "Tự thiết kế" },
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/lab", label: "Xưởng in" },
@@ -67,7 +66,7 @@ export const nav = [
  * tap away in the footer and from the homepage sections that introduce them.
  */
 export const navPrimary = nav.filter(
-  (item) => !["/lab", "/journal", "/hoc-toan"].includes(item.href),
+  (item) => !["/lab", "/journal", "/chon-qua"].includes(item.href),
 );
 
 export const printer = {
