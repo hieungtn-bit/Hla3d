@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Doodle } from "@/components/brand/doodle";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
+import { skills } from "@/data/math";
 
 const HABITS = [
   { he: "חברותא", vi: "Học đôi", body: "Hai anh em một bàn, đọc to, hỏi lại nhau." },
@@ -31,14 +32,14 @@ export function LearnCta() {
           <Reveal>
             <p className="eyebrow text-sun">Lớp tiếng Anh của tụi em · Miễn phí</p>
             <h2 className="display mt-5 text-[clamp(2rem,5.5vw,3.5rem)] text-paper">
-              1000 TỪ TIẾNG ANH,
+              TIẾNG ANH VÀ TOÁN,
               <br />
               HỌC KIỂU NHÀ HỌC DO THÁI.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed font-semibold text-paper/75">
-              Ba anh em đang học đúng {TOTAL_WORDS} từ này, chia {vocabSets.length} chủ đề. Ba mở trang
-              cho các con học, rồi để luôn ở đây cho ai muốn học cùng. Bé chưa biết đọc vẫn học được:
-              nghe tiếng rồi chọn hình.
+              {TOTAL_WORDS} từ tiếng Anh chia {vocabSets.length} chủ đề, và {skills.length} bài toán từ mẫu
+              giáo đến lớp 3. Ba mở trang cho các con học, rồi để luôn ở đây cho ai muốn học cùng. Bé
+              chưa biết đọc vẫn học được: nghe tiếng rồi chọn hình.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-relaxed font-semibold text-paper/55">
               Không tài khoản, không thu tiền, không quảng cáo. Tiến độ nằm trong máy của bạn.
@@ -48,14 +49,15 @@ export function LearnCta() {
                 href="/hoc-tieng-anh"
                 className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full bg-sun px-8 font-display text-base font-bold text-ink hover:bg-paper"
               >
-                HỌC THỬ MỘT BỘ
+                LỚP TIẾNG ANH
                 <ArrowRight className="size-5" />
               </Link>
               <Link
-                href="/hoc-tieng-anh/gia-dinh"
-                className="tactile inline-flex h-14 items-center justify-center rounded-full border-2 border-paper/40 px-8 font-display text-base font-bold text-paper hover:bg-paper/10"
+                href="/hoc-toan"
+                className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full border-2 border-paper/40 px-8 font-display text-base font-bold text-paper hover:bg-paper/10"
               >
-                BẮT ĐẦU TỪ BỘ 1
+                LỚP TOÁN
+                <ArrowRight className="size-5" />
               </Link>
             </div>
           </Reveal>

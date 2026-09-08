@@ -51,6 +51,7 @@ export const nav = [
   { href: "/shop", label: "Cửa hàng" },
   { href: "/chon-qua", label: "Chọn quà" },
   { href: "/hoc-tieng-anh", label: "Học tiếng Anh" },
+  { href: "/hoc-toan", label: "Học toán" },
   { href: "/custom", label: "Tự thiết kế" },
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/lab", label: "Xưởng in" },
@@ -66,7 +67,7 @@ export const nav = [
  * tap away in the footer and from the homepage sections that introduce them.
  */
 export const navPrimary = nav.filter(
-  (item) => !["/lab", "/journal"].includes(item.href),
+  (item) => !["/lab", "/journal", "/hoc-toan"].includes(item.href),
 );
 
 export const printer = {

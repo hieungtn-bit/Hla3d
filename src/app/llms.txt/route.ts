@@ -3,6 +3,7 @@ import { contact, site } from "@/data/site";
 import { absoluteUrl } from "@/lib/site-url";
 import { formatVndPlain } from "@/lib/order";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
+import { skills } from "@/data/math";
 
 export const dynamic = "force-static";
 
@@ -55,6 +56,14 @@ export function GET() {
     "- Bé chưa biết đọc học được: nghe từ rồi chọn hình, không cần chữ. Phát âm dùng giọng đọc có sẵn của trình duyệt.",
     "- KHÔNG hứa \"học một lần nhớ mãi mãi\". Trang nói rõ trí nhớ nào cũng phai và việc phải làm là ôn đúng lúc.",
     "- Đây không phải trường học, không có giáo viên, không có chứng chỉ, không chấm điểm phần nói.",
+    "",
+    "## Lớp học toán miễn phí",
+    "",
+    `- ${absoluteUrl("/hoc-toan")} — ${skills.length} bài toán từ mẫu giáo đến lớp 3.`,
+    "- Nội dung do HLA3D tự viết. Phạm vi kiến thức bám theo Chương trình GDPT 2018 (tài liệu công khai của Bộ GD&ĐT); câu hỏi, cách làm và câu hỏi khó đều là bản gốc.",
+    "- Đề bài do máy sinh ra nên không lặp lại; bé không học thuộc được đáp án.",
+    "- Mỗi bài mở đầu bằng một câu hỏi chưa có đáp án, rồi mới đưa 2-3 cách làm khác nhau, cuối cùng là một câu hỏi khó không chấm điểm.",
+    "- Phải đúng 5/6 bài mới được lên bậc ôn tập, để một lần đoán trúng không bị tính là đã thuộc.",
     "",
     "## Sản phẩm",
     "",

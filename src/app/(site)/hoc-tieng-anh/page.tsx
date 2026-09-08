@@ -3,6 +3,7 @@ import { PageIntro } from "@/components/page-intro";
 import { LearnerPicker } from "@/components/learn/learner-picker";
 import { WordWall } from "@/components/learn/word-wall";
 import { Section } from "@/components/section";
+import { SubjectSwitch } from "@/components/learn/subject-switch";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 
 export const metadata: Metadata = {
@@ -77,6 +78,10 @@ export default function LearnPage() {
 
       <div className="container-hla pb-16">
         <WordWall />
+      </div>
+
+      <div className="container-hla pb-16">
+        <SubjectSwitch current="english" />
       </div>
 
       {/* ---- the method, and what it does not promise --------------------- */}

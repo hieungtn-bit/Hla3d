@@ -2,11 +2,12 @@ import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
 import { journal } from "@/data/journal";
 import { vocabSets } from "@/data/vocab";
+import { skills } from "@/data/math";
 import { absoluteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
-    "", "/shop", "/chon-qua", "/hoc-tieng-anh", "/custom", "/lab", "/journal", "/about",
+    "", "/shop", "/chon-qua", "/hoc-tieng-anh", "/hoc-toan", "/custom", "/lab", "/journal", "/about",
   ].map((path) => ({
     url: absoluteUrl(path),
     lastModified: new Date(),
@@ -28,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const mathRoutes = skills.map((s) => ({
+    url: absoluteUrl(`/hoc-toan/${s.id}`),
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   const journalRoutes = journal.map((p) => ({
     url: absoluteUrl(`/journal/${p.slug}`),
     lastModified: new Date(p.date),
@@ -35,5 +43,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...learnRoutes, ...journalRoutes];
+  return [...staticRoutes, ...productRoutes, ...learnRoutes, ...mathRoutes, ...journalRoutes];
 }
