@@ -21,7 +21,7 @@ import { track } from "@/lib/analytics";
  * the shop, which is both untrue and the fastest way for a parent to stop
  * trusting the rest of the page. The lessons also want the screen.
  */
-const NO_BAR = ["/hoc-tieng-anh", "/hoc-toan"];
+const NO_BAR = ["/hoc-tieng-viet", "/hoc-toan", "/hoc-tieng-anh"];
 
 export function QuickOrderBar() {
   const pathname = usePathname();

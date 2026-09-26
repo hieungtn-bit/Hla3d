@@ -20,6 +20,7 @@ import { featuredSlugs, products } from "@/data/products";
 import { printers, labStats } from "@/data/lab";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 import { skills } from "@/data/math";
+import { vietSkills } from "@/data/viet";
 
 const STATS = [
   { icon: BookOpen, value: `${TOTAL_WORDS}`, label: "Từ tiếng Anh, có hình, có tiếng", color: "bg-sun" },
@@ -49,7 +50,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero words={TOTAL_WORDS} sets={vocabSets.length} lessons={skills.length} word={peek} />
+      <Hero words={TOTAL_WORDS} sets={vocabSets.length} lessons={skills.length} vietLessons={vietSkills.length} word={peek} />
       <Marquee />
 
       {/* ---- numbers -------------------------------------------------- */}
@@ -239,28 +240,28 @@ export default function HomePage() {
               Không cần đăng ký, không cần tài khoản, không mất đồng nào. Mười phút một ngày ăn đứt
               năm tiếng một tháng — đó là lý do ba anh em học ở đây mỗi ngày.
             </p>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link
-                href="/hoc-tieng-anh"
-                className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white px-8 font-display text-base font-bold tracking-tight text-ink hover:bg-paper"
-              >
-                LỚP TIẾNG ANH
-                <ArrowRight className="size-5" />
-              </Link>
-              <Link
-                href="/hoc-toan"
-                className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white px-8 font-display text-base font-bold tracking-tight text-ink hover:bg-paper"
-              >
-                LỚP TOÁN
-                <ArrowRight className="size-5" />
-              </Link>
-              <Link
-                href="/about"
-                className="tactile inline-flex h-14 items-center justify-center rounded-full border-2 border-white/70 px-8 font-display text-base font-bold tracking-tight text-white hover:bg-white/10"
-              >
-                CHUYỆN CỦA TỤI EM
-              </Link>
+            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+              {[
+                { href: "/hoc-tieng-viet", label: "LỚP TIẾNG VIỆT" },
+                { href: "/hoc-toan", label: "LỚP TOÁN" },
+                { href: "/hoc-tieng-anh", label: "LỚP TIẾNG ANH" },
+              ].map((b) => (
+                <Link
+                  key={b.href}
+                  href={b.href}
+                  className="tactile inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white px-7 font-display text-base font-bold tracking-tight text-ink hover:bg-paper"
+                >
+                  {b.label}
+                  <ArrowRight className="size-5" />
+                </Link>
+              ))}
             </div>
+            <Link
+              href="/about"
+              className="mt-6 inline-block text-sm font-bold text-white/85 underline underline-offset-4 hover:text-white"
+            >
+              Chuyện của tụi em
+            </Link>
           </Reveal>
         </div>
       </section>

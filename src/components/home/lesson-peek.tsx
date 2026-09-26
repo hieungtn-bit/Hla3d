@@ -1,7 +1,7 @@
 import { Volume2 } from "lucide-react";
 
 /**
- * What is actually inside, instead of a drawing of it.
+ * What is actually inside, instead of a drawing of it — one card per class.
  *
  * The hero used to show the printer desk, which said "workshop" to anyone who
  * only looked at the picture. These two cards are the real lesson interfaces —
@@ -15,6 +15,65 @@ import { Volume2 } from "lucide-react";
 export function LessonPeek({ word }: { word: { en: string; vi: string; icon: string; others: string[] } }) {
   return (
     <div className="grid gap-4">
+      {/* ---- a Tiếng Việt card: a real item from the c/k/q drill ---- */}
+      <div className="sticker-lg rounded-[var(--radius-card)] bg-surface p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-3">
+          <p className="eyebrow text-ink-3">Chính tả có luật</p>
+          <span className="rounded-full border-2 border-ink bg-lime px-2.5 py-0.5 text-[0.625rem] font-bold">
+            Tiếng Việt
+          </span>
+        </div>
+        <div className="mt-3 flex items-center gap-4">
+          <span className="text-5xl leading-none" aria-hidden>
+            🍬
+          </span>
+          <p className="display text-3xl sm:text-4xl">_ẹo</p>
+          <div className="ml-auto flex gap-2">
+            {["c", "k", "q"].map((l) => (
+              <span
+                key={l}
+                className={`sticker grid size-11 place-items-center rounded-xl font-display text-xl font-bold ${
+                  l === "k" ? "bg-lime" : "bg-paper"
+                }`}
+                aria-hidden
+              >
+                {l}
+              </span>
+            ))}
+          </div>
+        </div>
+        <p className="mt-3 text-xs font-semibold text-ink-3">
+          “K đi với i, e, ê.” Chỗ nào có luật thì dạy là luật — chỗ nào chỉ có mẹo thì nói là mẹo.
+        </p>
+      </div>
+
+      {/* ---- a maths card ---- */}
+      <div className="sticker-lg rounded-[var(--radius-card)] bg-surface p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-3">
+          <p className="eyebrow text-ink-3">Câu hỏi trước, cách làm sau</p>
+          <span className="rounded-full border-2 border-ink bg-sky px-2.5 py-0.5 text-[0.625rem] font-bold">
+            Toán
+          </span>
+        </div>
+        <p className="mt-4 font-display text-lg leading-snug font-bold">
+          8 + 5 thì nhiều hơn 10 rồi. Đếm ngón tay không đủ ngón. Làm thế nào bây giờ?
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {["Làm tròn 10 trước", "Dựa vào số đôi", "Đếm tiếp"].map((m, i) => (
+            <span
+              key={m}
+              className={`sticker rounded-full px-3 py-1.5 text-xs font-bold ${
+                i === 0 ? "bg-lime" : "bg-paper"
+              }`}
+            >
+              {m}
+            </span>
+          ))}
+        </div>
+        <p className="mt-3 text-xs font-semibold text-ink-3">
+          Ba cách làm, cách nào cũng đúng. Bé chọn cách mình thích.
+        </p>
+      </div>
       {/* ---- an English card ---- */}
       <div className="sticker-lg rounded-[var(--radius-card)] bg-surface p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
@@ -47,33 +106,6 @@ export function LessonPeek({ word }: { word: { en: string; vi: string; icon: str
         </p>
       </div>
 
-      {/* ---- a maths card ---- */}
-      <div className="sticker-lg rounded-[var(--radius-card)] bg-surface p-5 sm:p-6">
-        <div className="flex items-center justify-between gap-3">
-          <p className="eyebrow text-ink-3">Câu hỏi trước, cách làm sau</p>
-          <span className="rounded-full border-2 border-ink bg-sky px-2.5 py-0.5 text-[0.625rem] font-bold">
-            Toán
-          </span>
-        </div>
-        <p className="mt-4 font-display text-lg leading-snug font-bold">
-          8 + 5 thì nhiều hơn 10 rồi. Đếm ngón tay không đủ ngón. Làm thế nào bây giờ?
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {["Làm tròn 10 trước", "Dựa vào số đôi", "Đếm tiếp"].map((m, i) => (
-            <span
-              key={m}
-              className={`sticker rounded-full px-3 py-1.5 text-xs font-bold ${
-                i === 0 ? "bg-lime" : "bg-paper"
-              }`}
-            >
-              {m}
-            </span>
-          ))}
-        </div>
-        <p className="mt-3 text-xs font-semibold text-ink-3">
-          Ba cách làm, cách nào cũng đúng. Bé chọn cách mình thích.
-        </p>
-      </div>
     </div>
   );
 }

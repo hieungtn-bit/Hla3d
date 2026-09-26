@@ -11,7 +11,7 @@ export const site = {
   locale: "vi-VN",
   /** What the site is, in one line, for humans and for machines. */
   descriptionVi:
-    "Lớp tiếng Anh và lớp toán miễn phí của ba anh em Hưng (8), Long (6) và Anh (5) — học theo lối nhà học Do Thái. Cuối tuần ba anh em in 3D và bán đồ tự làm.",
+    "Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em Hưng (8), Long (6) và Anh (5) — học theo lối nhà học Do Thái. Cuối tuần ba anh em in 3D và bán đồ tự làm.",
   founded: 2025,
   city: "Việt Nam",
   email: "hello@hla3d.vn",
@@ -47,8 +47,9 @@ export const goal = {
  * Everything a visitor might go looking for. The footer lists all of it.
  */
 export const nav = [
-  { href: "/hoc-tieng-anh", label: "Học tiếng Anh" },
-  { href: "/hoc-toan", label: "Học toán" },
+  { href: "/hoc-tieng-viet", label: "Tiếng Việt" },
+  { href: "/hoc-toan", label: "Toán" },
+  { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
   { href: "/shop", label: "Cửa hàng" },
   { href: "/chon-qua", label: "Chọn quà" },
   { href: "/custom", label: "Tự thiết kế" },
@@ -66,7 +67,7 @@ export const nav = [
  * tap away in the footer and from the homepage sections that introduce them.
  */
 export const navPrimary = nav.filter(
-  (item) => !["/lab", "/journal", "/chon-qua"].includes(item.href),
+  (item) => !["/lab", "/journal", "/chon-qua", "/custom"].includes(item.href),
 );
 
 export const printer = {

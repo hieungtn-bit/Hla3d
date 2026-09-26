@@ -35,11 +35,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   alternates: { canonical: "/" },
   title: {
-    default: "HLA3D — Lớp tiếng Anh và toán miễn phí của ba anh em",
+    default: "HLA3D — Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em",
     template: "%s — HLA3D",
   },
   description: site.descriptionVi,
   keywords: [
+    "học tiếng Việt lớp 1",
+    "chính tả tiếng Việt",
     "học tiếng Anh cho trẻ em",
     "1000 từ tiếng Anh đầu tiên",
     "học toán tiểu học",
@@ -56,20 +58,20 @@ export const metadata: Metadata = {
     locale: "vi_VN",
     url: siteUrl(),
     siteName: site.name,
-    title: "HLA3D — Lớp tiếng Anh và toán miễn phí của ba anh em",
+    title: "HLA3D — Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em",
     description: site.descriptionVi,
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "HLA3D — Lớp tiếng Anh và toán miễn phí của Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi.",
+        alt: "HLA3D — Lớp tiếng Việt, toán và tiếng Anh miễn phí của Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HLA3D — Lớp tiếng Anh và toán miễn phí của ba anh em",
+    title: "HLA3D — Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em",
     description: site.descriptionVi,
     images: ["/og.png"],
   },

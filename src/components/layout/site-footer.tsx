@@ -28,7 +28,7 @@ export function SiteFooter() {
               Làm thật.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
-              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Hai lớp học miễn phí, và một chiếc máy in 3D
+              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Ba lớp học miễn phí, và một chiếc máy in 3D
               ở góc nhà cho những ngày cuối tuần.
             </p>
             <div className="mt-5 space-y-1.5 text-sm text-white/60">

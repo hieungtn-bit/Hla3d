@@ -23,11 +23,13 @@ export function Hero({
   words,
   sets,
   lessons,
+  vietLessons,
   word,
 }: {
   words: number;
   sets: number;
   lessons: number;
+  vietLessons: number;
   word: PeekWord;
 }) {
   const reduce = useReducedMotion();
@@ -70,7 +72,7 @@ export function Hero({
           </h1>
 
           <p className="mt-6 max-w-md text-xl leading-relaxed font-bold text-ink">
-            Lớp tiếng Anh và lớp toán của ba anh em. Mở cho tất cả, miễn phí.
+            Lớp tiếng Việt, toán và tiếng Anh của ba anh em. Mở cho tất cả, miễn phí.
           </p>
           <p className="mt-3 max-w-md text-base leading-relaxed text-ink-2">
             Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi học ở đây mỗi ngày. Cuối tuần rảnh thì ba anh em
@@ -100,27 +102,28 @@ export function Hero({
             </p>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href="/hoc-tieng-anh"
-              className="sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full bg-flame px-8 font-display text-lg font-extrabold text-white"
-            >
-              HỌC TIẾNG ANH
-              <ArrowRight className="size-5" />
-            </Link>
-            <Link
-              href="/hoc-toan"
-              className="sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full bg-sky px-7 font-display text-lg font-extrabold text-ink"
-            >
-              HỌC TOÁN
-              <ArrowRight className="size-5" />
-            </Link>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            {[
+              { href: "/hoc-tieng-viet", label: "TIẾNG VIỆT", tone: "bg-flame text-white" },
+              { href: "/hoc-toan", label: "TOÁN", tone: "bg-sky text-ink" },
+              { href: "/hoc-tieng-anh", label: "TIẾNG ANH", tone: "bg-sun text-ink" },
+            ].map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className={`sticker press inline-flex h-14 items-center justify-center gap-2 rounded-full px-6 font-display text-base font-extrabold ${c.tone}`}
+              >
+                HỌC {c.label}
+                <ArrowRight className="size-5" />
+              </Link>
+            ))}
           </div>
 
-          <ul className="sticker mt-9 grid grid-cols-3 gap-1 rounded-2xl bg-surface p-4 sm:max-w-md">
+          <ul className="sticker mt-9 grid grid-cols-2 gap-x-1 gap-y-4 rounded-2xl bg-surface p-4 sm:max-w-lg sm:grid-cols-4">
             {[
-              { n: words.toLocaleString("vi-VN"), l: "từ tiếng Anh" },
+              { n: vietLessons, l: "bài tiếng Việt" },
               { n: lessons, l: "bài toán" },
+              { n: words.toLocaleString("vi-VN"), l: "từ tiếng Anh" },
               { n: "0đ", l: "học phí" },
             ].map((x) => (
               <li key={x.l} className="text-center">

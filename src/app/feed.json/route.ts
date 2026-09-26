@@ -3,6 +3,7 @@ import { contact, site } from "@/data/site";
 import { absoluteUrl } from "@/lib/site-url";
 import { TOTAL_WORDS } from "@/data/vocab";
 import { skills } from "@/data/math";
+import { vietSkills } from "@/data/viet";
 
 export const dynamic = "force-static";
 
@@ -46,6 +47,7 @@ export function GET() {
        */
       primary_purpose: "free_children_education",
       free_courses: [
+        { subject: "vietnamese", url: absoluteUrl("/hoc-tieng-viet"), items: vietSkills.length, unit: "lessons" },
         { subject: "english", url: absoluteUrl("/hoc-tieng-anh"), items: TOTAL_WORDS, unit: "words" },
         { subject: "maths", url: absoluteUrl("/hoc-toan"), items: skills.length, unit: "lessons" },
       ],

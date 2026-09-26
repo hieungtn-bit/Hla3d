@@ -35,7 +35,7 @@ export function WhyShop() {
                 tiếng Anh.
               </p>
               <p>
-                Nên hai lớp học ở trang này không phải học chay. Bộ từ vựng số 37 là{" "}
+                Nên các lớp học ở trang này không phải học chay. Bộ từ vựng số 37 là{" "}
                 <b className="text-ink">đúng những từ trong xưởng in</b> — nozzle, filament, layer.
                 Bộ số 38 là <b className="text-ink">từ về buôn bán</b> — customer, price, profit. Lớp
                 toán có hẳn một bài về tiền lời tiền lỗ.
