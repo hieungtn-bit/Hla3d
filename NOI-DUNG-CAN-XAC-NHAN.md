@@ -59,6 +59,6 @@ Vercel thì có thể xoá.
 
 ## Không cần xác nhận
 
-- 1000 từ tiếng Anh, 24 bài toán, 20 bài tiếng Việt — nội dung học, đã kiểm tra tự động.
+- 1000 từ tiếng Anh, 24 bài toán, 24 bài tiếng Việt — nội dung học, đã kiểm tra tự động.
 - Câu hỏi mẫu ở Góc in 3D — ghi rõ là câu hỏi để hỏi, không kể là chuyện đã xảy ra.
 - Luật an toàn khi trẻ dùng máy in 3D — viết như lời khuyên nên làm.

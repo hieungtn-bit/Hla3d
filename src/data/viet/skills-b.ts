@@ -2,11 +2,13 @@ import type { VietSkill } from "./types";
 import { blankOnset, pickOne, shuffled, vItem } from "./helpers";
 import { swapTone, toneGroup, toneOf, type Tone } from "./phonology";
 import {
+  COMMA_LISTS,
   DGIR,
   END_MARK,
   LAY_HOI_NGA,
   OPPOSITES,
   PERSONIFY,
+  PROPER_NAMES,
   SENTENCE_KIND,
   SIMILE,
   SUBJ_PRED,
@@ -62,7 +64,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "s-x",
     level: "lop2",
-    order: 9,
+    order: 11,
     title: "s hay x",
     summary: "Nhiều vùng đọc s và x giống hệt nhau. Viết thì vẫn phải phân biệt.",
     hook: "Ở nhiều nơi, người ta đọc “sa” và “xa” giống hệt nhau. Nếu tai nghe không ra, thì làm sao biết một từ viết s hay x?",
@@ -99,7 +101,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "tr-ch",
     level: "lop2",
-    order: 10,
+    order: 12,
     title: "tr hay ch",
     summary: "Lại một cặp nhiều vùng đọc giống nhau. Có vài mẹo, nhưng mẹo nào cũng có ngoại lệ.",
     hook: "Con trâu và con chó — ở nhiều nơi, “tr” và “ch” nghe y như nhau. Có mẹo nào giúp đoán được không, hay phải học thuộc hết?",
@@ -128,7 +130,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "d-gi-r",
     level: "lop2",
-    order: 11,
+    order: 13,
     title: "d, gi hay r",
     summary: "Ba cách viết mà giọng miền Bắc đọc gần như giống nhau. Cặp khó nhất trong chính tả.",
     hook: "Dưa, gió, rùa — đọc to ba tiếng này. Âm đầu có giống nhau không? Nếu giống, thì làm sao biết phải viết chữ nào?",
@@ -158,7 +160,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "hoi-nga",
     level: "lop2",
-    order: 12,
+    order: 14,
     title: "Dấu hỏi hay dấu ngã",
     summary: "Trong từ láy có một luật nhớ bằng câu thơ: Huyền – Ngã – Nặng, Ngang – Sắc – Hỏi.",
     hook: "“Vui vẻ” viết dấu hỏi, “sạch sẽ” viết dấu ngã. Tiếng đứng cạnh là “vui” và “sạch” — liệu tiếng đứng cạnh có mách giùm mình nên dùng dấu nào không?",
@@ -202,7 +204,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "tu-loai",
     level: "lop2",
-    order: 13,
+    order: 16,
     title: "Từ chỉ sự vật, hoạt động, đặc điểm",
     summary: "Từ gọi tên, từ chỉ việc làm, từ chỉ dáng vẻ — ba nhóm từ đầu tiên.",
     hook: "“Con mèo”, “chạy”, “trắng” — ba từ thuộc ba nhóm khác nhau. Có cách nào kiểm tra một từ thuộc nhóm nào mà không cần học thuộc không?",
@@ -253,7 +255,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "dau-cau",
     level: "lop2",
-    order: 14,
+    order: 17,
     title: "Dấu chấm, dấu hỏi, dấu chấm than",
     summary: "Câu kể dùng dấu chấm, câu hỏi dùng dấu chấm hỏi, câu bày tỏ cảm xúc dùng dấu chấm than.",
     hook: "“Bạn đi đâu đấy” — đọc câu này mà không có dấu gì ở cuối, em có biết người nói đang hỏi hay đang kể không? Cái gì trong câu cho em biết?",
@@ -307,7 +309,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "kieu-cau",
     level: "lop3",
-    order: 15,
+    order: 18,
     title: "Ai là gì? Ai làm gì? Ai thế nào?",
     summary: "Ba kiểu câu kể: để giới thiệu, để kể việc làm, và để tả.",
     hook: "“Mẹ em là giáo viên”, “Mẹ em đang nấu cơm”, “Mẹ em rất hiền” — cùng nói về mẹ, mà ba câu làm ba việc khác nhau. Đó là ba việc gì?",
@@ -348,7 +350,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "so-sanh",
     level: "lop3",
-    order: 16,
+    order: 19,
     title: "So sánh",
     summary: "Tìm xem cái gì được so sánh với cái gì — và vì sao người viết lại so như thế.",
     hook: "Viết “trăng rất tròn” hay viết “trăng tròn như quả bóng” — câu nào làm em nhìn thấy mặt trăng rõ hơn? Vì sao?",
@@ -384,7 +386,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "nhan-hoa",
     level: "lop3",
-    order: 17,
+    order: 20,
     title: "Nhân hoá",
     summary: "Gọi con vật, đồ vật như gọi người, và cho chúng làm việc của người.",
     hook: "“Ông mặt trời thức dậy” — mặt trời đâu có ngủ mà thức. Vậy người viết đang làm gì với mặt trời? Vì sao lại viết như thế?",
@@ -425,7 +427,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "trai-nghia",
     level: "lop3",
-    order: 18,
+    order: 21,
     title: "Từ trái nghĩa",
     summary: "Hai từ có nghĩa ngược nhau: cao – thấp, nhanh – chậm.",
     hook: "Trái nghĩa với “nóng” là “lạnh”. Vậy trái nghĩa với “nóng tính” là gì? Có phải cứ đổi “nóng” thành “lạnh” là xong không?",
@@ -470,7 +472,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "dong-nghia",
     level: "lop3",
-    order: 19,
+    order: 22,
     title: "Từ cùng nghĩa",
     summary: "Hai từ khác nhau mà nghĩa giống nhau — có khi chỉ vì mỗi miền gọi một kiểu.",
     hook: "Người miền Bắc nói “quả dứa”, người miền Nam nói “trái thơm”. Hai cách gọi này, có cách nào đúng hơn cách nào không?",
@@ -514,7 +516,7 @@ export const skillsB: VietSkill[] = [
   {
     id: "bo-phan-cau",
     level: "lop3",
-    order: 20,
+    order: 23,
     title: "Ai? – Làm gì?",
     summary: "Tách câu thành hai phần: ai đang làm, và đang làm gì.",
     hook: "Câu “Long vẽ một con bạch tuộc” có hai phần. Nếu chỉ giữ lại một phần thì câu còn hiểu được không? Phần nào không bỏ được?",
@@ -549,6 +551,137 @@ export const skillsB: VietSkill[] = [
         because: askWho
           ? `Hỏi “Ai ${predicate}?” → ${subject}.`
           : `Hỏi “${subject} làm gì?” → ${predicate}. Lấy trọn cả cụm, không chỉ riêng một chữ.`,
+      });
+    },
+  },
+  {
+    id: "viet-hoa",
+    level: "lop2",
+    order: 15,
+    title: "Viết hoa tên riêng",
+    summary: "Tên người, tên sông núi, tên thành phố viết hoa mỗi tiếng. Tên chung như “sông”, “hồ”, “cô” thì viết thường.",
+    hook: "Em viết tên mình thì chữ đầu viết hoa. Vậy trong “sông Hồng”, chữ nào viết hoa — “sông”, “Hồng”, hay cả hai?",
+    methodNoun: "cách nhớ",
+    methods: [
+      {
+        name: "Tên riêng viết hoa mọi tiếng",
+        steps: [
+          "Tên người: viết hoa chữ đầu của họ, tên đệm và tên — Trần Bảo Ngọc.",
+          "Tên nơi chốn: viết hoa chữ đầu của mỗi tiếng — Hà Nội, Đà Nẵng, Sa Pa.",
+        ],
+      },
+      {
+        name: "Tên chung thì viết thường",
+        steps: [
+          "Có rất nhiều con sông, nên “sông” là tên chung — viết thường.",
+          "Chỉ có một sông Hồng, nên “Hồng” là tên riêng — viết hoa.",
+          "Hồ, núi cũng vậy: hồ Gươm, núi Bà Đen.",
+        ],
+      },
+      {
+        name: "Cách gọi cũng viết thường",
+        steps: [
+          "Cô, chú, bạn, bác chỉ là cách gọi, không phải tên: cô Lan, bạn Mai.",
+          "Đầu câu thì chữ nào cũng viết hoa — kể cả “Cô” hay “Bạn”. Luật này là của câu, không phải của tên.",
+        ],
+      },
+    ],
+    kushia:
+      "Con mèo nhà em tên là Mướp. Viết “con mèo Mướp” thì chữ nào viết hoa? Vì sao “con mèo” lại không viết hoa, mà “Mướp” thì có?",
+    make: (rand) => {
+      const [sentence, generic, name] = pickOne(rand, PROPER_NAMES);
+      const syl = name.split(" ");
+      const lower = (w: string) => w.toLocaleLowerCase("vi-VN");
+      const upper = (w: string) => w.charAt(0).toLocaleUpperCase("vi-VN") + w.slice(1);
+      const join = (g: string, parts: string[]) => [g, ...parts].filter(Boolean).join(" ");
+      const answer = join(generic, syl);
+      const wrong = [
+        join(generic, syl.map(lower)),
+        syl.length > 1 ? join(generic, [syl[0], ...syl.slice(1).map(lower)]) : "",
+        generic ? join(upper(generic), syl) : "",
+        generic ? join(upper(generic), syl.map(lower)) : "",
+        syl.length > 1 ? join(generic, [lower(syl[0]), ...syl.slice(1)]) : "",
+      ];
+      const isTitle = ["cô", "chú", "bạn", "bác"].includes(generic);
+      return vItem({
+        prompt: "Chọn cách viết đúng để điền vào chỗ trống",
+        show: sentence,
+        answer,
+        wrong,
+        because: generic && !isTitle
+          ? `“${generic}” là tên chung nên viết thường; “${name}” là tên riêng nên viết hoa chữ đầu mỗi tiếng.`
+          : isTitle
+            ? `“${generic}” chỉ là cách gọi nên viết thường; tên “${name}” thì viết hoa chữ đầu mỗi tiếng.`
+            : `Tên nơi chốn và tên người viết hoa chữ đầu của mỗi tiếng: ${name}.`,
+      });
+    },
+  },
+  {
+    id: "dau-phay",
+    level: "lop3",
+    order: 24,
+    title: "Dấu phẩy",
+    summary: "Kể ra nhiều thứ cùng loại thì ngăn bằng dấu phẩy. Trước chữ “và” thì không cần.",
+    hook: "“Mẹ mua cam xoài bưởi và chuối.” Đọc liền một hơi thì mẹ mua mấy thứ? Thêm gì vào câu thì người đọc biết ngay?",
+    methodNoun: "cách nhớ",
+    methods: [
+      {
+        name: "Kể ra nhiều thứ thì ngăn bằng dấu phẩy",
+        steps: [
+          "Vườn nhà em có cam, xoài, bưởi và chuối.",
+          "Mỗi dấu phẩy ngăn hai thứ cùng loại đứng cạnh nhau.",
+        ],
+      },
+      {
+        name: "Gặp chữ “và” thì thôi",
+        steps: [
+          "Chữ “và” nối thứ cuối cùng vào danh sách.",
+          "Đã có “và” nối rồi thì không cần dấu phẩy nữa: bưởi và chuối.",
+        ],
+      },
+      {
+        name: "Danh sách bắt đầu từ thứ đầu tiên",
+        steps: [
+          "“Vườn nhà em có” chưa kể thứ gì cả.",
+          "Dấu phẩy chỉ nằm giữa các thứ được kể ra, không nằm ngay sau chữ “có”.",
+        ],
+      },
+      {
+        name: "Đọc to để nghe chỗ ngắt",
+        steps: [
+          "Đọc to câu: chỗ nghỉ hơi ngắn thường là dấu phẩy.",
+          "Cuối câu nghỉ lâu hơn — đó là dấu chấm.",
+        ],
+      },
+    ],
+    kushia:
+      "“Em thích vẽ tranh, đá bóng và đọc truyện.” Nếu xoá hết dấu phẩy thì người đọc có hiểu nhầm không? Thử đọc “Em thích vẽ tranh đá bóng” xem nghe ra sao.",
+    make: (rand) => {
+      const [lead, all] = pickOne(rand, COMMA_LISTS);
+      const k = Math.min(all.length, 3 + Math.floor(rand() * 2));
+      const from = Math.floor(rand() * (all.length - k + 1));
+      const items = all.slice(from, from + k);
+      const gap = Math.floor(rand() * k); // 0: after the lead-in; i: before items[i]
+      let show = lead + (gap === 0 ? " ___ " : " ") + items[0];
+      for (let i = 1; i < k; i++) {
+        const last = i === k - 1;
+        show += gap === i ? (last ? " ___ và " : " ___ ") : last ? " và " : ", ";
+        show += items[i];
+      }
+      show += ".";
+      const NONE = "không cần dấu";
+      const answer = gap > 0 && gap < k - 1 ? MARK_LABEL[","] : NONE;
+      return vItem({
+        prompt: "Chỗ trống cần dấu gì?",
+        show,
+        answer,
+        wrong: [MARK_LABEL[","], MARK_LABEL["."], NONE],
+        because:
+          gap === 0
+            ? `“${lead}” chưa kể thứ gì — danh sách bắt đầu từ “${items[0]}”. Không đặt dấu phẩy ngay sau đó.`
+            : gap === k - 1
+              ? `Chữ “và” đã nối “${items[k - 2]}” với “${items[k - 1]}” rồi, nên không cần dấu phẩy.`
+              : `“${items[gap - 1]}” và “${items[gap]}” là hai thứ cùng loại được kể ra, nên ngăn bằng dấu phẩy.`,
       });
     },
   },

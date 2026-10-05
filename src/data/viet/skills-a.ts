@@ -12,6 +12,9 @@ import {
 import {
   ALPHABET,
   CKQ,
+  CLAP_WORDS,
+  FINAL_PARTNER,
+  FINALS,
   GGH,
   LETTER_HINT,
   LOOKALIKE,
@@ -189,7 +192,7 @@ export const skillsA: VietSkill[] = [
   {
     id: "thanh-dieu",
     level: "lop1",
-    order: 4,
+    order: 5,
     title: "Sáu thanh điệu",
     summary: "Không dấu, huyền, sắc, hỏi, ngã, nặng — nhìn dấu mà gọi đúng tên.",
     hook: "Ma, mà, má, mả, mã, mạ — sáu tiếng này chỉ khác nhau đúng một cái dấu nhỏ xíu, vậy mà nghĩa khác hẳn. Làm sao một cái dấu nhỏ lại quan trọng đến thế?",
@@ -245,7 +248,7 @@ export const skillsA: VietSkill[] = [
   {
     id: "ghep-tieng",
     level: "lop1",
-    order: 5,
+    order: 6,
     title: "Ghép tiếng",
     summary: "Âm đầu + vần + dấu thanh = một tiếng. Đánh vần chính là ghép như vậy.",
     hook: "Chữ b, chữ a và một cái dấu huyền — ba mảnh rời nhau. Ghép lại thì đọc thành tiếng gì? Và nếu đổi sang dấu khác thì sao?",
@@ -288,7 +291,7 @@ export const skillsA: VietSkill[] = [
   {
     id: "am-dau-van",
     level: "lop1",
-    order: 6,
+    order: 7,
     title: "Âm đầu và vần",
     summary: "Tách một tiếng thành âm đầu và vần. nh, ng, ch, tr là một âm, dù viết bằng hai chữ.",
     hook: "Tiếng “nhà” có ba chữ cái: n, h, a. Vậy âm đầu của nó là n, hay là nh?",
@@ -373,7 +376,7 @@ export const skillsA: VietSkill[] = [
   {
     id: "c-k-q",
     level: "lop1",
-    order: 7,
+    order: 8,
     title: "c, k hay q",
     summary: "Ba chữ cùng đọc là “cờ”. Chọn chữ nào là do chữ đứng ngay sau.",
     hook: "Cá, kẹo, quà — ba tiếng này đầu đều đọc giống nhau. Vậy sao lại viết bằng ba chữ khác nhau? Có phải chọn bừa không?",
@@ -425,7 +428,7 @@ export const skillsA: VietSkill[] = [
   {
     id: "g-gh-ng-ngh",
     level: "lop1",
-    order: 8,
+    order: 9,
     title: "g hay gh, ng hay ngh",
     summary: "Cùng một luật với c và k: gặp i, e, ê thì thêm chữ h.",
     hook: "Gà viết g, ghế lại viết gh. Ngô viết ng, nghé lại viết ngh. Luật này em đã gặp ở bài nào rồi nhỉ?",
@@ -467,6 +470,112 @@ export const skillsA: VietSkill[] = [
         because: long
           ? `Sau chỗ trống là “${next}” — gặp i, e, ê thì thêm h: ${word}.`
           : `Sau chỗ trống là “${next}”, không phải i, e, ê, nên không cần h: ${word}.`,
+      });
+    },
+  },
+  {
+    id: "dem-tieng",
+    level: "mau-giao",
+    order: 4,
+    title: "Vỗ tay đếm tiếng",
+    summary: "Mỗi tiếng là một lần vỗ tay. Đếm được tiếng là bước đầu của đánh vần.",
+    hook: "Đọc to “mèo” và vỗ tay theo. Rồi đọc “con mèo” và vỗ tay theo. Hai lần em vỗ tay có bằng nhau không?",
+    methodNoun: "cách làm",
+    autoSay: true,
+    methods: [
+      {
+        name: "Mỗi tiếng vỗ tay một cái",
+        steps: [
+          "Đọc thật chậm, nói tới đâu vỗ tay tới đó: con — cá — vàng.",
+          "Đếm số lần vỗ tay. Vỗ ba cái là ba tiếng.",
+        ],
+      },
+      {
+        name: "Đặt tay dưới cằm",
+        steps: [
+          "Đặt mu bàn tay ngay dưới cằm rồi đọc to.",
+          "Mỗi tiếng, miệng mở ra một lần và cằm chạm tay một lần.",
+          "Cằm chạm tay mấy lần thì có mấy tiếng.",
+        ],
+      },
+      {
+        name: "Mỗi tiếng một viên sỏi",
+        steps: [
+          "Đọc một tiếng thì đặt một viên sỏi (hay một hạt đậu) lên bàn.",
+          "Đọc xong, đếm số viên sỏi trên bàn.",
+        ],
+      },
+    ],
+    kushia:
+      "“Xe” có một tiếng, “ô tô” có hai tiếng. Cùng là cái xe chạy trên đường, sao số tiếng lại khác nhau? Em thử tìm một con vật mà tên có thật nhiều tiếng xem.",
+    make: (rand) => {
+      const [phrase, picture] = pickOne(rand, CLAP_WORDS);
+      const count = phrase.split(" ").length;
+      const claps = (n: number) => "👏".repeat(n);
+      return vItem({
+        prompt: "Nghe rồi vỗ tay: có mấy tiếng?",
+        picture,
+        say: phrase,
+        answer: claps(count),
+        wrong: [1, 2, 3, 4].filter((n) => n !== count).map(claps),
+        because:
+          count === 1
+            ? `“${phrase}” chỉ có một tiếng — vỗ tay một cái.`
+            : `“${phrase}” có ${count} tiếng: ${phrase.split(" ").join(" — ")}. Vỗ tay ${count} cái.`,
+      });
+    },
+  },
+  {
+    id: "van-cuoi",
+    level: "lop1",
+    order: 10,
+    title: "Vần an hay ang, at hay ac",
+    summary: "Chữ cuối n hay ng, t hay c. Nhiều nơi đọc giống nhau, nhưng viết thì phải khác.",
+    hook: "Con trăn và mặt trăng — đọc to hai tiếng này lên. Nhà em đọc hai tiếng ấy giống hay khác nhau? Nếu giống, thì làm sao biết chữ nào có g ở cuối?",
+    methodNoun: "cách nhớ",
+    autoSay: true,
+    methods: [
+      {
+        name: "Để ý lưỡi ở cuối tiếng",
+        steps: [
+          "Đọc thật chậm và dừng lại ở cuối tiếng.",
+          "Cuối là n hay t: đầu lưỡi chạm vào chỗ ngay sau răng trên — “trăn”, “mắt”.",
+          "Cuối là ng hay c: đầu lưỡi không chạm răng, phía trong lưỡi nâng lên — “trăng”, “sóc”.",
+          "Ở nhiều vùng miền Nam, an và ang, at và ac đọc giống nhau. Không phải nói sai — chỉ là khi viết phải nhớ.",
+        ],
+      },
+      {
+        name: "Nhớ bằng nghĩa",
+        steps: [
+          "Nhiều cặp chỉ khác chữ cuối mà nghĩa khác hẳn: trăn — trăng, bát — bác, nhạc — nhạt.",
+          "Biết tiếng đó nghĩa là gì thì biết viết chữ nào.",
+        ],
+      },
+      {
+        name: "Từ láy vần: hai tiếng cùng một vần",
+        steps: [
+          "Lang thang, lan man: tiếng sau cùng vần với tiếng trước.",
+          "Bát ngát, lác đác: cũng vậy.",
+          "Biết một tiếng viết thế nào thì tiếng kia viết y như thế.",
+        ],
+      },
+    ],
+    kushia:
+      "“Trăn” và “trăng” chỉ khác nhau đúng một chữ g, mà một tiếng là con vật, một tiếng ở trên trời. Em tìm thêm hai tiếng khác chỉ khác nhau ở chữ cuối xem?",
+    make: (rand) => {
+      const [word, final, picture, pair] = pickOne(rand, FINALS);
+      const partner = FINAL_PARTNER[final];
+      const [first, second] = final === "n" || final === "t" ? [final, partner] : [partner, final];
+      return vItem({
+        prompt: `Chữ cuối là ${first} hay ${second}?`,
+        show: word.slice(0, word.length - final.length) + "_",
+        picture,
+        say: word,
+        answer: final,
+        wrong: [partner],
+        because: pair
+          ? `“${word}” viết ${final} ở cuối. Viết ${partner} thì thành tiếng khác: ${pair}.`
+          : `“${word}” viết ${final} ở cuối. Đọc chậm và để ý lưỡi ở cuối tiếng.`,
       });
     },
   },

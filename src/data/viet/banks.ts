@@ -74,7 +74,6 @@ export const SYLLABLES: readonly Syllable[] = [
   ["phố", "ph", "ô", "🏙️"],
   ["phở", "ph", "ơ", "🍜"],
   ["quà", "qu", "a", "🎁"],
-  ["quạt", "qu", "at", "🪭"],
   ["quê", "qu", "ê", "🏡"],
   ["rùa", "r", "ua", "🐢"],
   ["sẻ", "s", "e", "🐦"],
@@ -182,15 +181,15 @@ export const CKQ: readonly SpellItem[] = [
   ["cá", "c", "🐟"], ["cỏ", "c", "🌿"], ["cờ", "c", "🚩"], ["cam", "c", "🍊"], ["cua", "c", "🦀"],
   ["cú", "c", "🦉"], ["cây", "c", "🌳"], ["cơm", "c", "🍚"], ["cửa", "c", "🚪"], ["cốc", "c", "🥛"],
   ["kem", "k", "🍦"], ["kéo", "k", "✂️"], ["kẹo", "k", "🍬"], ["kính", "k", "👓"], ["kiến", "k", "🐜"],
-  ["kẻ", "k", "📏"], ["quà", "qu", "🎁"], ["quạt", "qu", "🪭"], ["quả", "qu", "🍎"], ["quê", "qu", "🏡"],
+  ["kẻ", "k", "📏"], ["quà", "qu", "🎁"], ["quả", "qu", "🍎"], ["quê", "qu", "🏡"],
   ["quần", "qu", "👖"], ["quạ", "qu", "🐦‍⬛"],
 ];
 
 export const GGH: readonly SpellItem[] = [
   ["gà", "g", "🐔"], ["gỗ", "g", "🪵"], ["gấu", "g", "🐻"], ["gạo", "g", "🍚"], ["gối", "g", "🛏️"],
-  ["gương", "g", "🪞"], ["gừng", "g", "🫚"], ["ghế", "gh", "🪑"], ["ghi", "gh", "✍️"], ["ghẹ", "gh", "🦀"],
+  ["gương", "g", "🪞"], ["ghế", "gh", "🪑"], ["ghi", "gh", "✍️"], ["ghẹ", "gh", "🦀"],
   ["ghim", "gh", "📌"], ["ghe", "gh", "⛵"],
-  ["ngô", "ng", "🌽"], ["ngủ", "ng", "😴"], ["ngựa", "ng", "🐴"], ["ngón", "ng", "👆"], ["ngỗng", "ng", "🪿"],
+  ["ngô", "ng", "🌽"], ["ngủ", "ng", "😴"], ["ngựa", "ng", "🐴"], ["ngón", "ng", "👆"],
   ["nghé", "ngh", "🐃"], ["nghe", "ngh", "👂"], ["nghỉ", "ngh", "😌"], ["nghĩ", "ngh", "🤔"],
 ];
 
@@ -203,9 +202,9 @@ export type LexItem = readonly [word: string, onset: string, picture: string];
 
 export const SX: readonly LexItem[] = [
   ["sách", "s", "📚"], ["sao", "s", "⭐"], ["sữa", "s", "🥛"], ["sông", "s", "🏞️"], ["sóc", "s", "🐿️"],
-  ["sư tử", "s", "🦁"], ["sen", "s", "🪷"], ["sò", "s", "🐚"], ["sấm", "s", "⛈️"], ["sáo", "s", "🪈"],
+  ["sư tử", "s", "🦁"], ["sen", "s", "🪷"], ["sò", "s", "🐚"], ["sấm", "s", "⛈️"],
   ["xe", "x", "🚗"], ["xôi", "x", "🍚"], ["xoài", "x", "🥭"], ["xương", "x", "🦴"], ["xà phòng", "x", "🧼"],
-  ["xô", "x", "🪣"], ["xiếc", "x", "🎪"], ["xẻng", "x", "🪏"],
+  ["xô", "x", "🪣"], ["xiếc", "x", "🎪"],
   ["sạch sẽ", "s", "✨"], ["sáng sủa", "s", "☀️"], ["xinh xắn", "x", "🎀"], ["xa xôi", "x", "🗺️"],
 ];
 
@@ -369,4 +368,92 @@ export const SUBJ_PRED: readonly (readonly [sentence: string, subject: string, p
   ["Long vẽ một con bạch tuộc.", "Long", "vẽ một con bạch tuộc", "con bạch tuộc", "Long vẽ"],
   ["Bé Anh xếp những khối gỗ.", "Bé Anh", "xếp những khối gỗ", "những khối gỗ", "Bé Anh xếp"],
   ["Chú bộ đội đứng gác ở biên giới.", "Chú bộ đội", "đứng gác ở biên giới", "biên giới", "Chú bộ đội đứng gác"],
+];
+
+/* ---------------------------------------------------------------------------
+   Added with lessons 21–24.
+   --------------------------------------------------------------------------- */
+
+/**
+ * Vỗ tay đếm tiếng: a word or phrase and its picture. In Vietnamese writing
+ * every tiếng is separated by a space, so the count is the number of words —
+ * the test suite counts them independently.
+ */
+export const CLAP_WORDS: readonly (readonly [phrase: string, picture: string])[] = [
+  ["cá", "🐟"], ["gà", "🐔"], ["mèo", "🐱"], ["hoa", "🌸"], ["sao", "⭐"], ["voi", "🐘"], ["trăng", "🌙"],
+  ["con mèo", "🐱"], ["máy bay", "✈️"], ["xe đạp", "🚲"], ["quả táo", "🍎"], ["cầu vồng", "🌈"],
+  ["cá heo", "🐬"], ["dưa hấu", "🍉"], ["ô tô", "🚗"], ["bông hoa", "🌸"],
+  ["con cá vàng", "🐠"], ["xe cứu hoả", "🚒"], ["con bạch tuộc", "🐙"], ["quả dưa hấu", "🍉"],
+  ["bánh sinh nhật", "🎂"], ["kem ốc quế", "🍦"], ["ông mặt trời", "☀️"], ["chiếc ô tô", "🚗"],
+  ["con chim bồ câu", "🕊️"], ["con chim cánh cụt", "🐧"], ["máy bay trực thăng", "🚁"],
+  ["chiếc xe cứu hoả", "🚒"], ["cây kem ốc quế", "🍦"],
+];
+
+/**
+ * Vần an hay ang, at hay ac: one-syllable words whose last sound is n, ng,
+ * t or c, with a picture that fixes the meaning. `pair` is set when swapping
+ * the last letter gives another real word — the lesson names it, because
+ * that is exactly the mix-up worth explaining.
+ */
+export type FinalItem = readonly [word: string, final: "n" | "ng" | "t" | "c", picture: string, pair?: string];
+export const FINALS: readonly FinalItem[] = [
+  ["đèn", "n", "💡"], ["nến", "n", "🕯️"], ["lợn", "n", "🐷"], ["chân", "n", "🦶"], ["sen", "n", "🪷"],
+  ["trăn", "n", "🐍", "trăng là mặt trăng"], ["nhện", "n", "🕷️"], ["giun", "n", "🪱"], ["khăn", "n", "🧣"],
+  ["trăng", "ng", "🌙", "trăn là con trăn"], ["ong", "ng", "🐝"], ["bóng", "ng", "⚽", "bón là bón phân cho cây"],
+  ["trống", "ng", "🥁", "trốn là trốn tìm"], ["chuông", "ng", "🔔"], ["trứng", "ng", "🥚"], ["rồng", "ng", "🐉"],
+  ["sóng", "ng", "🌊"], ["răng", "ng", "🦷"],
+  ["mắt", "t", "👁️", "mắc là mắc áo"], ["bút", "t", "✏️"], ["ớt", "t", "🌶️"],
+  ["bát", "t", "🥣", "bác là anh hoặc chị của bố mẹ"], ["tất", "t", "🧦"], ["vợt", "t", "🏸"],
+  ["hạt", "t", "🌰", "hạc là con chim hạc"], ["cát", "t", "🏖️", "các là “các bạn”"],
+  ["sóc", "c", "🐿️", "sót là bỏ sót"], ["ốc", "c", "🐌"], ["mực", "c", "🦑"], ["lạc", "c", "🥜", "lạt là sợi lạt buộc bánh chưng"],
+  ["nhạc", "c", "🎵", "nhạt là ăn nhạt, ít muối"], ["thóc", "c", "🌾"],
+];
+
+/** The other spelling a child is likely to write for each final. */
+export const FINAL_PARTNER: Record<FinalItem[1], FinalItem[1]> = { n: "ng", ng: "n", t: "c", c: "t" };
+
+/**
+ * Viết hoa tên riêng: a sentence with a gap, and the name that fills it.
+ * `generic` is the common word in front of a geographical name — sông, hồ,
+ * núi — or a title in front of a person — cô, chú, bạn. It stays lower-case;
+ * every syllable of the name itself is capitalised.
+ */
+export const PROPER_NAMES: readonly (readonly [sentence: string, generic: string, name: string])[] = [
+  ["Nhà ông bà em ở ___.", "", "Hà Nội"],
+  ["Hè này cả nhà em đi ___.", "", "Đà Nẵng"],
+  ["Cô giáo kể cho em nghe về ___.", "", "Huế"],
+  ["Chú em làm việc ở ___.", "", "Cần Thơ"],
+  ["Cả lớp em đi tham quan ___.", "", "Hạ Long"],
+  ["Bà ngoại em sống ở ___.", "", "Hải Phòng"],
+  ["Mùa đông, ở ___ có sương mù.", "", "Sa Pa"],
+  ["Dì em vừa đi ___ về.", "", "Nha Trang"],
+  ["Em được bố cho đi thuyền trên ___.", "sông", "Hồng"],
+  ["Thành phố Huế nằm bên ___.", "sông", "Hương"],
+  ["Ông dẫn em đi dạo quanh ___.", "hồ", "Gươm"],
+  ["Sáng chủ nhật, cả nhà em đi bộ quanh ___.", "hồ", "Tây"],
+  ["Em được nghe kể về ___ ở Tây Ninh.", "núi", "Bà Đen"],
+  ["Lớp em có bạn ___ mới chuyển đến.", "bạn", "Mai"],
+  ["Hôm nay ___ dạy cả lớp hát.", "cô", "Lan"],
+  ["Em gửi thư cho ___ ở quê.", "chú", "Tư"],
+  ["Cô giáo gọi ___ lên bảng.", "bạn", "Trần Bảo Ngọc"],
+  ["Em ngồi cạnh ___.", "bạn", "Lê Gia Huy"],
+  ["Tên đầy đủ của mẹ em là ___.", "", "Phạm Thu Hà"],
+];
+
+/**
+ * Dấu phẩy: a list of things of the same kind, after a lead-in that has no
+ * comma of its own. The lesson puts a gap between two neighbours, before
+ * "và", or straight after the lead-in.
+ */
+export const COMMA_LISTS: readonly (readonly [lead: string, items: readonly string[]])[] = [
+  ["Vườn nhà em có", ["cam", "xoài", "bưởi", "chuối"]],
+  ["Trong hộp bút của em có", ["bút chì", "thước kẻ", "tẩy", "bút màu"]],
+  ["Ở sở thú có", ["voi", "hổ", "khỉ", "hươu cao cổ"]],
+  ["Cầu vồng có màu", ["đỏ", "cam", "vàng", "lục", "lam", "chàm", "tím"]],
+  ["Bữa sáng em ăn", ["bánh mì", "trứng", "sữa"]],
+  ["Em thích", ["vẽ tranh", "đá bóng", "đọc truyện"]],
+  ["Trên bàn học có", ["sách", "vở", "đèn bàn"]],
+  ["Bà trồng", ["rau cải", "cà chua", "hành lá", "mướp"]],
+  ["Trong rừng có", ["sóc", "khỉ", "nai", "chim"]],
+  ["Mẹ đi chợ mua", ["cá", "rau", "thịt", "đậu phụ"]],
 ];

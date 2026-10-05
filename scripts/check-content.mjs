@@ -55,11 +55,13 @@ load([
   "data/viet/phonology", "data/viet/banks", "data/viet/helpers", "data/viet/types",
   "data/viet/skills-a", "data/viet/skills-b", "data/viet/index",
   "data/math/types", "data/math/helpers", "data/math/skills-a", "data/math/skills-b", "data/math/index",
+  "data/vocab/types", "data/vocab/sets-a", "data/vocab/sets-b", "data/vocab/sets-c", "data/vocab/sets-d", "data/vocab/index",
 ]);
 const imp = (m) => import(path.join(OUT, `${m}.mjs`));
 const P = await imp("data/viet/phonology");
 const K = await imp("data/viet/banks");
 const { vietSkills } = await imp("data/viet/index");
+const { vocabSets, TOTAL_WORDS } = await imp("data/vocab/index");
 const { skills: mathSkills } = await imp("data/math/index");
 
 const fail = [];
@@ -115,6 +117,24 @@ section("word banks obey the rules they teach", () => {
     if (tone(target) !== want) fail.push(`láy ${a} ${b}: rule says ${want}`);
   }
   for (const [bank, name] of [[K.SX, "s/x"], [K.TRCH, "tr/ch"], [K.DGIR, "d/gi/r"]]) for (const [w, on] of bank) if (!w.startsWith(on)) fail.push(`${name} ${w} does not start with ${on}`);
+  for (const [phrase] of K.CLAP_WORDS) {
+    const n = phrase.split(" ").length;
+    if (phrase !== phrase.trim() || / {2}/.test(phrase) || n < 1 || n > 4) fail.push(`clap word "${phrase}"`);
+  }
+  for (const [w, fin] of K.FINALS) {
+    const last = bare(w);
+    if (!last.endsWith(fin) || (fin === "n" && last.endsWith("nh")) || (fin === "c" && last.endsWith("ch"))) fail.push(`final ${w}: not ${fin}`);
+    if ((fin === "t" || fin === "c") && !["sắc", "nặng"].includes(tone(w))) fail.push(`final ${w}: stop final with ${tone(w)}`);
+  }
+  for (const [sentence, generic, name] of K.PROPER_NAMES) {
+    if (sentence.split("___").length !== 2) fail.push(`proper-name sentence needs one gap: ${sentence}`);
+    if (generic && generic !== generic.toLocaleLowerCase("vi-VN")) fail.push(`generic "${generic}" must be lower-case`);
+    for (const syl of name.split(" ")) if (syl[0] !== syl[0].toLocaleUpperCase("vi-VN")) fail.push(`name "${name}": "${syl}" not capitalised`);
+  }
+  for (const [lead, items] of K.COMMA_LISTS) {
+    if (lead.includes(",")) fail.push(`comma list lead-in has a comma: ${lead}`);
+    for (const it of items) if (/,| và /.test(it)) fail.push(`comma list item "${it}"`);
+  }
   const strings = JSON.stringify(K).match(/"(?:[^"\\]|\\.)*"/g) ?? [];
   for (const s of strings) if (!nfc(JSON.parse(s))) fail.push(`not NFC: ${s}`);
   return `${K.SYLLABLES.length} syllables, ${K.CKQ.length + K.GGH.length} rule words, ${K.LAY_HOI_NGA.length} từ láy`;
@@ -142,6 +162,28 @@ section("Tiếng Việt items, re-read independently", () => {
         const next = LOOK[[...show][1]]?.b ?? [...show][1];
         const want = it.say.startsWith("qu") ? "q" : ["i", "e", "ê"].includes(next) ? "k" : "c";
         if (it.answer !== want) fail.push(`${tag}: rule says ${want}`);
+      }
+      if (s.id === "dem-tieng") {
+        const claps = [...it.answer];
+        if (claps.some((c) => c !== "👏") || claps.length !== it.say.split(" ").length) fail.push(`${tag}: ${claps.length} claps for "${it.say}"`);
+      }
+      if (s.id === "van-cuoi") {
+        const fill = (x) => bare(show.replace("_", x));
+        if (fill(it.answer) !== bare(it.say)) fail.push(`${tag}: ${it.answer} does not make "${it.say}"`);
+        if (it.wrong.some((w) => fill(w) === bare(it.say))) fail.push(`${tag}: a wrong option also makes "${it.say}"`);
+      }
+      if (s.id === "viet-hoa") {
+        const LOW = ["sông", "hồ", "núi", "cô", "chú", "bạn", "bác"];
+        const ok = (o) => o.split(" ").every((w, i) => (i === 0 && LOW.includes(w.toLocaleLowerCase("vi-VN")) ? w === w.toLocaleLowerCase("vi-VN") : w[0] === w[0].toLocaleUpperCase("vi-VN") && w[0] !== w[0].toLocaleLowerCase("vi-VN")));
+        const all = [it.answer, ...it.wrong];
+        if (new Set(all.map((o) => o.toLocaleLowerCase("vi-VN"))).size !== 1) fail.push(`${tag}: options differ by more than capitals`);
+        if (!ok(it.answer) || all.filter(ok).length !== 1) fail.push(`${tag}: capitalisation rule disagrees (${it.answer})`);
+      }
+      if (s.id === "dau-phay") {
+        const at = show.indexOf(" ___ ");
+        const before = show.slice(0, at), after = show.slice(at + 5);
+        const none = after.startsWith("và ") || K.COMMA_LISTS.some(([lead]) => lead === before);
+        if (it.answer !== (none ? "không cần dấu" : ", dấu phẩy")) fail.push(`${tag}: want ${none ? "no mark" : "a comma"}`);
       }
       if (s.id === "hoi-nga") {
         const parts = show.split(" ");
@@ -194,6 +236,51 @@ section("maths items, re-solved independently", () => {
   }
   if (unsolved) fail.push(`${unsolved} maths prompts the independent solver could not read`);
   return `${mathSkills.length} lessons, ${total} items`;
+});
+
+/*
+ * Pictures are how a child who cannot read yet answers. An emoji newer than
+ * Unicode 14 draws as an empty box on older phones and tablets — the hand-me-
+ * down devices children are most likely to learn on — so none may be used.
+ */
+const TOO_NEW = new Set([..."🫨🩷🩵🩶🫏🫎🪽🪿🪼🪻🫚🫛🪭🪮🪇🪈🪯🛜🫸🫷🫩🫆🪾🫜🪉🪏🫟"]);
+/*
+ * English: a child who cannot read yet hears a word and picks one of four
+ * pictures from the same set, so two words in a set may never share a picture.
+ */
+section("English pictures unambiguous", () => {
+  const all = new Map();
+  let words = 0;
+  for (const set of vocabSets) {
+    const pics = new Map();
+    for (const [en, vi, pic] of set.words) {
+      words++;
+      all.set(en, set.id);
+      // Sets of function words ("the", "is") have no pictures on purpose.
+      if (set.pictureFirst && pics.has(pic)) fail.push(`${set.id}: "${en}" and "${pics.get(pic)}" share the picture ${pic}`);
+      pics.set(pic, en);
+      if (!nfc(vi)) fail.push(`${set.id}: "${vi}" not NFC`);
+    }
+  }
+  if (words !== TOTAL_WORDS || words !== 1000) fail.push(`${words} English words, the site says ${TOTAL_WORDS}`);
+  return `${vocabSets.length} sets, ${words} words`;
+});
+
+section("picture emoji render on older devices", () => {
+  let n = 0;
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const f = path.join(dir, e.name);
+      if (e.isDirectory()) walk(f);
+      else if (/\.tsx?$/.test(e.name)) {
+        readFileSync(f, "utf8").split("\n").forEach((line, i) => {
+          for (const c of line) { if (/\p{Extended_Pictographic}/u.test(c)) n++; if (TOO_NEW.has(c)) fail.push(`${path.relative(ROOT, f)}:${i + 1}: ${c} needs Unicode 15+`); }
+        });
+      }
+    }
+  };
+  walk(path.join(ROOT, "src"));
+  return `${n} emoji, none newer than Unicode 14`;
 });
 
 /*

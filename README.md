@@ -47,7 +47,7 @@ competes with a lesson for bandwidth, and it is not loaded at all under Do Not T
 |---|---|
 | `/` | Homepage — the three classes, then the print corner |
 | `/hom-nay` | **Hôm nay học gì** — what is due today across all three classes, what to start next, progress backup |
-| `/hoc-tieng-viet`, `/hoc-tieng-viet/[skill]` | Tiếng Việt, 20 lessons, mẫu giáo → lớp 3 |
+| `/hoc-tieng-viet`, `/hoc-tieng-viet/[skill]` | Tiếng Việt, 24 lessons, mẫu giáo → lớp 3 |
 | `/hoc-toan`, `/hoc-toan/[skill]` | Maths, 24 lessons, with an optional typed-answer mode |
 | `/hoc-tieng-anh`, `/hoc-tieng-anh/[set]` | English, 1000 words in 40 sets |
 | `/goc-in-3d` | **Góc in 3D** — learning with the home printer: lesson links, one print step by step, crediting designers, a list of real prints (empty until the family adds one), safety rules |
@@ -64,7 +64,7 @@ redirect permanently (see `next.config.ts`).
 
 1. Tones are read off the spelling (Unicode), on both precomposed and decomposed input.
 2. Every word-bank entry obeys the spelling rule it is used to teach.
-3. Every Tiếng Việt generator (60,000 items) is re-read by an independent reader.
+3. Every Tiếng Việt generator (72,000 items) is re-read by an independent reader.
 4. Every maths generator (72,000 items) is re-solved by an independent solver.
 5. No source file outside the lesson data makes an invented claim about the family or offers
    something for sale.

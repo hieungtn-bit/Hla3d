@@ -204,7 +204,7 @@ export const setsD: VocabSet[] = [
       ["guitar", "đàn ghi ta", "🎸"],
       ["violin", "đàn vi ô lông", "🎻"],
       ["drum", "cái trống", "🥁"],
-      ["flute", "cây sáo", "🪈"],
+      ["accordion", "đàn phong cầm", "🪗"],
       ["trumpet", "kèn trumpet", "🎺"],
       ["saxophone", "kèn saxophone", "🎷"],
       ["note", "nốt nhạc", "🎼"],
