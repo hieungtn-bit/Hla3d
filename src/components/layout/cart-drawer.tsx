@@ -28,7 +28,7 @@ export function CartDrawer() {
         <div className="fixed inset-0 z-100">
           <motion.button
             type="button"
-            aria-label="Close cart"
+            aria-label="Đóng giỏ hàng"
             className="absolute inset-0 bg-ink/40 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -37,7 +37,7 @@ export function CartDrawer() {
           />
           <motion.aside
             role="dialog"
-            aria-label="Your basket"
+            aria-label="Giỏ hàng"
             className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-paper shadow-2xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -54,7 +54,7 @@ export function CartDrawer() {
               <button
                 type="button"
                 onClick={cart.close}
-                aria-label="Close"
+                aria-label="Đóng"
                 className="sticker press grid size-10 place-items-center rounded-full bg-surface"
               >
                 <X className="size-4" />

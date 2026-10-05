@@ -1,3 +1,4 @@
+import { filaments, products } from "@/data/products";
 export type PrinterStatus = "printing" | "idle" | "cooling" | "maintenance";
 
 export type PrinterState = {
@@ -48,17 +49,22 @@ export type QueueItem = {
 
 export const printQueue: QueueItem[] = [
   { job: "Rồng khớp nối", qty: 2, eta: "8h 50m", color: "Xanh lá", hex: "#c6f24e", owner: "Hưng" },
-  { job: "Thẻ tên cặp — LINH", qty: 1, eta: "35m", color: "Xanh da trời", hex: "#3fa9f5", owner: "Long" },
+  { job: "Thẻ tên đeo cặp", qty: 1, eta: "35m", color: "Xanh da trời", hex: "#3fa9f5", owner: "Long" },
   { job: "Kẹp gom dây", qty: 6, eta: "4h 30m", color: "Đen", hex: "#1c1c22", owner: "Anh" },
   { job: "Lô móc khoá", qty: 12, eta: "5h 00m", color: "Vàng ánh kim", hex: "#d9a441", owner: "Anh" },
 ];
 
+/**
+ * Only facts the site itself can vouch for. The original four (hours this
+ * month, kilos of PLA, prints finished, success rate) were placeholders that
+ * read like measurements; nobody measured them.
+ */
 export const labStats = [
-  { label: "Giờ in tháng này", value: "78h" },
-  { label: "Nhựa PLA đã dùng", value: "2.4 kg" },
-  { label: "Lượt in xong", value: "63" },
-  { label: "Tỉ lệ thành công", value: "91%" },
-] as const;
+  { label: "Số máy in", value: "1" },
+  { label: "Món trong cửa hàng", value: String(products.length) },
+  { label: "Màu nhựa có sẵn", value: String(Object.keys(filaments).length) },
+  { label: "Thời gian làm một đơn", value: "3–5 ngày" },
+];
 
 export type FilamentStock = {
   color: string;

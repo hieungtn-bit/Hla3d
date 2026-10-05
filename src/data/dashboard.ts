@@ -1,5 +1,10 @@
 /**
- * Private dashboard mock data — Dad + the three makers.
+ * SAMPLE DATA. Every number here was written to give the dashboard a shape
+ * when the site was built. None of it is the shop's real revenue, profit or
+ * output. Replace with real figures before reading anything into them; the
+ * page shows a "SỐ LIỆU MẪU" banner until then.
+ *
+ * Private dashboard data — Dad + the three makers.
  * Kept in one file so a Supabase query can replace it later without
  * touching a single component.
  */

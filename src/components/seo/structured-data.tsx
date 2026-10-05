@@ -58,3 +58,33 @@ export function breadcrumbSchema(trail: Array<{ name: string; path: string }>) {
     })),
   };
 }
+
+/**
+ * A free course, described only with what is true of it.
+ *
+ * Deliberately no ratings, no enrolment counts, no "hours to complete": the
+ * site has none of those figures, and a search result is not the place to
+ * start inventing them.
+ */
+export function courseSchema(c: {
+  name: string;
+  description: string;
+  path: string;
+  level: string;
+  teaches: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: c.name,
+    description: c.description,
+    url: absoluteUrl(c.path),
+    inLanguage: "vi",
+    isAccessibleForFree: true,
+    educationalLevel: c.level,
+    teaches: c.teaches,
+    audience: { "@type": "EducationalAudience", educationalRole: "student", audienceType: "Trẻ em 5–8 tuổi" },
+    provider: { "@type": "Organization", name: site.name, url: absoluteUrl("/") },
+    offers: { "@type": "Offer", price: 0, priceCurrency: "VND", category: "Free" },
+  };
+}

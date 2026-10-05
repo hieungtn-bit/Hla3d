@@ -32,7 +32,7 @@ export function SiteHeader() {
       )}
     >
       <div className="container-hla flex h-16 items-center justify-between gap-6 sm:h-18">
-        <Link href="/" aria-label="HLA3D home" className="shrink-0">
+        <Link href="/" aria-label="HLA3D — trang chủ" className="shrink-0">
           <Logo />
         </Link>
 
@@ -72,11 +72,13 @@ export function SiteHeader() {
             )}
           </button>
 
+          {/* The header's one loud button is the daily entry point, not the shop:
+              the shop is in the nav, and the cart icon is right beside this. */}
           <Link
-            href="/shop"
+            href="/hom-nay"
             className="sticker press hidden h-10 items-center rounded-full bg-flame px-5 font-display text-sm font-extrabold text-white sm:inline-flex"
           >
-            SHOP
+            HÔM NAY HỌC GÌ
           </Link>
 
           <button
@@ -112,11 +114,11 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Link
-                href="/shop"
+                href="/hom-nay"
                 onClick={() => setMenuOpen(false)}
                 className="sticker mt-2 rounded-2xl bg-flame px-4 py-3 text-center font-display text-xl font-extrabold text-white"
               >
-                XEM ĐỒ TỤI EM LÀM
+                HÔM NAY HỌC GÌ
               </Link>
             </nav>
           </motion.div>

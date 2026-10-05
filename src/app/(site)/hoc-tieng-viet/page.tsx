@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
+import { JsonLd, courseSchema } from "@/components/seo/structured-data";
 import { LearnerPicker } from "@/components/learn/learner-picker";
 import { VietWall } from "@/components/viet/wall";
 import { Section } from "@/components/section";
@@ -18,6 +19,15 @@ export default function VietPage() {
 
   return (
     <>
+      <JsonLd
+        data={courseSchema({
+          name: "Tiếng Việt từ mẫu giáo đến lớp 3",
+          description: `${vietSkills.length} bài tiếng Việt: chữ cái, sáu dấu thanh, chính tả, từ và câu. Hỏi trước rồi mới dạy, ôn lại theo lịch.`,
+          path: "/hoc-tieng-viet",
+          level: "Mẫu giáo lớn đến lớp 3",
+          teaches: ["Chữ cái tiếng Việt", "Dấu thanh", "Chính tả", "Từ loại", "Kiểu câu"],
+        })}
+      />
       <PageIntro
         eyebrow="Lớp tiếng Việt của tụi em"
         title={

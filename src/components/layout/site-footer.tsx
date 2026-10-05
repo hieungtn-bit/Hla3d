@@ -7,7 +7,6 @@ const secondary = [
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/about#safety", label: "An toàn khi làm" },
   { href: "/lab", label: "Xưởng in" },
-  { href: "/dashboard", label: "Bảng theo dõi" },
 ];
 
 export function SiteFooter() {
@@ -55,7 +54,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <nav aria-label="Shop">
+          <nav aria-label="Học và ghé xem">
             <p className="eyebrow text-sun">Học và ghé xem</p>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
@@ -68,7 +67,7 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-label="About">
+          <nav aria-label="Phía sau">
             <p className="eyebrow text-sky">Phía sau</p>
             <ul className="mt-5 space-y-3">
               {secondary.map((item) => (

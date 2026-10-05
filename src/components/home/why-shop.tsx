@@ -59,7 +59,7 @@ export function WhyShop() {
               <MakerDesk />
               <div className="sticker absolute left-5 top-5 flex items-center gap-2 rounded-full bg-lime px-3 py-1.5">
                 <span className="size-2.5 animate-[pulse-dot_1.8s_ease-in-out_infinite] rounded-full border-2 border-ink bg-flame" />
-                <span className="eyebrow text-ink">Máy in #01 · Đang in</span>
+                <span className="eyebrow text-ink">Máy in #01 · ở góc nhà</span>
               </div>
             </div>
             <div className="sticker-lg rounded-[var(--radius-card)] bg-surface p-6 sm:p-8">
@@ -76,8 +76,8 @@ export function WhyShop() {
                 />
               </div>
               <p className="mt-4 text-sm leading-relaxed font-semibold text-ink-2">
-                Con số này ba anh em đếm từ tháng 3/2025, mỗi đơn một vạch. Nó không phải mục tiêu
-                của trang web — trang web là để học. Nó là mục tiêu của cái cửa hàng nhỏ ở góc nhà.
+                Đây là mục tiêu của cái cửa hàng nhỏ ở góc nhà, không phải của trang web — trang web
+                là để học.
               </p>
             </div>
           </Reveal>

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { learners, setLearner, useVocab, type LearnerId } from "@/lib/vocab-store";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +13,7 @@ import { cn } from "@/lib/utils";
  * visiting child, so a customer's kid can use the whole thing without the
  * site learning anything about them.
  */
-export function LearnerPicker() {
+export function LearnerPicker({ showToday = true }: { showToday?: boolean }) {
   const state = useVocab();
 
   return (
@@ -37,6 +39,15 @@ export function LearnerPicker() {
           );
         })}
       </div>
+      {showToday && (
+        <Link
+          href="/hom-nay"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-ink-2 underline underline-offset-4 hover:text-flame"
+        >
+          Xem hôm nay cần ôn gì ở cả ba lớp
+          <ArrowRight className="size-4" />
+        </Link>
+      )}
     </div>
   );
 }

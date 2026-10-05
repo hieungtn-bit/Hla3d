@@ -39,7 +39,7 @@ export default function DashboardPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Reveal delay={0.02}>
           <StatCard
-            label="Revenue"
+            label="Doanh thu"
             value={formatVnd(thisMonth.revenue)}
             delta={delta(thisMonth.revenue, lastMonth.revenue)}
             deltaGood
@@ -49,7 +49,7 @@ export default function DashboardPage() {
         </Reveal>
         <Reveal delay={0.06}>
           <StatCard
-            label="Material cost"
+            label="Tiền nguyên liệu"
             value={formatVnd(thisMonth.materialCost)}
             sub={`${Math.round((thisMonth.materialCost / thisMonth.revenue) * 100)}% of revenue`}
             accent="#2f8fd8"
@@ -57,7 +57,7 @@ export default function DashboardPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <StatCard
-            label="Profit"
+            label="Tiền lời"
             value={formatVnd(thisMonth.profit)}
             delta={delta(thisMonth.profit, lastMonth.profit)}
             deltaGood
@@ -67,7 +67,7 @@ export default function DashboardPage() {
         </Reveal>
         <Reveal delay={0.14}>
           <StatCard
-            label="Failed prints"
+            label="Lần in hỏng"
             value={String(thisMonth.failedPrints)}
             delta={delta(thisMonth.failedPrints, lastMonth.failedPrints)}
             deltaGood
@@ -79,11 +79,11 @@ export default function DashboardPage() {
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Reveal delay={0.02}>
-          <StatCard label="PLA used" value={`${thisMonth.plaUsed} kg`} sub="≈ 2.4 spools" />
+          <StatCard label="Nhựa PLA đã dùng" value={`${thisMonth.plaUsed} kg`} sub="≈ 2.4 spools" />
         </Reveal>
         <Reveal delay={0.06}>
           <StatCard
-            label="Print hours"
+            label="Giờ in"
             value={`${thisMonth.printHours}h`}
             delta={delta(thisMonth.printHours, lastMonth.printHours)}
             deltaGood
@@ -91,11 +91,11 @@ export default function DashboardPage() {
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <StatCard label="Products sold" value={String(thisMonth.productsSold)} sub="across 19 orders" />
+          <StatCard label="Món đã bán" value={String(thisMonth.productsSold)} sub="across 19 orders" />
         </Reveal>
         <Reveal delay={0.14}>
           <StatCard
-            label="Avg order value"
+            label="Giá trị trung bình một đơn"
             value={formatVnd(Math.round(thisMonth.revenue / thisMonth.orders))}
             sub="mostly name plates"
           />

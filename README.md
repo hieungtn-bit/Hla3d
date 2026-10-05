@@ -1,47 +1,65 @@
-# HLA3D — Young Maker 3D Printing Lab
+# HLA3D — học mỗi ngày, làm thật
 
-Brand site and storefront for **HLA3D**, a family 3D-printing startup run by three
-brothers with Dad as investor, mentor and safety supervisor.
+Ba lớp học miễn phí — **tiếng Việt, toán và tiếng Anh** — của ba anh em Hưng (8), Long (6)
+và Anh (5), học theo lối nhà học Do Thái. Kèm một cửa hàng in 3D nhỏ cho những ngày cuối tuần.
 
-> **DREAM IT. DESIGN IT. PRINT IT.**
-> Ý tưởng nhỏ. Tạo nên điều thật.
+> **Trước khi đọc gì khác:** mở [`NOI-DUNG-CAN-XAC-NHAN.md`](NOI-DUNG-CAN-XAC-NHAN.md).
+> Nhiều câu chuyện và con số trên trang được viết mẫu khi dựng trang; file đó liệt kê từng
+> chỗ cần thay bằng chuyện và số thật.
 
 ---
 
 ## Running it
 
 ```bash
-cd hla3d
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build
 npm run lint     # eslint
 ```
 
-Requires Node 20+. No environment variables and no backend are needed — the MVP
-runs entirely on local mock data.
+Requires Node 20+. There is no database: lesson progress lives in each visitor's browser,
+and orders are emailed.
+
+### Environment variables (set on Vercel, never in this public repo)
+
+| Variable | What it does | If unset |
+|---|---|---|
+| `RESEND_API_KEY` | Sends each order to mẹ Hiếu's inbox | Orders are logged and the customer is offered a pre-filled email instead |
+| `DASHBOARD_PASSWORD` | Opens `/dashboard` (any username, this password) | `/dashboard` stays locked for everyone |
+| `NEXT_PUBLIC_POSTHOG_KEY` | Overrides the built-in PostHog project key | The built-in public project key is used |
+| `NEXT_PUBLIC_SITE_URL` | Overrides the canonical origin | `https://hla3d.fun` in production |
 
 ---
 
 ## Routes
 
-| Route | Rendering | What it is |
-|---|---|---|
-| `/` | Static | Homepage — hero, makers, how it works, shop preview, first-100 goal, lab, money lesson, Dad, journal |
-| `/shop` | Static | Product grid with category filters (DESK · TOYS · CUSTOM · GIFTS · STEM) |
-| `/shop/[slug]` | SSG × 15 | Product detail, colour picker, add-to-cart, `Product` JSON-LD |
-| `/custom` | Dynamic | **Make It Yours** — custom 3D studio with a live extruded preview |
-| `/lab` | Static | The mini factory — printer status, queue, filament shelf, safety rules |
-| `/journal` | Static | Editorial index |
-| `/journal/[slug]` | SSG × 5 | Long-form entry, `BlogPosting` JSON-LD |
-| `/about` | Static | Brand story, team, timeline, Dad, safety, money lesson |
-| `/order/confirmed` | Static | Order-number experience (`ORDER #HLA0028`), `noindex` |
-| `/dashboard` | Static | Private startup dashboard — metrics, chart, maker skills, XP, money split |
-| `/sitemap.xml`, `/robots.txt` | Static | SEO |
+| Route | What it is |
+|---|---|
+| `/` | Homepage — the three classes first, then the brothers, then why there is a shop |
+| `/hom-nay` | **Hôm nay học gì** — what is due today across all three classes, what to start next, progress backup |
+| `/hoc-tieng-viet`, `/hoc-tieng-viet/[skill]` | Tiếng Việt, 20 lessons, mẫu giáo → lớp 3 |
+| `/hoc-toan`, `/hoc-toan/[skill]` | Maths, 24 lessons, with an optional typed-answer mode |
+| `/hoc-tieng-anh`, `/hoc-tieng-anh/[set]` | English, 1000 words in 40 sets |
+| `/shop`, `/shop/[slug]` | The shop: 15 products |
+| `/chon-qua` | Three-tap gift finder |
+| `/custom` | Custom 3D studio |
+| `/dat-hang` | Order form (name + phone only) → `/api/dat-hang` |
+| `/lab`, `/journal`, `/about` | The workshop, the journal, the family story |
+| `/dashboard` | Private dashboard — **password-protected** by `src/proxy.ts`; its numbers are sample data until replaced |
+| `/feed.json`, `/llms.txt` | Machine-readable catalogue and brief for AI assistants |
 
-`/dashboard` is unlisted in the main nav and excluded from `robots.txt`. **It has no
-authentication** — it is a demo surface only. Do not put real data in it until
-phase 2 adds auth.
+### Tests
+
+```bash
+npm run test:content
+```
+
+Checks the lesson content without a browser: every generated maths and Tiếng Việt item is
+re-solved by an independent solver (72,000 and 60,000 items), tones are read from Unicode
+rather than labelled by hand, and every word-bank entry is checked against the spelling rule
+it is used to teach. Exits non-zero on any failure — run it after editing `src/data/viet/` or
+`src/data/math/`.
 
 ---
 

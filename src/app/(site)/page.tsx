@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Boxes, Calculator, Clock3 } from "lucide-react";
+import { ArrowRight, BookOpen, Boxes, Calculator, Type } from "lucide-react";
 import { Hero } from "@/components/home/hero";
 import { Marquee } from "@/components/home/marquee";
 import { MakerCard } from "@/components/home/maker-card";
@@ -26,7 +26,7 @@ const STATS = [
   { icon: BookOpen, value: `${TOTAL_WORDS}`, label: "Từ tiếng Anh, có hình, có tiếng", color: "bg-sun" },
   { icon: Calculator, value: `${skills.length}`, label: "Bài toán, mẫu giáo đến lớp 3", color: "bg-sky" },
   { icon: Boxes, value: "15", label: "Món ba anh em tự thiết kế", color: "bg-lime" },
-  { icon: Clock3, value: "78h", label: "Giờ máy in chạy tháng này", color: "bg-flame" },
+  { icon: Type, value: `${vietSkills.length}`, label: "Bài tiếng Việt, mẫu giáo đến lớp 3", color: "bg-flame" },
 ];
 
 export default function HomePage() {
@@ -213,7 +213,7 @@ export default function HomePage() {
             index="05"
             eyebrow="Nhật ký"
             title="TUẦN NÀY TỤI EM HỌC ĐƯỢC GÌ."
-            description="Chuyện làm được, chuyện làm hỏng, và giá thật của một lần in — do ba anh em tự viết, Ba chỉ sửa lỗi chính tả."
+            description="Chuyện làm được, chuyện làm hỏng, và giá thật của một lần in ở xưởng nhà em."
             action={
               <Link
                 href="/journal"

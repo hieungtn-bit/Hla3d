@@ -92,7 +92,7 @@ export function GET() {
     "",
     `- [Chuyện của tụi em](${absoluteUrl("/about")}) — gồm cả luật an toàn trong nhà`,
     `- [Xưởng in](${absoluteUrl("/lab")}) — máy móc và hàng chờ in`,
-    `- [Nhật ký](${absoluteUrl("/journal")}) — ba anh em tự viết, gồm cả những lần in hỏng`,
+    `- [Nhật ký](${absoluteUrl("/journal")}) — chuyện ở xưởng, gồm cả những lần in hỏng`,
     "",
   ];
 

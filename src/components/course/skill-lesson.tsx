@@ -49,8 +49,21 @@ export type LessonSkill = {
   methodNoun?: "cách làm" | "cách nhớ";
   /** Speak each item as it appears — for learners who cannot read yet. */
   autoSay?: boolean;
+  /**
+   * Answers are whole numbers, so the learner may type them instead of
+   * picking. Four choices let a guess land a quarter of the time; a typed
+   * answer has to be worked out.
+   */
+  allowTyped?: boolean;
   make: (rand: () => number) => LessonItem;
 };
+
+/** "1 000", "1.000" and " 42 " all mean the number the child meant. */
+export function normaliseNumber(raw: string): string | null {
+  const t = raw.replace(/[\s.,]/g, "");
+  if (!/^\d+$/.test(t)) return null;
+  return String(Number(t));
+}
 
 type Stage = "hook" | "methods" | "run" | "done";
 
@@ -106,6 +119,8 @@ export function SkillLesson({
   // Which item's word a grown-up has revealed. Keyed by index so it resets
   // itself on the next item without an effect.
   const [revealed, setRevealed] = React.useState(-1);
+  const [typed, setTyped] = React.useState(false);
+  const [draft, setDraft] = React.useState("");
 
   const it = items[i];
 
@@ -146,6 +161,12 @@ export function SkillLesson({
     if (option === items[i].answer) setRight((r) => r + 1);
   }
 
+  function submitTyped() {
+    const n = normaliseNumber(draft);
+    if (n === null) return;
+    choose(n === normaliseNumber(items[i].answer) ? items[i].answer : n);
+  }
+
   function next() {
     if (i + 1 >= items.length) {
       store.finishRun(who, skill.id, right);
@@ -154,6 +175,7 @@ export function SkillLesson({
       return;
     }
     setPicked(null);
+    setDraft("");
     setI(i + 1);
   }
 
@@ -200,6 +222,38 @@ export function SkillLesson({
             </span>
           </button>
         </div>
+
+        {skill.allowTyped && (
+          <>
+            <p className="eyebrow mt-7 text-ink-3">Trả lời bằng cách nào?</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => setTyped(false)}
+                aria-pressed={!typed}
+                className={cn(
+                  "sticker press rounded-[var(--radius-card)] p-4 text-left",
+                  !typed ? "bg-sun" : "bg-paper hover:bg-paper-2",
+                )}
+              >
+                <span className="block font-display font-bold">Chọn đáp án</span>
+                <span className="text-xs font-semibold text-ink-2">Bốn ô, bấm một ô</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setTyped(true)}
+                aria-pressed={typed}
+                className={cn(
+                  "sticker press rounded-[var(--radius-card)] p-4 text-left",
+                  typed ? "bg-sky" : "bg-paper hover:bg-paper-2",
+                )}
+              >
+                <span className="block font-display font-bold">Tự gõ đáp án</span>
+                <span className="text-xs font-semibold text-ink-2">Không đoán mò được — khó hơn</span>
+              </button>
+            </div>
+          </>
+        )}
 
         <button
           type="button"
@@ -403,6 +457,46 @@ export function SkillLesson({
         )}
       </div>
 
+      {typed ? (
+        <form
+          className="mt-5 flex gap-3"
+          // The browser's own pattern check would silently refuse " 1 1 " and
+          // leave a child pressing a button that does nothing. The lesson
+          // reads the number itself, so the browser is told not to judge.
+          noValidate
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitTyped();
+          }}
+        >
+          <input
+            value={answered ? picked ?? "" : draft}
+            onChange={(e) => setDraft(e.target.value)}
+            disabled={answered}
+            inputMode="numeric"
+            pattern="[0-9]*"
+            autoComplete="off"
+            autoFocus
+            aria-label="Đáp án"
+            placeholder="Gõ số"
+            className={cn(
+              "sticker h-16 min-w-0 flex-1 rounded-[var(--radius-card)] px-5 text-center font-display text-3xl font-bold outline-none",
+              answered && correct && "bg-lime",
+              answered && !correct && "bg-flame-tint",
+              !answered && "bg-surface",
+            )}
+          />
+          {!answered && (
+            <button
+              type="submit"
+              disabled={normaliseNumber(draft) === null}
+              className="tactile h-16 shrink-0 rounded-full bg-ink px-6 font-display text-base font-bold text-paper hover:bg-flame disabled:opacity-40"
+            >
+              KIỂM TRA
+            </button>
+          )}
+        </form>
+      ) : (
       <div className={cn("mt-5 grid gap-3", layout.grid)}>
         {it.options.map((o) => {
           const isRight = o === it.answer;
@@ -427,6 +521,7 @@ export function SkillLesson({
           );
         })}
       </div>
+      )}
 
       {answered && (
         <div className={cn("sticker mt-5 rounded-[var(--radius-card)] p-5", correct ? "bg-lime" : "bg-sun")}>
@@ -434,6 +529,9 @@ export function SkillLesson({
             {correct ? <Check className="size-5" /> : <X className="size-5" />}
             {correct ? "Đúng rồi!" : "Chưa đúng."}
           </p>
+          {typed && !correct && (
+            <p className="mt-2 font-display text-base font-bold">Đáp án đúng là {it.answer}.</p>
+          )}
           <p className="mt-2 flex gap-2 text-sm leading-relaxed font-semibold">
             <Lightbulb className="mt-0.5 size-4 shrink-0" />
             {it.because}

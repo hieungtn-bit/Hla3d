@@ -74,7 +74,7 @@ export default function LabPage() {
       <Section className="border-t border-line bg-paper-2">
         <div className="container-hla grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHeader index="02" eyebrow="Hàng chờ in" title="SẮP TỚI IN GÌ." />
+            <SectionHeader index="02" eyebrow="Ví dụ hàng chờ in" title="MỘT HÀNG CHỜ IN TRÔNG THẾ NÀY." />
             <ul className="mt-8 space-y-2">
               {printQueue.map((item, i) => (
                 <Reveal

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { grade, today, isDue, isLearned, type Progress } from "@/lib/leitner";
-import type { LearnerId } from "@/lib/vocab-store";
+import { markStudied, type LearnerId } from "@/lib/vocab-store";
 
 /**
  * Progress through a skill-based course (maths, Tiếng Việt).
@@ -82,6 +82,7 @@ export function createSkillStore(storageKey: string) {
 
     /** Records the result of one full run. `right` is out of RUN_LENGTH. */
     finishRun(who: LearnerId, skillId: string, right: number) {
+      markStudied(who);
       const mine = state.skills[who] ?? {};
       commit({
         skills: {

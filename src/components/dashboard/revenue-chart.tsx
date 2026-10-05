@@ -43,8 +43,8 @@ export function RevenueChart() {
     <div className="relative">
       {/* legend — always present for two series */}
       <div className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-        <LegendItem color={PROFIT} label="Profit" />
-        <LegendItem color={COST} label="Cost" />
+        <LegendItem color={PROFIT} label="Tiền lời" />
+        <LegendItem color={COST} label="Chi phí" />
         <span className="ml-auto font-mono text-[0.6875rem] text-white/30">Bar height = revenue</span>
       </div>
 
@@ -52,7 +52,7 @@ export function RevenueChart() {
         viewBox={`0 0 ${W} ${H}`}
         className="w-full"
         role="img"
-        aria-label="Monthly revenue split into cost and profit, March to August 2025"
+        aria-label="Doanh thu từng tháng, chia thành chi phí và tiền lời (số liệu mẫu)"
         onMouseLeave={() => setHover(null)}
       >
         {/* grid */}

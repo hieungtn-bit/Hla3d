@@ -5,7 +5,7 @@ import { LogoMark } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
   title: "Startup Dashboard",
-  description: "Private HLA3D dashboard.",
+  description: "Bảng theo dõi riêng của Ba và ba anh em.",
   robots: { index: false, follow: false, nocache: true },
 };
 
@@ -35,6 +35,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
         </div>
       </header>
+      {/*
+        Every number on this page is sample data written when the site was
+        built, not the shop's real results. Ba replaces it in
+        src/data/dashboard.ts; until then the page says so, even to the family.
+      */}
+      <div className="border-b border-carbon-line bg-sun/15">
+        <p className="container-hla py-3 text-xs leading-relaxed font-semibold text-sun">
+          SỐ LIỆU MẪU — các con số dưới đây được viết khi dựng trang để làm khung, chưa phải kết quả
+          kinh doanh thật. Ba thay bằng số thật trong file src/data/dashboard.ts.
+        </p>
+      </div>
       <main className="flex-1">{children}</main>
       <footer className="border-t border-carbon-line py-6">
         <p className="container-hla font-mono text-[0.625rem] text-white/25">

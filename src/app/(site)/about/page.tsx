@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Chuyện của tụi em",
   description:
-    "HLA3D bắt đầu từ một chiếc máy in 3D đặt ở góc nhà và ba anh em tò mò. Đây là chuyện một dự án của gia đình dần thành một cửa hàng nhỏ.",
+    "HLA3D bắt đầu từ một chiếc máy in 3D ở góc nhà và ba anh em tò mò. Giờ nó là ba lớp học miễn phí — tiếng Việt, toán, tiếng Anh — và một cửa hàng nhỏ cho những ngày cuối tuần.",
 };
 
 const TIMELINE = [
@@ -99,9 +99,32 @@ export default function AboutPage() {
               phần vui. Phần thú vị nằm ở xung quanh nó — tính xem một món tốn bao nhiêu, vì sao một khách bỏ đi,
               và học cách nói &ldquo;con chưa biết, để con tìm hiểu rồi trả lời&rdquo;.
             </p>
+            <p>
+              Rồi việc học lấn dần sang chuyện in. Muốn tính giá thì phải giỏi toán, muốn đọc hướng dẫn
+              máy thì phải biết tiếng Anh, muốn viết thiệp cho khách thì phải viết đúng chính tả. Nên giờ
+              HLA3D chủ yếu là ba lớp học — tiếng Việt, toán và tiếng Anh — mở miễn phí cho bất kỳ ai. Cửa
+              hàng vẫn còn, là việc của những ngày cuối tuần rảnh rỗi.
+            </p>
             <p className="border-l-4 border-flame pl-5 font-display text-lg font-bold tracking-tight text-ink">
               HLA = Hưng, Long, Anh. 3D = Nghĩ ra. Vẽ ra. Làm ra.
             </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              {[
+                { href: "/hom-nay", label: "Hôm nay học gì" },
+                { href: "/hoc-tieng-viet", label: "Tiếng Việt" },
+                { href: "/hoc-toan", label: "Toán" },
+                { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="tactile inline-flex h-11 items-center gap-2 rounded-full border-2 border-ink px-5 font-display text-sm font-bold text-ink hover:bg-ink hover:text-paper"
+                >
+                  {l.label}
+                  <ArrowRight className="size-4" />
+                </Link>
+              ))}
+            </div>
           </Reveal>
         </div>
       </Section>
@@ -128,7 +151,7 @@ export default function AboutPage() {
       {/* ---- timeline --------------------------------------------------- */}
       <Section className="border-t border-line">
         <div className="container-hla">
-          <SectionHeader index="02" eyebrow="Dòng thời gian" title="SÁU THÁNG, KỂ THẬT." />
+          <SectionHeader index="02" eyebrow="Dòng thời gian" title="SÁU THÁNG ĐẦU." />
           <ol className="mt-14 space-y-0">
             {TIMELINE.map((item, i) => (
               <Reveal
@@ -156,7 +179,7 @@ export default function AboutPage() {
         <div className="container-hla">
           <SectionHeader
             index="03"
-            eyebrow="Maker safety"
+            eyebrow="An toàn khi làm"
             tone="dark"
             title="AI ĐƯỢC LÀM VIỆC GÌ."
             description="Ba anh em không tự ý đụng vào thiết bị nóng khi không có người lớn. Ai mua đồ của HLA3D cũng nên biết rõ ranh giới đó nằm ở đâu."
@@ -194,7 +217,7 @@ export default function AboutPage() {
             index="04"
             eyebrow="Bài học tiền bạc"
             title="TIỀN CHẠY ĐI ĐÂU HẾT?"
-            description="Tụi em bày ra hết vì tự tính được mới là mục đích. Không con số nào được làm tròn cho đẹp."
+            description="Một đơn 150.000đ được chia ra thế nào: tiền nhựa, tiền điện, hộp, công và tiền lời. Các con số là ước tính, để ba anh em học cách tự tính."
           />
           <div className="mt-14">
             <MoneyBreakdown />

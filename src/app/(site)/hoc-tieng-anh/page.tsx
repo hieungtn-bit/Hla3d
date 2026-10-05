@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
+import { JsonLd, courseSchema } from "@/components/seo/structured-data";
 import { LearnerPicker } from "@/components/learn/learner-picker";
 import { WordWall } from "@/components/learn/word-wall";
 import { Section } from "@/components/section";
@@ -55,6 +56,15 @@ const METHOD = [
 export default function LearnPage() {
   return (
     <>
+      <JsonLd
+        data={courseSchema({
+          name: "1000 từ tiếng Anh đầu tiên",
+          description: `${TOTAL_WORDS} từ tiếng Anh chia 40 chủ đề, có hình và phát âm, ôn lại theo lịch lặp lại ngắt quãng.`,
+          path: "/hoc-tieng-anh",
+          level: "Mẫu giáo lớn đến lớp 3",
+          teaches: ["Từ vựng tiếng Anh", "Phát âm tiếng Anh"],
+        })}
+      />
       <PageIntro
         eyebrow="Lớp tiếng Anh của tụi em"
         title={

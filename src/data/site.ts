@@ -47,6 +47,7 @@ export const goal = {
  * Everything a visitor might go looking for. The footer lists all of it.
  */
 export const nav = [
+  { href: "/hom-nay", label: "Hôm nay học gì" },
   { href: "/hoc-tieng-viet", label: "Tiếng Việt" },
   { href: "/hoc-toan", label: "Toán" },
   { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
@@ -67,7 +68,8 @@ export const nav = [
  * tap away in the footer and from the homepage sections that introduce them.
  */
 export const navPrimary = nav.filter(
-  (item) => !["/lab", "/journal", "/chon-qua", "/custom"].includes(item.href),
+  // "Hôm nay học gì" has the header button to itself, so it stays out of the row.
+  (item) => !["/lab", "/journal", "/chon-qua", "/custom", "/hom-nay"].includes(item.href),
 );
 
 export const printer = {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/journal" },
   title: "Nhật ký",
   description:
-    "Chuyện in được, chuyện in hỏng và số tiền thật của mỗi lần in — do Hưng, Long và Anh tự viết.",
+    "Chuyện in được, chuyện in hỏng và số tiền thật của mỗi lần in ở xưởng của Hưng, Long và Anh.",
 };
 
 export default function JournalPage() {
@@ -24,11 +24,10 @@ export default function JournalPage() {
             HỌC ĐƯỢC GÌ.
           </>
         }
-        description="Mỗi bài là do một trong ba anh em tự viết, sau khi làm được một việc — hoặc thường hơn, sau khi làm hỏng. Ba chỉ sửa lỗi chính tả, không sửa nội dung."
+        description="Mỗi bài kể lại một việc ở xưởng — một lần làm được, hoặc thường hơn, một lần làm hỏng — và điều học được từ đó."
         meta={[
           { label: "Số bài", value: String(journal.length) },
-          { label: "Lần hỏng đã ghi lại", value: "17" },
-          { label: "Bắt đầu từ", value: "03/2025" },
+          { label: "Viết về", value: "Làm được, làm hỏng" },
         ]}
       />
 

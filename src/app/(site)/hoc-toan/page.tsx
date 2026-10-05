@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
+import { JsonLd, courseSchema } from "@/components/seo/structured-data";
 import { LearnerPicker } from "@/components/learn/learner-picker";
 import { SkillWall } from "@/components/math/skill-wall";
 import { Section } from "@/components/section";
@@ -18,6 +19,15 @@ export default function MathPage() {
 
   return (
     <>
+      <JsonLd
+        data={courseSchema({
+          name: "Toán từ mẫu giáo đến lớp 3",
+          description: `${skills.length} bài toán, mỗi bài có từ hai cách làm, đề không lặp lại, ôn lại theo lịch.`,
+          path: "/hoc-toan",
+          level: "Mẫu giáo lớn đến lớp 3",
+          teaches: ["Đếm và so sánh", "Cộng trừ có nhớ", "Bảng nhân chia", "Chu vi và diện tích", "Đo lường"],
+        })}
+      />
       <PageIntro
         eyebrow="Lớp toán của tụi em"
         title={

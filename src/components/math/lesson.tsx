@@ -24,6 +24,8 @@ export function MathLesson({ skillId }: { skillId: string }) {
         ? {
             ...skill,
             methodNoun: "cách làm",
+            // Every maths answer is a whole number, so typing is always possible.
+            allowTyped: true,
             make: (rand) => {
               const it = skill.make(rand);
               return {

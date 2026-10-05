@@ -105,22 +105,53 @@ export function setLearner(learner: LearnerId) {
 }
 
 /** Records one answer and rolls the daily streak forward. */
+/** Same day: streak unchanged. Yesterday: +1. Any older gap: back to 1. */
+function nextStreak(who: LearnerId, day: number): number {
+  const last = state.lastDay[who];
+  return last === day ? (state.streak[who] ?? 1) : last === day - 1 ? (state.streak[who] ?? 0) + 1 : 1;
+}
+
 export function answer(setId: string, en: string, correct: boolean) {
   const day = today();
   const who = state.learner;
   const key = wordKey(setId, en);
   const mine = state.words[who] ?? {};
 
-  const last = state.lastDay[who];
-  // Same day: streak unchanged. Yesterday: +1. Any older gap: back to 1.
-  const streak = last === day ? (state.streak[who] ?? 1) : last === day - 1 ? (state.streak[who] ?? 0) + 1 : 1;
-
   commit({
     ...state,
     words: { ...state.words, [who]: { ...mine, [key]: grade(mine[key], correct, day) } },
     lastDay: { ...state.lastDay, [who]: day },
-    streak: { ...state.streak, [who]: streak },
+    streak: { ...state.streak, [who]: nextStreak(who, day) },
   });
+}
+
+/**
+ * Counts a day of study from any class, not just English.
+ *
+ * The streak used to move only on vocabulary answers, so a child who did a
+ * maths lesson every day for a week was told they had a 0-day streak.
+ */
+export function markStudied(who: LearnerId) {
+  const day = today();
+  commit({
+    ...state,
+    lastDay: { ...state.lastDay, [who]: day },
+    streak: { ...state.streak, [who]: nextStreak(who, day) },
+  });
+}
+
+/**
+ * The streak as it stands today.
+ *
+ * The stored number is only rewritten when the learner studies, so after a
+ * gap it still says whatever it said on the last day — a child who stopped
+ * a week ago would keep seeing "5 ngày liên tiếp". It only counts if the
+ * last day of study was today or yesterday.
+ */
+export function currentStreak(s: State, who: LearnerId): number {
+  const last = s.lastDay[who];
+  const day = today();
+  return last === day || last === day - 1 ? (s.streak[who] ?? 0) : 0;
 }
 
 /** Clears one learner's record. Used by the "start again" button. */
@@ -200,6 +231,6 @@ export function overall(s: State): Overall {
     started: Object.keys(mine).length,
     dueToday,
     total: TOTAL_WORDS,
-    streak: s.streak[s.learner] ?? 0,
+    streak: currentStreak(s, s.learner),
   };
 }
