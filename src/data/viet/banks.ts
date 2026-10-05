@@ -182,7 +182,7 @@ export const CKQ: readonly SpellItem[] = [
   ["cú", "c", "🦉"], ["cây", "c", "🌳"], ["cơm", "c", "🍚"], ["cửa", "c", "🚪"], ["cốc", "c", "🥛"],
   ["kem", "k", "🍦"], ["kéo", "k", "✂️"], ["kẹo", "k", "🍬"], ["kính", "k", "👓"], ["kiến", "k", "🐜"],
   ["kẻ", "k", "📏"], ["quà", "qu", "🎁"], ["quả", "qu", "🍎"], ["quê", "qu", "🏡"],
-  ["quần", "qu", "👖"], ["quạ", "qu", "🐦‍⬛"],
+  ["quần", "qu", "👖"], ["quýt", "qu", "🍊"],
 ];
 
 export const GGH: readonly SpellItem[] = [

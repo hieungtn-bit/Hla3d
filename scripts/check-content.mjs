@@ -244,17 +244,20 @@ section("maths items, re-solved independently", () => {
  * down devices children are most likely to learn on — so none may be used.
  */
 const TOO_NEW = new Set([..."🫨🩷🩵🩶🫏🫎🪽🪿🪼🪻🫚🫛🪭🪮🪇🪈🪯🛜🫸🫷🫩🫆🪾🫜🪉🪏🫟"]);
+// Unicode 15+ combinations of older emoji: they degrade into two pictures.
+const TOO_NEW_SEQ = ["🐦\u200d⬛", "🐦\u200d🔥", "🍋\u200d🟩", "🍄\u200d🟫", "⛓️\u200d💥", "🙂\u200d↔️", "🙂\u200d↕️", "🧑\u200d🧑\u200d🧒"];
 /*
  * English: a child who cannot read yet hears a word and picks one of four
  * pictures from the same set, so two words in a set may never share a picture.
  */
-section("English pictures unambiguous", () => {
+section("1000 different English words, pictures unambiguous", () => {
   const all = new Map();
   let words = 0;
   for (const set of vocabSets) {
     const pics = new Map();
     for (const [en, vi, pic] of set.words) {
       words++;
+      if (all.has(en)) fail.push(`"${en}" is in both ${all.get(en)} and ${set.id} — the 1000 must be 1000 different words`);
       all.set(en, set.id);
       // Sets of function words ("the", "is") have no pictures on purpose.
       if (set.pictureFirst && pics.has(pic)) fail.push(`${set.id}: "${en}" and "${pics.get(pic)}" share the picture ${pic}`);
@@ -263,7 +266,7 @@ section("English pictures unambiguous", () => {
     }
   }
   if (words !== TOTAL_WORDS || words !== 1000) fail.push(`${words} English words, the site says ${TOTAL_WORDS}`);
-  return `${vocabSets.length} sets, ${words} words`;
+  return `${vocabSets.length} sets, ${all.size} different words`;
 });
 
 section("picture emoji render on older devices", () => {
@@ -275,6 +278,7 @@ section("picture emoji render on older devices", () => {
       else if (/\.tsx?$/.test(e.name)) {
         readFileSync(f, "utf8").split("\n").forEach((line, i) => {
           for (const c of line) { if (/\p{Extended_Pictographic}/u.test(c)) n++; if (TOO_NEW.has(c)) fail.push(`${path.relative(ROOT, f)}:${i + 1}: ${c} needs Unicode 15+`); }
+          for (const seq of TOO_NEW_SEQ) if (line.includes(seq)) fail.push(`${path.relative(ROOT, f)}:${i + 1}: ${seq} needs Unicode 15+`);
         });
       }
     }
