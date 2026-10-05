@@ -44,12 +44,9 @@ export function Hero({
 
       <div className="container-hla relative grid items-center gap-12 py-12 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-16">
         {/* ---- copy --------------------------------------------------- */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-xl"
-        >
+        {/* Rendered visible from the server: it is the largest thing on a phone
+            screen, and fading it in would hide it until JavaScript loads. */}
+        <div className="max-w-xl">
           <span className="sticker inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 font-display text-sm font-extrabold text-ink">
             <span className="relative flex size-2.5">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-flame opacity-70" />
@@ -135,12 +132,12 @@ export function Hero({
           <p className="mt-3 max-w-md text-xs font-semibold text-ink-3">
             {sets} chủ đề từ vựng · mẫu giáo đến lớp 3 · không cần tài khoản
           </p>
-        </motion.div>
+        </div>
 
         {/* ---- what is actually inside -------------------------------- */}
         <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={reduce ? false : { scale: 0.96 }}
+          animate={{ scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >

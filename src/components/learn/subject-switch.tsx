@@ -53,7 +53,7 @@ export function SubjectSwitch({ current }: { current: Subject }) {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block font-display text-lg font-bold tracking-tight">Còn {to.title.toLowerCase()} nữa</span>
-              <span className="mt-0.5 block text-sm leading-snug font-semibold text-ink/75">{to.body}</span>
+              <span className="mt-0.5 block text-sm leading-snug font-semibold text-ink">{to.body}</span>
             </span>
             <ArrowRight className="size-5 shrink-0 transition-transform group-hover:translate-x-1" />
           </Link>

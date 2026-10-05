@@ -46,7 +46,7 @@ export function CourseWall({
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat value={`${total.learned}`} label="Bài đã thuộc" sub={`trên ${total.total}`} tone="bg-lime" />
         <Stat value={`${total.started}`} label="Bài đã học" sub="đang trong vòng ôn" tone="bg-sun" />
-        <Stat value={`${total.due}`} label="Cần ôn hôm nay" sub="ôn xong là xong" tone="bg-flame" />
+        <Stat value={`${total.due}`} label="Cần ôn hôm nay" sub="ôn xong là xong" tone="bg-flame text-white" />
         <Stat value={`${total.unmet}`} label="Bài chưa mở" sub="còn ở phía trước" tone="bg-sky" />
       </div>
 

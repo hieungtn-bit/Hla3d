@@ -237,7 +237,7 @@ export function SkillLesson({
                 )}
               >
                 <span className="block font-display font-bold">Chọn đáp án</span>
-                <span className="text-xs font-semibold text-ink-2">Bốn ô, bấm một ô</span>
+                <span className="text-xs font-semibold text-ink">Bốn ô, bấm một ô</span>
               </button>
               <button
                 type="button"
@@ -249,7 +249,7 @@ export function SkillLesson({
                 )}
               >
                 <span className="block font-display font-bold">Tự gõ đáp án</span>
-                <span className="text-xs font-semibold text-ink-2">Không đoán mò được — khó hơn</span>
+                <span className="text-xs font-semibold text-ink">Không đoán mò được — khó hơn</span>
               </button>
             </div>
           </>

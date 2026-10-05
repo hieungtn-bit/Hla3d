@@ -75,7 +75,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-carbon-line pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-carbon-line pt-8 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>Làm tại nhà, ở Việt Nam. Không quảng cáo, không bán hàng.</p>
           <p className="font-mono">
             © {site.founded}–{new Date().getFullYear()} HLA3D · Dự án của gia đình.

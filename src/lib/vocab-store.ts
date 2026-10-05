@@ -22,7 +22,7 @@ export type LearnerId = "hung" | "long" | "anh" | "khach";
 export type Learner = { id: LearnerId; name: string; age: string; colour: string };
 
 export const learners: Learner[] = [
-  { id: "hung", name: "Hưng", age: "8 tuổi", colour: "bg-flame" },
+  { id: "hung", name: "Hưng", age: "8 tuổi", colour: "bg-flame text-white" },
   { id: "long", name: "Long", age: "6 tuổi", colour: "bg-sky" },
   { id: "anh", name: "Anh", age: "5 tuổi", colour: "bg-lime" },
   { id: "khach", name: "Bạn ghé chơi", age: "ai cũng học được", colour: "bg-sun" },

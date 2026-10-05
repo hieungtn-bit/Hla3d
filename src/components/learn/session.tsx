@@ -281,7 +281,7 @@ function Setup({
           <User className="size-5 shrink-0" />
           <span>
             <span className="block font-display font-bold">Một mình</span>
-            <span className="text-xs font-semibold text-ink-2">Vẫn phải đọc to nhé</span>
+            <span className="text-xs font-semibold text-ink">Vẫn phải đọc to nhé</span>
           </span>
         </button>
         <button
@@ -296,7 +296,7 @@ function Setup({
           <Users className="size-5 shrink-0" />
           <span>
             <span className="block font-display font-bold">Học đôi</span>
-            <span className="text-xs font-semibold text-ink-2">Hai anh em, đổi lượt hỏi</span>
+            <span className="text-xs font-semibold text-ink">Hai anh em, đổi lượt hỏi</span>
           </span>
         </button>
       </div>
@@ -311,7 +311,7 @@ function Setup({
           className="tactile flex h-auto flex-col items-start gap-1 rounded-[var(--radius-card)] bg-lime px-5 py-4 text-left"
         >
           <span className="font-display text-lg font-bold">CHƯA ĐỌC ĐƯỢC</span>
-          <span className="text-xs font-semibold text-ink-2">Nghe tiếng rồi chọn hình. Không cần chữ.</span>
+          <span className="text-xs font-semibold text-ink">Nghe tiếng rồi chọn hình. Không cần chữ.</span>
         </button>
         <button
           type="button"
@@ -319,7 +319,7 @@ function Setup({
           className="tactile flex h-auto flex-col items-start gap-1 rounded-[var(--radius-card)] bg-sky px-5 py-4 text-left"
         >
           <span className="font-display text-lg font-bold">ĐỌC ĐƯỢC RỒI</span>
-          <span className="text-xs font-semibold text-ink-2">Nhìn chữ tiếng Anh, chọn nghĩa tiếng Việt.</span>
+          <span className="text-xs font-semibold text-ink">Nhìn chữ tiếng Anh, chọn nghĩa tiếng Việt.</span>
         </button>
       </div>
 

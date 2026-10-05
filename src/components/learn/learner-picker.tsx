@@ -34,7 +34,7 @@ export function LearnerPicker({ showToday = true }: { showToday?: boolean }) {
               )}
             >
               <span className="block font-display text-lg font-bold tracking-tight">{l.name}</span>
-              <span className="mt-0.5 block text-xs font-semibold text-ink-2">{l.age}</span>
+              <span className={cn("mt-0.5 block text-xs font-semibold", !active && "text-ink-2")}>{l.age}</span>
             </button>
           );
         })}

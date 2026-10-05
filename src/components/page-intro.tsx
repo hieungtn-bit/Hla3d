@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
 /**
@@ -39,8 +38,10 @@ export function PageIntro({
           dark ? "bg-flame/20" : "bg-flame/8",
         )}
       />
+      {/* No entrance animation here: this is the first thing on every page, and
+          fading it in from opacity 0 hides it until JavaScript has loaded. */}
       <div className="container-hla relative py-16 sm:py-20">
-        <Reveal>
+        <div>
           <span className={cn("eyebrow", dark ? "text-flame" : "text-ink-3")}>{eyebrow}</span>
           <h1
             className={cn(
@@ -60,10 +61,10 @@ export function PageIntro({
               {description}
             </p>
           )}
-        </Reveal>
+        </div>
 
         {meta && meta.length > 0 && (
-          <Reveal delay={0.1}>
+          <div>
             <dl
               className={cn(
                 "mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t pt-6",
@@ -72,14 +73,14 @@ export function PageIntro({
             >
               {meta.map((item) => (
                 <div key={item.label}>
-                  <dt className={cn("eyebrow", dark ? "text-white/40" : "text-ink-3")}>{item.label}</dt>
+                  <dt className={cn("eyebrow", dark ? "text-white/60" : "text-ink-3")}>{item.label}</dt>
                   <dd className={cn("display mt-2 text-2xl", dark ? "text-white" : "text-ink")}>
                     {item.value}
                   </dd>
                 </div>
               ))}
             </dl>
-          </Reveal>
+          </div>
         )}
 
         {children}

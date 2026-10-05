@@ -32,7 +32,7 @@ export function Wordmark({
         className,
       )}
     >
-      HLA<span className="text-flame">3D</span>
+      HLA<span className="text-flame-2">3D</span>
     </span>
   );
 }

@@ -22,7 +22,7 @@ export function WordWall() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat value={`${total.learned}`} label="Từ đã thuộc" sub={`trên ${total.total}`} tone="bg-lime" />
         <Stat value={`${total.started}`} label="Từ đã gặp" sub="đang trong vòng ôn" tone="bg-sun" />
-        <Stat value={`${total.dueToday}`} label="Cần ôn hôm nay" sub="ôn xong là xong" tone="bg-flame" />
+        <Stat value={`${total.dueToday}`} label="Cần ôn hôm nay" sub="ôn xong là xong" tone="bg-flame text-white" />
         <Stat value={`${total.streak}`} label="Ngày liên tiếp" sub="đừng đứt nhé" tone="bg-sky" />
       </div>
 

@@ -22,7 +22,7 @@
   /* ---- Ink ------------------------------------------------------------- */
   --color-ink: #2b2118;
   --color-ink-2: #6b5a49;
-  --color-ink-3: #9c8877;
+  --color-ink-3: #735f4e;
 
   /* ---- Dark lab surfaces (used by /lab and /dashboard) ----------------- */
   --color-carbon: #0f0f13;
@@ -30,8 +30,8 @@
   --color-carbon-line: #2a2a33;
 
   /* ---- Brand ----------------------------------------------------------- */
-  --color-flame: #ff4a17;
-  --color-flame-2: #e63c0c;
+  --color-flame: #d4380a;
+  --color-flame-2: #b32e06;
   --color-flame-tint: #ffe8e0;
 
   /* ---- Controlled accents ---------------------------------------------- */
