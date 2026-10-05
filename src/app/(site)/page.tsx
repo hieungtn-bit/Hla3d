@@ -1,23 +1,17 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Boxes, Calculator, Type } from "lucide-react";
+import { ArrowRight, BookOpen, Calculator, PiggyBank, Type } from "lucide-react";
 import { Hero } from "@/components/home/hero";
 import { Marquee } from "@/components/home/marquee";
-import { MakerCard } from "@/components/home/maker-card";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { GiftCta } from "@/components/home/gift-cta";
 import { WhyShop } from "@/components/home/why-shop";
 import { LearnCta } from "@/components/home/learn-cta";
 import { StartupSchool } from "@/components/home/startup-school";
-import { DadSection } from "@/components/home/dad-section";
-import { JournalPreview } from "@/components/home/journal-preview";
 import { MoneyBreakdown } from "@/components/money-breakdown";
-import { PrinterStatus } from "@/components/lab/printer-status";
 import { ProductCard } from "@/components/products/product-card";
 import { Section, SectionHeader } from "@/components/section";
 import { Reveal } from "@/components/motion/reveal";
-import { makers } from "@/data/makers";
 import { featuredSlugs, products } from "@/data/products";
-import { printers, labStats } from "@/data/lab";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 import { skills } from "@/data/math";
 import { vietSkills } from "@/data/viet";
@@ -25,7 +19,7 @@ import { vietSkills } from "@/data/viet";
 const STATS = [
   { icon: BookOpen, value: `${TOTAL_WORDS}`, label: "Từ tiếng Anh, có hình, có tiếng", color: "bg-sun" },
   { icon: Calculator, value: `${skills.length}`, label: "Bài toán, mẫu giáo đến lớp 3", color: "bg-sky" },
-  { icon: Boxes, value: "15", label: "Món ba anh em tự thiết kế", color: "bg-lime" },
+  { icon: PiggyBank, value: "0đ", label: "Học phí — không tài khoản, không quảng cáo", color: "bg-lime" },
   { icon: Type, value: `${vietSkills.length}`, label: "Bài tiếng Việt, mẫu giáo đến lớp 3", color: "bg-flame" },
 ];
 
@@ -77,31 +71,6 @@ export default function HomePage() {
       {/* ---- the two classrooms ----------------------------------------- */}
       <LearnCta />
 
-      {/* ---- meet the makers ------------------------------------------ */}
-      <Section id="makers" className="scroll-mt-20">
-        <div className="container-hla">
-          <SectionHeader
-            index="01"
-            eyebrow="Gặp 3 anh em"
-            title={
-              <>
-                BA NGƯỜI.
-                <br />
-                BA VIỆC KHÁC NHAU.
-              </>
-            }
-            description="Công ty HLA3D có đúng ba nhân viên. Không ai làm hết mọi thứ — mỗi bạn giữ một phần và phải tự bảo vệ phần của mình khi Ba hỏi khó."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {makers.map((maker, i) => (
-              <Reveal key={maker.id} delay={i * 0.08}>
-                <MakerCard maker={maker} className="h-full" />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       {/* ---- how it works --------------------------------------------- */}
       <HowItWorks />
 
@@ -121,16 +90,16 @@ export default function HomePage() {
               <>
                 ĐỒ TỤI EM
                 <br />
-                TỰ LÀM THẬT.
+                IN Ở NHÀ.
               </>
             }
-            description="Không món nào mua về bán lại. Tất cả đều được vẽ ở đây, in trên đúng một cái máy trong một căn phòng, và cầm lên kiểm tra trước khi bỏ vào hộp."
+            description="Mẫu 3D là của các nhà thiết kế trên MakerWorld. Ba anh em tìm mẫu và in ra trên máy in ở nhà — chưa có món nào do tụi em tự vẽ."
             action={
               <Link
                 href="/shop"
                 className="tactile inline-flex h-12 items-center gap-2 rounded-full border-2 border-ink px-6 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
               >
-                XEM CẢ 15 MÓN
+                XEM CẢ {products.length} MÓN
                 <ArrowRight className="size-4" />
               </Link>
             }
@@ -148,54 +117,14 @@ export default function HomePage() {
       {/* ---- gift finder ------------------------------------------------ */}
       <GiftCta />
 
-      {/* ---- the lab ---------------------------------------------------- */}
-      <Section className="bg-paper-2">
-        <div className="container-hla">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
-            <div>
-              <SectionHeader
-                index="03"
-                eyebrow="Xưởng in"
-                title={
-                  <>
-                    MỘT CÁI MÁY.
-                    <br />
-                    CHẠY GẦN NHƯ MỖI NGÀY.
-                  </>
-                }
-                description="Một chiếc Anycubic Kobra X đặt ở góc nhà. Đó là toàn bộ nhà máy của tụi em — nên tụi em chỉ dám hứa đúng số món mà máy in kịp."
-              />
-              <dl className="mt-10 grid grid-cols-2 gap-6">
-                {labStats.map((stat) => (
-                  <div key={stat.label}>
-                    <dt className="eyebrow text-ink-3">{stat.label}</dt>
-                    <dd className="display mt-2 text-2xl">{stat.value}</dd>
-                  </div>
-                ))}
-              </dl>
-              <Link
-                href="/lab"
-                className="tactile mt-10 inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 font-display text-sm font-bold tracking-tight text-paper hover:bg-flame"
-              >
-                THAM QUAN XƯỞNG
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
-            <Reveal delay={0.1}>
-              <PrinterStatus printer={printers[0]} />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
-
       {/* ---- money lesson ------------------------------------------------ */}
       <Section className="border-t border-line">
         <div className="container-hla">
           <SectionHeader
-            index="04"
+            index="03"
             eyebrow="Bài học tiền bạc"
             title="TIỀN CHẠY ĐI ĐÂU HẾT?"
-            description="Hầu hết cửa hàng giấu chuyện này. Tụi em bày ra hết, vì tự tính được số tiền còn lại mới là điều Ba muốn ba anh em học."
+            description="Ví dụ một món bán 150.000đ: tiền nhựa, tiền điện, hộp, quỹ máy và tiền lời. Các con số là ước tính để tập tính, không phải sổ sách thật của cửa hàng."
           />
           <div className="mt-14">
             <MoneyBreakdown />
@@ -203,42 +132,17 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ---- backed by dad ------------------------------------------------ */}
-      <DadSection />
-
-      {/* ---- journal ------------------------------------------------------- */}
-      <Section className="border-t border-line bg-paper-2">
-        <div className="container-hla">
-          <SectionHeader
-            index="05"
-            eyebrow="Nhật ký"
-            title="TUẦN NÀY TỤI EM HỌC ĐƯỢC GÌ."
-            description="Chuyện làm được, chuyện làm hỏng, và giá thật của một lần in ở xưởng nhà em."
-            action={
-              <Link
-                href="/journal"
-                className="tactile inline-flex h-12 items-center gap-2 rounded-full border-2 border-ink px-6 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
-              >
-                ĐỌC NHẬT KÝ
-                <ArrowRight className="size-4" />
-              </Link>
-            }
-          />
-          <JournalPreview />
-        </div>
-      </Section>
-
       {/* ---- closing CTA ---------------------------------------------------- */}
       <section className="border-t border-line bg-flame py-20 text-white sm:py-28">
         <div className="container-hla text-center">
           <Reveal>
-            <p className="eyebrow text-white/80">Học mỗi ngày · Làm thật cuối tuần</p>
+            <p className="eyebrow text-white/80">Học mỗi ngày · In 3D lúc rảnh</p>
             <h2 className="display mx-auto mt-6 max-w-3xl text-[clamp(2rem,5.5vw,3.75rem)] text-white">
               MỞ RA HỌC THỬ MỘT BÀI.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed font-semibold text-white/90 sm:text-lg">
-              Không cần đăng ký, không cần tài khoản, không mất đồng nào. Mười phút một ngày ăn đứt
-              năm tiếng một tháng — đó là lý do ba anh em học ở đây mỗi ngày.
+              Không cần đăng ký, không cần tài khoản, không mất đồng nào. Mười phút một ngày tốt hơn
+              năm tiếng dồn vào một buổi — nên mỗi bài ở đây chỉ vài phút.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
               {[

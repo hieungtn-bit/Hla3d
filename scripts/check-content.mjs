@@ -15,11 +15,13 @@
  *      independent reader built on a hand table of letters.
  *   4. Every maths generator, thousands of times, re-solved by an independent
  *      solver that reads only the prompt the child reads.
+ *   5. No invented claims about the family on public pages — the brothers
+ *      find models on MakerWorld and print them; they do not design them.
  *
  * Shares no logic with the app beyond importing the data it checks.
  * Exits non-zero on any failure.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -191,6 +193,43 @@ section("maths items, re-solved independently", () => {
   }
   if (unsolved) fail.push(`${unsolved} maths prompts the independent solver could not read`);
   return `${mathSkills.length} lessons, ${total} items`;
+});
+
+/*
+ * The site may only say what the family has said. The brothers do not design
+ * models: they find them on MakerWorld and print them. These phrases were all
+ * once on the site as placeholders that read like fact; none may come back.
+ * The private dashboard is sample data behind a password and is skipped.
+ */
+const INVENTED = [
+  /(?<!không phải do )(Hưng|Long|Anh|ba anh em|Cả ba anh em|tụi em) (tự )?thiết kế(?! được)/i,
+  /tự thiết kế, tự in/i,
+  /BÁN CHẠY NHẤT|TỤI EM THÍCH NHẤT|KHÓ IN NHẤT/,
+  /LÀM KHÁCH SỐ|Khách hàng số \d/i,
+  /Chuyện thật ở nhà|Lời nhắn của ba anh em/,
+  /viết tay/i,
+  /Không (món nào|có món nào) mua (sẵn )?về bán lại/i,
+  /goal\.current/,
+];
+const SKIP = /(^|\/)(dashboard|data\/(vocab|viet|math|dashboard\.ts|makers\.ts|site\.ts))(\/|$)/;
+section("no invented claims on public pages", () => {
+  let files = 0;
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const f = path.join(dir, e.name);
+      const rel = path.relative(path.join(ROOT, "src"), f).split(path.sep).join("/");
+      if (SKIP.test(rel)) continue;
+      if (e.isDirectory()) walk(f);
+      else if (/\.(tsx?|mjs)$/.test(e.name)) {
+        files++;
+        readFileSync(f, "utf8").split("\n").forEach((line, i) => {
+          for (const re of INVENTED) if (re.test(line)) fail.push(`src/${rel}:${i + 1}: ${line.trim().slice(0, 100)}`);
+        });
+      }
+    }
+  };
+  walk(path.join(ROOT, "src"));
+  return `${files} files`;
 });
 
 rmSync(OUT, { recursive: true, force: true });

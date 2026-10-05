@@ -31,8 +31,8 @@ export function GET() {
       language: "vi-VN",
       country: "VN",
       currency: "VND",
-      made_by: "Ba anh em: Hưng (8), Long (6), Anh (5), dưới sự giám sát của bố mẹ",
-      production: "In 3D thủ công tại nhà, một máy Anycubic Kobra X, làm theo đơn",
+      made_by: "Ba anh em Hưng (8), Long (6), Anh (5) tìm mẫu 3D trên MakerWorld và in ra tại nhà. Mẫu 3D là của các nhà thiết kế trên MakerWorld, không phải do ba anh em thiết kế.",
+      production: "In 3D tại nhà trên một máy in, làm theo đơn",
       lead_time: "3–5 ngày làm việc",
       order_channels: [
         { type: "web_form", url: absoluteUrl("/dat-hang"), requires: ["name", "phone"] },
@@ -67,18 +67,17 @@ export function GET() {
       description: p.description,
       price: { amount: p.price, currency: "VND", is_from_price: Boolean(p.from) },
       availability: "made_to_order",
-      production_time: p.printTime,
       material: p.material,
-      dimensions: p.size,
-      weight: p.weight,
       colours: p.colors.map((k) => filaments[k]?.name).filter(Boolean),
       customisable: Boolean(p.customizable),
-      difficulty_for_makers: `${p.makerRating}/5`,
       features: p.features,
       safety_notes: p.safety,
       not_suitable_under_3: p.notForUnder3,
       is_toy: p.isToy,
-      made_by: p.madeBy,
+      // The brothers find models on MakerWorld and print them; they do not design them.
+      model_source: p.source
+        ? { site: "MakerWorld", designer: p.source.designer, url: p.source.url, license: p.source.license }
+        : { site: "MakerWorld", designer: null, note: "Designer credit not yet recorded." },
     })),
   };
 

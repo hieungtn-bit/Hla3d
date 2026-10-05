@@ -7,14 +7,12 @@ import { Minus, Plus, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { track } from "@/lib/analytics";
 import { ProductVisual } from "@/components/products/product-visual";
-import { goal } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { formatVnd } from "@/lib/utils";
 
 export function CartDrawer() {
   const cart = useCart();
   const router = useRouter();
-  const nextCustomer = goal.current + 1;
 
   function goToOrderForm() {
     track.startCheckout(cart.count, cart.subtotal);
@@ -68,7 +66,7 @@ export function CartDrawer() {
                 </div>
                 <p className="font-display text-xl font-extrabold">Giỏ còn trống</p>
                 <p className="text-sm text-ink-2">
-                  Mọi món trong shop đều do Hưng, Long và Anh tự thiết kế, tự in và tự kiểm tra.
+                  Ba anh em tìm mẫu 3D trên MakerWorld và in ra ở nhà. Chọn một món rồi quay lại đây.
                 </p>
                 <Button variant="ink" onClick={cart.close}>
                   XEM TIẾP
@@ -137,7 +135,7 @@ export function CartDrawer() {
                     Làm theo đơn, 3–5 ngày. Chưa thanh toán trên web — mẹ Hiếu sẽ gọi xác nhận và báo phí ship.
                   </p>
                   <Button size="lg" className="w-full" onClick={goToOrderForm}>
-                    ĐẶT HÀNG · LÀM KHÁCH SỐ {nextCustomer}
+                    ĐẶT HÀNG
                   </Button>
                   <p className="text-center text-[0.6875rem] text-ink-3">
                     Bước tiếp theo chỉ là điền tên, số điện thoại và địa chỉ.

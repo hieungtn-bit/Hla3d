@@ -5,9 +5,9 @@ import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/custom" },
-  title: "Tự thiết kế",
+  title: "In tên riêng",
   description:
-    "Tự thiết kế bảng tên, thẻ đeo cặp hay móc khoá của riêng bạn. Chọn tên, chọn màu, chọn kiểu — xem thử bằng 3D trước khi đặt.",
+    "Bảng tên, thẻ đeo cặp hay móc khoá in tên của bạn. Chọn tên, chọn màu, xem thử trước khi đặt.",
 };
 
 export default async function CustomPage({
@@ -20,15 +20,15 @@ export default async function CustomPage({
   return (
     <>
       <PageIntro
-        eyebrow="Xưởng thiết kế riêng"
+        eyebrow="In tên riêng"
         title={
           <>
-            TỰ LÀM
+            CHỌN TÊN,
             <br />
-            MỘT MÓN.
+            CHỌN MÀU.
           </>
         }
-        description="Gõ tên vào. Chọn hai màu. Xoay qua xoay lại, đổi ý cũng được. Khi nào bạn thấy ưng, tụi em in đúng y như vậy."
+        description="Gõ tên, chọn màu, chọn cỡ rồi xem thử. Đây là hình xem trước để bạn chọn — tụi em in bằng mẫu bảng tên có sẵn trên MakerWorld, nên kiểu chữ thật có thể khác một chút."
         meta={[
           { label: "Giá từ", value: "45.000đ" },
           { label: "Thời gian làm", value: "3–5 ngày" },

@@ -2,51 +2,47 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
-import { MakerCard } from "@/components/home/maker-card";
-import { DadSection } from "@/components/home/dad-section";
+import { MakerAvatar } from "@/components/brand/maker-avatar";
 import { MoneyBreakdown } from "@/components/money-breakdown";
 import { Section, SectionHeader } from "@/components/section";
 import { Reveal } from "@/components/motion/reveal";
 import { makers } from "@/data/makers";
-import { safetyRules } from "@/data/lab";
+import { safetyRules } from "@/data/safety";
+import { contact } from "@/data/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Chuyện của tụi em",
   description:
-    "HLA3D bắt đầu từ một chiếc máy in 3D ở góc nhà và ba anh em tò mò. Giờ nó là ba lớp học miễn phí — tiếng Việt, toán, tiếng Anh — và một cửa hàng nhỏ cho những ngày cuối tuần.",
+    "HLA là Hưng, Long, Anh — 8, 6 và 5 tuổi. Trang này chủ yếu là ba lớp học miễn phí. Lúc rảnh, ba anh em tìm mẫu 3D trên MakerWorld và in ra.",
 };
 
-const TIMELINE = [
+/**
+ * Only what the family has actually said. An earlier version of this page
+ * carried a six-month timeline, customer numbers and failure counts that
+ * were written as placeholders and read like fact; they were removed. When
+ * the brothers have a real story to tell, it goes here in their words.
+ */
+const FACTS = [
   {
-    date: "Tháng 3, 2025",
-    title: "Máy in về nhà",
-    text: "Một chiếc Anycubic Kobra X đặt trên bàn ăn. Món in đầu tiên là một khối vuông hiệu chỉnh — và nó hơi méo.",
+    title: "Ba anh em",
+    text: "Hưng 8 tuổi, Long 6 tuổi, Anh 5 tuổi. HLA là chữ cái đầu tên ba anh em.",
   },
   {
-    date: "Tháng 4, 2025",
-    title: "Sáu con bạch tuộc hỏng",
-    text: "Lần đầu tiên thử in một món khớp nối liền khối. Đến bản thứ bảy mới bẻ được.",
+    title: "Việc chính là học",
+    text: "Trang này chủ yếu là ba lớp học miễn phí: tiếng Việt, toán và tiếng Anh, từ mẫu giáo đến lớp 3.",
   },
   {
-    date: "Tháng 5, 2025",
-    title: "Khách hàng số 1",
-    text: "Một bạn nhỏ để bàn, 79.000đ, bán cho một người không phải họ hàng. Cô ấy hỏi một câu tụi em không trả lời được.",
+    title: "Máy in 3D ở nhà",
+    text: "Ba anh em chưa tự thiết kế được mẫu 3D. Bây giờ các bé biết tìm mẫu trên MakerWorld và in ra.",
   },
   {
-    date: "Tháng 6, 2025",
-    title: "Hai mươi tấm bảng tên",
-    text: "Đủ cho cả một lớp. Tụi em học được checklist dùng để làm gì, và mỗi ngày mình thật sự làm được bao nhiêu.",
+    title: "Mẫu 3D là của người khác",
+    text: "Mẫu trong cửa hàng là của các nhà thiết kế trên MakerWorld. Tên người thiết kế được ghi ở trang từng món khi nhà em ghi lại được.",
   },
   {
-    date: "Tháng 7, 2025",
-    title: "Bảng tính giá vốn",
-    text: "Ba bắt tụi em tính cả tiền điện, hộp giấy, những lần in hỏng và hao mòn máy. Lợi nhuận tụt xuống. Nhưng con số thì thật hơn.",
-  },
-  {
-    date: "Tháng 8, 2025",
-    title: "Khách hàng số 27",
-    text: "Còn 73 khách nữa. Mục tiêu không đổi: đủ một trăm khách thật rồi mới mua máy in thứ hai.",
+    title: "Người lớn trong nhà",
+    text: `Ba trông chừng việc học và máy in. ${contact.owner[0].toUpperCase()}${contact.owner.slice(1)} nhận đơn và gọi lại cho khách.`,
   },
 ];
 
@@ -57,58 +53,60 @@ export default function AboutPage() {
         eyebrow="Chuyện của tụi em"
         title={
           <>
-            Ý TƯỞNG NHỎ.
+            BA ANH EM.
             <br />
-            ĐIỀU THẬT.
+            BA LỚP HỌC.
           </>
         }
-        description="HLA3D bắt đầu từ một chiếc máy in 3D trong nhà, và cái ngày ba anh em thôi đòi mua đồ chơi mà quay sang hỏi đồ chơi được làm ra thế nào."
+        description="Trang này kể đúng những gì đang có thật. Khi ba anh em có chuyện thật để kể — món đầu tiên tự vẽ, một lần in hỏng — chuyện đó sẽ được thêm vào đây."
         meta={[
-          { label: "Bắt đầu", value: "2025" },
           { label: "Số anh em", value: "3" },
+          { label: "Lớp học", value: "3" },
           { label: "Máy in", value: "1" },
         ]}
       />
 
-      {/* ---- the story ------------------------------------------------- */}
+      {/* ---- what is true ---------------------------------------------- */}
       <Section className="bg-paper">
         <div className="container-hla grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <Reveal>
-            <span className="eyebrow text-ink-3">Câu chuyện thương hiệu</span>
+            <span className="eyebrow text-ink-3">Nói thật</span>
             <h2 className="display mt-5 text-[clamp(1.75rem,4vw,2.75rem)]">
-              TỪ MỘT Ý TƯỞNG
+              HLA = HƯNG,
               <br />
-              THÀNH MỘT MÓN
-              <br />
-              CẦM ĐƯỢC TRÊN TAY.
+              LONG, ANH.
             </h2>
+            <div className="mt-10 flex gap-4">
+              {makers.map((m) => (
+                <div key={m.id} className="text-center">
+                  <span
+                    className="grid size-20 place-items-center overflow-hidden rounded-full border-2 border-ink bg-surface"
+                    style={{ boxShadow: "0 3px 0 0 var(--color-ink)" }}
+                  >
+                    <span className="mt-3 w-16">
+                      <MakerAvatar role={m.id} />
+                    </span>
+                  </span>
+                  <p className="mt-3 font-display text-lg font-extrabold">{m.name}</p>
+                  <p className="text-xs font-semibold text-ink-3">{m.age} tuổi</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 max-w-sm text-xs leading-relaxed text-ink-3">
+              Hình vẽ hoạt hình, không phải ảnh thật. Trang chỉ dùng tên gọi và tuổi của các bé.
+            </p>
           </Reveal>
 
-          <Reveal delay={0.08} className="space-y-5 text-[1.0625rem] leading-[1.75] text-ink-2">
-            <p>
-              HLA3D bắt đầu từ một chiếc máy in 3D trong nhà và sự tò mò của ba anh em. Thay vì chỉ chơi đồ
-              chơi, các bạn nhỏ bắt đầu học cách tạo ra chúng.
-            </p>
-            <p>
-              Từ một ý tưởng, thành bản vẽ, thành một cuộn nhựa PLA, rồi thành một món đồ thật cầm được, làm
-              rơi được, thử được và bán được. Không món nào trong shop này là mua về dán nhãn lại. Món nào cũng
-              bắt đầu bằng một câu nói trong bữa cơm ở nhà này.
-            </p>
-            <p>
-              HLA3D là nơi ba anh em học sáng tạo, công nghệ, kinh doanh và giá trị của lao động. Phần in ấn là
-              phần vui. Phần thú vị nằm ở xung quanh nó — tính xem một món tốn bao nhiêu, vì sao một khách bỏ đi,
-              và học cách nói &ldquo;con chưa biết, để con tìm hiểu rồi trả lời&rdquo;.
-            </p>
-            <p>
-              Rồi việc học lấn dần sang chuyện in. Muốn tính giá thì phải giỏi toán, muốn đọc hướng dẫn
-              máy thì phải biết tiếng Anh, muốn viết thiệp cho khách thì phải viết đúng chính tả. Nên giờ
-              HLA3D chủ yếu là ba lớp học — tiếng Việt, toán và tiếng Anh — mở miễn phí cho bất kỳ ai. Cửa
-              hàng vẫn còn, là việc của những ngày cuối tuần rảnh rỗi.
-            </p>
-            <p className="border-l-4 border-flame pl-5 font-display text-lg font-bold tracking-tight text-ink">
-              HLA = Hưng, Long, Anh. 3D = Nghĩ ra. Vẽ ra. Làm ra.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
+          <Reveal delay={0.08}>
+            <ul className="space-y-4">
+              {FACTS.map((f) => (
+                <li key={f.title} className="rounded-[var(--radius-card)] border border-line bg-surface p-5">
+                  <p className="font-display text-base font-extrabold text-ink">{f.title}</p>
+                  <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-2">{f.text}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-3 pt-8">
               {[
                 { href: "/hom-nay", label: "Hôm nay học gì" },
                 { href: "/hoc-tieng-viet", label: "Tiếng Việt" },
@@ -129,66 +127,21 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ---- makers ---------------------------------------------------- */}
-      <Section className="border-t border-line bg-paper-2">
-        <div className="container-hla">
-          <SectionHeader
-            index="01"
-            eyebrow="Đội ngũ"
-            title="BA NGƯỜI LÀM, BA VIỆC."
-            description="Tụi em chỉ dùng tên gọi, không dùng ảnh thật. Thứ đáng xem ở đây là món đồ làm ra, không phải khuôn mặt."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {makers.map((maker, i) => (
-              <Reveal key={maker.id} delay={i * 0.08}>
-                <MakerCard maker={maker} className="h-full" />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ---- timeline --------------------------------------------------- */}
-      <Section className="border-t border-line">
-        <div className="container-hla">
-          <SectionHeader index="02" eyebrow="Dòng thời gian" title="SÁU THÁNG ĐẦU." />
-          <ol className="mt-14 space-y-0">
-            {TIMELINE.map((item, i) => (
-              <Reveal
-                as="li"
-                key={item.date}
-                delay={i * 0.05}
-                className="group grid gap-3 border-t border-line py-7 sm:grid-cols-[10rem_1fr] sm:gap-8"
-              >
-                <span className="font-mono text-xs text-flame">{item.date}</span>
-                <div>
-                  <h3 className="font-display text-lg font-bold tracking-tight">{item.title}</h3>
-                  <p className="mt-2 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-2">{item.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
-      {/* ---- dad --------------------------------------------------------- */}
-      <DadSection />
-
       {/* ---- safety ------------------------------------------------------- */}
       <Section id="safety" className="scroll-mt-20 border-t border-line bg-carbon text-white">
         <div className="container-hla">
           <SectionHeader
-            index="03"
+            index="01"
             eyebrow="An toàn khi làm"
             tone="dark"
-            title="AI ĐƯỢC LÀM VIỆC GÌ."
-            description="Ba anh em không tự ý đụng vào thiết bị nóng khi không có người lớn. Ai mua đồ của HLA3D cũng nên biết rõ ranh giới đó nằm ở đâu."
+            title="TRẺ VÀ MÁY IN 3D."
+            description="Đầu phun máy in nóng hơn 200°C. Đây là những luật nên có khi trẻ nhỏ dùng máy in 3D ở nhà — ai mua đồ in 3D cho con cũng nên biết."
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {[
-              { title: "Chỉ Ba được làm", items: safetyRules.dadOnly, dot: "bg-flame", text: "text-flame" },
-              { title: "Ba anh em được làm", items: safetyRules.makers, dot: "bg-lime", text: "text-lime" },
-              { title: "Luật trong nhà", items: safetyRules.house, dot: "bg-sky", text: "text-sky" },
+              { title: "Chỉ người lớn làm", items: safetyRules.adultOnly, dot: "bg-flame", text: "text-flame" },
+              { title: "Trẻ làm được, có người lớn ở cạnh", items: safetyRules.kids, dot: "bg-lime", text: "text-lime" },
+              { title: "Luật chung", items: safetyRules.house, dot: "bg-sky", text: "text-sky" },
             ].map((col, i) => (
               <Reveal
                 key={col.title}
@@ -214,10 +167,10 @@ export default function AboutPage() {
       <Section className="border-t border-line bg-paper-2">
         <div className="container-hla">
           <SectionHeader
-            index="04"
+            index="02"
             eyebrow="Bài học tiền bạc"
             title="TIỀN CHẠY ĐI ĐÂU HẾT?"
-            description="Một đơn 150.000đ được chia ra thế nào: tiền nhựa, tiền điện, hộp, công và tiền lời. Các con số là ước tính, để ba anh em học cách tự tính."
+            description="Ví dụ một món bán 150.000đ được chia ra thế nào: tiền nhựa, tiền điện, hộp, quỹ máy và tiền lời. Các con số là ước tính để tập tính, không phải sổ sách thật của cửa hàng."
           />
           <div className="mt-14">
             <MoneyBreakdown />
@@ -228,7 +181,7 @@ export default function AboutPage() {
               href="/shop"
               className="tactile inline-flex h-14 items-center gap-2 rounded-full bg-flame px-8 font-display text-base font-bold tracking-tight text-white shadow-[var(--shadow-flame)] hover:bg-flame-2"
             >
-              XEM ĐỒ TỤI EM LÀM
+              XEM CỬA HÀNG
               <ArrowRight className="size-5" />
             </Link>
           </Reveal>

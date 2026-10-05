@@ -6,7 +6,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Plus, Sparkles } from "lucide-react";
 import { filaments, priceLabel, type Product } from "@/data/products";
 import { ProductVisual } from "@/components/products/product-visual";
-import { MakerRating } from "@/components/products/maker-rating";
 import { ColorDots } from "@/components/products/color-dots";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/lib/cart";
@@ -50,7 +49,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
         </motion.div>
 
         {product.badge && (
-          <Badge variant={product.badge === "BÁN CHẠY NHẤT" ? "flame" : "ink"} className="absolute left-3 top-3 -rotate-3">
+          <Badge variant="ink" className="absolute left-3 top-3 -rotate-3">
             {product.badge}
           </Badge>
         )}
@@ -87,7 +86,6 @@ export function ProductCard({ product, className }: { product: Product; classNam
         <p className="text-sm leading-relaxed font-semibold text-ink-2">{product.tagline}</p>
 
         <div className="mt-auto flex flex-col gap-3 pt-2">
-          <MakerRating value={product.makerRating} />
           <div className="relative z-10 flex items-center justify-between gap-3">
             {/* Cap the swatch row so cards keep an even height across the grid. */}
             <div className="flex items-center gap-1.5">

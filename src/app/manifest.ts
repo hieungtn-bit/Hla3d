@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "HLA3D — Xưởng in 3D của ba anh em nhỏ",
+    name: "HLA3D — Lớp học của ba anh em",
     short_name: "HLA3D",
     description:
-      "Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em Hưng, Long và Anh. Cuối tuần thì in 3D và bán đồ tự làm.",
+      "Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em Hưng, Long và Anh. Lúc rảnh thì in 3D các mẫu tìm trên MakerWorld.",
     lang: "vi",
     start_url: "/",
     // Deliberately a browser app, not a standalone PWA: there is no service

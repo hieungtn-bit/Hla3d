@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   return {
     title: product.name,
-    description: `${product.tagline} ${product.description.slice(0, 120)}…`,
+    description: `${product.tagline} ${product.description.length > 120 ? `${product.description.slice(0, 120)}…` : product.description}`,
     alternates: { canonical: `/shop/${product.slug}` },
     openGraph: {
       title: `${product.name} — HLA3D`,

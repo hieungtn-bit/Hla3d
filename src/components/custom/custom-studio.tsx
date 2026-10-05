@@ -20,7 +20,7 @@ const PRODUCTS = {
 type ProductKey = keyof typeof PRODUCTS;
 
 const STYLES: Array<{ id: PlateStyle; label: string; note: string }> = [
-  { id: "geometric", label: "GEOMETRIC", note: "Đậm, kỹ thuật, kiểu mặc định của tụi em." },
+  { id: "geometric", label: "GEOMETRIC", note: "Đậm, góc cạnh." },
   { id: "rounded", label: "ROUNDED", note: "Góc mềm hơn, nhìn thân thiện hơn." },
   { id: "mono", label: "MONO", note: "Chữ đều tăm tắp, kiểu dân kỹ thuật." },
 ];
@@ -162,8 +162,8 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
             </div>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-ink-3">
-            Hai màu nghĩa là tụi em phải dừng máy giữa chừng và đổi cuộn nhựa bằng tay. Ba là người đổi — vì
-            lúc đó đầu phun đang 205°C.
+            In hai màu thì phải đổi cuộn nhựa giữa chừng. Việc đó người lớn làm, vì lúc ấy đầu phun đang rất
+            nóng.
           </p>
         </section>
 
@@ -274,7 +274,7 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
             )}
           </Button>
           <p className="mt-3 text-center text-[0.6875rem] text-ink-3">
-            Làm theo đơn · 3–5 ngày · Tụi em gửi ảnh trước khi đóng gói.
+            Làm theo đơn · 3–5 ngày · Mẹ Hiếu gọi lại xác nhận trước khi in.
           </p>
         </section>
       </div>
@@ -300,9 +300,9 @@ export function CustomStudio({ initialProduct }: { initialProduct?: string }) {
 
         <p className="mt-4 rounded-2xl bg-paper-2 p-4 text-xs leading-relaxed text-ink-2">
           <span className="eyebrow mb-1.5 block text-ink-3">Nói thật</span>
-          Bản xem trước này đúng về hình dáng, màu sắc và tỉ lệ — nhưng không phải file in cuối cùng. Tụi em
-          kiểm tra từng thiết kế bằng tay trước khi cho lên máy, và sẽ nhắn cho bạn nếu cái tên cần chỉnh một
-          chút để in cho sạch.
+          Đây là hình xem trước để bạn chọn tên, màu và cỡ — không phải file in. Tụi em in bằng mẫu bảng tên có
+          sẵn trên MakerWorld, nên kiểu chữ và hình dáng thật có thể khác một chút. Khi gọi xác nhận, mẹ Hiếu
+          sẽ nói rõ món thật trông thế nào.
         </p>
       </div>
     </div>

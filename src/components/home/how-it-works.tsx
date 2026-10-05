@@ -2,40 +2,40 @@
 
 import * as React from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Lightbulb, PenTool, Layers, Send } from "lucide-react";
+import { Search, Palette, Layers, Send } from "lucide-react";
 import { SectionHeader } from "@/components/section";
 import { cn } from "@/lib/utils";
 
 const STEPS = [
   {
     n: "01",
-    title: "NGHĨ RA",
-    en: "Nghĩ ra một món hay ho.",
-    vi: "Tụi em nghĩ ra một món hay ho — thường là lúc đang ăn cơm tối.",
-    icon: Lightbulb,
+    title: "TÌM MẪU",
+    en: "Find a model on MakerWorld.",
+    vi: "Tìm một mẫu 3D trên MakerWorld. Mẫu là của các nhà thiết kế ở đó — tụi em chưa tự vẽ được.",
+    icon: Search,
     color: "bg-sun",
   },
   {
     n: "02",
-    title: "VẼ RA",
-    en: "Vẽ ra hoặc chỉnh một mẫu 3D.",
-    vi: "Vẽ ra giấy trước, rồi mới dựng mô hình 3D trên máy tính.",
-    icon: PenTool,
+    title: "CHỌN MÀU",
+    en: "Pick a colour.",
+    vi: "Chọn cuộn nhựa màu gì cho món đó.",
+    icon: Palette,
     color: "bg-sky",
   },
   {
     n: "03",
     title: "IN RA",
-    en: "Máy in xây nó lên từng lớp.",
-    vi: "Máy in xếp từng lớp nhựa chồng lên nhau. Mỗi lớp dày 0,2mm thôi.",
+    en: "The printer builds it layer by layer.",
+    vi: "Máy in xếp từng lớp nhựa mỏng chồng lên nhau cho tới khi thành món đồ.",
     icon: Layers,
     color: "bg-flame",
   },
   {
     n: "04",
     title: "GỬI ĐI",
-    en: "Thử, sửa lại, rồi gửi cho bạn.",
-    vi: "Thử làm rơi, sửa lại, thử tiếp — rồi bỏ hộp gửi cho bạn.",
+    en: "Pack it and send it.",
+    vi: "Món nào có người đặt thì nhà em gói lại và gửi đi.",
     icon: Send,
     color: "bg-lime",
   },
@@ -60,7 +60,7 @@ export function HowItWorks() {
     <section ref={ref} className="border-t-2 border-ink bg-paper-2 py-20 sm:py-28">
       <div className="container-hla">
         <SectionHeader
-          index="02"
+          index="01"
           eyebrow="HLA3D làm việc thế nào"
           title={
             <>
@@ -69,7 +69,7 @@ export function HowItWorks() {
               TỪNG LỚP MỘT.
             </>
           }
-          description="Không có món nào mua sẵn về bán lại. Mỗi món bắt đầu từ một ý tưởng trong nhà này, và kết thúc là một cục nhựa do tụi em tự in ra."
+          description="Nói thật: ba anh em chưa tự thiết kế được. Việc tụi em làm được bây giờ là tìm mẫu có sẵn trên MakerWorld và in ra trên máy in ở nhà."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-16">
@@ -117,7 +117,7 @@ export function HowItWorks() {
               <div className="grid-carbon pointer-events-none absolute inset-0 opacity-60" />
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <span className="eyebrow text-white/50">Máy đang in thử</span>
+                  <span className="eyebrow text-white/50">Máy in xếp từng lớp</span>
                   <span className="font-mono text-xs text-flame">
                     {String(built).padStart(2, "0")}/{TOTAL_LAYERS}
                   </span>
@@ -157,7 +157,7 @@ export function HowItWorks() {
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-ink-3">
-              Kéo xuống để xem máy in xây từng lớp. Món nào của HLA3D cũng ra đời như vậy.
+              Kéo xuống để xem máy in xếp từng lớp. Hình minh hoạ, không phải máy thật đang chạy.
             </p>
           </div>
         </div>

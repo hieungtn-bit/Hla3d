@@ -15,19 +15,20 @@ type Lesson = {
 };
 
 /**
- * The teaching core of the whole site.
+ * Six business words, explained in words a five-year-old can hold.
  *
- * HLA3D exists so three children learn how a business actually works, so the
- * vocabulary gets explained here in words a five-year-old can hold — each one
- * paired with the real thing that happened in this house.
+ * Every example is labelled "Ví dụ" and written as a hypothetical. Nothing
+ * here may be presented as something that happened in the family: the
+ * brothers find models on MakerWorld and print them, and that is all the
+ * site claims about their shop.
  */
 const LESSONS: Lesson[] = [
   {
     n: "01",
     word: "Ý TƯỞNG",
     wordEn: "Idea",
-    kid: "Nghĩ ra một món mà người khác đang cần — chứ không phải món mình thích nhất.",
-    example: "Hưng muốn in khủng long. Nhưng người ta hỏi mua bảng tên. Tụi em làm bảng tên trước.",
+    kid: "Nghĩ ra một món mà người khác đang cần — chứ không chỉ món mình thích nhất.",
+    example: "Mình thích in khủng long, nhưng các bạn trong lớp lại cần bảng tên. Món người khác cần thì mới bán được.",
     doodle: "bolt",
     bg: "bg-sun-tint",
     chip: "bg-sun text-ink",
@@ -37,8 +38,8 @@ const LESSONS: Lesson[] = [
     n: "02",
     word: "SẢN PHẨM",
     wordEn: "Product",
-    kid: "Làm ý tưởng thành đồ thật, cầm được trên tay, không gãy khi rơi.",
-    example: "Bạch tuộc hỏng 6 lần mới ra bản thứ 7 bẻ được. Bản 1 đến 6 là cục nhựa.",
+    kid: "Biến ý tưởng thành đồ thật, cầm được trên tay.",
+    example: "Con rồng khớp nối in ra mà dính hết khớp thì chưa phải sản phẩm. Bẻ được, chơi được thì mới phải.",
     doodle: "gear",
     bg: "bg-sky-tint",
     chip: "bg-sky text-white",
@@ -49,7 +50,7 @@ const LESSONS: Lesson[] = [
     word: "KHÁCH HÀNG",
     wordEn: "Customer",
     kid: "Người chịu bỏ tiền thật ra mua. Người nhà tặng tiền thì không tính nha!",
-    example: "Khách số 1 không phải họ hàng. Cô ấy hỏi một câu tụi em không trả lời được.",
+    example: "Cô hàng xóm trả 50.000đ mua một móc khoá — cô là khách hàng. Bà cho 50.000đ thì đó là quà, không phải bán hàng.",
     doodle: "smile",
     bg: "bg-rose-tint",
     chip: "bg-rose text-ink",
@@ -60,7 +61,7 @@ const LESSONS: Lesson[] = [
     word: "GIÁ VỐN",
     wordEn: "Cost",
     kid: "Làm ra một món tốn bao nhiêu: nhựa, điện, hộp giấy, và cả những lần in hỏng.",
-    example: "Một món bán 150.000đ thì hết 60.000đ tiền vốn. Lúc đầu tụi em tưởng chỉ hết 13.000đ.",
+    example: "Một món bán 150.000đ mà tốn 60.000đ để làm. Hay bị quên nhất là tiền điện, tiền hộp và những lần in hỏng.",
     doodle: "spiral",
     bg: "bg-grape-tint",
     chip: "bg-grape text-white",
@@ -71,7 +72,7 @@ const LESSONS: Lesson[] = [
     word: "LỢI NHUẬN",
     wordEn: "Profit",
     kid: "Tiền bán được trừ đi tiền vốn. Phần còn lại mới thật sự là của mình.",
-    example: "150.000đ trừ 60.000đ còn 90.000đ. Đó mới là số tụi em được tính là kiếm được.",
+    example: "150.000đ trừ 60.000đ còn 90.000đ. 90.000đ đó mới là tiền lời.",
     doodle: "star",
     bg: "bg-lime-tint",
     chip: "bg-lime text-ink",
@@ -82,7 +83,7 @@ const LESSONS: Lesson[] = [
     word: "TÁI ĐẦU TƯ",
     wordEn: "Reinvest",
     kid: "Lấy một phần tiền lời mua đồ tốt hơn, để lần sau làm được nhiều hơn.",
-    example: "40% tiền lời để dành mua máy in thứ hai. Còn 5.000.000đ nữa là đủ.",
+    example: "Để dành một phần tiền lời mua thêm cuộn nhựa màu mới, lần sau khách có nhiều màu hơn để chọn.",
     doodle: "arrow",
     bg: "bg-flame-tint",
     chip: "bg-flame text-white",
@@ -107,8 +108,7 @@ export function StartupSchool() {
             NÓI KIỂU TRẺ CON.
           </h2>
           <p className="mt-5 text-base leading-relaxed font-semibold text-ink-2 sm:text-lg">
-            HLA3D không phải shop đồ chơi. Đây là cách Ba dạy Hưng, Long và Anh sáu chữ khó nhất của
-            người lớn — bằng đúng những chuyện đã xảy ra trong nhà.
+            Sáu chữ khó của người lớn, giải thích bằng ví dụ mà một bé 5 tuổi cũng nghe hiểu.
           </p>
         </Reveal>
 
@@ -142,7 +142,7 @@ export function StartupSchool() {
 
                 <div className="mt-auto pt-5">
                   <div className="rounded-2xl border-2 border-dashed border-ink/30 bg-surface/70 p-4">
-                    <p className="eyebrow mb-1.5 text-ink-3">Chuyện thật ở nhà</p>
+                    <p className="eyebrow mb-1.5 text-ink-3">Ví dụ</p>
                     <p className="text-xs leading-relaxed text-ink-2">{l.example}</p>
                   </div>
                 </div>
@@ -154,13 +154,12 @@ export function StartupSchool() {
         {/* the one rule that ties it together */}
         <Reveal delay={0.1} className="mt-12">
           <div className="sticker mx-auto max-w-3xl rotate-[-0.6deg] rounded-[var(--radius-card)] bg-ink p-7 text-center sm:p-9">
-            <p className="eyebrow text-sun">Luật số 1 dán trên tường</p>
+            <p className="eyebrow text-sun">Điều cần nhớ</p>
             <p className="display mt-4 text-2xl text-paper sm:text-3xl">
               “Bán được một món không có nghĩa là mình giỏi.
               <br />
               Biết mình lời bao nhiêu mới là biết làm ăn.”
             </p>
-            <p className="mt-4 text-sm font-semibold text-paper/60">— Ba</p>
           </div>
         </Reveal>
       </div>

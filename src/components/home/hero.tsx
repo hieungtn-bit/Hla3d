@@ -55,7 +55,7 @@ export function Hero({
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-flame opacity-70" />
               <span className="relative inline-flex size-2.5 rounded-full border-2 border-ink bg-flame" />
             </span>
-            Lớp học miễn phí · Xưởng in thật · 2025
+            Lớp học miễn phí · Có máy in 3D ở nhà
           </span>
 
           <h1 className="display mt-6 text-[clamp(2.75rem,8.5vw,5.5rem)]">
@@ -75,8 +75,8 @@ export function Hero({
             Lớp tiếng Việt, toán và tiếng Anh của ba anh em. Mở cho tất cả, miễn phí.
           </p>
           <p className="mt-3 max-w-md text-base leading-relaxed text-ink-2">
-            Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi học ở đây mỗi ngày. Cuối tuần rảnh thì ba anh em
-            vẽ và in đồ bán — chỗ đó là để những gì học được có việc mà dùng.
+            Trang học của Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi. Lúc rảnh, ba anh em tìm mẫu 3D trên
+            MakerWorld rồi in ra — món nào in được thì bày ở cửa hàng nhỏ.
           </p>
 
           {/* the three of them, small and up front */}

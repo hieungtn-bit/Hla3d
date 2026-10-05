@@ -46,7 +46,7 @@ export const questionBudget: Question<Budget> = {
   hint: "Chưa gồm phí giao hàng",
   options: [
     { value: "under100", label: "Dưới 100.000đ", sub: "Quà nhỏ, dễ tặng", icon: "coin", tone: "bg-lime-tint" },
-    { value: "mid", label: "100 – 200.000đ", sub: "Hay được chọn nhất", icon: "coins", tone: "bg-sun-tint" },
+    { value: "mid", label: "100 – 200.000đ", sub: "Quà vừa phải", icon: "coins", tone: "bg-sun-tint" },
     { value: "over200", label: "Trên 200.000đ", sub: "Quà đặc biệt", icon: "gift", tone: "bg-grape-tint" },
   ],
 };
@@ -59,7 +59,7 @@ export const questionIntent: Question<Intent> = {
     { value: "play", label: "Cầm chơi được", sub: "Cử động, bẻ, lăn", icon: "sparkles", tone: "bg-flame-tint" },
     { value: "named", label: "Có tên riêng", sub: "Khắc tên người nhận", icon: "tag", tone: "bg-sky-tint" },
     { value: "desk", label: "Để bàn cho gọn", sub: "Dùng mỗi ngày", icon: "lamp", tone: "bg-lime-tint" },
-    { value: "surprise", label: "Tụi em chọn giúp", sub: "Món nhà em tự hào nhất", icon: "dice", tone: "bg-sun-tint" },
+    { value: "surprise", label: "Tụi em chọn giúp", sub: "Một món để làm quà", icon: "dice", tone: "bg-sun-tint" },
   ],
 };
 
@@ -110,11 +110,10 @@ export function findGifts(a: Answers, limit = 3): Match[] {
       score += 18;
       reasons.push("không có chi tiết nhỏ rời ra");
     }
-    if (a.recipient === "bigkid" && p.makerRating >= 4) {
+    if (a.recipient === "bigkid" && p.category === "stem") {
       score += 16;
-      reasons.push("khó in, chơi cũng cần khéo");
+      reasons.push("chơi cần nghĩ, hợp bé thích thử thách");
     }
-    if (a.recipient === "kid" && p.makerRating <= 3) score += 8;
 
     switch (a.intent) {
       case "play":
@@ -127,11 +126,9 @@ export function findGifts(a: Answers, limit = 3): Match[] {
         if (p.category === "desk") { score += 30; reasons.push("dùng được mỗi ngày trên bàn"); }
         break;
       case "surprise":
-        if (p.badge) { score += 24; reasons.push(p.badge.toLowerCase()); }
+        if (p.category === "gifts") { score += 24; reasons.push("làm sẵn để tặng"); }
         break;
     }
-
-    if (p.badge === "BÁN CHẠY NHẤT") score += 6;
 
     /*
      * Always end on something true of this product alone.

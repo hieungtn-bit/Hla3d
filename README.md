@@ -1,11 +1,13 @@
 # HLA3D — học mỗi ngày, làm thật
 
 Ba lớp học miễn phí — **tiếng Việt, toán và tiếng Anh** — của ba anh em Hưng (8), Long (6)
-và Anh (5), học theo lối nhà học Do Thái. Kèm một cửa hàng in 3D nhỏ cho những ngày cuối tuần.
+và Anh (5), học theo lối nhà học Do Thái. Kèm một cửa hàng in 3D nhỏ cho lúc rảnh: ba anh em
+tìm mẫu 3D trên MakerWorld và in ra. Các bé chưa tự thiết kế mẫu.
 
-> **Trước khi đọc gì khác:** mở [`NOI-DUNG-CAN-XAC-NHAN.md`](NOI-DUNG-CAN-XAC-NHAN.md).
-> Nhiều câu chuyện và con số trên trang được viết mẫu khi dựng trang; file đó liệt kê từng
-> chỗ cần thay bằng chuyện và số thật.
+> **Luật của trang:** không có chuyện bịa. Trang chỉ nói điều nhà mình đã xác nhận.
+> Việc còn phải làm (ghi công nhà thiết kế, kiểm tra giấy phép từng mẫu, xác nhận lời hứa
+> với khách) nằm trong [`NOI-DUNG-CAN-XAC-NHAN.md`](NOI-DUNG-CAN-XAC-NHAN.md).
+> `npm run test:content` sẽ báo lỗi nếu những câu bịa cũ quay lại.
 
 ---
 
@@ -45,7 +47,7 @@ and orders are emailed.
 | `/chon-qua` | Three-tap gift finder |
 | `/custom` | Custom 3D studio |
 | `/dat-hang` | Order form (name + phone only) → `/api/dat-hang` |
-| `/lab`, `/journal`, `/about` | The workshop, the journal, the family story |
+| `/about` | What is true about the family, and safety rules for kids and 3D printers. `/lab` and `/journal` redirect here |
 | `/dashboard` | Private dashboard — **password-protected** by `src/proxy.ts`; its numbers are sample data until replaced |
 | `/feed.json`, `/llms.txt` | Machine-readable catalogue and brief for AI assistants |
 
@@ -73,31 +75,29 @@ src/
       page.tsx              homepage
       shop/ shop/[slug]/
       custom/
-      lab/
-      journal/ journal/[slug]/
       about/
       order/confirmed/
     dashboard/              private route with its own dark chrome
     sitemap.ts  robots.ts  not-found.tsx  globals.css
   components/
     brand/                  logo, maker-desk hero scene
-    home/                   hero, marquee, maker-card, how-it-works, dad-section, journal-preview
-    products/               product-card, product-detail, product-visual, shop-grid, color-dots, maker-rating
+    home/                   hero, marquee, learn-cta, how-it-works, startup-school, why-shop, gift-cta
+    products/               product-card, product-detail, product-visual, shop-grid, color-dots
     custom/                 custom-studio, nameplate-preview
-    lab/                    printer-status
     dashboard/              stat-card, revenue-chart, maker-xp
     layout/                 site-header, site-footer, cart-drawer
     motion/                 reveal
     ui/                     button, badge, card, field (shadcn-style primitives)
-    section.tsx  page-intro.tsx  goal-progress.tsx  money-breakdown.tsx
-  data/                     products · makers · journal · lab · dashboard · site
+    section.tsx  page-intro.tsx  money-breakdown.tsx
+  data/                     products · makers · safety · dashboard · site · vocab · math · viet
   lib/                      cart (external store) · utils (cn, VND formatting)
 ```
 
 ### Data layer
 
 All content lives in `src/data/*.ts` as typed constants — prices, products,
-journal entries, printer state, dashboard metrics, safety rules. Nothing is
+lessons, dashboard sample metrics, safety rules. Each product has an optional
+`source` (designer, MakerWorld link, licence) that is shown on its page once filled in. Nothing is
 hardcoded in a component. Swapping in Supabase means replacing those modules;
 components stay untouched.
 
@@ -160,12 +160,9 @@ The architecture is arranged so each of these is an isolated change:
 2. **Payments** — the cart's `placeOrder` in `cart-drawer.tsx` is the single seam
    for a Vietnamese gateway (VNPay / MoMo) or Stripe.
 3. **Real order numbers** — `orderNumber()` in `src/lib/utils.ts` plus a counter.
-4. **Live printer telemetry** — `PrinterState` in `src/data/lab.ts` mirrors a
-   Moonraker/OctoPrint payload shape.
-5. **Dashboard auth** — the `/dashboard` route group is already isolated.
-6. **Marketplace sync** — Shopee / TikTok Shop feeds can be generated from
+4. **Marketplace sync** — Shopee / TikTok Shop feeds can be generated from
    `src/data/products.ts`.
 
 ---
 
-Designed, printed & packed in Vietnam.
+Printed & packed at home in Vietnam.

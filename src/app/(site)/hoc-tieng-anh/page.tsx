@@ -74,7 +74,7 @@ export default function LearnPage() {
             ĐẦU TIÊN.
           </>
         }
-        description="Hưng, Long và Anh đang học đúng bộ từ này, theo đúng cách trong trang này. Ai vào cũng học được, không cần tài khoản, không mất tiền."
+        description="Trang làm ra để Hưng, Long và Anh học bộ từ này. Ai vào cũng học được, không cần tài khoản, không mất tiền."
         meta={[
           { label: "Số từ", value: `${TOTAL_WORDS}` },
           { label: "Chủ đề", value: `${vocabSets.length}` },

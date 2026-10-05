@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/logo";
-import { contact, goal, nav, site } from "@/data/site";
-import { toPercent } from "@/lib/utils";
+import { contact, nav, site } from "@/data/site";
 
 const secondary = [
   { href: "/about", label: "Chuyện của tụi em" },
   { href: "/about#safety", label: "An toàn khi làm" },
-  { href: "/lab", label: "Xưởng in" },
 ];
 
 export function SiteFooter() {
@@ -27,8 +25,8 @@ export function SiteFooter() {
               Làm thật.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
-              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Ba lớp học miễn phí, và một chiếc máy in 3D
-              ở góc nhà cho những ngày cuối tuần.
+              Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Ba lớp học miễn phí, và một máy in 3D ở nhà
+              để in những mẫu tìm được trên MakerWorld lúc rảnh.
             </p>
             <div className="mt-5 space-y-1.5 text-sm text-white/60">
               <p className="font-bold text-white">Hỏi gì hoặc đặt hàng cứ gọi</p>
@@ -81,31 +79,22 @@ export function SiteFooter() {
           </nav>
 
           <div>
-            <p className="eyebrow text-lime">Mục tiêu</p>
-            <p className="mt-5 font-display text-3xl font-bold tracking-tight">
-              {goal.current}
-              <span className="text-white/30"> / {goal.target}</span>
-            </p>
-            <p className="mt-1 text-sm text-white/50">{goal.label}</p>
-            <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full rounded-full bg-flame"
-                style={{ width: `${toPercent(goal.current, goal.target)}%` }}
-              />
-            </div>
+            <p className="eyebrow text-lime">Mỗi ngày</p>
+            <p className="mt-5 font-display text-2xl font-bold tracking-tight">Vài phút ôn bài.</p>
+            <p className="mt-1 text-sm text-white/50">Trang Hôm nay chỉ ra bài nào đến hạn ôn.</p>
             <Link
-              href="/shop"
+              href="/hom-nay"
               className="sticker press mt-5 inline-flex h-11 items-center rounded-full bg-flame px-5 font-display text-sm font-extrabold text-white"
             >
-              LÀM KHÁCH SỐ {goal.current + 1}
+              HÔM NAY HỌC GÌ
             </Link>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-carbon-line pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>Thiết kế, in và đóng gói tại Việt Nam.</p>
+          <p>In 3D và đóng gói tại nhà, ở Việt Nam.</p>
           <p className="font-mono">
-            © {site.founded}–{new Date().getFullYear()} HLA3D · Dự án của gia đình. Ba trông chừng mọi lúc máy chạy.
+            © {site.founded}–{new Date().getFullYear()} HLA3D · Dự án của gia đình.
           </p>
         </div>
       </div>

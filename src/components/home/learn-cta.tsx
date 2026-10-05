@@ -14,13 +14,8 @@ const HABITS = [
 ];
 
 /**
- * The learning section, on the homepage.
- *
- * It sits below the shop rather than above it: this is a shop, and burying
- * the products under a free classroom would be a strange thing to do to the
- * people who came to buy something. But it is the one part of the site a
- * visitor comes back to on a Tuesday, so it does not belong in the footer
- * either.
+ * The learning section, on the homepage — directly under the hero, because
+ * the classes are what this site is mostly for.
  */
 export function LearnCta() {
   return (
@@ -31,7 +26,7 @@ export function LearnCta() {
       <div className="container-hla relative">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
           <Reveal>
-            <p className="eyebrow text-sun">Lớp tiếng Anh của tụi em · Miễn phí</p>
+            <p className="eyebrow text-sun">Ba lớp học · Miễn phí</p>
             <h2 className="display mt-5 text-[clamp(2rem,5.5vw,3.5rem)] text-paper">
               BA LỚP HỌC,
               <br />
@@ -39,8 +34,8 @@ export function LearnCta() {
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed font-semibold text-paper/75">
               {vietSkills.length} bài tiếng Việt và {skills.length} bài toán từ mẫu giáo đến lớp 3, cùng{" "}
-              {TOTAL_WORDS} từ tiếng Anh chia {vocabSets.length} chủ đề. Ba mở trang cho các con học, rồi
-              để luôn ở đây cho ai muốn học cùng. Bé chưa biết đọc vẫn học được: nghe tiếng rồi chọn hình.
+              {TOTAL_WORDS} từ tiếng Anh chia {vocabSets.length} chủ đề. Trang làm ra để ba anh em học, và
+              mở luôn cho ai muốn học cùng. Bé chưa biết đọc vẫn học được: nghe tiếng rồi chọn hình.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-relaxed font-semibold text-paper/55">
               Không tài khoản, không thu tiền, không quảng cáo. Tiến độ nằm trong máy của bạn.

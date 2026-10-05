@@ -1,72 +1,28 @@
 export type MakerRole = "inventor" | "designer" | "tester";
 
+/**
+ * The three brothers — only what the family has actually said.
+ *
+ * `id` picks a cartoon avatar and nothing else; it is not a job title. The
+ * brothers do not design models yet: they find them on MakerWorld and print
+ * them. Personalities, quotes and favourite prints were once written here
+ * as placeholders and read like fact, so they were removed.
+ */
 export type Maker = {
   id: MakerRole;
-  index: string;
-  title: string;
   /** First name only — no surnames and no photographs anywhere on the site. */
   name: string;
   age: number;
-  nickname: string;
-  quote: string;
-  superpower: string;
-  favoriteColor: { name: string; hex: string };
-  favoritePrint: string;
-  learning: string;
-  /** Playful signature glyph drawn in the avatar tile. */
-  glyph: "bolt" | "compass" | "shield";
   accent: "flame" | "sky" | "lime";
 };
 
 export const makers: Maker[] = [
-  {
-    id: "inventor",
-    index: "01",
-    title: "NHÀ PHÁT MINH",
-    name: "Hưng",
-    age: 8,
-    nickname: "The Inventor",
-    quote: "Có quá nhiều ý tưởng để máy in kịp!",
-    superpower: "Biến ý tưởng điên rồ thành đồ thật.",
-    favoriteColor: { name: "Cam núi lửa", hex: "#ff4a17" },
-    favoritePrint: "Rồng khớp nối, càng nhiều gai càng tốt",
-    learning: "Vẽ ra giấy trước khi ngồi vào máy tính.",
-    glyph: "bolt",
-    accent: "flame",
-  },
-  {
-    id: "designer",
-    index: "02",
-    title: "NHÀ THIẾT KẾ",
-    name: "Long",
-    age: 6,
-    nickname: "The Designer",
-    quote: "Cái này lệch 1 milimét. Làm lại nha!",
-    superpower: "Làm mọi thứ vừa khít và thẳng hàng.",
-    favoriteColor: { name: "Xanh da trời", hex: "#3fa9f5" },
-    favoritePrint: "Bảng tên — tên càng dài càng thích",
-    learning: "Vì sao tường phải dày thì đồ mới không gãy.",
-    glyph: "compass",
-    accent: "sky",
-  },
-  {
-    id: "tester",
-    index: "03",
-    title: "NGƯỜI THỬ ĐỒ",
-    name: "Anh",
-    age: 5,
-    nickname: "The Tester",
-    quote: "Em làm rơi mà nó không gãy là bán được!",
-    superpower: "Làm hỏng đồ trước khi khách làm hỏng.",
-    favoriteColor: { name: "Xanh lá", hex: "#c6f24e" },
-    favoritePrint: "Bạch tuộc khớp nối, bản thứ 7",
-    learning: "Ghi lại hỏng ở chỗ nào, chứ không chỉ nói là hỏng.",
-    glyph: "shield",
-    accent: "lime",
-  },
+  { id: "inventor", name: "Hưng", age: 8, accent: "flame" },
+  { id: "designer", name: "Long", age: 6, accent: "sky" },
+  { id: "tester", name: "Anh", age: 5, accent: "lime" },
 ];
 
-/** Skill bars shown in the private dashboard. Values are out of 6. */
+/** SAMPLE DATA for the private dashboard. Skill bars, out of 6. */
 export const makerSkills = [
   { skill: "Thiết kế", level: 4 },
   { skill: "In 3D", level: 3 },
@@ -112,7 +68,7 @@ export const makerXp: MakerXp[] = [
   },
 ];
 
-/** How XP is earned — printed and stuck on the wall next to the printer. */
+/** SAMPLE DATA for the private dashboard: how XP could be earned. */
 export const xpRules = [
   { action: "Thiết kế xong một món in ra đẹp", xp: 50 },
   { action: "Chụp ảnh sản phẩm cho tử tế", xp: 20 },

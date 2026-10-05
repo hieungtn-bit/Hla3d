@@ -11,7 +11,7 @@ export const site = {
   locale: "vi-VN",
   /** What the site is, in one line, for humans and for machines. */
   descriptionVi:
-    "Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em Hưng (8), Long (6) và Anh (5) — học theo lối nhà học Do Thái. Cuối tuần ba anh em in 3D và bán đồ tự làm.",
+    "Lớp tiếng Việt, toán và tiếng Anh miễn phí của ba anh em Hưng (8), Long (6) và Anh (5) — học theo lối nhà học Do Thái. Lúc rảnh, ba anh em tìm mẫu 3D trên MakerWorld và in ra.",
   founded: 2025,
   city: "Việt Nam",
   email: "hello@hla3d.vn",
@@ -34,7 +34,10 @@ export const contact = {
   owner: "mẹ Hiếu",
 } as const;
 
-/** The public goal that the whole homepage narrative hangs on. */
+/**
+ * The shop's goal. Shown only on the private dashboard: `current` is not a
+ * confirmed count of real customers, so no public page may display it.
+ */
 export const goal = {
   label: "100 khách hàng đầu tiên",
   labelVi: "100 khách hàng đầu tiên",
@@ -53,31 +56,15 @@ export const nav = [
   { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
   { href: "/shop", label: "Cửa hàng" },
   { href: "/chon-qua", label: "Chọn quà" },
-  { href: "/custom", label: "Tự thiết kế" },
+  { href: "/custom", label: "In tên riêng" },
   { href: "/about", label: "Chuyện của tụi em" },
-  { href: "/lab", label: "Xưởng in" },
-  { href: "/journal", label: "Nhật ký" },
 ] as const;
 
 /**
- * What fits across the top of a laptop without wrapping.
- *
- * Seven links do not fit, and a header that wraps to two lines reads as
- * broken. The lab and the journal come out: both are things a visitor reads
- * once out of curiosity, not things they navigate to — and both are still one
- * tap away in the footer and from the homepage sections that introduce them.
+ * What fits across the top of a laptop without wrapping. The gift finder and
+ * the name studio are one tap away from the shop, and stay in the footer.
  */
 export const navPrimary = nav.filter(
   // "Hôm nay học gì" has the header button to itself, so it stays out of the row.
-  (item) => !["/lab", "/journal", "/chon-qua", "/custom", "/hom-nay"].includes(item.href),
+  (item) => !["/chon-qua", "/custom", "/hom-nay"].includes(item.href),
 );
-
-export const printer = {
-  name: "Anycubic Kobra X",
-  nickname: "PRINTER #01",
-  buildVolume: "220 × 220 × 250 mm",
-  nozzle: "0.4 mm",
-  material: "PLA / PLA+ / Silk PLA",
-  layerHeights: "0.12 – 0.28 mm",
-  commissioned: "Tháng 3, 2025",
-} as const;

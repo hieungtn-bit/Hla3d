@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/shop" },
   title: "Cửa hàng",
   description:
-    "Đồ để bàn, thú khớp mềm, bảng tên khắc riêng và quà tặng — tất cả do ba anh em tự thiết kế và in 3D tại nhà ở Việt Nam.",
+    "Đồ để bàn, thú khớp nối, bảng tên và quà tặng in 3D tại nhà. Mẫu 3D lấy từ MakerWorld, ba anh em chọn và in ra.",
 };
 
 export default function ShopPage() {
@@ -22,7 +22,7 @@ export default function ShopPage() {
             TỰ LÀM.
           </>
         }
-        description="Mười lăm món do Hưng, Long và Anh tự thiết kế, tự in và tự cầm lên kiểm tra. Làm theo đơn trong 3–5 ngày, vì nhà chỉ có đúng một cái máy in."
+        description="Mẫu 3D là của các nhà thiết kế trên MakerWorld — Hưng, Long và Anh chưa tự vẽ mẫu được. Phần của ba anh em là tìm mẫu và in ra trên máy in ở nhà. Làm theo đơn trong 3–5 ngày, vì nhà chỉ có một máy in."
         meta={[
           { label: "Số món", value: "15" },
           { label: "Nhóm đồ", value: "5" },

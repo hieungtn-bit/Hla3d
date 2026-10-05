@@ -7,7 +7,6 @@ import { AlertTriangle, Check, MessageCircle, Minus, Package, Phone, Plus, Shiel
 import { categories, filaments, type Product } from "@/data/products";
 import { ProductVisual } from "@/components/products/product-visual";
 import { ColorDots } from "@/components/products/color-dots";
-import { MakerRating } from "@/components/products/maker-rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
@@ -90,7 +89,7 @@ export function ProductDetail({ product }: { product: Product }) {
         </div>
 
         <p className="mt-4 text-center text-xs text-ink-3">
-          Hình minh hoạ đúng hình dáng và đúng màu nhựa. Tụi em chụp ảnh thật từng đơn trước khi gửi.
+          Hình vẽ minh hoạ, không phải ảnh chụp món thật. Màu trên hình là màu nhựa bạn chọn.
         </p>
       </div>
 
@@ -98,7 +97,6 @@ export function ProductDetail({ product }: { product: Product }) {
       <div>
         <div className="flex items-center gap-3">
           <Badge variant="tint">{categoryLabel(product.category)}</Badge>
-          <MakerRating value={product.makerRating} />
         </div>
 
         <h1 className="display mt-5 text-[clamp(2rem,5vw,3rem)]">{product.nameVi}</h1>
@@ -156,7 +154,7 @@ export function ProductDetail({ product }: { product: Product }) {
             <Link href={`/custom?product=${product.slug}`} className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full">
                 <Sparkles className="size-4" />
-                TỰ THIẾT KẾ
+                CHỌN TÊN VÀ MÀU
               </Button>
             </Link>
           )}
@@ -215,12 +213,31 @@ export function ProductDetail({ product }: { product: Product }) {
           </div>
         </dl>
 
-        {/* maker note */}
-        <blockquote className="mt-9 rounded-[var(--radius-card)] border border-flame/20 bg-flame-tint p-6">
-          <span className="eyebrow text-flame-2">Lời nhắn của ba anh em</span>
-          <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">{product.makerNote}</p>
-          <footer className="mt-4 text-xs text-ink-2">{product.madeBy}</footer>
-        </blockquote>
+        {/* who made what — the model is someone else's design */}
+        <section className="mt-9 rounded-[var(--radius-card)] border border-flame/20 bg-flame-tint p-6">
+          <h2 className="eyebrow text-flame-2">Mẫu 3D của ai?</h2>
+          {product.source ? (
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">
+              Mẫu 3D do{" "}
+              <a
+                href={product.source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline underline-offset-2 hover:text-flame"
+              >
+                {product.source.designer}
+              </a>{" "}
+              thiết kế, đăng trên MakerWorld · giấy phép {product.source.license}.
+            </p>
+          ) : (
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">
+              Mẫu 3D của một nhà thiết kế trên MakerWorld, không phải do tụi em vẽ.
+            </p>
+          )}
+          <p className="mt-2 text-sm leading-relaxed text-ink-2">
+            Phần của ba anh em: tìm mẫu trên MakerWorld và in ra trên máy in ở nhà.
+          </p>
+        </section>
 
         {/* description */}
         <div className="mt-9">
@@ -256,9 +273,7 @@ export function ProductDetail({ product }: { product: Product }) {
         <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border-2 border-ink bg-ink">
           {[
             { label: "Chất liệu", value: product.material },
-            { label: "Thời gian in", value: product.printTime },
-            { label: "Kích thước", value: product.size },
-            { label: "Cân nặng", value: product.weight },
+            { label: "Kích thước", value: `Tuỳ mẫu — hỏi ${contact.owner} khi đặt` },
           ].map((spec) => (
             <div key={spec.label} className="bg-surface p-4">
               <dt className="eyebrow text-ink-3">{spec.label}</dt>

@@ -89,7 +89,7 @@ export const moneyLesson = {
       labelVi: "Đóng gói",
       amount: 10000,
       hex: "#c6f24e",
-      note: "Hộp, giấy lót, sticker và một tấm thiệp viết tay.",
+      note: "Hộp, giấy lót và băng keo.",
     },
     {
       key: "machine",
@@ -105,7 +105,7 @@ export const moneyLesson = {
       labelVi: "Lợi nhuận",
       amount: 90000,
       hex: "#ff4a17",
-      note: "Phần thật sự còn lại của ba anh em.",
+      note: "Phần còn lại sau khi trừ hết chi phí.",
     },
   ],
   profitSplit: [
@@ -131,7 +131,7 @@ export const moneyLesson = {
       labelVi: "Được tiêu",
       percent: 20,
       hex: "#c6f24e",
-      note: "Của ba anh em. Tự kiếm, không phải được cho.",
+      note: "Phần được tiêu. Tự kiếm, không phải được cho.",
     },
   ],
 } as const;

@@ -9,7 +9,6 @@ import {
 import { questions, findGifts, type Answers, type Match } from "@/data/gift-finder";
 import { filaments } from "@/data/products";
 import { ProductVisual } from "@/components/products/product-visual";
-import { MakerRating } from "@/components/products/maker-rating";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/lib/cart";
@@ -116,9 +115,6 @@ export function GiftFinder() {
                     <Link href={`/shop/${m.product.slug}`}>{m.product.nameVi}</Link>
                   </h3>
                   <p className="mt-1.5 text-sm font-semibold text-ink-2">Vì {m.reason}</p>
-                  <div className="mt-3">
-                    <MakerRating value={m.product.makerRating} />
-                  </div>
 
                   <div className="mt-auto pt-5">
                     <p className="display text-2xl">{formatVnd(m.product.price)}</p>
