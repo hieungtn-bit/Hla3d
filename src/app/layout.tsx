@@ -90,6 +90,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/* Without JavaScript the reveal observer never runs; show everything. */}
+        <noscript>
+          <style>{".reveal{opacity:1;transform:none}"}</style>
+        </noscript>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <AnalyticsProvider>

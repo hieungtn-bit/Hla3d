@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageIntro } from "@/components/page-intro";
 import { LearnerPicker } from "@/components/learn/learner-picker";
 import { TodayBoard } from "@/components/today/today-board";
@@ -24,7 +25,14 @@ export default function TodayPage() {
           </>
         }
         description="Lịch ôn của cả ba lớp gom về một chỗ. Ôn những bài đến hạn trước, rồi mới học bài mới — mười phút một ngày ăn đứt năm tiếng một tháng."
-      />
+      >
+        <p className="mt-6 text-sm font-semibold text-ink-2">
+          Lần đầu dùng?{" "}
+          <Link href="/cho-ba-me" className="font-bold text-ink underline underline-offset-4 hover:text-flame">
+            Đọc hướng dẫn cho ba mẹ
+          </Link>
+        </p>
+      </PageIntro>
       <div className="container-hla pt-12 pb-8">
         <LearnerPicker showToday={false} />
       </div>

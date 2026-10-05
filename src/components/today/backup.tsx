@@ -106,7 +106,7 @@ export function ProgressBackup() {
   }
 
   return (
-    <section className="sticker rounded-[var(--radius-card)] border-2 border-ink bg-surface p-6 sm:p-8">
+    <section id="sao-luu" className="sticker scroll-mt-24 rounded-[var(--radius-card)] border-2 border-ink bg-surface p-6 sm:p-8">
       <p className="eyebrow text-ink-3">Dành cho bố mẹ</p>
       <h2 className="display mt-3 text-[clamp(1.25rem,3.5vw,1.75rem)]">TIẾN ĐỘ NẰM TRONG MÁY NÀY — VÀ CHỈ MÁY NÀY.</h2>
       <p className="mt-4 text-sm leading-relaxed font-semibold text-ink-2">

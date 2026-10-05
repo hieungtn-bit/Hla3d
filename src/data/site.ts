@@ -25,10 +25,12 @@ export const nav = [
   { href: "/hoc-toan", label: "Toán" },
   { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
   { href: "/goc-in-3d", label: "Góc in 3D" },
+  { href: "/cho-ba-me", label: "Cho ba mẹ" },
   { href: "/about", label: "Chuyện của tụi em" },
 ] as const;
 
-/** The header row. "Hôm nay học gì" has the header button to itself. */
-export const navPrimary = nav.filter(
-  (item) => item.href !== "/hom-nay",
-);
+/**
+ * The header row. "Hôm nay học gì" has the header button to itself, and
+ * "Cho ba mẹ" lives in the menu and footer so the row fits at 1024px.
+ */
+export const navPrimary = nav.filter((item) => !["/hom-nay", "/cho-ba-me"].includes(item.href));

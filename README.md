@@ -36,7 +36,8 @@ visitor's browser, and `/hom-nay` can save it to a file and restore it.
 | `NEXT_PUBLIC_SITE_URL` | Overrides the canonical origin | `https://hla3d.fun` in production |
 
 Analytics are anonymous page views plus right/wrong counts per lesson. No child's name, and
-never which word a child got wrong.
+never which word a child got wrong. PostHog is imported only once the page is idle, so it never
+competes with a lesson for bandwidth, and it is not loaded at all under Do Not Track.
 
 ---
 
@@ -50,6 +51,7 @@ never which word a child got wrong.
 | `/hoc-toan`, `/hoc-toan/[skill]` | Maths, 24 lessons, with an optional typed-answer mode |
 | `/hoc-tieng-anh`, `/hoc-tieng-anh/[set]` | English, 1000 words in 40 sets |
 | `/goc-in-3d` | **Góc in 3D** — learning with the home printer: lesson links, one print step by step, crediting designers, a list of real prints (empty until the family adds one), safety rules |
+| `/cho-ba-me` | **Cho ba mẹ** — how to use the site ten minutes a day, the four habits in practice, backup, and what the site cannot do |
 | `/about` | What is true about the family |
 | `/llms.txt` | Plain-language brief for AI assistants |
 
@@ -114,8 +116,13 @@ that shares nothing with the app.
 **Progress stays in the browser.** Leitner boxes (0/2/4/8/32 days) per word or skill, in
 `localStorage`, with a file backup on `/hom-nay`.
 
-**Motion is restrained.** One `Reveal` primitive drives scroll animation, and everything
-respects `prefers-reduced-motion`.
+**Motion is restrained, and costs almost nothing.** There is no animation library: one `Reveal`
+primitive (an IntersectionObserver toggling a CSS class) drives scroll animation, everything
+respects `prefers-reduced-motion`, and content above the fold is never hidden waiting for
+JavaScript. Initial JavaScript is about 185 KB gzipped per page.
+
+**Storage can fail and lessons still run.** Every `localStorage` read and write is guarded; with
+storage blocked (Safari with cookies off, old private mode) a lesson works, it just is not saved.
 
 Tokens live in `src/app/globals.css` under Tailwind v4's `@theme` (`paper`, `ink`, `flame`,
 `carbon`, `lime`, `sky`, `sun`, …). Type is **Baloo 2** (display), **Nunito** (body) and

@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Search, Palette, Layers, Hand } from "lucide-react";
 import { SectionHeader } from "@/components/section";
 import { cn } from "@/lib/utils";
@@ -44,15 +43,38 @@ const STEPS = [
 const TOTAL_LAYERS = 26;
 
 export function HowPrintingWorks() {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.35"] });
-  const layerCount = useTransform(scrollYProgress, [0, 1], [0, TOTAL_LAYERS]);
-  const [built, setBuilt] = React.useState(reduce ? TOTAL_LAYERS : 0);
+  const ref = React.useRef<HTMLElement>(null);
+  const [built, setBuilt] = React.useState(0);
 
-  useMotionValueEvent(layerCount, "change", (v) => {
-    if (!reduce) setBuilt(Math.round(v));
-  });
+  // Layers build as the section scrolls through the viewport: none when its
+  // top is 85% of the way down the screen, all of them when its bottom
+  // reaches 35%. With reduced motion the print is simply finished.
+  React.useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const el = ref.current;
+      if (!el) return;
+      if (reduce) return setBuilt(TOTAL_LAYERS);
+      const vh = window.innerHeight;
+      const r = el.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (0.85 * vh - r.top) / (0.5 * vh + r.height)));
+      setBuilt(Math.round(progress * TOTAL_LAYERS));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    onScroll();
+    if (reduce) return () => cancelAnimationFrame(frame);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const activeStep = Math.min(3, Math.floor((built / TOTAL_LAYERS) * 4));
 
@@ -118,7 +140,7 @@ export function HowPrintingWorks() {
               <div className="relative">
                 <div className="flex items-center justify-between">
                   <span className="eyebrow text-white/50">Máy in xếp từng lớp</span>
-                  <span className="font-mono text-xs text-flame">
+                  <span className="font-mono text-xs text-sun">
                     {String(built).padStart(2, "0")}/{TOTAL_LAYERS}
                   </span>
                 </div>
@@ -130,19 +152,15 @@ export function HowPrintingWorks() {
                     const t = i / (TOTAL_LAYERS - 1);
                     const width = 46 + Math.sin(t * Math.PI) * 26 + t * 34;
                     return (
-                      <motion.span
+                      <span
                         key={i}
-                        className="block h-[6px] rounded-[2px]"
+                        className="block h-[6px] rounded-[2px] transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
                         style={{
                           width: `${width}%`,
                           background: `linear-gradient(90deg, #ff4a17, #ff8b5e)`,
-                        }}
-                        initial={false}
-                        animate={{
                           opacity: visible ? 1 : 0.06,
-                          scaleX: visible ? 1 : 0.75,
+                          transform: visible ? "none" : "scaleX(0.75)",
                         }}
-                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                       />
                     );
                   })}

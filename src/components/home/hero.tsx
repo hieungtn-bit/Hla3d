@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Doodle, DoodleField } from "@/components/brand/doodle";
 import { LessonPeek } from "@/components/home/lesson-peek";
@@ -32,15 +29,13 @@ export function Hero({
   vietLessons: number;
   word: PeekWord;
 }) {
-  const reduce = useReducedMotion();
-
   return (
     <section className="relative overflow-hidden">
       <div className="grid-paper pointer-events-none absolute inset-0 opacity-50" />
       <div className="pointer-events-none absolute -left-40 top-0 size-[36rem] rounded-full bg-sun/25 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-40 size-[28rem] rounded-full bg-sky/20 blur-3xl" />
 
-      {!reduce && <DoodleField items={DOODLES} className="hidden lg:block" />}
+      <DoodleField items={DOODLES} className="hidden motion-safe:lg:block" />
 
       <div className="container-hla relative grid items-center gap-12 py-12 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-16">
         {/* ---- copy --------------------------------------------------- */}
@@ -135,19 +130,14 @@ export function Hero({
         </div>
 
         {/* ---- what is actually inside -------------------------------- */}
-        <motion.div
-          initial={reduce ? false : { scale: 0.96 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
-        >
+        <div className="settle relative">
           <LessonPeek word={word} />
           <Doodle
             kind="arrow"
             color="#ff4a17"
             className="absolute -bottom-6 -left-8 hidden size-16 -rotate-12 lg:block"
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

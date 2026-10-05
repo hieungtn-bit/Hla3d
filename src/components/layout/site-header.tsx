@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav, navPrimary } from "@/data/site";
 import { Logo } from "@/components/brand/logo";
@@ -64,6 +63,7 @@ export function SiteHeader() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
             className="sticker press grid size-10 place-items-center rounded-full bg-surface lg:hidden"
           >
             {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -71,37 +71,29 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="overflow-hidden border-t-2 border-ink bg-paper lg:hidden"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <nav className="container-hla flex flex-col gap-1 py-4">
-              {nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-2xl px-4 py-3 font-display text-xl font-extrabold hover:bg-surface"
-                >
-                  {item.label}
-                </Link>
-              ))}
+      {menuOpen && (
+        <div id="mobile-menu" className="border-t-2 border-ink bg-paper lg:hidden">
+          <nav className="container-hla flex flex-col gap-1 py-4">
+            {nav.map((item) => (
               <Link
-                href="/hom-nay"
+                key={item.href}
+                href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="sticker mt-2 rounded-2xl bg-flame px-4 py-3 text-center font-display text-xl font-extrabold text-white"
+                className="rounded-2xl px-4 py-3 font-display text-xl font-extrabold hover:bg-surface"
               >
-                HÔM NAY HỌC GÌ
+                {item.label}
               </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <Link
+              href="/hom-nay"
+              onClick={() => setMenuOpen(false)}
+              className="sticker mt-2 rounded-2xl bg-flame px-4 py-3 text-center font-display text-xl font-extrabold text-white"
+            >
+              HÔM NAY HỌC GÌ
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

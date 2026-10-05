@@ -57,6 +57,7 @@ export function GET() {
     "",
     "## Trang khác",
     "",
+    `- [Cho ba mẹ](${absoluteUrl("/cho-ba-me")}) — cách dùng trang mười phút mỗi ngày, và những gì trang không làm được`,
     `- [Góc in 3D](${absoluteUrl("/goc-in-3d")}) — học qua máy in 3D, và luật an toàn khi trẻ dùng máy in`,
     `- [Chuyện của tụi em](${absoluteUrl("/about")}) — những gì có thật về ba anh em`,
     "",

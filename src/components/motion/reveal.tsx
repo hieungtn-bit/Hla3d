@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
@@ -15,26 +14,40 @@ type RevealProps = {
 
 /**
  * One scroll-reveal primitive for the whole site so motion stays consistent
- * and restrained. Respects prefers-reduced-motion by rendering statically.
+ * and restrained.
+ *
+ * Plain CSS transitions toggled by an IntersectionObserver — no animation
+ * library, so it costs a few hundred bytes. `prefers-reduced-motion` and
+ * no-JavaScript are both handled in globals.css (`.reveal`), so content is
+ * never left invisible.
  */
 export function Reveal({ children, className, delay = 0, y = 20, as = "div" }: RevealProps) {
-  const reduce = useReducedMotion();
-  const Comp = motion[as];
+  const ref = React.useRef<HTMLElement>(null);
+  const [shown, setShown] = React.useState(false);
 
-  if (reduce) {
-    const Static = as;
-    return <Static className={className}>{children}</Static>;
-  }
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -64px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
-  return (
-    <Comp
-      className={cn(className)}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-64px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </Comp>
+  return React.createElement(
+    as,
+    {
+      ref,
+      className: cn("reveal", shown && "reveal-in", className),
+      style: { "--reveal-y": `${y}px`, transitionDelay: delay ? `${delay}s` : undefined } as React.CSSProperties,
+    },
+    children,
   );
 }
