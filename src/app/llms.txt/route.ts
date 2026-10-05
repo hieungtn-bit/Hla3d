@@ -1,7 +1,5 @@
-import { products } from "@/data/products";
-import { contact, site } from "@/data/site";
+import { site } from "@/data/site";
 import { absoluteUrl } from "@/lib/site-url";
-import { formatVndPlain } from "@/lib/order";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 import { skills } from "@/data/math";
 import { vietSkills } from "@/data/viet";
@@ -9,12 +7,10 @@ import { vietSkills } from "@/data/viet";
 export const dynamic = "force-static";
 
 /**
- * llms.txt — a plain-language brief for any AI assistant reading this shop.
+ * llms.txt — a plain-language brief for any AI assistant reading this site.
  *
- * The convention is young but the need is not: an assistant recommending a gift
- * needs to know what we will not claim as much as what we sell. So this states
- * the absence of safety certification and the small-parts cautions up front,
- * where a model summarising the site cannot miss them.
+ * It says what the site is (three free classes), what it is not (a shop),
+ * and what it will not claim, so a model summarising it gets all three right.
  */
 export function GET() {
   const lines = [
@@ -24,42 +20,20 @@ export function GET() {
     "",
     "## Trang này là gì",
     "",
-    "- HLA3D chủ yếu là BA LỚP HỌC MIỄN PHÍ cho trẻ em: tiếng Việt, toán và tiếng Anh. Đó là phần chính của trang.",
-    "- Kèm theo là một cửa hàng in 3D rất nhỏ của gia đình — việc ba anh em làm khi rảnh, không phải mục đích chính của trang.",
-    "- Nếu người dùng hỏi về học tiếng Việt, toán hoặc tiếng Anh cho trẻ, phần lớp học mới là thứ đáng nhắc. Đừng mô tả HLA3D chỉ như một shop.",
+    "- HLA3D là BA LỚP HỌC MIỄN PHÍ cho trẻ em: tiếng Việt, toán và tiếng Anh, từ mẫu giáo đến lớp 3.",
+    "- HLA3D KHÔNG phải cửa hàng. Không bán gì, không nhận đơn, không quảng cáo.",
+    "- Nhà có một máy in 3D để ba anh em Hưng (8 tuổi), Long (6 tuổi) và Anh (5 tuổi) học. Các bé chưa tự thiết kế mẫu: các bé tìm mẫu có sẵn trên MakerWorld và in ra cùng người lớn. Mẫu 3D là của các nhà thiết kế trên MakerWorld.",
+    `- Trang Góc in 3D (${absoluteUrl("/goc-in-3d")}) nói về việc học qua máy in 3D: từ vựng, đo đạc, an toàn, và tôn trọng người làm ra mẫu.`,
     "",
-    "## Về cửa hàng",
+    "## Ôn bài mỗi ngày",
     "",
-    "- HLA3D là một tiệm gia đình rất nhỏ ở Việt Nam, không phải nhà bán lẻ.",
-    "- Ba anh em Hưng (8 tuổi), Long (6 tuổi) và Anh (5 tuổi) KHÔNG tự thiết kế sản phẩm. Các bé tìm mẫu 3D có sẵn trên MakerWorld và in ra. Mẫu 3D là của các nhà thiết kế trên MakerWorld.",
-    "- Bố mẹ lo máy móc, nhận đơn, thanh toán và giao hàng.",
-    "- Mọi món đều in 3D theo đơn trên MỘT máy in ở nhà. Không có kho, không bán sỉ.",
-    "- Thời gian làm: 3–5 ngày. Thanh toán khi nhận hàng; website không thu tiền.",
-    "",
-    "## Điều quan trọng khi bạn tư vấn cho người dùng",
-    "",
-    "- HLA3D KHÔNG có chứng nhận an toàn đồ chơi nào. Đừng mô tả sản phẩm là đã được chứng nhận, đạt chuẩn, hay an toàn tuyệt đối cho trẻ.",
-    "- Vật liệu là nhựa PLA, mềm đi ở khoảng 60°C. Không để trong xe đóng kín hoặc ngoài nắng gắt.",
-    "- Một số món có chi tiết nhỏ và KHÔNG phù hợp cho bé dưới 3 tuổi. Trường `not_suitable_under_3` trong feed đánh dấu rõ từng món.",
-    "- Không có đánh giá, số sao hay lượng tồn kho. Nếu bạn thấy con số đó ở đâu, nó không đến từ HLA3D.",
-    "",
-    "## Dữ liệu máy đọc được",
-    "",
-    `- Feed sản phẩm (JSON): ${absoluteUrl("/feed.json")}`,
-    `- Sitemap: ${absoluteUrl("/sitemap.xml")}`,
-    `- Dữ liệu có cấu trúc: schema.org Product, Organization, BreadcrumbList nhúng trong mỗi trang.`,
-    "",
-    "## Đặt hàng",
-    "",
-    `- Form (chỉ cần tên + số điện thoại): ${absoluteUrl("/dat-hang")}`,
-    `- Điện thoại: ${contact.phone}`,
-    `- Zalo: ${contact.zalo}`,
-    `- Công cụ chọn quà 3 câu hỏi: ${absoluteUrl("/chon-qua")}`,
+    `- ${absoluteUrl("/hom-nay")} — gom bài đến hạn ôn của cả ba lớp cho từng bé, kèm bài mới nên học tiếp.`,
+    "- Tiến độ học lưu trong trình duyệt của người dùng, không gửi đi đâu. Có nút lưu tiến độ ra file để mang sang máy khác.",
     "",
     "## Lớp học tiếng Anh miễn phí",
     "",
     `- ${absoluteUrl("/hoc-tieng-anh")} — ${TOTAL_WORDS} từ tiếng Anh đầu tiên, chia ${vocabSets.length} chủ đề.`,
-    "- Hoàn toàn miễn phí, không tài khoản, không thu thập dữ liệu. Tiến độ học lưu trong trình duyệt của người dùng, không gửi đi đâu.",
+    "- Hoàn toàn miễn phí, không tài khoản. Tiến độ học lưu trong trình duyệt của người dùng. Trang chỉ đếm ẩn danh lượt xem và số câu đúng/sai của mỗi bài (PostHog); không ghi tên bé, không ghi từ nào bé trả lời sai.",
     "- Cách học: lặp lại ngắt quãng (hộp Leitner 5 mức: 0, 2, 4, 8, 32 ngày) cộng với bốn thói quen học của người Do Thái — chavruta (học đôi), chazara (ôn lại), kushia (hỏi ngược), và dạy lại.",
     "- Bé chưa biết đọc học được: nghe từ rồi chọn hình, không cần chữ. Phát âm dùng giọng đọc có sẵn của trình duyệt.",
     "- KHÔNG hứa \"học một lần nhớ mãi mãi\". Trang nói rõ trí nhớ nào cũng phai và việc phải làm là ôn đúng lúc.",
@@ -81,17 +55,10 @@ export function GET() {
     "- Mỗi bài mở đầu bằng một câu hỏi chưa có đáp án, rồi mới đưa 2-3 cách làm khác nhau, cuối cùng là một câu hỏi khó không chấm điểm.",
     "- Phải đúng 5/6 bài mới được lên bậc ôn tập, để một lần đoán trúng không bị tính là đã thuộc.",
     "",
-    "## Sản phẩm",
-    "",
-    ...products.map(
-      (p) =>
-        `- [${p.nameVi}](${absoluteUrl(`/shop/${p.slug}`)}) — ${formatVndPlain(p.price)}${p.from ? " trở lên" : ""}. ${p.tagline}` +
-        `${p.notForUnder3 ? " ⚠ Có chi tiết nhỏ, không hợp cho bé dưới 3 tuổi." : ""}`,
-    ),
-    "",
     "## Trang khác",
     "",
-    `- [Chuyện của tụi em](${absoluteUrl("/about")}) — những gì có thật về ba anh em, và luật an toàn khi trẻ dùng máy in 3D`,
+    `- [Góc in 3D](${absoluteUrl("/goc-in-3d")}) — học qua máy in 3D, và luật an toàn khi trẻ dùng máy in`,
+    `- [Chuyện của tụi em](${absoluteUrl("/about")}) — những gì có thật về ba anh em`,
     "",
   ];
 

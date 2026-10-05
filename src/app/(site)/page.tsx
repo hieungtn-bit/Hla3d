@@ -2,16 +2,10 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Calculator, PiggyBank, Type } from "lucide-react";
 import { Hero } from "@/components/home/hero";
 import { Marquee } from "@/components/home/marquee";
-import { HowItWorks } from "@/components/home/how-it-works";
-import { GiftCta } from "@/components/home/gift-cta";
-import { WhyShop } from "@/components/home/why-shop";
 import { LearnCta } from "@/components/home/learn-cta";
-import { StartupSchool } from "@/components/home/startup-school";
-import { MoneyBreakdown } from "@/components/money-breakdown";
-import { ProductCard } from "@/components/products/product-card";
 import { Section, SectionHeader } from "@/components/section";
 import { Reveal } from "@/components/motion/reveal";
-import { featuredSlugs, products } from "@/data/products";
+import { printLessons } from "@/data/print-corner";
 import { TOTAL_WORDS, vocabSets } from "@/data/vocab";
 import { skills } from "@/data/math";
 import { vietSkills } from "@/data/viet";
@@ -37,10 +31,6 @@ export default function HomePage() {
     icon: pets?.words[0][2] ?? "🐱",
     others: [9, 15, 20].map((i) => pets?.words[i][2] ?? "🐾"),
   };
-
-  const featured = featuredSlugs
-    .map((slug) => products.find((p) => p.slug === slug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <>
@@ -71,64 +61,43 @@ export default function HomePage() {
       {/* ---- the two classrooms ----------------------------------------- */}
       <LearnCta />
 
-      {/* ---- how it works --------------------------------------------- */}
-      <HowItWorks />
-
-      {/* ---- startup school -------------------------------------------- */}
-      <StartupSchool />
-
-      {/* ---- why a classroom has a shop --------------------------------- */}
-      <WhyShop />
-
-      {/* ---- shop preview ---------------------------------------------- */}
-      <Section className="border-t border-line">
-        <div className="container-hla">
-          <SectionHeader
-            index="02"
-            eyebrow="Cửa hàng"
-            title={
-              <>
-                ĐỒ TỤI EM
-                <br />
-                IN Ở NHÀ.
-              </>
-            }
-            description="Mẫu 3D là của các nhà thiết kế trên MakerWorld. Ba anh em tìm mẫu và in ra trên máy in ở nhà — chưa có món nào do tụi em tự vẽ."
-            action={
-              <Link
-                href="/shop"
-                className="tactile inline-flex h-12 items-center gap-2 rounded-full border-2 border-ink px-6 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
-              >
-                XEM CẢ {products.length} MÓN
-                <ArrowRight className="size-4" />
-              </Link>
-            }
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {featured.map((product, i) => (
-              <Reveal key={product.id} delay={i * 0.06}>
-                <ProductCard product={product} className="h-full" />
+      {/* ---- the printer, for learning ------------------------------- */}
+      <Section className="border-b-2 border-ink bg-paper-2">
+        <div className="container-hla grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
+          <div>
+            <SectionHeader
+              index="01"
+              eyebrow="Góc in 3D"
+              title={
+                <>
+                  HỌC XONG
+                  <br />
+                  THÌ THỬ LÀM.
+                </>
+              }
+              description="Nhà có một máy in 3D. Ba anh em tìm mẫu trên MakerWorld rồi in ra cùng người lớn — không để bán, mà để học: từ tiếng Anh, đo độ dài, xem giờ, an toàn, và ghi tên người làm ra mẫu."
+            />
+            <Link
+              href="/goc-in-3d"
+              className="tactile mt-8 inline-flex h-13 items-center gap-2 rounded-full border-2 border-ink px-6 py-3.5 font-display text-sm font-bold tracking-tight hover:bg-ink hover:text-paper"
+            >
+              VÀO GÓC IN 3D
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <ul className="grid gap-3">
+            {printLessons.map((l, i) => (
+              <Reveal as="li" key={l.href} delay={i * 0.06}>
+                <Link href={l.href} className="sticker press flex items-center gap-4 rounded-[var(--radius-card)] bg-surface p-4">
+                  <span className="min-w-0 flex-1">
+                    <span className="eyebrow block text-ink-3">{l.subject}</span>
+                    <span className="mt-1 block font-display text-base font-extrabold text-ink">{l.title}</span>
+                  </span>
+                  <ArrowRight className="size-4 shrink-0 text-flame" />
+                </Link>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ---- gift finder ------------------------------------------------ */}
-      <GiftCta />
-
-      {/* ---- money lesson ------------------------------------------------ */}
-      <Section className="border-t border-line">
-        <div className="container-hla">
-          <SectionHeader
-            index="03"
-            eyebrow="Bài học tiền bạc"
-            title="TIỀN CHẠY ĐI ĐÂU HẾT?"
-            description="Ví dụ một món bán 150.000đ: tiền nhựa, tiền điện, hộp, quỹ máy và tiền lời. Các con số là ước tính để tập tính, không phải sổ sách thật của cửa hàng."
-          />
-          <div className="mt-14">
-            <MoneyBreakdown />
-          </div>
+          </ul>
         </div>
       </Section>
 
@@ -136,7 +105,7 @@ export default function HomePage() {
       <section className="border-t border-line bg-flame py-20 text-white sm:py-28">
         <div className="container-hla text-center">
           <Reveal>
-            <p className="eyebrow text-white/80">Học mỗi ngày · In 3D lúc rảnh</p>
+            <p className="eyebrow text-white/80">Học mỗi ngày · Miễn phí</p>
             <h2 className="display mx-auto mt-6 max-w-3xl text-[clamp(2rem,5.5vw,3.75rem)] text-white">
               MỞ RA HỌC THỬ MỘT BÀI.
             </h2>

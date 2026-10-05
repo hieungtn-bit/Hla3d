@@ -15,8 +15,9 @@
  *      independent reader built on a hand table of letters.
  *   4. Every maths generator, thousands of times, re-solved by an independent
  *      solver that reads only the prompt the child reads.
- *   5. No invented claims about the family on public pages — the brothers
- *      find models on MakerWorld and print them; they do not design them.
+ *   5. No invented claims about the family, and nothing for sale — the
+ *      brothers find models on MakerWorld and print them to learn; they do
+ *      not design them and the site does not sell them.
  *
  * Shares no logic with the app beyond importing the data it checks.
  * Exits non-zero on any failure.
@@ -199,7 +200,6 @@ section("maths items, re-solved independently", () => {
  * The site may only say what the family has said. The brothers do not design
  * models: they find them on MakerWorld and print them. These phrases were all
  * once on the site as placeholders that read like fact; none may come back.
- * The private dashboard is sample data behind a password and is skipped.
  */
 const INVENTED = [
   /(?<!không phải do )(Hưng|Long|Anh|ba anh em|Cả ba anh em|tụi em) (tự )?thiết kế(?! được)/i,
@@ -210,9 +210,11 @@ const INVENTED = [
   /viết tay/i,
   /Không (món nào|có món nào) mua (sẵn )?về bán lại/i,
   /goal\.current/,
+  // HLA3D is a learning site and sells nothing. No cart, no orders, no prices.
+  /giỏ hàng|THÊM VÀO GIỎ|đặt hàng|useCart|formatVnd|\d{2,3}\.000đ/i,
 ];
-const SKIP = /(^|\/)(dashboard|data\/(vocab|viet|math|dashboard\.ts|makers\.ts|site\.ts))(\/|$)/;
-section("no invented claims on public pages", () => {
+const SKIP = /(^|\/)data\/(vocab|viet|math)(\/|$)/;
+section("no invented claims and nothing for sale", () => {
   let files = 0;
   const walk = (dir) => {
     for (const e of readdirSync(dir, { withFileTypes: true })) {

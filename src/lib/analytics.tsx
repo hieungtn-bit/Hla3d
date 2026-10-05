@@ -5,16 +5,14 @@ import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 /**
- * Analytics for a shop whose visitors include children and whose forms carry
- * customers' real names, phone numbers and home addresses.
+ * Analytics for a learning site whose visitors are mostly children.
  *
  * The configuration below is deliberately conservative:
  *
- * - Session recording is OFF. Watching replays of people typing an address
- *   into a small family shop is not worth the privacy cost, and the site has
- *   no funnel complex enough to need it.
- * - Every input is masked and autocapture never reads text, so a phone number
- *   or address cannot leak into an event property.
+ * - Session recording is OFF. Watching replays of children doing lessons is
+ *   not worth the privacy cost.
+ * - Autocapture never reads text, so nothing a child types can leak into an
+ *   event property.
  * - Do Not Track is honoured.
  * - IPs are not used to build a person profile beyond what PostHog needs.
  *
@@ -87,37 +85,11 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 /* --------------------------------------------------------------------------
    Typed events.
 
-   One place, so a rename cannot silently break a funnel and so nothing that
-   identifies a customer is ever passed by accident — note that none of these
-   accept a name, phone, address or email.
+   One place, so a rename cannot silently break a report, and so nothing that
+   identifies a child is ever passed by accident.
    -------------------------------------------------------------------------- */
 
-type ProductRef = { slug: string; name: string; price: number };
-
 export const track = {
-  viewProduct: (p: ProductRef) =>
-    safe("product_viewed", { slug: p.slug, product: p.name, price: p.price }),
-
-  addToCart: (p: ProductRef & { color: string; qty: number }) =>
-    safe("cart_added", { slug: p.slug, product: p.name, price: p.price, color: p.color, qty: p.qty }),
-
-  openCart: (count: number, subtotal: number) => safe("cart_opened", { count, subtotal }),
-
-  startCheckout: (count: number, subtotal: number) => safe("checkout_started", { count, subtotal }),
-
-  /** Fired after the server accepts the order. Carries no personal data. */
-  orderPlaced: (o: { code: string; items: number; subtotal: number; emailed: boolean; hasAddress: boolean }) =>
-    safe("order_placed", o),
-
-  orderFailed: (reason: string) => safe("order_failed", { reason }),
-
-  /** The zero-typing path — the number that matters most for this audience. */
-  contactTapped: (channel: "phone" | "zalo", from: string) => safe("contact_tapped", { channel, from }),
-
-  customizeUsed: (product: string, chars: number) => safe("custom_studio_used", { product, chars }),
-
-  filterShop: (category: string) => safe("shop_filtered", { category }),
-
   /**
    * The learning section. Carries a set id and counts — never a word a
    * particular child got wrong, which would be a record of one kid's
@@ -129,9 +101,6 @@ export const track = {
   lessonFinished: (set: string, right: number, wrong: number) =>
     safe("lesson_finished", { set, right, wrong, total: right + wrong }),
 
-  /** Zero-party data: what the buyer told us, not what we inferred from tracking. */
-  giftFinderDone: (a: { recipient: string; budget: string; intent: string }, slugs: string[]) =>
-    safe("gift_finder_completed", { ...a, results: slugs.join(",") }),
 };
 
 function safe(event: string, properties: Record<string, unknown>) {
@@ -139,6 +108,6 @@ function safe(event: string, properties: Record<string, unknown>) {
     if (!ensure()) return;
     posthog.capture(event, properties);
   } catch {
-    // Analytics must never break a purchase.
+    // Analytics must never break a lesson.
   }
 }

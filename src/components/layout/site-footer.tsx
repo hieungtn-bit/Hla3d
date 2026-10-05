@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/logo";
-import { contact, nav, site } from "@/data/site";
+import { nav, site } from "@/data/site";
 
 const secondary = [
   { href: "/about", label: "Chuyện của tụi em" },
-  { href: "/about#safety", label: "An toàn khi làm" },
+  { href: "/goc-in-3d#an-toan", label: "An toàn với máy in 3D" },
 ];
 
 export function SiteFooter() {
@@ -26,34 +26,18 @@ export function SiteFooter() {
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed font-semibold text-white/60">
               Hưng 8 tuổi · Long 6 tuổi · Anh 5 tuổi. Ba lớp học miễn phí, và một máy in 3D ở nhà
-              để in những mẫu tìm được trên MakerWorld lúc rảnh.
+              để học — không bán gì.
             </p>
-            <div className="mt-5 space-y-1.5 text-sm text-white/60">
-              <p className="font-bold text-white">Hỏi gì hoặc đặt hàng cứ gọi</p>
-              <p>
-                <a href={contact.tel} className="font-display text-xl font-extrabold text-sun hover:text-flame">
-                  {contact.phoneDisplay}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={contact.zalo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-4 hover:text-sun"
-                >
-                  Nhắn Zalo
-                </a>
-                {" · "}
-                <a href="mailto:hieungtn@gmail.com" className="underline underline-offset-4 hover:text-sun">
-                  Email
-                </a>
-              </p>
-            </div>
+            <p className="mt-5 text-sm text-white/60">
+              Thấy bài học nào sai?{" "}
+              <a href="mailto:hieungtn@gmail.com" className="font-bold text-sun underline underline-offset-4 hover:text-flame">
+                Gửi email góp ý
+              </a>
+            </p>
           </div>
 
-          <nav aria-label="Học và ghé xem">
-            <p className="eyebrow text-sun">Học và ghé xem</p>
+          <nav aria-label="Học">
+            <p className="eyebrow text-sun">Học</p>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -92,7 +76,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-carbon-line pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>In 3D và đóng gói tại nhà, ở Việt Nam.</p>
+          <p>Làm tại nhà, ở Việt Nam. Không quảng cáo, không bán hàng.</p>
           <p className="font-mono">
             © {site.founded}–{new Date().getFullYear()} HLA3D · Dự án của gia đình.
           </p>

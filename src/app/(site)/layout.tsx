@@ -1,6 +1,5 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { QuickOrderBar, QuickOrderSpacer } from "@/components/layout/quick-order-bar";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,9 +15,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         {children}
       </main>
       <SiteFooter />
-      {/* Reserves room for the fixed bar, and disappears wherever it does. */}
-      <QuickOrderSpacer />
-      <QuickOrderBar />
     </>
   );
 }

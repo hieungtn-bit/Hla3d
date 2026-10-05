@@ -3,18 +3,15 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
 import { MakerAvatar } from "@/components/brand/maker-avatar";
-import { MoneyBreakdown } from "@/components/money-breakdown";
-import { Section, SectionHeader } from "@/components/section";
+import { Section } from "@/components/section";
 import { Reveal } from "@/components/motion/reveal";
 import { makers } from "@/data/makers";
-import { safetyRules } from "@/data/safety";
-import { contact } from "@/data/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Chuyện của tụi em",
   description:
-    "HLA là Hưng, Long, Anh — 8, 6 và 5 tuổi. Trang này chủ yếu là ba lớp học miễn phí. Lúc rảnh, ba anh em tìm mẫu 3D trên MakerWorld và in ra.",
+    "HLA là Hưng, Long, Anh — 8, 6 và 5 tuổi. Trang này là ba lớp học miễn phí. Lúc rảnh, ba anh em in 3D để học, không bán gì.",
 };
 
 /**
@@ -29,20 +26,20 @@ const FACTS = [
     text: "Hưng 8 tuổi, Long 6 tuổi, Anh 5 tuổi. HLA là chữ cái đầu tên ba anh em.",
   },
   {
-    title: "Việc chính là học",
-    text: "Trang này chủ yếu là ba lớp học miễn phí: tiếng Việt, toán và tiếng Anh, từ mẫu giáo đến lớp 3.",
+    title: "Trang này để học",
+    text: "Ba lớp học miễn phí: tiếng Việt, toán và tiếng Anh, từ mẫu giáo đến lớp 3. Không bán gì, không quảng cáo, không cần tài khoản.",
   },
   {
     title: "Máy in 3D ở nhà",
-    text: "Ba anh em chưa tự thiết kế được mẫu 3D. Bây giờ các bé biết tìm mẫu trên MakerWorld và in ra.",
+    text: "Máy in là để học, không để bán. Ba anh em chưa tự thiết kế được mẫu 3D; bây giờ các bé biết tìm mẫu trên MakerWorld và in ra cùng người lớn.",
   },
   {
     title: "Mẫu 3D là của người khác",
-    text: "Mẫu trong cửa hàng là của các nhà thiết kế trên MakerWorld. Tên người thiết kế được ghi ở trang từng món khi nhà em ghi lại được.",
+    text: "Mẫu các bé in là của các nhà thiết kế trên MakerWorld. Món nào đã in sẽ được ghi ở Góc in 3D, kèm tên người làm ra mẫu.",
   },
   {
     title: "Người lớn trong nhà",
-    text: `Ba trông chừng việc học và máy in. ${contact.owner[0].toUpperCase()}${contact.owner.slice(1)} nhận đơn và gọi lại cho khách.`,
+    text: "Ba trông chừng việc học và máy in.",
   },
 ];
 
@@ -112,6 +109,7 @@ export default function AboutPage() {
                 { href: "/hoc-tieng-viet", label: "Tiếng Việt" },
                 { href: "/hoc-toan", label: "Toán" },
                 { href: "/hoc-tieng-anh", label: "Tiếng Anh" },
+                { href: "/goc-in-3d", label: "Góc in 3D" },
               ].map((l) => (
                 <Link
                   key={l.href}
@@ -127,66 +125,6 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ---- safety ------------------------------------------------------- */}
-      <Section id="safety" className="scroll-mt-20 border-t border-line bg-carbon text-white">
-        <div className="container-hla">
-          <SectionHeader
-            index="01"
-            eyebrow="An toàn khi làm"
-            tone="dark"
-            title="TRẺ VÀ MÁY IN 3D."
-            description="Đầu phun máy in nóng hơn 200°C. Đây là những luật nên có khi trẻ nhỏ dùng máy in 3D ở nhà — ai mua đồ in 3D cho con cũng nên biết."
-          />
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {[
-              { title: "Chỉ người lớn làm", items: safetyRules.adultOnly, dot: "bg-flame", text: "text-flame" },
-              { title: "Trẻ làm được, có người lớn ở cạnh", items: safetyRules.kids, dot: "bg-lime", text: "text-lime" },
-              { title: "Luật chung", items: safetyRules.house, dot: "bg-sky", text: "text-sky" },
-            ].map((col, i) => (
-              <Reveal
-                key={col.title}
-                delay={i * 0.08}
-                className="rounded-[var(--radius-card)] border border-carbon-line bg-carbon-2 p-6"
-              >
-                <span className={`eyebrow ${col.text}`}>{col.title}</span>
-                <ul className="mt-5 space-y-3">
-                  {col.items.map((rule) => (
-                    <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
-                      <span className={`mt-2 size-1.5 shrink-0 rounded-full ${col.dot}`} />
-                      {rule}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ---- money -------------------------------------------------------- */}
-      <Section className="border-t border-line bg-paper-2">
-        <div className="container-hla">
-          <SectionHeader
-            index="02"
-            eyebrow="Bài học tiền bạc"
-            title="TIỀN CHẠY ĐI ĐÂU HẾT?"
-            description="Ví dụ một món bán 150.000đ được chia ra thế nào: tiền nhựa, tiền điện, hộp, quỹ máy và tiền lời. Các con số là ước tính để tập tính, không phải sổ sách thật của cửa hàng."
-          />
-          <div className="mt-14">
-            <MoneyBreakdown />
-          </div>
-
-          <Reveal className="mt-14 text-center">
-            <Link
-              href="/shop"
-              className="tactile inline-flex h-14 items-center gap-2 rounded-full bg-flame px-8 font-display text-base font-bold tracking-tight text-white shadow-[var(--shadow-flame)] hover:bg-flame-2"
-            >
-              XEM CỬA HÀNG
-              <ArrowRight className="size-5" />
-            </Link>
-          </Reveal>
-        </div>
-      </Section>
     </>
   );
 }

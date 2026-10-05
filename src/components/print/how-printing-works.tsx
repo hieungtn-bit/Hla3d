@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Search, Palette, Layers, Send } from "lucide-react";
+import { Search, Palette, Layers, Hand } from "lucide-react";
 import { SectionHeader } from "@/components/section";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ const STEPS = [
     n: "01",
     title: "TÌM MẪU",
     en: "Find a model on MakerWorld.",
-    vi: "Tìm một mẫu 3D trên MakerWorld. Mẫu là của các nhà thiết kế ở đó — tụi em chưa tự vẽ được.",
+    vi: "Cùng người lớn tìm một mẫu 3D trên MakerWorld. Mẫu là của các nhà thiết kế ở đó — tụi em chưa tự vẽ được.",
     icon: Search,
     color: "bg-sun",
   },
@@ -33,17 +33,17 @@ const STEPS = [
   },
   {
     n: "04",
-    title: "GỬI ĐI",
-    en: "Pack it and send it.",
-    vi: "Món nào có người đặt thì nhà em gói lại và gửi đi.",
-    icon: Send,
+    title: "LẤY RA",
+    en: "Wait for it to cool, then take it off.",
+    vi: "Đợi bàn in nguội rồi người lớn lấy món in ra. Cầm lên xem: có giống mẫu không?",
+    icon: Hand,
     color: "bg-lime",
   },
 ];
 
 const TOTAL_LAYERS = 26;
 
-export function HowItWorks() {
+export function HowPrintingWorks() {
   const ref = React.useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.35"] });
@@ -60,8 +60,8 @@ export function HowItWorks() {
     <section ref={ref} className="border-t-2 border-ink bg-paper-2 py-20 sm:py-28">
       <div className="container-hla">
         <SectionHeader
-          index="01"
-          eyebrow="HLA3D làm việc thế nào"
+          index="02"
+          eyebrow="Một lần in diễn ra thế nào"
           title={
             <>
               BỐN BƯỚC,
@@ -69,7 +69,7 @@ export function HowItWorks() {
               TỪNG LỚP MỘT.
             </>
           }
-          description="Nói thật: ba anh em chưa tự thiết kế được. Việc tụi em làm được bây giờ là tìm mẫu có sẵn trên MakerWorld và in ra trên máy in ở nhà."
+          description="Ba anh em chưa tự thiết kế được. Việc tụi em làm được bây giờ là tìm mẫu có sẵn trên MakerWorld và in ra cùng người lớn."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-16">

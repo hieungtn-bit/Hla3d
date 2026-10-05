@@ -4,16 +4,13 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { nav, navPrimary } from "@/data/site";
 import { Logo } from "@/components/brand/logo";
-import { useCart } from "@/lib/cart";
-import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const cart = useCart();
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
@@ -55,28 +52,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              track.openCart(cart.count, cart.subtotal);
-              cart.open();
-            }}
-            aria-label={`Mở giỏ hàng, ${cart.count} món`}
-            className="sticker press relative grid size-10 place-items-center rounded-full bg-surface"
-          >
-            <ShoppingBag className="size-4" />
-            {cart.count > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full border-2 border-ink bg-flame font-mono text-[0.625rem] font-bold text-white">
-                {cart.count}
-              </span>
-            )}
-          </button>
-
-          {/* The header's one loud button is the daily entry point, not the shop:
-              the shop is in the nav, and the cart icon is right beside this. */}
           <Link
             href="/hom-nay"
-            className="sticker press hidden h-10 items-center rounded-full bg-flame px-5 font-display text-sm font-extrabold text-white sm:inline-flex"
+            className="sticker press inline-flex h-10 items-center rounded-full bg-flame px-4 font-display text-xs font-extrabold whitespace-nowrap text-white sm:px-5 sm:text-sm"
           >
             HÔM NAY HỌC GÌ
           </Link>
@@ -84,7 +62,7 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={menuOpen}
             className="sticker press grid size-10 place-items-center rounded-full bg-surface lg:hidden"
           >

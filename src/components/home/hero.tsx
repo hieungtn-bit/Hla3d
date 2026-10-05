@@ -76,7 +76,7 @@ export function Hero({
           </p>
           <p className="mt-3 max-w-md text-base leading-relaxed text-ink-2">
             Trang học của Hưng 8 tuổi, Long 6 tuổi và Anh 5 tuổi. Lúc rảnh, ba anh em tìm mẫu 3D trên
-            MakerWorld rồi in ra — món nào in được thì bày ở cửa hàng nhỏ.
+            MakerWorld rồi in ra cùng người lớn — để học, không để bán.
           </p>
 
           {/* the three of them, small and up front */}

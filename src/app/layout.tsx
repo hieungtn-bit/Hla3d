@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Baloo_2, JetBrains_Mono } from "next/font/google";
-import { CartProvider } from "@/lib/cart";
 import { AnalyticsProvider } from "@/lib/analytics";
-import { CartDrawer } from "@/components/layout/cart-drawer";
 import { site } from "@/data/site";
 import { JsonLd, organizationSchema, websiteSchema } from "@/components/seo/structured-data";
 import { siteUrl } from "@/lib/site-url";
@@ -95,10 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <AnalyticsProvider>
-          <CartProvider>
-            {children}
-            <CartDrawer />
-          </CartProvider>
+          {children}
         </AnalyticsProvider>
       </body>
     </html>

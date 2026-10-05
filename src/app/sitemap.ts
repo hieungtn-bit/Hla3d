@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { products } from "@/data/products";
 import { vocabSets } from "@/data/vocab";
 import { skills } from "@/data/math";
 import { vietSkills } from "@/data/viet";
@@ -7,19 +6,12 @@ import { absoluteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
-    "", "/hom-nay", "/hoc-tieng-viet", "/hoc-toan", "/hoc-tieng-anh", "/shop", "/chon-qua", "/custom", "/about",
+    "", "/hom-nay", "/hoc-tieng-viet", "/hoc-toan", "/hoc-tieng-anh", "/goc-in-3d", "/about",
   ].map((path) => ({
     url: absoluteUrl(path),
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.8,
-  }));
-
-  const productRoutes = products.map((p) => ({
-    url: absoluteUrl(`/shop/${p.slug}`),
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
   }));
 
   const learnRoutes = vocabSets.map((s) => ({
@@ -43,5 +35,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...vietRoutes, ...mathRoutes, ...learnRoutes, ...productRoutes];
+  return [...staticRoutes, ...vietRoutes, ...mathRoutes, ...learnRoutes];
 }

@@ -110,7 +110,7 @@ export function ProgressBackup() {
       <p className="eyebrow text-ink-3">Dành cho bố mẹ</p>
       <h2 className="display mt-3 text-[clamp(1.25rem,3.5vw,1.75rem)]">TIẾN ĐỘ NẰM TRONG MÁY NÀY — VÀ CHỈ MÁY NÀY.</h2>
       <p className="mt-4 text-sm leading-relaxed font-semibold text-ink-2">
-        Trang không có tài khoản và không gửi gì về máy chủ, nên lịch ôn của các con chỉ nằm trong
+        Trang không có tài khoản và không lưu tiến độ trên máy chủ, nên lịch ôn của các con chỉ nằm trong
         trình duyệt này. Xoá dữ liệu trình duyệt, đổi điện thoại hay mở bằng trình duyệt khác là mất
         hết. Mỗi tháng tải một bản sao lưu về là đủ an toàn.
       </p>
